@@ -11,6 +11,9 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('Home asda'),
         ),
+        drawer: Drawer(
+          
+        ),
         body: Center());
   }
 }
