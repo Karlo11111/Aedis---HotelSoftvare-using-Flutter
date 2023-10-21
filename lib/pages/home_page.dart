@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
           title: Text('Home asda'),
         ),
         drawer: Drawer(
-          
+          child: Text("aaaaaaaaaa"),
         ),
         body: Center());
   }
