@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context, 
       builder: (context) => Center(child: CircularProgressIndicator()),
     );
+    //try signing in
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailTextController.text, 
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-
+  //the main frontend code
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,9 +100,23 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 10),
                   
                   //login button
-                  MyButton(buttonText: "Sign in", ontap: SignIn)
+                  MyButton(buttonText: "Sign in", ontap: SignIn),
+
+                  //sized box
+                  const SizedBox(height: 10),
         
-                  //text with register page button text
+                  //TEXT WITH REGISTER PAGE TEXT
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    const Text("Not a member?"),
+                    const SizedBox(width: 5,),
+                    GestureDetector(
+                          onTap: widget.ontap,
+                          child: const Text("Register Now!", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),)
+                        ),
+                      ],
+                    )
                 ],
                   
               ),
