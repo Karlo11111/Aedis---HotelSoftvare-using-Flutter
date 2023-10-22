@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "782055124213",
+    "project_id": "razvojsoftvera-77ee6",
+    "storage_bucket": "razvojsoftvera-77ee6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782055124213:android:d2951c22bcd950cd31e9bc",
+        "android_client_info": {
+          "package_name": "com.example.razvoj_sofvera"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzZkNU09Z3A9oONKSqudXxWDbfAvOZ4Lw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

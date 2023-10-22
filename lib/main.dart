@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:razvoj_sofvera/LoginPages/login_page.dart';
 import 'package:razvoj_sofvera/pages/home_page.dart';
 
 void main() {
@@ -14,7 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPage(
+        ontap: () {
+          
+        },
+      ),
     );
   }
 }
