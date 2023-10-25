@@ -59,13 +59,16 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Center(
         child: Container(
+          alignment: Alignment.bottomCenter,
+          height: 1000,
           decoration: BoxDecoration(
               gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
             colors: [
-              Colors.blue,
-              Colors.red,
+              Colors.orange.shade800,
+              Colors.orange.shade600,
+              Colors.orange.shade200,
             ],
           )),
           child: SingleChildScrollView(
@@ -83,8 +86,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     // Text
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment
-                          .start, // Align "Login" text to the left
+                      crossAxisAlignment: CrossAxisAlignment.start, // Align "Login" text to the left
                       children: [
                         Text(
                           "Login",

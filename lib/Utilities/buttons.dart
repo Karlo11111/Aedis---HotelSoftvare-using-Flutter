@@ -19,7 +19,7 @@ class MyButton extends StatelessWidget {
         ),
         alignment: Alignment.center,
         height: 58,
-        width: 110,
+        width: 112,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
