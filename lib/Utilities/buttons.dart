@@ -18,23 +18,8 @@ class MyButton extends StatelessWidget {
           color: Colors.black,
         ),
         alignment: Alignment.center,
-        height: 58,
-        width: 112,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Text(
-                buttonText,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              Icon(Icons.arrow_forward_rounded, size: 30, color: Colors.white),
-            ],
-          ),
-        ),
+        height: 65,
+        child: Text(buttonText, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
       ),
     );
   }

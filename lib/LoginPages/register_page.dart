@@ -101,9 +101,6 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 mainAxisAlignment:MainAxisAlignment.center,
                 children: [
-                  //LOGO
-                  const Icon(Icons.lock, size: 100,),
-                  
                   //SIZED BOX
                   const SizedBox(height: 50),
         

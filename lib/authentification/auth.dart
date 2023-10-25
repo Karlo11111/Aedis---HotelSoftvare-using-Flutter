@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:razvoj_sofvera/Introduction_screens/onBoardingScreen.dart';
 import 'package:razvoj_sofvera/authentification/login_or_register.dart';
 import 'package:razvoj_sofvera/pages/home_page.dart';
 
@@ -10,7 +9,7 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: StreamBuilder(
+      body: StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         //user is logged in
