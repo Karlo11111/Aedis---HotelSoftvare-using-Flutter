@@ -58,109 +58,128 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Logo
-                  Icon(Icons.lock_clock, size: 90, color: Colors.blue),
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Colors.blue,
+              Colors.red,
+            ],
+          )),
+          child: SingleChildScrollView(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Logo
+                    Icon(Icons.lock_clock, size: 90, color: Colors.blue),
 
-                  // SizedBox
-                  SizedBox(height: 50),
+                    // SizedBox
+                    SizedBox(height: 50),
 
-                  // Text
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment
-                        .start, // Align "Login" text to the left
-                    children: [
-                      Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: .6,
-                          height: 1.2,
-                          decoration: TextDecoration.none,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Please sign in to continiue.",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: .6,
-                          height: 1.2,
-                          decoration: TextDecoration.none,
-                          color: Colors.grey[700],
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
-                  ),
-
-                  // SizedBox
-                  SizedBox(height: 15),
-
-                  // TextFields for email and password
-                  // Email
-                  MyTextField(
-                    controller: emailTextController,
-                    hintText: "Email",
-                    obscureText: false,
-                  ),
-
-                  // SizedBox
-                  const SizedBox(height: 20),
-
-                  // Password
-                  MyTextField(
-                    controller: passwordTextController,
-                    hintText: "Password",
-                    obscureText: true,
-                  ),
-
-                  // SizedBox
-                  const SizedBox(height: 10),
-
-                  // Login button
-                  MyButton(buttonText: "Login", ontap: signIn),
-
-                  // SizedBox
-                  const SizedBox(height: 10),
-
-                  // Text with register page text
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 250),
-                      const Text("Not a member?"),
-                      const SizedBox(
-                        width: 5,
-                        height: 100,
-                      ),
-                      GestureDetector(
-                        onTap: widget.ontap,
-                        child: const Text(
-                          "Register Now!",
+                    // Text
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment
+                          .start, // Align "Login" text to the left
+                      children: [
+                        Text(
+                          "Login",
                           style: TextStyle(
-                            color: Colors.blue,
+                            fontSize: 30,
                             fontWeight: FontWeight.bold,
+                            letterSpacing: .6,
+                            height: 1.2,
+                            decoration: TextDecoration.none,
+                            color: Colors.black,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Please sign in to continiue.",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: .6,
+                            height: 1.2,
+                            decoration: TextDecoration.none,
+                            color: Colors.grey[700],
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+
+                    // SizedBox
+                    SizedBox(height: 15),
+
+                    // TextFields for email and password
+                    // Email
+                    MyTextField(
+                      controller: emailTextController,
+                      hintText: "Email",
+                      obscureText: false,
+                    ),
+
+                    // SizedBox
+                    const SizedBox(height: 20),
+
+                    // Password
+                    MyTextField(
+                      controller: passwordTextController,
+                      hintText: "Password",
+                      obscureText: true,
+                    ),
+
+                    // SizedBox
+                    const SizedBox(height: 10),
+
+                    // Login button
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        MyButton(
+                          buttonText: "Login",
+                          ontap: signIn,
+                        ),
+                      ],
+                    ),
+
+                    // SizedBox
+                    const SizedBox(height: 10),
+
+                    // Text with register page text
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(height: 250),
+                        const Text("Not a member?"),
+                        const SizedBox(
+                          width: 5,
+                          height: 100,
+                        ),
+                        GestureDetector(
+                          onTap: widget.ontap,
+                          child: const Text(
+                            "Register Now!",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
