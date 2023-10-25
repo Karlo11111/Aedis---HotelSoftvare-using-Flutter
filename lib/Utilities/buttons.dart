@@ -19,7 +19,10 @@ class MyButton extends StatelessWidget {
         ),
         alignment: Alignment.center,
         height: 65,
-        child: Text(buttonText, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        child: Text(
+          buttonText,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

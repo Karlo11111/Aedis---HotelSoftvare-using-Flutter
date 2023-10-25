@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 
-
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key, required this.onTap});
 
@@ -23,71 +22,65 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordTextController = TextEditingController();
   final confirmPasswordTextController = TextEditingController();
 
-  
   //sign users up
   void signUp() async {
     //show loading circle
     showDialog(
-      context: context, 
+      context: context,
       builder: (context) => const Center(
-        child: CircularProgressIndicator(),),
+        child: CircularProgressIndicator(),
+      ),
     );
 
     //make sure the passwords match
-    if(passwordTextController.text != confirmPasswordTextController.text){
+    if (passwordTextController.text != confirmPasswordTextController.text) {
       //pop loading circle
       Navigator.pop(context);
       //display an error message
       displayMessage("Passwords don't match");
       return;
     }
-    
 
-    //try creating the user 
+    //try creating the user
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailTextController.text, 
-        password: passwordTextController.text
-      );
+          email: emailTextController.text,
+          password: passwordTextController.text);
       //add to database
       addUserDetails(emailTextController.text, nameTextController.text);
       //pop loading circle
-      if(context.mounted) Navigator.pop(context);
-
+      if (context.mounted) Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop loading circle
       Navigator.pop(context);
 
-      //display error to user 
+      //display error to user
       displayMessage(e.code);
-
     }
   }
 
   //add users data to the firebase firestore
-  Future addUserDetails (String UserEmail, String Name,) async {
-      await FirebaseFirestore.instance.collection("User Email").add(
-        {
-          'UserEmail': UserEmail,
-          'Name': Name,
-        }
-      );
-    }
-  
-  //displaying message for errors
-  void displayMessage(String message){
-    showDialog(
-      context: context, 
-      builder: (context) => AlertDialog(
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(message),
-        ),
-      )
-    );
+  Future addUserDetails(
+    String UserEmail,
+    String Name,
+  ) async {
+    await FirebaseFirestore.instance.collection("User Email").add({
+      'UserEmail': UserEmail,
+      'Name': Name,
+    });
   }
 
-
+  //displaying message for errors
+  void displayMessage(String message) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(message),
+              ),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,32 +90,35 @@ class _RegisterPageState extends State<RegisterPage> {
         child: SingleChildScrollView(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Column(
-                mainAxisAlignment:MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //SIZED BOX
                   const SizedBox(height: 50),
-        
+
                   //TEXT
-                  const Text("Lets create an account for you", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
-          
+                  const Text(
+                    "Lets create an account for you",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+
                   //SIZED BOX
                   const SizedBox(height: 15),
-        
+
                   //TEXTFIELDS FOR EMAIL AND PASSWORD
 
                   //name text field
                   MyTextField(
-                    controller: nameTextController, 
-                    hintText: "Enter your name", 
+                    controller: nameTextController,
+                    hintText: "Enter your name",
                     obscureText: false,
                   ),
                   const SizedBox(height: 10),
                   //email
                   MyTextField(
-                    controller: emailTextController, 
-                    hintText: "Enter your email", 
+                    controller: emailTextController,
+                    hintText: "Enter your email",
                     obscureText: false,
                   ),
                   const SizedBox(height: 10),
@@ -147,20 +143,25 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   //SIZED BOX
                   const SizedBox(height: 15),
-                  
+
                   //TEXT WITH REGISTER PAGE TEXT
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text("Already a member?"),
-                      const SizedBox(width: 5,),
-                      GestureDetector(
-                        onTap: widget.onTap,
-                        child: const Text("Sign In Now!", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),)
+                      const SizedBox(
+                        width: 5,
                       ),
+                      GestureDetector(
+                          onTap: widget.onTap,
+                          child: const Text(
+                            "Sign In Now!",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          )),
                     ],
                   )
-                  
                 ],
               ),
             ),

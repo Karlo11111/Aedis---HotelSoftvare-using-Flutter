@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/authentification/auth.dart';
 import 'package:razvoj_sofvera/authentification/firebase_options.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -14,6 +13,7 @@ void main() async {
 
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
