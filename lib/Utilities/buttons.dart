@@ -3,11 +3,15 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  const MyButton({super.key, required this.buttonText, required this.ontap});
+  const MyButton(
+      {super.key,
+      required this.buttonText,
+      required this.ontap,
+      required this.height});
 
   final Function()? ontap;
   final String buttonText;
-
+  final double height;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +22,7 @@ class MyButton extends StatelessWidget {
           color: Colors.black,
         ),
         alignment: Alignment.center,
-        height: 65,
+        height: height,
         child: Text(
           buttonText,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

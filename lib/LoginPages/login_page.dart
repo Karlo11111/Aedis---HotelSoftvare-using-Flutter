@@ -1,12 +1,16 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.ontap});
+  const LoginPage({
+    super.key,
+    required this.ontap,
+  });
   final Function()? ontap;
 
   @override
@@ -54,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
   //the main frontend code
   @override
   Widget build(BuildContext context) {
+    var rememberMe;
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       body: Center(
@@ -68,8 +73,26 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 50),
 
                   //TEXT
-                  Text("Sign in to your account",
-                      style: TextStyle(fontSize: 30)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text("Sign in", style: TextStyle(fontSize: 40)),
+                    ],
+                  ),
+
+                  const SizedBox(
+                    height: 15,
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Please sing in to use our platform",
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ],
+                  ),
 
                   //SIZED BOX
                   SizedBox(height: 15),
@@ -93,15 +116,33 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                   //sized box
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
+
+                  //Rem me&forgot passwd
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GestureDetector(
+                          child: Text("Forgot your password?"), onTap: () {})
+                    ],
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
 
                   //login button
-                  MyButton(buttonText: "Sign in", ontap: SignIn),
+                  MyButton(
+                    buttonText: "Sign in",
+                    ontap: SignIn,
+                    height: 50,
+                  ),
 
                   //sized box
                   const SizedBox(height: 10),
 
                   //TEXT WITH REGISTER PAGE TEXT
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
