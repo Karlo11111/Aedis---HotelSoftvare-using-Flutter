@@ -111,28 +111,28 @@ class _RegisterPageState extends State<RegisterPage> {
                   //name text field
                   MyTextField(
                     controller: nameTextController,
-                    hintText: "Enter your name",
+                    hintText: "Name",
                     obscureText: false,
                   ),
                   const SizedBox(height: 10),
                   //email
                   MyTextField(
                     controller: emailTextController,
-                    hintText: "Enter your email",
+                    hintText: "Email",
                     obscureText: false,
                   ),
                   const SizedBox(height: 10),
                   //password
                   MyTextField(
                     controller: passwordTextController,
-                    hintText: "Enter your password",
+                    hintText: "Password",
                     obscureText: true,
                   ),
                   const SizedBox(height: 10),
                   //password
                   MyTextField(
                     controller: confirmPasswordTextController,
-                    hintText: "Confirm your password",
+                    hintText: "Confirm Password",
                     obscureText: true,
                   ),
                   const SizedBox(height: 10),

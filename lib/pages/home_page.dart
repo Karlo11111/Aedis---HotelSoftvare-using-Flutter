@@ -13,10 +13,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("aaaa"),
-        centerTitle: true,
-      ),
       drawer: Drawer(
         backgroundColor: Colors.grey.shade400,
         child: Column(
@@ -38,6 +34,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+      
     );
   }
 }
