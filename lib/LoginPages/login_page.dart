@@ -2,9 +2,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -18,6 +18,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool _isChecked = false;
   //controllers for text
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
@@ -58,7 +59,6 @@ class _LoginPageState extends State<LoginPage> {
   //the main frontend code
   @override
   Widget build(BuildContext context) {
-    var rememberMe;
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       body: Center(
@@ -76,7 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("Sign in", style: TextStyle(fontSize: 40)),
+                      Text("Sign in",
+                          style: GoogleFonts.inter(
+                              fontSize: 40, fontWeight: FontWeight.w600)),
                     ],
                   ),
 
@@ -89,7 +91,8 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Text(
                         "Please sing in to use our platform",
-                        style: TextStyle(fontSize: 15),
+                        style: GoogleFonts.inter(
+                            fontSize: 15, fontWeight: FontWeight.w400),
                       ),
                     ],
                   ),
@@ -118,12 +121,26 @@ class _LoginPageState extends State<LoginPage> {
                   //sized box
                   const SizedBox(height: 20),
 
-                  //Rem me&forgot passwd
+                  //Rem me&forgot passwd - jos treba funkcionalnost
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      Checkbox(
+                        value: _isChecked,
+                        onChanged: (bool? value1) {
+                          setState(() {
+                            _isChecked = value1!;
+                          });
+                        },
+                      ),
                       GestureDetector(
-                          child: Text("Forgot your password?"), onTap: () {})
+                          child: Text(
+                            "Forgot your password?",
+                            style: GoogleFonts.inter(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {})
                     ],
                   ),
 
@@ -146,15 +163,14 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Not a member?"),
                       const SizedBox(
                         width: 5,
                       ),
                       GestureDetector(
                           onTap: widget.ontap,
-                          child: const Text(
+                          child: Text(
                             "Register Now!",
-                            style: TextStyle(
+                            style: GoogleFonts.inter(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold),
                           )),

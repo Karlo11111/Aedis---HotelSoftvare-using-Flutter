@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key, required this.onTap});
@@ -98,9 +99,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 50),
 
                   //TEXT
-                  const Text(
-                    "Lets create an account for you",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Make an \naccount ",
+                        style: GoogleFonts.inter(
+                            fontWeight: FontWeight.bold, fontSize: 40),
+                      ),
+                    ],
                   ),
 
                   //SIZED BOX
@@ -114,28 +121,28 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: "Name",
                     obscureText: false,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 18),
                   //email
                   MyTextField(
                     controller: emailTextController,
                     hintText: "Email",
                     obscureText: false,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 18),
                   //password
                   MyTextField(
                     controller: passwordTextController,
                     hintText: "Password",
                     obscureText: true,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 18),
                   //password
                   MyTextField(
                     controller: confirmPasswordTextController,
                     hintText: "Confirm Password",
                     obscureText: true,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 18),
                   //LOG IN BUTTON
                   MyButton(
                     buttonText: "SIGN UP",
@@ -149,15 +156,18 @@ class _RegisterPageState extends State<RegisterPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Already a member?"),
+                      Text(
+                        "Already a member?",
+                        style: GoogleFonts.inter(color: Colors.black),
+                      ),
                       const SizedBox(
                         width: 5,
                       ),
                       GestureDetector(
                           onTap: widget.onTap,
-                          child: const Text(
+                          child: Text(
                             "Sign In Now!",
-                            style: TextStyle(
+                            style: GoogleFonts.inter(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold),
                           )),

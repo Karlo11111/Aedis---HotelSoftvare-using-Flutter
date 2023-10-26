@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyButton extends StatelessWidget {
   const MyButton(
@@ -25,7 +26,8 @@ class MyButton extends StatelessWidget {
         height: height,
         child: Text(
           buttonText,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: GoogleFonts.inter(
+              color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
     );

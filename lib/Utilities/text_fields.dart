@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyTextField extends StatelessWidget {
   const MyTextField(
@@ -27,7 +28,7 @@ class MyTextField extends StatelessWidget {
           ),
         ),
         labelText: hintText,
-        labelStyle: TextStyle(
+        labelStyle: GoogleFonts.inter(
           color: Colors.grey.shade800,
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
