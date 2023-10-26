@@ -13,27 +13,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.grey.shade400,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-                onPressed: signOut,
-                icon: const Icon(
-                  Icons.logout,
-                  size: 50,
-                )),
-            const SizedBox(
-              height: 60,
-            ),
-            const Text(
-              "SIGN OUT",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
-            )
-          ],
-        ),
-      ),
       
     );
   }

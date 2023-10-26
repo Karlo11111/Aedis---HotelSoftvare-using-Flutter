@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -76,9 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("Sign in",
-                          style: GoogleFonts.inter(
-                              fontSize: 40, fontWeight: FontWeight.w600)),
+                      Text("Sign in", style: GoogleFonts.inter(fontSize: 35, fontWeight: FontWeight.w600)),
                     ],
                   ),
 
@@ -91,14 +90,13 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Text(
                         "Please sing in to use our platform",
-                        style: GoogleFonts.inter(
-                            fontSize: 15, fontWeight: FontWeight.w400),
+                        style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w300),
                       ),
                     ],
                   ),
 
                   //SIZED BOX
-                  SizedBox(height: 15),
+                  SizedBox(height: 30),
 
                   //TEXTFIELDS FOR EMAIL AND PASSWD
                   //email
