@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
@@ -186,6 +187,28 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold),
                           )),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 35,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.google)),
+                      SizedBox(width: 10),
+                      IconButton(
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.facebook)),
+                      SizedBox(width: 10),
+                      IconButton(
+                          iconSize: 47,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.apple)),
                     ],
                   )
                 ],

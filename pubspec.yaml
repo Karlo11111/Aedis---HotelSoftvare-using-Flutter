@@ -41,6 +41,8 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   google_nav_bar: ^5.0.6
   google_fonts: ^6.1.0
+  material_design_icons_flutter: ^7.0.7296
+  font_awesome_flutter: ^10.6.0
 
 dev_dependencies:
   flutter_test:
