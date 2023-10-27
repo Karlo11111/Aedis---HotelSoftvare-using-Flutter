@@ -38,14 +38,14 @@ class _LoginPageState extends State<LoginPage> {
       final UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
       final User? user = userCredential.user;
-
+      
       // Use the user object for further operations or navigate to a new screen.
     } catch (e) {
       print(e.toString());
     }
   }
 
-  //bool for checkbox 
+  //bool for checkbox
   bool _isChecked = false;
 
   //controllers for text
