@@ -248,66 +248,6 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 40,
                   ),
-
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: Colors.black,
-                          thickness: 0.5,
-                        ),
-                      ),
-                      Text('Or continue with',
-                          style: GoogleFonts.inter(
-                              fontSize: 14, fontWeight: FontWeight.w600)),
-                      Expanded(
-                        child: Divider(
-                          color: Colors.black,
-                          thickness: 0.5,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                          iconSize: 40,
-                          onPressed: () => signInWithGoogle(),
-                          icon: FaIcon(FontAwesomeIcons.google)),
-                      SizedBox(width: 10),
-                      IconButton(
-                          iconSize: 40,
-                          onPressed: () {},
-                          icon: FaIcon(FontAwesomeIcons.facebook)),
-                      SizedBox(width: 10),
-                      IconButton(
-                          iconSize: 47,
-                          onPressed: () {},
-                          icon: FaIcon(FontAwesomeIcons.apple)),
-                    ],
-                  ),
-
-                  const SizedBox(
-                    height: 40,
-                  ),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                          onTap: widget.ontap,
-                          child: Text(
-                            "Register Now!",
-                            style: GoogleFonts.inter(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          )),
-                    ],
-                  )
                 ],
               ),
             ),
