@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
+import 'package:razvoj_sofvera/services/auth_services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -197,7 +198,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       IconButton(
                           iconSize: 40,
-                          onPressed: () {},
+                          onPressed: () => AuthServices().signInWithGoogle(),
                           icon: FaIcon(FontAwesomeIcons.google)),
                       SizedBox(width: 10),
                       IconButton(
