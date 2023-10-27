@@ -1,8 +1,9 @@
-// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: use_build_context_synchronously, non_constant_identifier_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -151,6 +152,52 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   //SIZED BOX
                   const SizedBox(height: 15),
+
+                  Row(
+                    children: [
+                      Expanded(
+                          child: Divider(
+                        color: Colors.black,
+                        thickness: 0.5,
+                      )),
+                      Text(
+                        'Or continue with',
+                        style: GoogleFonts.inder(
+                            fontSize: 14, fontWeight: FontWeight.w600),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 0.5,
+                        ),
+                      )
+                    ],
+                  ),
+
+                  //google, facebook, apple login
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.google)),
+                      SizedBox(width: 10),
+                      IconButton(
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.facebook)),
+                      SizedBox(width: 10),
+                      IconButton(
+                          iconSize: 47,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.apple)),
+                    ],
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
 
                   //TEXT WITH REGISTER PAGE TEXT
                   Row(

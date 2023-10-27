@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables, avoid_print
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables, avoid_print, unused_local_variable
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  //bool for checkbox 
+  //bool for checkbox
   bool _isChecked = false;
 
   //controllers for text
@@ -201,24 +201,72 @@ class _LoginPageState extends State<LoginPage> {
 
                   //TEXT WITH REGISTER PAGE TEXT
 
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 0.5,
+                        ),
+                      ),
+                      Text('Or continue with',
+                          style: GoogleFonts.inter(
+                              fontSize: 14, fontWeight: FontWeight.w600)),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 0.5,
+                        ),
+                      )
+                    ],
+                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                          onTap: widget.ontap,
-                          child: Text(
-                            "Register Now!",
-                            style: GoogleFonts.inter(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          )),
+                      IconButton(
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.google)),
+                      SizedBox(width: 10),
+                      IconButton(
+                          iconSize: 40,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.facebook)),
+                      SizedBox(width: 10),
+                      IconButton(
+                          iconSize: 47,
+                          onPressed: () {},
+                          icon: FaIcon(FontAwesomeIcons.apple)),
                     ],
                   ),
-                  SizedBox(
-                    height: 35,
+
+                  const SizedBox(
+                    height: 40,
+                  ),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 0.5,
+                        ),
+                      ),
+                      Text('Or continue with',
+                          style: GoogleFonts.inter(
+                              fontSize: 14, fontWeight: FontWeight.w600)),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 0.5,
+                        ),
+                      )
+                    ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -237,6 +285,27 @@ class _LoginPageState extends State<LoginPage> {
                           iconSize: 47,
                           onPressed: () {},
                           icon: FaIcon(FontAwesomeIcons.apple)),
+                    ],
+                  ),
+
+                  const SizedBox(
+                    height: 40,
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      GestureDetector(
+                          onTap: widget.ontap,
+                          child: Text(
+                            "Register Now!",
+                            style: GoogleFonts.inter(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          )),
                     ],
                   )
                 ],
