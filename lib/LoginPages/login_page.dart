@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
-import 'package:razvoj_sofvera/services/auth_services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -20,7 +20,34 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //for google sign in
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  Future<void> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount!.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      final User? user = userCredential.user;
+
+      // Use the user object for further operations or navigate to a new screen.
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  //bool for checkbox 
   bool _isChecked = false;
+
   //controllers for text
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
@@ -198,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       IconButton(
                           iconSize: 40,
-                          onPressed: () => AuthServices().signInWithGoogle(),
+                          onPressed: () => signInWithGoogle(),
                           icon: FaIcon(FontAwesomeIcons.google)),
                       SizedBox(width: 10),
                       IconButton(
