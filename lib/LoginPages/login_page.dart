@@ -199,23 +199,18 @@ class _LoginPageState extends State<LoginPage> {
                   //sized box
                   const SizedBox(height: 10),
 
-                  //TEXT WITH REGISTER PAGE TEXT
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
                   Row(
                     children: [
                       Expanded(
-                        child: Divider(
-                          color: Colors.black,
-                          thickness: 0.5,
-                        ),
+                          child: Divider(
+                        color: Colors.black,
+                        thickness: 0.5,
+                      )),
+                      Text(
+                        'Or continue with',
+                        style: GoogleFonts.inder(
+                            fontSize: 14, fontWeight: FontWeight.w600),
                       ),
-                      Text('Or continue with',
-                          style: GoogleFonts.inter(
-                              fontSize: 14, fontWeight: FontWeight.w600)),
                       Expanded(
                         child: Divider(
                           color: Colors.black,
@@ -225,12 +220,14 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
 
+                  //TEXT WITH REGISTER PAGE TEXT
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
                           iconSize: 40,
-                          onPressed: () {},
+                          onPressed: () => signInWithGoogle(),
                           icon: FaIcon(FontAwesomeIcons.google)),
                       SizedBox(width: 10),
                       IconButton(
@@ -245,9 +242,26 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
 
-                  const SizedBox(
-                    height: 40,
+                  SizedBox(
+                    height: 20,
                   ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      GestureDetector(
+                          onTap: widget.ontap,
+                          child: Text(
+                            "Register Now!",
+                            style: GoogleFonts.inter(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ],
+                  )
                 ],
               ),
             ),
