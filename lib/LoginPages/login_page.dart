@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables, avoid_print
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables, avoid_print, unused_local_variable
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -199,27 +199,29 @@ class _LoginPageState extends State<LoginPage> {
                   //sized box
                   const SizedBox(height: 10),
 
-                  //TEXT WITH REGISTER PAGE TEXT
-
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
-                        width: 5,
+                      Expanded(
+                          child: Divider(
+                        color: Colors.black,
+                        thickness: 0.5,
+                      )),
+                      Text(
+                        'Or continue with',
+                        style: GoogleFonts.inder(
+                            fontSize: 14, fontWeight: FontWeight.w600),
                       ),
-                      GestureDetector(
-                          onTap: widget.ontap,
-                          child: Text(
-                            "Register Now!",
-                            style: GoogleFonts.inter(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          )),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 0.5,
+                        ),
+                      )
                     ],
                   ),
-                  SizedBox(
-                    height: 35,
-                  ),
+
+                  //TEXT WITH REGISTER PAGE TEXT
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -237,6 +239,27 @@ class _LoginPageState extends State<LoginPage> {
                           iconSize: 47,
                           onPressed: () {},
                           icon: FaIcon(FontAwesomeIcons.apple)),
+                    ],
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      GestureDetector(
+                          onTap: widget.ontap,
+                          child: Text(
+                            "Register Now!",
+                            style: GoogleFonts.inter(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          )),
                     ],
                   )
                 ],
