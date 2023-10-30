@@ -42,13 +42,13 @@ class SettingItem extends StatelessWidget {
           ),
           Text(
             title,
-            style: GoogleFonts.inder(fontSize: 18, fontWeight: FontWeight.w500),
+            style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           const Spacer(),
           value != null
               ? Text(
                   value!,
-                  style: GoogleFonts.inder(fontSize: 16, color: Colors.grey),
+                  style: GoogleFonts.inter(fontSize: 16, color: Colors.grey),
                 )
               : const SizedBox(),
           const SizedBox(

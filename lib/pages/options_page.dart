@@ -78,7 +78,7 @@ class _OptionsPageState extends State<OptionsPage> {
                 ),
                 Text(
                   "Settings",
-                  style: GoogleFonts.inder(
+                  style: GoogleFonts.inter(
                       fontSize: 40, fontWeight: FontWeight.bold),
                 ),
 
@@ -90,7 +90,7 @@ class _OptionsPageState extends State<OptionsPage> {
 
                 Text(
                   "Account",
-                  style: GoogleFonts.inder(
+                  style: GoogleFonts.inter(
                       fontSize: 30, fontWeight: FontWeight.w300),
                 ),
 
@@ -117,7 +117,7 @@ class _OptionsPageState extends State<OptionsPage> {
                         children: [
                           Text(
                             userName,
-                            style: GoogleFonts.inder(
+                            style: GoogleFonts.inter(
                                 fontSize: 18, fontWeight: FontWeight.w500),
                           ),
                           SizedBox(
@@ -125,7 +125,7 @@ class _OptionsPageState extends State<OptionsPage> {
                           ),
                           Text(
                             userEmail,
-                            style: GoogleFonts.inder(
+                            style: GoogleFonts.inter(
                                 fontSize: 14, color: Colors.grey),
                           )
                         ],
@@ -153,7 +153,7 @@ class _OptionsPageState extends State<OptionsPage> {
                 ),
 
                 Text("Settings",
-                    style: GoogleFonts.inder(
+                    style: GoogleFonts.inter(
                         fontSize: 30, fontWeight: FontWeight.w300)),
 
                 const SizedBox(
