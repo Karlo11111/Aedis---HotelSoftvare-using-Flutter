@@ -1,6 +1,4 @@
-// ignore_for_file: avoid_print, prefer_const_constructors
-
-import 'dart:html';
+// ignore_for_file: avoid_print
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,43 +10,31 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  List<String> docIDs = [];
-
-  Future getDocID() async {
-    await FirebaseFirestore.instance
-        .collection("User Email")
-        .get()
-        .then((snapshot) => snapshot.docs.forEach((document) {
-              print(document.reference);
-
-              docIDs.add(document.reference.id);
-            }));
-  }
-
-  Future<String> getUserName() async {
-    final User? user = FirebaseAuth.instance.currentUser;
-    final uid = user!.uid;
-
-    DocumentSnapshot docSnapshot = await FirebaseFirestore.instance
-        .collection("User Email")
-        .doc(docIDs[0])
-        .get();
-    return docSnapshot.get('Name');
-  }
-
-  String userName = '';
+  final User? user = FirebaseAuth.instance.currentUser;
+  String name = '';
 
   @override
   void initState() {
     super.initState();
-    fetchUserName();
+    fetchData();
   }
 
-  fetchUserName() async {
-    String name = await getUserName();
-    setState(() {
-      userName = name;
-    });
+  fetchData() async {
+    try {
+      DocumentSnapshot result = await FirebaseFirestore.instance
+          .collection('User Email')
+          .doc(user!.uid)
+          .get();
+      if (result.exists) {
+        setState(() {
+          name = result.get('Name');
+        });
+      } else {
+        print('No document found for user');
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+    }
   }
 
   @override
@@ -58,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text('Home Page'),
       ),
       body: Center(
-        child: Text('Hello ' + userName),
+        child: Text('Hello ' + name),
       ),
     );
   }
