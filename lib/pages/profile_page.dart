@@ -18,25 +18,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          IconButton(
-              onPressed: signOut,
-              icon: const Icon(
-                Icons.logout,
-                size: 50,
-              )),
-          SizedBox(
-            height: 60,
-          ),
-          Text(
-            "SIGN OUT",
-            style: GoogleFonts.inter(fontSize: 40, fontWeight: FontWeight.w600),
-          )
-        ],
-      ),
-    );
+    return Scaffold();
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:razvoj_sofvera/LoginPages/forgot_passwd.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 
@@ -175,13 +176,20 @@ class _LoginPageState extends State<LoginPage> {
                             )
                           ]),
                       GestureDetector(
-                          child: Text(
-                            "Forgot your password?",
-                            style: GoogleFonts.inter(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {})
+                        child: Text(
+                          "Forgot your password?",
+                          style: GoogleFonts.inter(
+                              color: Colors.blue, fontWeight: FontWeight.bold),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ForgotPasswd(),
+                            ),
+                          );
+                        },
+                      )
                     ],
                   ),
 

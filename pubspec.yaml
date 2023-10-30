@@ -45,6 +45,8 @@ dependencies:
   google_sign_in: ^5.4.2
   settings_ui: ^2.0.2
   ionicons: ^0.2.2
+  email_validator: ^2.1.17
+  basic_utils: ^5.7.0
 
 dev_dependencies:
   flutter_test:
