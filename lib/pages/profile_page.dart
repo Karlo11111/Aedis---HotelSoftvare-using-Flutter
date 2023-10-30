@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,30 +9,40 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final User? user = FirebaseAuth.instance.currentUser;
-  String name = '';
+  String userName =''; // Set an initial value until the data is fetched
 
   @override
   void initState() {
     super.initState();
-    fetchData();
+    _fetchUserName();
   }
 
-  fetchData() async {
-    try {
-      DocumentSnapshot result = await FirebaseFirestore.instance
-          .collection('User Email')
-          .doc(user!.uid)
-          .get();
-      if (result.exists) {
-        setState(() {
-          name = result.get('Name');
-        });
-      } else {
-        print('No document found for user');
+  //trying to fetch user data (in this case their name)
+  Future<void> _fetchUserName() async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      //trying to get the user uid from User Email collection and returns it as a string called userName
+      try {
+        DocumentSnapshot<Map<String, dynamic>> userDoc = await FirebaseFirestore
+            .instance
+            .collection('User Email')
+            .doc(user.uid)
+            .get();
+        //if userDoc (document specific to each user) exists it sets the Name field as a string called name
+        if (userDoc.exists) {
+          String name = userDoc['Name'] as String;
+          setState(() {
+            userName = name;
+          });
+        } else {
+          print('User document does not exist.');
+        }
+      } catch (error) {
+        print('Error fetching user name: $error');
       }
-    } catch (e) {
-      print('Error fetching data: $e');
+    } else {
+      print('No user is logged in.');
     }
   }
 
@@ -44,7 +53,8 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text('Home Page'),
       ),
       body: Center(
-        child: Text('Hello ' + name),
+        //prints the userName on the screen
+        child: Text('Hello $userName'),
       ),
     );
   }

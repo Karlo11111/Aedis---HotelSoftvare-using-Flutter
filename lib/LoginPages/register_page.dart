@@ -18,6 +18,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final user = FirebaseAuth.instance.currentUser;
   //text controllers for register page text fields
   final nameTextController = TextEditingController();
   final emailTextController = TextEditingController();
@@ -61,12 +62,16 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  //add users data to the firebase firestore
+  //adding user details when logging in and setting it to a specific user uid
   Future addUserDetails(
     String UserEmail,
     String Name,
   ) async {
-    await FirebaseFirestore.instance.collection("User Email").add({
+    User? user = FirebaseAuth.instance.currentUser;
+    await FirebaseFirestore.instance
+        .collection("User Email")
+        .doc(user!.uid)
+        .set({
       'UserEmail': UserEmail,
       'Name': Name,
     });
