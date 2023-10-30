@@ -22,7 +22,9 @@ class _OptionsPageState extends State<OptionsPage> {
   void signOut() {
     FirebaseAuth.instance.signOut();
   }
+
   String userName = ''; // Set an initial value until the data is fetched
+  String userEmail = '';
 
   @override
   void initState() {
@@ -45,8 +47,10 @@ class _OptionsPageState extends State<OptionsPage> {
         //if userDoc (document specific to each user) exists it sets the Name field as a string called name
         if (userDoc.exists) {
           String name = userDoc['Name'] as String;
+          String email = userDoc['UserEmail'] as String;
           setState(() {
             userName = name;
+            userEmail = email;
           });
         } else {
           print('User document does not exist.');
@@ -120,7 +124,7 @@ class _OptionsPageState extends State<OptionsPage> {
                             height: 10,
                           ),
                           Text(
-                            "Something Something",
+                            userEmail,
                             style: GoogleFonts.inder(
                                 fontSize: 14, color: Colors.grey),
                           )
