@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, unnecessary_string_escapes, unused_element, dead_code
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,7 +48,7 @@ class _OptionsPageState extends State<OptionsPage> {
                 //Acc part
 
                 Text(
-                  "Accounnt",
+                  "Account",
                   style: GoogleFonts.inder(
                       fontSize: 30, fontWeight: FontWeight.w300),
                 ),

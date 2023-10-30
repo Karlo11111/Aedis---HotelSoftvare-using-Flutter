@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:razvoj_sofvera/Utilities/forward_button.dart';
 
 class SettingSwitch extends StatelessWidget {
   final String title;

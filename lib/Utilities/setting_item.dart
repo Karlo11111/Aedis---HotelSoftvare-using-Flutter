@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:razvoj_sofvera/Utilities/forward_button.dart';
 
 class SettingItem extends StatelessWidget {
