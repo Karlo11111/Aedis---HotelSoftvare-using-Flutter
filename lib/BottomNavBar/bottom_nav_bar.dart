@@ -41,13 +41,13 @@ class _PagesPageState extends State<PagesPage> {
     return Scaffold(
       body: _pages[currentIndex],
       bottomNavigationBar: GNav(
-        duration: Duration(milliseconds: 200), // tab animation duration
+        duration: Duration(milliseconds: 100), // tab animation duration
         gap: 8, // the tab button gap between icon and text
         color: Colors.grey[800], // unselected icon color
-        activeColor: Colors.blue, // selected icon and text color
-        iconSize: 24, // tab button icon size
+        activeColor: Colors.black, // selected icon and text color
+        iconSize: 30, // tab button icon size
         tabBackgroundColor:
-            Colors.blue.withOpacity(0.1), // selected tab background color
+            Colors.black.withOpacity(0.1), // selected tab background color
         padding: EdgeInsets.symmetric(
             horizontal: 20, vertical: 10), // navigation bar padding
         onTabChange: (index) {
@@ -59,12 +59,12 @@ class _PagesPageState extends State<PagesPage> {
             text: "Home",
           ),
           GButton(
-            icon: Icons.search,
-            text: "Search",
+            icon: Icons.room_service,
+            text: "My Services",
           ),
           GButton(
-            icon: Icons.person,
-            text: "Profile",
+            icon: Icons.door_front_door,
+            text: "My Room",
           ),
           GButton(
             icon: Icons.settings,

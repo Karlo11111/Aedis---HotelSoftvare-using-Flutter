@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, unnecessary_string_escapes, unused_element, dead_code
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +21,42 @@ class _OptionsPageState extends State<OptionsPage> {
   bool isDarkMode = false;
   void signOut() {
     FirebaseAuth.instance.signOut();
+  }
+  String userName = ''; // Set an initial value until the data is fetched
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserName();
+  }
+
+  //trying to fetch user data (in this case their name)
+  Future<void> _fetchUserName() async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      //trying to get the user uid from User Email collection and returns it as a string called userName
+      try {
+        DocumentSnapshot<Map<String, dynamic>> userDoc = await FirebaseFirestore
+            .instance
+            .collection('User Email')
+            .doc(user.uid)
+            .get();
+        //if userDoc (document specific to each user) exists it sets the Name field as a string called name
+        if (userDoc.exists) {
+          String name = userDoc['Name'] as String;
+          setState(() {
+            userName = name;
+          });
+        } else {
+          print('User document does not exist.');
+        }
+      } catch (error) {
+        print('Error fetching user name: $error');
+      }
+    } else {
+      print('No user is logged in.');
+    }
   }
 
   @override
@@ -75,7 +112,7 @@ class _OptionsPageState extends State<OptionsPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Antonio Kocijan",
+                            userName,
                             style: GoogleFonts.inder(
                                 fontSize: 18, fontWeight: FontWeight.w500),
                           ),
