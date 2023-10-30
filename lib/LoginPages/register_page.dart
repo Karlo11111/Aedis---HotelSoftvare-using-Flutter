@@ -167,7 +167,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       )),
                       Text(
                         'Or continue with',
-                        style: GoogleFonts.inder(
+                        style: GoogleFonts.inter(
                             fontSize: 14, fontWeight: FontWeight.w600),
                       ),
                       Expanded(

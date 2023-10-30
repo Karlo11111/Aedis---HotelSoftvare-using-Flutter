@@ -38,12 +38,12 @@ class SettingSwitch extends StatelessWidget {
           ),
           Text(
             title,
-            style: GoogleFonts.inder(fontSize: 18, fontWeight: FontWeight.w500),
+            style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           const Spacer(),
           Text(
             value ? "On" : "Off",
-            style: GoogleFonts.inder(fontSize: 16, color: Colors.grey),
+            style: GoogleFonts.inter(fontSize: 16, color: Colors.grey),
           ),
           const SizedBox(
             width: 15,

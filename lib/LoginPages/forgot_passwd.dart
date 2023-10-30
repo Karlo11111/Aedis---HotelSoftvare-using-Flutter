@@ -27,7 +27,7 @@ class _ForgotPasswdState extends State<ForgotPasswd> {
         SnackBar(
             content: Text(
           'Check your inbox for password reset link',
-          style: GoogleFonts.inder(fontSize: 20),
+          style: GoogleFonts.inter(fontSize: 20),
         )),
       );
       //error check
@@ -52,7 +52,7 @@ class _ForgotPasswdState extends State<ForgotPasswd> {
         elevation: 0,
         title: Text(
           "Reset your password",
-          style: GoogleFonts.inder(color: Colors.black),
+          style: GoogleFonts.inter(color: Colors.black),
         ),
       ),
 
@@ -67,7 +67,7 @@ class _ForgotPasswdState extends State<ForgotPasswd> {
               children: [
                 Text(
                   "Receive an email to \nreset your password",
-                  style: GoogleFonts.inder(fontSize: 24),
+                  style: GoogleFonts.inter(fontSize: 24),
                   textAlign: TextAlign.center,
                 ),
 
@@ -102,7 +102,7 @@ class _ForgotPasswdState extends State<ForgotPasswd> {
                   icon: Icon(Icons.email_outlined),
                   label: Text(
                     "Reset Password",
-                    style: GoogleFonts.inder(fontSize: 24),
+                    style: GoogleFonts.inter(fontSize: 24),
                   ),
                   onPressed: resetPassword,
                 )

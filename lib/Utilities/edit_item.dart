@@ -19,7 +19,7 @@ class EditItem extends StatelessWidget {
           flex: 2,
           child: Text(
             title,
-            style: GoogleFonts.inder(fontSize: 18, color: Colors.grey),
+            style: GoogleFonts.inter(fontSize: 18, color: Colors.grey),
           ),
         ),
         const SizedBox(

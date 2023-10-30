@@ -60,7 +60,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
               ),
               Text(
                 "Accounnt",
-                style: GoogleFonts.inder(
+                style: GoogleFonts.inter(
                     fontSize: 40, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
