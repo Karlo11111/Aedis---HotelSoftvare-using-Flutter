@@ -58,12 +58,17 @@ class HomePage extends StatelessWidget {
                         ))
                   ],
                 ),
-      
+
+                Divider(
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+
                 const SizedBox(
                   height: 20,
                 ),
                 //services cards
-      
+
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -82,7 +87,7 @@ class HomePage extends StatelessWidget {
                         height: 200,
                         width: 260,
                       ),
-      
+
                       //spa
                       MyCard(
                         onTap: () {
@@ -97,7 +102,7 @@ class HomePage extends StatelessWidget {
                       ),
 
                       //room services
-      
+
                       MyCard(
                         onTap: () {},
                         picture: "lib/assets/room_services.jpg",
@@ -109,13 +114,13 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-      
+
                 const SizedBox(
                   height: 30,
                 ),
-      
+
                 //activities text and see all button
-      
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -137,13 +142,18 @@ class HomePage extends StatelessWidget {
                         ))
                   ],
                 ),
-      
+
+                Divider(
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+
                 const SizedBox(
                   height: 20,
                 ),
-      
+
                 //activities cards
-      
+
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -162,7 +172,7 @@ class HomePage extends StatelessWidget {
                         height: 200,
                         width: 260,
                       ),
-      
+
                       //Lunch
                       MyCard(
                         onTap: () {
@@ -175,7 +185,7 @@ class HomePage extends StatelessWidget {
                         height: 200,
                         width: 260,
                       ),
-      
+
                       //Dinner
                       MyCard(
                         onTap: () {

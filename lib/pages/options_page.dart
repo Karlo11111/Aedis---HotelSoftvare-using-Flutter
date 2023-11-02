@@ -9,6 +9,7 @@ import 'package:razvoj_sofvera/Utilities/forward_button.dart';
 import 'package:razvoj_sofvera/Utilities/setting_item.dart';
 import 'package:razvoj_sofvera/Utilities/setting_switch.dart';
 import 'package:razvoj_sofvera/pages/Edit_account_screen.dart';
+import 'package:razvoj_sofvera/pages/help.dart';
 
 class OptionsPage extends StatefulWidget {
   const OptionsPage({super.key});
@@ -223,7 +224,10 @@ class _OptionsPageState extends State<OptionsPage> {
                   icon: Ionicons.help,
                   bgColor: Colors.red.shade100,
                   iconColor: Colors.red,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HelpPage()));
+                  },
                 ),
 
                 const SizedBox(

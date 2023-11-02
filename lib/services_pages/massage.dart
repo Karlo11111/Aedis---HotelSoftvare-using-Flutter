@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
+import 'package:razvoj_sofvera/services_pages/BookNow/book_now_massage.dart';
 
 class Massage extends StatelessWidget {
   const Massage({super.key});
@@ -81,7 +82,10 @@ class Massage extends StatelessWidget {
                 MyButton(
                   buttonText: "Book Now",
                   height: 60,
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BookMassage()));
+                  },
                 )
               ],
             ),

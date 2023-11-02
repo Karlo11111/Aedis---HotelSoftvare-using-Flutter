@@ -60,7 +60,7 @@ class _MyRoomState extends State<MyRoom> {
         padding: EdgeInsets.only(left: 25.0, right: 25, top: 25),
         child: SafeArea(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //welcome to your room text
             Text(
@@ -73,7 +73,9 @@ class _MyRoomState extends State<MyRoom> {
             SizedBox(height: 20),
 
             //room key text
-            Text("Room Key", style:
+            Text(
+              "Room Key",
+              style:
                   GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
@@ -81,18 +83,19 @@ class _MyRoomState extends State<MyRoom> {
             SizedBox(height: 20),
 
             //room key container
-  	        Container(
-              height: 190,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Color.fromARGB(255, 118, 144, 175),
-                gradient: LinearGradient(
+            Container(
+                height: 190,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(255, 118, 144, 175),
+                    gradient: LinearGradient(
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
                       colors: [
                         Colors.blue,
                         Colors.purple.shade500,
                       ],
+<<<<<<< Updated upstream
                     )
               ),
               child: Center(
@@ -105,6 +108,22 @@ class _MyRoomState extends State<MyRoom> {
               )
             ),
             
+=======
+                    )),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FaIcon(
+                        FontAwesomeIcons.nfcSymbol,
+                        size: 50,
+                        color: Colors.orange,
+                      ),
+                    ],
+                  ),
+                )),
+
+>>>>>>> Stashed changes
             //sized box
             SizedBox(height: 10),
 
@@ -125,7 +144,11 @@ class _MyRoomState extends State<MyRoom> {
                 children: [
                   MyRoomContainer(
                     name: "Living Room",
-                    icon: FaIcon(FontAwesomeIcons.couch, size: 45, color: Color.fromARGB(255, 118, 144, 175),),
+                    icon: FaIcon(
+                      FontAwesomeIcons.couch,
+                      size: 45,
+                      color: Color.fromARGB(255, 118, 144, 175),
+                    ),
                   ),
                   //sized box
                   SizedBox(width: 10),
@@ -162,7 +185,6 @@ class _MyRoomState extends State<MyRoom> {
                   ),
                   //sized box
                   SizedBox(width: 10),
-                  
                 ],
               ),
             ),
