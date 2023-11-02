@@ -70,7 +70,7 @@ class _MyRoomState extends State<MyRoom> {
             ),
 
             //sized box
-            SizedBox(height: 40),
+            SizedBox(height: 20),
 
             //room key text
             Text("Room Key", style:
@@ -91,7 +91,7 @@ class _MyRoomState extends State<MyRoom> {
                       end: Alignment.bottomLeft,
                       colors: [
                         Colors.blue,
-                        Colors.orange,
+                        Colors.purple.shade500,
                       ],
                     )
               ),
@@ -99,7 +99,7 @@ class _MyRoomState extends State<MyRoom> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    FaIcon(FontAwesomeIcons.nfcSymbol, size: 50, color: Colors.orange,),
+                    FaIcon(FontAwesomeIcons.nfcSymbol, size: 50, color: Colors.white,),
                   ],
                 ),
               )

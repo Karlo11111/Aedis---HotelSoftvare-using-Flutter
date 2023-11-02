@@ -42,7 +42,14 @@ class _PagesPageState extends State<PagesPage> {
     return Scaffold(
       body: _pages[currentIndex],
       bottomNavigationBar: Container(
+        
         decoration: BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.grey.shade800,
+              blurRadius: 6,
+            ),
+          ],
           color: Color.fromARGB(255, 118, 144, 175),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(24), topRight: Radius.circular(24)),
@@ -55,7 +62,7 @@ class _PagesPageState extends State<PagesPage> {
             },
             color: Colors.white,
             activeColor: Colors.white,
-            tabBackgroundColor: Colors.orange.shade400,
+            tabBackgroundColor: Color.fromARGB(255, 36, 90, 156),
             gap: 5,
             iconSize: 24,
             padding: EdgeInsets.all(20),
