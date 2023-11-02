@@ -3,6 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:razvoj_sofvera/Utilities/my_card.dart';
+import 'package:razvoj_sofvera/activities_pages/breakfast.dart';
+import 'package:razvoj_sofvera/activities_pages/dinner.dart';
+import 'package:razvoj_sofvera/activities_pages/lunch.dart';
+import 'package:razvoj_sofvera/activities_pages/see_all_activities.dart';
+import 'package:razvoj_sofvera/services_pages/massage.dart';
+import 'package:razvoj_sofvera/services_pages/see_all_services.dart';
+import 'package:razvoj_sofvera/services_pages/spa.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -38,10 +45,15 @@ class HomePage extends StatelessWidget {
                           fontSize: 26, fontWeight: FontWeight.w400),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllServices()));
+                        },
                         child: Text(
                           "See all",
-                          style: GoogleFonts.inter(fontSize: 26),
+                          style: GoogleFonts.inter(fontSize: 15),
                         ))
                   ],
                 ),
@@ -57,25 +69,40 @@ class HomePage extends StatelessWidget {
                     children: [
                       //masaza
                       MyCard(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Massage()));
+                        },
                         picture: "lib/assets/masaza.jpg",
                         service_name: "Massage",
                         service_price: "\$20/Per hour",
+                        height: 200,
+                        width: 260,
                       ),
 
                       //spa
                       MyCard(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Spa()));
+                        },
                         picture: "lib/assets/spa.jpg",
                         service_name: "Spa",
                         service_price: "\$50/Per session",
+                        height: 200,
+                        width: 260,
                       ),
 
+                      //room services
                       MyCard(
                         onTap: () {},
                         picture: "lib/assets/room_services.jpg",
                         service_name: "Room Services",
                         service_price: "",
+                        height: 200,
+                        width: 260,
                       )
                     ],
                   ),
@@ -96,10 +123,15 @@ class HomePage extends StatelessWidget {
                           fontSize: 26, fontWeight: FontWeight.w400),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllActivities()));
+                        },
                         child: Text(
                           "See all",
-                          style: GoogleFonts.inter(fontSize: 26),
+                          style: GoogleFonts.inter(fontSize: 15),
                         ))
                   ],
                 ),
@@ -116,26 +148,45 @@ class HomePage extends StatelessWidget {
                     children: [
                       //Breakfast
                       MyCard(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Breakfast()));
+                        },
                         picture: "lib/assets/Breakfast.jpg",
                         service_name: "Breakfast",
                         service_price: "7:00 AM - 10:00 AM",
+                        height: 200,
+                        width: 260,
                       ),
 
                       //Lunch
                       MyCard(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Lunch()));
+                        },
                         picture: "lib/assets/Lunch.jpg",
                         service_name: "Lunch",
                         service_price: "12:00 PM - 2:00 PM",
+                        height: 200,
+                        width: 260,
                       ),
 
                       //Dinner
                       MyCard(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Dinner()));
+                        },
                         picture: "lib/assets/Dinner.jpg",
                         service_name: "Dinner",
                         service_price: "6:30 PM - 8:30 PM",
+                        height: 200,
+                        width: 260,
                       )
                     ],
                   ),

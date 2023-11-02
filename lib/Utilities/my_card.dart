@@ -8,6 +8,8 @@ class MyCard extends StatelessWidget {
   final Function() onTap;
   final String service_name;
   final String service_price;
+  final double width;
+  final double height;
 
   const MyCard({
     super.key,
@@ -15,6 +17,8 @@ class MyCard extends StatelessWidget {
     required this.onTap,
     required this.service_name,
     required this.service_price,
+    required this.width,
+    required this.height,
   });
 
   @override
@@ -23,8 +27,8 @@ class MyCard extends StatelessWidget {
       onTap: onTap,
       //velicina card-a
       child: Container(
-        width: 260,
-        height: 200,
+        width: width,
+        height: height,
         child: Card(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
@@ -55,14 +59,16 @@ class MyCard extends StatelessWidget {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       service_name,
-                      style: GoogleFonts.inter(fontSize: 15),
+                      style: GoogleFonts.inter(
+                          fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       service_price,
-                      style: GoogleFonts.inter(fontSize: 15),
+                      style: GoogleFonts.inter(fontSize: 12),
                     )
                   ],
                 )
