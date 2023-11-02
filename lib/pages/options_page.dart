@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, unnecessary_string_escapes, unused_element, dead_code
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, unnecessary_string_escapes, unused_element, dead_code, avoid_print
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +18,23 @@ class OptionsPage extends StatefulWidget {
 }
 
 class _OptionsPageState extends State<OptionsPage> {
+  void NavigateToAccPage() {
+    setState(() {});
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            EditAccountScreen(refreshSettingsPage: NavigateToAccPage),
+      ),
+    );
+  }
+
   bool isDarkMode = false;
   void signOut() {
     FirebaseAuth.instance.signOut();
   }
 
+  //variables for fetching data
   String userName = ''; // Set an initial value until the data is fetched
   String userEmail = '';
 
@@ -74,7 +86,7 @@ class _OptionsPageState extends State<OptionsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 Text(
                   "Settings",
@@ -83,7 +95,7 @@ class _OptionsPageState extends State<OptionsPage> {
                 ),
 
                 const SizedBox(
-                  height: 30,
+                  height: 15,
                 ),
 
                 //Acc part
@@ -123,10 +135,12 @@ class _OptionsPageState extends State<OptionsPage> {
                           SizedBox(
                             height: 10,
                           ),
-                          Text(
-                            userEmail,
-                            style: GoogleFonts.inter(
-                                fontSize: 14, color: Colors.grey),
+                          SingleChildScrollView(
+                            child: Text(
+                              userEmail,
+                              style: GoogleFonts.inter(
+                                  fontSize: 14, color: Colors.grey),
+                            ),
                           )
                         ],
                       ),
@@ -134,14 +148,7 @@ class _OptionsPageState extends State<OptionsPage> {
                       //Acc button
                       const Spacer(),
                       ForwardButton(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => EditAccountScreen(),
-                            ),
-                          );
-                        },
+                        onTap: NavigateToAccPage,
                       )
                     ],
                   ),
@@ -222,7 +229,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   height: 20,
                 ),
 
-                MyButton(buttonText: "Sing Out", ontap: signOut, height: 55)
+                MyButton(buttonText: "Sign Out", ontap: signOut, height: 55)
               ],
             ),
           ),

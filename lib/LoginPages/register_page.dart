@@ -34,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: CircularProgressIndicator(),
       ),
     );
-
+    Navigator.pop(context);
     //make sure the passwords match
     if (passwordTextController.text != confirmPasswordTextController.text) {
       //pop loading circle
@@ -43,7 +43,6 @@ class _RegisterPageState extends State<RegisterPage> {
       displayMessage("Passwords don't match");
       return;
     }
-
     //try creating the user
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(

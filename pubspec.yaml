@@ -47,6 +47,7 @@ dependencies:
   ionicons: ^0.2.2
   email_validator: ^2.1.17
   basic_utils: ^5.7.0
+  get_it: ^7.2.1
 
 dev_dependencies:
   flutter_test:

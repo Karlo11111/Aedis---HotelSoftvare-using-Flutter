@@ -1,23 +1,46 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:razvoj_sofvera/Utilities/edit_item.dart';
 
 class EditAccountScreen extends StatefulWidget {
-  const EditAccountScreen({super.key});
+  const EditAccountScreen({super.key, required this.refreshSettingsPage});
+
+  final Function refreshSettingsPage;
 
   @override
   State<EditAccountScreen> createState() => _EditAccountScreenState();
 }
 
 class _EditAccountScreenState extends State<EditAccountScreen> {
+  final changedNameTextController = TextEditingController();
+
+  //adding user details when logging in and setting it to a specific user uid
+  Future addUserDetails() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    await FirebaseFirestore.instance
+        .collection("User Email")
+        .doc(user!.uid)
+        .set({
+      'Name': changedNameTextController.text,
+      "UserEmail": user.email,
+    });
+    // Pop the current page
+    Navigator.of(context).pop();
+    changedNameTextController.clear();
+  }
+
+  //string for defining gender
   String gender = "man";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //appbar for saving and exiting
       appBar: AppBar(
         backgroundColor: Colors.white10,
         elevation: 0,
@@ -33,7 +56,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
-              onPressed: () {},
+              onPressed: addUserDetails,
               style: IconButton.styleFrom(
                 backgroundColor: Colors.lightBlueAccent,
                 shape: RoundedRectangleBorder(
@@ -43,7 +66,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
               ),
               icon: Icon(
                 Ionicons.checkmark,
-                color: Colors.black,
+                color: Colors.green,
               ),
             ),
           )
@@ -56,15 +79,15 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Text(
-                "Accounnt",
+                "Account",
                 style: GoogleFonts.inter(
                     fontSize: 40, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                height: 40,
+                height: 10,
               ),
 
               //photo
@@ -86,9 +109,13 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                           child: const Text("Upload Image"))
                     ],
                   )),
-              const EditItem(
+
+              //
+              EditItem(
                 title: "Name",
-                widget: TextField(),
+                widget: TextField(
+                  controller: changedNameTextController,
+                ),
               ),
 
               //user gender
@@ -104,9 +131,8 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                     //male icon
                     CircleAvatar(
                       radius: 25,
-                      backgroundColor: gender == "man"
-                          ? Colors.purpleAccent
-                          : Colors.grey.shade200,
+                      backgroundColor:
+                          gender == "man" ? Colors.blue : Colors.grey.shade200,
                       child: IconButton(
                           onPressed: () {
                             setState(() {
