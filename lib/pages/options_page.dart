@@ -78,6 +78,7 @@ class _OptionsPageState extends State<OptionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 225, 233, 241),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

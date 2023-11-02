@@ -17,10 +17,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
+      backgroundColor: Color.fromARGB(255, 225, 233, 241),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -57,12 +58,12 @@ class HomePage extends StatelessWidget {
                         ))
                   ],
                 ),
-
+      
                 const SizedBox(
                   height: 20,
                 ),
                 //services cards
-
+      
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -81,7 +82,7 @@ class HomePage extends StatelessWidget {
                         height: 200,
                         width: 260,
                       ),
-
+      
                       //spa
                       MyCard(
                         onTap: () {
@@ -96,6 +97,7 @@ class HomePage extends StatelessWidget {
                       ),
 
                       //room services
+      
                       MyCard(
                         onTap: () {},
                         picture: "lib/assets/room_services.jpg",
@@ -107,13 +109,13 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-
+      
                 const SizedBox(
                   height: 30,
                 ),
-
+      
                 //activities text and see all button
-
+      
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -135,13 +137,13 @@ class HomePage extends StatelessWidget {
                         ))
                   ],
                 ),
-
+      
                 const SizedBox(
                   height: 20,
                 ),
-
+      
                 //activities cards
-
+      
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -160,7 +162,7 @@ class HomePage extends StatelessWidget {
                         height: 200,
                         width: 260,
                       ),
-
+      
                       //Lunch
                       MyCard(
                         onTap: () {
@@ -173,7 +175,7 @@ class HomePage extends StatelessWidget {
                         height: 200,
                         width: 260,
                       ),
-
+      
                       //Dinner
                       MyCard(
                         onTap: () {

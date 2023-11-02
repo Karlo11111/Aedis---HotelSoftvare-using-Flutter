@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:razvoj_sofvera/pages/home_page.dart';
+import 'package:razvoj_sofvera/pages/my_room.dart';
 import 'package:razvoj_sofvera/pages/options_page.dart';
-import 'package:razvoj_sofvera/pages/profile_page.dart';
 import 'package:razvoj_sofvera/pages/search_page.dart';
 
 class PagesPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _PagesPageState extends State<PagesPage> {
     SearchPage(),
 
     //profile page
-    ProfilePage(),
+    MyRoom(),
 
     //settings page
     OptionsPage(),
@@ -40,37 +41,60 @@ class _PagesPageState extends State<PagesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[currentIndex],
-      bottomNavigationBar: GNav(
-        duration: Duration(milliseconds: 100), // tab animation duration
-        gap: 8, // the tab button gap between icon and text
-        color: Colors.grey[800], // unselected icon color
-        activeColor: Colors.black, // selected icon and text color
-        iconSize: 30, // tab button icon size
-        tabBackgroundColor:
-            Colors.black.withOpacity(0.1), // selected tab background color
-        padding: EdgeInsets.symmetric(
-            horizontal: 20, vertical: 10), // navigation bar padding
-        onTabChange: (index) {
-          goToPage(index);
-        },
-        tabs: [
-          GButton(
-            icon: Icons.home,
-            text: "Home",
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 118, 144, 175),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 12),
+          child: GNav(
+            onTabChange: (index) {
+              goToPage(index);
+            },
+            color: Colors.white,
+            activeColor: Colors.white,
+            tabBackgroundColor: Colors.orange.shade400,
+            gap: 5,
+            iconSize: 24,
+            padding: EdgeInsets.all(20),
+            tabs: [
+              GButton(
+                icon: Icons.home,
+                text: "Home",
+                textStyle: GoogleFonts.inter(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
+              GButton(
+                icon: Icons.room_service,
+                text: "My Services",
+                textStyle: GoogleFonts.inter(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
+              GButton(
+                icon: Icons.door_front_door,
+                text: "My Room",
+                textStyle: GoogleFonts.inter(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
+              GButton(
+                icon: Icons.settings,
+                text: "Settings",
+                textStyle: GoogleFonts.inter(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
+            ],
           ),
-          GButton(
-            icon: Icons.room_service,
-            text: "My Services",
-          ),
-          GButton(
-            icon: Icons.door_front_door,
-            text: "My Room",
-          ),
-          GButton(
-            icon: Icons.settings,
-            text: "Settings",
-          ),
-        ],
+        ),
       ),
     );
   }
