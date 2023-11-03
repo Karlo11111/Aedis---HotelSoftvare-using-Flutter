@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:razvoj_sofvera/Utilities/devices_container.dart';
 import 'package:razvoj_sofvera/Utilities/rooms_container.dart';
 
 class MyRoom extends StatefulWidget {
@@ -95,20 +96,6 @@ class _MyRoomState extends State<MyRoom> {
                         Colors.blue,
                         Colors.purple.shade500,
                       ],
-<<<<<<< Updated upstream
-                    )
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FaIcon(FontAwesomeIcons.nfcSymbol, size: 50, color: Colors.white,),
-                  ],
-                ),
-              )
-            ),
-            
-=======
                     )),
                 child: Center(
                   child: Column(
@@ -117,13 +104,12 @@ class _MyRoomState extends State<MyRoom> {
                       FaIcon(
                         FontAwesomeIcons.nfcSymbol,
                         size: 50,
-                        color: Colors.orange,
+                        color: Colors.white,
                       ),
                     ],
                   ),
                 )),
 
->>>>>>> Stashed changes
             //sized box
             SizedBox(height: 10),
 
@@ -199,7 +185,15 @@ class _MyRoomState extends State<MyRoom> {
                   GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
+            //sized box
+            SizedBox(height: 10),
+
             //devices
+            MyDeviceContainer(
+              color: Colors.blueGrey,
+              text: "Smart TV",
+              image: Image.asset("lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),
+            ),
           ],
         )),
       ),
