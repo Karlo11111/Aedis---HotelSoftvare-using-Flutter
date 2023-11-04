@@ -57,145 +57,157 @@ class _MyRoomState extends State<MyRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 225, 233, 241),
-      body: Padding(
-        padding: EdgeInsets.only(left: 25.0, right: 25, top: 25),
-        child: SafeArea(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //welcome to your room text
-            Text(
-              "Welcome to your room $userName!",
-              style:
-                  GoogleFonts.inter(fontSize: 26, fontWeight: FontWeight.w700),
-            ),
-
-            //sized box
-            SizedBox(height: 20),
-
-            //room key text
-            Text(
-              "Room Key",
-              style:
-                  GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-
-            //sized box
-            SizedBox(height: 20),
-
-            //room key container
-            Container(
-                height: 190,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: Color.fromARGB(255, 118, 144, 175),
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Colors.blue,
-                        Colors.purple.shade500,
-                      ],
-                    )),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FaIcon(
-                        FontAwesomeIcons.nfcSymbol,
-                        size: 50,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                )),
-
-            //sized box
-            SizedBox(height: 10),
-
-            //room key text
-            Text(
-              "Rooms",
-              style:
-                  GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-
-            //sized box
-            SizedBox(height: 10),
-
-            //scrollable list of rooms (living room, bathroom, kitchen)
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  MyRoomContainer(
-                    name: "Living Room",
-                    icon: FaIcon(
-                      FontAwesomeIcons.couch,
-                      size: 45,
-                      color: Color.fromARGB(255, 118, 144, 175),
-                    ),
-                  ),
-                  //sized box
-                  SizedBox(width: 10),
-
-                  MyRoomContainer(
-                    name: "Bedroom",
-                    icon: FaIcon(
-                      FontAwesomeIcons.bed,
-                      size: 45,
-                      color: Color.fromARGB(255, 118, 144, 175),
-                    ),
-                  ),
-                  //sized box
-                  SizedBox(width: 10),
-
-                  MyRoomContainer(
-                    name: "Kitchen",
-                    icon: FaIcon(
-                      FontAwesomeIcons.kitchenSet,
-                      size: 45,
-                      color: Color.fromARGB(255, 118, 144, 175),
-                    ),
-                  ),
-                  //sized box
-                  SizedBox(width: 10),
-
-                  MyRoomContainer(
-                    name: "Bathroom",
-                    icon: FaIcon(
-                      FontAwesomeIcons.bath,
-                      size: 45,
-                      color: Color.fromARGB(255, 118, 144, 175),
-                    ),
-                  ),
-                  //sized box
-                  SizedBox(width: 10),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(left: 25.0, right: 25, top: 25),
+          child: SafeArea(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //welcome to your room text
+              Text(
+                "Welcome to your room $userName!",
+                style: GoogleFonts.inter(
+                    fontSize: 26, fontWeight: FontWeight.w700),
               ),
-            ),
 
-            //sized box
-            SizedBox(height: 10),
+              //sized box
+              SizedBox(height: 20),
 
-            //room key text
-            Text(
-              "Control your room",
-              style:
-                  GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+              //room key text
+              Text(
+                "Room Key",
+                style: GoogleFonts.inter(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
 
-            //sized box
-            SizedBox(height: 10),
+              //sized box
+              SizedBox(height: 20),
 
-            //devices
-            MyDeviceContainer(
-              color: Colors.blueGrey,
-              text: "Smart TV",
-              image: Image.asset("lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),
-            ),
-          ],
-        )),
+              //room key container
+              Container(
+                  height: 190,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: Color.fromARGB(255, 118, 144, 175),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.blue,
+                          Colors.purple.shade500,
+                        ],
+                      )),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FaIcon(
+                          FontAwesomeIcons.nfcSymbol,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                  )),
+
+              //sized box
+              SizedBox(height: 10),
+
+              //room key text
+              Text(
+                "Rooms",
+                style: GoogleFonts.inter(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+
+              //sized box
+              SizedBox(height: 10),
+
+              //scrollable list of rooms (living room, bathroom, kitchen)
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    MyRoomContainer(
+                      name: "Living Room",
+                      icon: FaIcon(
+                        FontAwesomeIcons.couch,
+                        size: 45,
+                        color: Color.fromARGB(255, 118, 144, 175),
+                      ),
+                    ),
+                    //sized box
+                    SizedBox(width: 10),
+
+                    MyRoomContainer(
+                      name: "Bedroom",
+                      icon: FaIcon(
+                        FontAwesomeIcons.bed,
+                        size: 45,
+                        color: Color.fromARGB(255, 118, 144, 175),
+                      ),
+                    ),
+                    //sized box
+                    SizedBox(width: 10),
+
+                    MyRoomContainer(
+                      name: "Kitchen",
+                      icon: FaIcon(
+                        FontAwesomeIcons.kitchenSet,
+                        size: 45,
+                        color: Color.fromARGB(255, 118, 144, 175),
+                      ),
+                    ),
+                    //sized box
+                    SizedBox(width: 10),
+
+                    MyRoomContainer(
+                      name: "Bathroom",
+                      icon: FaIcon(
+                        FontAwesomeIcons.bath,
+                        size: 45,
+                        color: Color.fromARGB(255, 118, 144, 175),
+                      ),
+                    ),
+                    //sized box
+                    SizedBox(width: 10),
+                  ],
+                ),
+              ),
+
+              //sized box
+              SizedBox(height: 10),
+
+              //room key text
+              Text(
+                "Control your room",
+                style: GoogleFonts.inter(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+
+              //sized box
+              SizedBox(height: 10),
+
+              //devices
+              //smart TV
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    MyDeviceContainer(
+                      color: Colors.blueGrey,
+                      text: "Smart TV",
+                      image: Image.asset(
+                          "lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),
+                    ),
+                  ],
+                ),
+              ),
+              //Smart Light
+            ],
+          )),
+        ),
       ),
     );
   }

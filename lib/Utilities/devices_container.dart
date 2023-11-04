@@ -24,15 +24,16 @@ class MyDeviceContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           image,
           Padding(
             padding: const EdgeInsets.only(left: 30.0),
-            child: Text(text, style:
+            child: Text(
+              text,
+              style:
                   GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
-          
         ],
       ),
     );

@@ -81,6 +81,7 @@ flutter:
     - lib/assets/Dinner.jpg
     - lib/assets/Tennis.jpg
     - lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png
+    - lib/assets/409349-middle.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

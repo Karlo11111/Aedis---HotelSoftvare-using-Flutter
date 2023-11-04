@@ -42,7 +42,6 @@ class _PagesPageState extends State<PagesPage> {
     return Scaffold(
       body: _pages[currentIndex],
       bottomNavigationBar: Container(
-        
         decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
             BoxShadow(
@@ -65,7 +64,7 @@ class _PagesPageState extends State<PagesPage> {
             tabBackgroundColor: Color.fromARGB(255, 36, 90, 156),
             gap: 5,
             iconSize: 24,
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(12),
             tabs: [
               GButton(
                 icon: Icons.home,
