@@ -4,23 +4,27 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyDeviceContainer extends StatelessWidget {
-  const MyDeviceContainer({
-    super.key,
-    required this.color,
-    required this.text,
-    required this.image,
-  });
+  const MyDeviceContainer(
+      {super.key,
+      required this.text,
+      required this.image,
+      required this.borderColor,
+      required this.color});
 
   final Color color;
+  final Color borderColor;
   final String text;
   final Image image;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
-      width: 150,
-      color: color,
+      decoration: BoxDecoration(
+        color: color,  
+        border: Border.all(color: borderColor, width: 3),
+      ),
+      height: 170,
+      width: 170,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

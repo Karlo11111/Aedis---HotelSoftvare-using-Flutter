@@ -34,10 +34,8 @@ class _RegisterPageState extends State<RegisterPage> {
         child: CircularProgressIndicator(),
       ),
     );
-    Navigator.pop(context);
     //make sure the passwords match
     if (passwordTextController.text != confirmPasswordTextController.text) {
-      //pop loading circle
       Navigator.pop(context);
       //display an error message
       displayMessage("Passwords don't match");
@@ -53,9 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
       //pop loading circle
       if (context.mounted) Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-      //pop loading circle
       Navigator.pop(context);
-
       //display error to user
       displayMessage(e.code);
     }

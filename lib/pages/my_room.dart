@@ -56,7 +56,7 @@ class _MyRoomState extends State<MyRoom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 225, 233, 241),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(left: 25.0, right: 25, top: 25),
@@ -94,8 +94,8 @@ class _MyRoomState extends State<MyRoom> {
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [
-                          Colors.blue,
-                          Colors.purple.shade500,
+                          Color.fromARGB(255, 232, 93, 66),
+                          Color.fromARGB(255, 197, 197, 196),
                         ],
                       )),
                   child: Center(
@@ -196,7 +196,16 @@ class _MyRoomState extends State<MyRoom> {
                 child: Row(
                   children: [
                     MyDeviceContainer(
-                      color: Colors.blueGrey,
+                      borderColor: Color.fromARGB(255, 197, 197, 196),
+                      color:Color.fromARGB(255, 232, 93, 66),
+                      text: "Smart TV",
+                      image: Image.asset(
+                          "lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),
+                    ),
+                    SizedBox(width: 20,),
+                    MyDeviceContainer(
+                      borderColor: Color.fromARGB(255, 232, 93, 66),
+                     color: Color.fromARGB(255, 197, 197, 196),
                       text: "Smart TV",
                       image: Image.asset(
                           "lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),

@@ -49,22 +49,22 @@ class _PagesPageState extends State<PagesPage> {
               blurRadius: 6,
             ),
           ],
-          color: Color.fromARGB(255, 118, 144, 175),
+          color: Color.fromARGB(255, 0, 68, 136),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(24), topRight: Radius.circular(24)),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
           child: GNav(
             onTabChange: (index) {
               goToPage(index);
             },
             color: Colors.white,
             activeColor: Colors.white,
-            tabBackgroundColor: Color.fromARGB(255, 36, 90, 156),
+            tabBackgroundColor: Color.fromARGB(255, 216, 191, 47),
             gap: 5,
             iconSize: 24,
-            padding: EdgeInsets.all(12),
+            padding: EdgeInsets.all(10),
             tabs: [
               GButton(
                 icon: Icons.home,

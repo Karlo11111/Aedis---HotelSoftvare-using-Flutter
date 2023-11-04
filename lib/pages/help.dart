@@ -46,6 +46,7 @@ class _HelpPageState extends State<HelpPage> {
         _nameController.clear();
         _emailController.clear();
         _issueController.clear();
+        Navigator.pop(context);
       }).catchError((error) {
         print('Error submitting data: $error');
         // Handle errors here.
@@ -56,6 +57,7 @@ class _HelpPageState extends State<HelpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Help Form'),
       ),

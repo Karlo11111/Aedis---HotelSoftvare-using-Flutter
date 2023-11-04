@@ -40,6 +40,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       //appbar for saving and exiting
       appBar: AppBar(
         backgroundColor: Colors.white10,

@@ -16,7 +16,7 @@ class MyRoomContainer extends StatelessWidget {
         Container(
           height: 100,
           width: 100,
-          color: Colors.white,
+          color: Color.fromARGB(255, 197, 197, 196),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
