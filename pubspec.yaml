@@ -50,6 +50,7 @@ dependencies:
   get_it: ^7.2.1
   table_calendar: ^3.0.9
   flutter_datetime_picker: ^1.5.1
+  syncfusion_flutter_calendar: ^23.1.43
 
 
 dev_dependencies:
