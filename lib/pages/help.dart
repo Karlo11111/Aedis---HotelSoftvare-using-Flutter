@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,13 +13,13 @@ class HelpPage extends StatefulWidget {
 class _HelpPageState extends State<HelpPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _issueController = TextEditingController();
+  User? user = FirebaseAuth.instance.currentUser;
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       String name = _nameController.text;
-      String email = _emailController.text;
+      String? email = user!.email;
       String issue = _issueController.text;
 
       // Create a reference to the "Help" collection
@@ -44,7 +45,6 @@ class _HelpPageState extends State<HelpPage> {
 
         // Clear the form fields after successful submission
         _nameController.clear();
-        _emailController.clear();
         _issueController.clear();
         Navigator.pop(context);
       }).catchError((error) {
@@ -59,7 +59,9 @@ class _HelpPageState extends State<HelpPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Help Form'),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -73,16 +75,6 @@ class _HelpPageState extends State<HelpPage> {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your name';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your email';
                   }
                   return null;
                 },
