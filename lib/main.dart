@@ -2,8 +2,9 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:razvoj_sofvera/authentification/auth.dart';
+
 import 'package:razvoj_sofvera/authentification/firebase_options.dart';
+import 'package:razvoj_sofvera/authentification/onBoarding_screen_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthPage(),
+      home: FirstAuthPage(),
     );
   }
 }

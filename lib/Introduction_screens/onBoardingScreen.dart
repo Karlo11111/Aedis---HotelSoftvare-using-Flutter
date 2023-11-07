@@ -1,10 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, file_names
 
 import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/Introduction_screens/screens/intro_page1.dart';
 import 'package:razvoj_sofvera/Introduction_screens/screens/intro_page2.dart';
 import 'package:razvoj_sofvera/Introduction_screens/screens/intro_page3.dart';
-import 'package:razvoj_sofvera/authentification/login_or_register.dart';
+import 'package:razvoj_sofvera/authentification/auth.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
@@ -54,7 +54,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       onTap: () {
                       Navigator.push(context, 
                       MaterialPageRoute(builder: (context){
-                      return LoginOrRegister();
+                      return AuthPage();
                   })
                   );
                 },
