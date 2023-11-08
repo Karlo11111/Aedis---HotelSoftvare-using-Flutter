@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/forward_button.dart';
@@ -19,6 +20,9 @@ class OptionsPage extends StatefulWidget {
 }
 
 class _OptionsPageState extends State<OptionsPage> {
+  //include hive
+  final myBox = Hive.box('UserInfo');
+
   void NavigateToAccPage() {
     setState(() {});
     Navigator.push(
@@ -62,8 +66,8 @@ class _OptionsPageState extends State<OptionsPage> {
           String name = userDoc['Name'] as String;
           String email = userDoc['UserEmail'] as String;
           setState(() {
-            userName = name;
-            userEmail = email;
+            myBox.put('username', name);
+            myBox.put('email', email);
           });
         } else {
           print('User document does not exist.');
@@ -130,7 +134,7 @@ class _OptionsPageState extends State<OptionsPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            userName,
+                            myBox.get('username'),
                             style: GoogleFonts.inter(
                                 fontSize: 18, fontWeight: FontWeight.w500),
                           ),
@@ -139,7 +143,7 @@ class _OptionsPageState extends State<OptionsPage> {
                           ),
                           SingleChildScrollView(
                             child: Text(
-                              userEmail,
+                              myBox.get('email'),
                               style: GoogleFonts.inter(
                                   fontSize: 14, color: Colors.grey),
                             ),

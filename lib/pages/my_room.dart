@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:razvoj_sofvera/Utilities/devices_container.dart';
 import 'package:razvoj_sofvera/Utilities/rooms_container.dart';
 
@@ -15,6 +16,9 @@ class MyRoom extends StatefulWidget {
 }
 
 class _MyRoomState extends State<MyRoom> {
+  //include hive
+  final myBox = Hive.box('UserInfo');
+
   //variables for fetching data
   String userName = ''; // Set an initial value until the data is fetched
 
@@ -66,7 +70,7 @@ class _MyRoomState extends State<MyRoom> {
             children: [
               //welcome to your room text
               Text(
-                "Welcome to your room $userName!",
+                "Welcome to your room ${myBox.get('username')}!",
                 style: GoogleFonts.inter(
                     fontSize: 26, fontWeight: FontWeight.w700),
               ),
@@ -197,15 +201,17 @@ class _MyRoomState extends State<MyRoom> {
                   children: [
                     MyDeviceContainer(
                       borderColor: Color.fromARGB(255, 197, 197, 196),
-                      color:Color.fromARGB(255, 232, 93, 66),
+                      color: Color.fromARGB(255, 232, 93, 66),
                       text: "Smart TV",
                       image: Image.asset(
                           "lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),
                     ),
-                    SizedBox(width: 20,),
+                    SizedBox(
+                      width: 20,
+                    ),
                     MyDeviceContainer(
                       borderColor: Color.fromARGB(255, 232, 93, 66),
-                     color: Color.fromARGB(255, 197, 197, 196),
+                      color: Color.fromARGB(255, 197, 197, 196),
                       text: "Smart TV",
                       image: Image.asset(
                           "lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),
