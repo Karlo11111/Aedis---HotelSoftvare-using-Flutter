@@ -52,6 +52,7 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  nfc_manager: ^3.3.0
 
 dev_dependencies:
   flutter_test:

@@ -1,12 +1,16 @@
 // ignore_for_file: avoid_print, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:razvoj_sofvera/Utilities/devices_container.dart';
 import 'package:razvoj_sofvera/Utilities/rooms_container.dart';
+import 'package:nfc_manager/nfc_manager.dart';
 
 class MyRoom extends StatefulWidget {
   const MyRoom({super.key});
@@ -16,6 +20,34 @@ class MyRoom extends StatefulWidget {
 }
 
 class _MyRoomState extends State<MyRoom> {
+  ValueNotifier<String> result = ValueNotifier<String>(
+      ''); // Declare and initialize a ValueNotifier to hold a string value
+
+  void ndefWrite() {
+    NfcManager.instance.startSession(onDiscovered: (NfcTag tag) async {
+      var ndef = Ndef.from(tag);
+      if (ndef == null || !ndef.isWritable) {
+        print('Tag is not ndef writable');
+        NfcManager.instance.stopSession(errorMessage: result.value);
+        return;
+      }
+
+      NdefMessage message = NdefMessage([
+        NdefRecord.createText('Hello World!'),
+      ]);
+
+      try {
+        await ndef.write(message);
+        print('Success to "Ndef Write"');
+        NfcManager.instance.stopSession();
+      } catch (e) {
+        result.value == e;
+        NfcManager.instance.stopSession(errorMessage: result.value.toString());
+        return;
+      }
+    });
+  }
+
   //include hive
   final myBox = Hive.box('UserInfo');
 
@@ -89,31 +121,40 @@ class _MyRoomState extends State<MyRoom> {
               SizedBox(height: 20),
 
               //room key container
-              Container(
-                  height: 190,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Color.fromARGB(255, 118, 144, 175),
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color.fromARGB(255, 232, 93, 66),
-                          Color.fromARGB(255, 197, 197, 196),
+              GestureDetector(
+                onTap: () {
+                  void functions() {
+                    ndefWrite();
+                  }
+
+                  functions();
+                },
+                child: Container(
+                    height: 190,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Color.fromARGB(255, 118, 144, 175),
+                        gradient: LinearGradient(
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Color.fromARGB(255, 232, 93, 66),
+                            Color.fromARGB(255, 197, 197, 196),
+                          ],
+                        )),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.nfcSymbol,
+                            size: 50,
+                            color: Colors.white,
+                          ),
                         ],
-                      )),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.nfcSymbol,
-                          size: 50,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                  )),
+                      ),
+                    )),
+              ),
 
               //sized box
               SizedBox(height: 10),
