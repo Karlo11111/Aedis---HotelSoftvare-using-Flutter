@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_local_variable
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
