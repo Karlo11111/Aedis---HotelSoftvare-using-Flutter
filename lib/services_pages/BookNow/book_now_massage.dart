@@ -14,6 +14,7 @@ class BookMassage extends StatefulWidget {
 }
 
 class _BookMassageState extends State<BookMassage> {
+  Map<DateTime, bool> _bookingLimitReached = {};
   //fetch user auth
   User? user = FirebaseAuth.instance.currentUser;
   //include hive
@@ -101,7 +102,9 @@ class _BookMassageState extends State<BookMassage> {
           await userDocumentRef.update({'Appointments': existingAppointments});
         } else {
           // The user has reached the limit of 3 appointments for the selected date
-
+          setState(() {
+            _bookingLimitReached[_selectedDate] = true;
+          });
           print(
               'User has reached the limit of 2 appointments for the selected date.');
         }
@@ -269,14 +272,17 @@ class _BookMassageState extends State<BookMassage> {
                           borderRadius: BorderRadius.circular(12)),
                       //text button representing each timeslot
                       child: TextButton(
-                        onPressed: () {
-                          displayAreYouSureBooking(timeSlot, () {
-                            bookTimeSlot(timeSlot);
-                            Navigator.pop(context);
-                          }, () {
-                            Navigator.pop(context);
-                          });
-                        },
+                        onPressed:
+                            (_bookingLimitReached[_selectedDate] ?? false)
+                                ? null
+                                : () {
+                                    displayAreYouSureBooking(timeSlot, () {
+                                      bookTimeSlot(timeSlot);
+                                      Navigator.pop(context);
+                                    }, () {
+                                      Navigator.pop(context);
+                                    });
+                                  },
                         child: Text(timeSlot),
                       ),
                     ),
