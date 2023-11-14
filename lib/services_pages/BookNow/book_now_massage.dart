@@ -46,17 +46,32 @@ class _BookMassageState extends State<BookMassage> {
     //_availableTimeSlots![_selectedDate] = generateAvailableTimeSlotsx();
   }
 
-  List<String> generateAvailableTimeSlots() {
+  List<String> generateAvailableTimeSlots(DateTime selectedDate) {
     // Create a list of available time slots from 8:00 AM to 8:00 PM, 30 minutes apart
     List<String> timeSlots = [];
-    for (int hour = 8; hour < 14.5; hour++) {
+    DateTime now = DateTime.now();
+
+    for (int hour = 8; hour <= 14.5; hour++) {
       for (int minute = 0; minute < 60; minute += 30) {
-        timeSlots.add(
-            '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}');
+        DateTime slot = DateTime(selectedDate.year, selectedDate.month,
+            selectedDate.day, hour, minute);
+        if (selectedDate.day == now.day &&
+            selectedDate.month == now.month &&
+            selectedDate.year == now.year) {
+          if (slot.isAfter(now)) {
+            timeSlots.add(
+                '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}');
+          }
+        } else {
+          timeSlots.add(
+              '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}');
+        }
       }
     }
     return timeSlots;
   }
+
+
 
   Future<void> bookTimeSlot(String selectedTimeSlot) async {
     // Book a selected time slot if it's available
@@ -110,7 +125,7 @@ class _BookMassageState extends State<BookMassage> {
             'TypeOfService': massageText,
           });
           //check if the appointmentsForSelectedDate are 2 (it goes from 0) and if it is it sets the booking limit to true
-          if(appointmentsForSelectedDate == 2){
+          if (appointmentsForSelectedDate == 2) {
             setState(() {
               _bookingLimitReached[_selectedDate] = true;
             });
@@ -143,39 +158,37 @@ class _BookMassageState extends State<BookMassage> {
   }
 
   Future<void> _fetchAvailableTimeSlots(DateTime date) async {
-    if (_cachedTimeSlots!.containsKey(date)) {
-      // Use cached data if available
+    // Always generate time slots for the selected date
+    final generatedTimeSlots = generateAvailableTimeSlots(date);
+
+    // Fetch data from Firestore
+    final docReference = _timeSlotsCollection.doc(date.toLocal().toString());
+    final docSnapshot = await docReference.get();
+
+    if (docSnapshot.exists) {
+      // Document already exists, fetch and cache the data
+      final data = docSnapshot.data() as Map<String, dynamic>;
+      final timeSlots = List<String>.from(data['timeSlots']);
       setState(() {
-        _availableTimeSlots![date] = _cachedTimeSlots![date]!;
+        _availableTimeSlots![date] = timeSlots;
+        // Cache the data
+        _cachedTimeSlots![date] = timeSlots;
       });
     } else {
-      // Fetch data from Firestore if not in cache
-      final docReference = _timeSlotsCollection.doc(date.toLocal().toString());
-      final docSnapshot = await docReference.get();
-
-      if (docSnapshot.exists) {
-        // Document already exists, fetch and cache the data
-        final data = docSnapshot.data() as Map<String, dynamic>;
-        final timeSlots = List<String>.from(data['timeSlots']);
-        setState(() {
-          _availableTimeSlots![date] = timeSlots;
-          // Cache the data
-          _cachedTimeSlots![date] = timeSlots;
-        });
-      } else {
-        // If no data is available, generate time slots and store in Firestore
-        final generatedTimeSlots = generateAvailableTimeSlots();
-        await docReference.set({
-          'timeSlots': generatedTimeSlots,
-        });
-        setState(() {
-          _availableTimeSlots![date] = generatedTimeSlots;
-          // Cache the data
-          _cachedTimeSlots![date] = generatedTimeSlots;
-        });
-      }
+      // If no data is available, store the generated time slots in Firestore
+      await docReference.set({
+        'timeSlots': generatedTimeSlots,
+      });
     }
+
+    // Always update the available time slots and cache with the generated time slots
+    setState(() {
+      _availableTimeSlots![date] = generatedTimeSlots;
+      // Cache the data
+      _cachedTimeSlots![date] = generatedTimeSlots;
+    });
   }
+
 
   // This method is called when a day is selected in the table calendar.
   // It updates the selected date and fetches available time slots for the selected date.
