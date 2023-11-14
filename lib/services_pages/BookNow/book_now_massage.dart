@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, avoid_single_cascade_in_expression_statements, curly_braces_in_flow_control_structures, non_constant_identifier_names, avoid_print, sized_box_for_whitespace, prefer_final_fields
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, avoid_single_cascade_in_expression_statements, curly_braces_in_flow_control_structures, non_constant_identifier_names, avoid_print, sized_box_for_whitespace, prefer_final_fields, use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,9 +14,15 @@ class BookMassage extends StatefulWidget {
 }
 
 class _BookMassageState extends State<BookMassage> {
+  //string for massage
+  String massageText = "Massage";
+
+  //map for checking if the booking limit is reached, takes a datetime and a bool
   Map<DateTime, bool> _bookingLimitReached = {};
+
   //fetch user auth
   User? user = FirebaseAuth.instance.currentUser;
+
   //include hive
   final myBox = Hive.box('UserInfo');
 
@@ -37,7 +43,7 @@ class _BookMassageState extends State<BookMassage> {
     // Set the selected date to now and fetch the available time slots
     _selectedDate = DateTime.now();
     _availableTimeSlots = {};
-    //_availableTimeSlots![_selectedDate] = generateAvailableTimeSlots();
+    //_availableTimeSlots![_selectedDate] = generateAvailableTimeSlotsx();
   }
 
   List<String> generateAvailableTimeSlots() {
@@ -59,12 +65,15 @@ class _BookMassageState extends State<BookMassage> {
         _availableTimeSlots![_selectedDate]!.remove(selectedTimeSlot);
       });
       // Update Firestore with the booking information and remove the booked time slot
-      await _timeSlotsCollection
-          .doc(_selectedDate.toLocal().toString())
-          .update({
-        //remove the booked timeslot from the array
-        'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
-      });
+      try {
+        await _timeSlotsCollection
+            .doc(_selectedDate.toLocal().toString())
+            .update({
+          'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
+        });
+      } catch (e) {
+        print('Firestore update error: $e');
+      }
       //fetching the UserBookedMassage collection
       final userDocumentRef = FirebaseFirestore.instance
           .collection("UsersBookedMassage")
@@ -90,13 +99,22 @@ class _BookMassageState extends State<BookMassage> {
                   _selectedDate.year, _selectedDate.month, _selectedDate.day);
         }).length;
 
-        if (appointmentsForSelectedDate < 2) {
+        print(appointmentsForSelectedDate);
+
+        if (appointmentsForSelectedDate < 3) {
           // The user's document already exists, and there are fewer than 3 appointments for the selected date
           existingAppointments.add({
             'Name': myBox.get("username"),
             'Time': selectedTimeSlot,
             'DateOfBooking': _selectedDate,
+            'TypeOfService': massageText,
           });
+          //check if the appointmentsForSelectedDate are 2 (it goes from 0) and if it is it sets the booking limit to true
+          if(appointmentsForSelectedDate == 2){
+            setState(() {
+              _bookingLimitReached[_selectedDate] = true;
+            });
+          }
 
           // Update the user's document with the updated appointments
           await userDocumentRef.update({'Appointments': existingAppointments});
@@ -116,6 +134,7 @@ class _BookMassageState extends State<BookMassage> {
               'Name': myBox.get("username"),
               'Time': selectedTimeSlot,
               'DateOfBooking': _selectedDate,
+              'TypeOfService': massageText,
             }
           ],
         });
@@ -160,11 +179,68 @@ class _BookMassageState extends State<BookMassage> {
 
   // This method is called when a day is selected in the table calendar.
   // It updates the selected date and fetches available time slots for the selected date.
-  void _onDaySelected(DateTime selectedDate, DateTime focusedDay) {
+  void _onDaySelected(DateTime selectedDate, DateTime focusedDay) async {
     setState(() {
       _selectedDate = selectedDate;
     });
-    _fetchAvailableTimeSlots(_selectedDate);
+
+    // Fetch available time slots
+    await _fetchAvailableTimeSlots(_selectedDate);
+
+    // Check if the user has reached the booking limit for the selected date
+    final userDocumentRef = FirebaseFirestore.instance
+        .collection("UsersBookedMassage")
+        .doc(user!.uid);
+
+    // Fetch the existing data for the user
+    final userDocumentSnapshot = await userDocumentRef.get();
+
+    if (userDocumentSnapshot.exists) {
+      // Get the existing appointments for the user
+      List<dynamic> existingAppointments =
+          userDocumentSnapshot.get('Appointments') ?? [];
+
+      // Filter the existing appointments for the selected date
+      int appointmentsForSelectedDate =
+          existingAppointments.where((appointment) {
+        DateTime appointmentDate =
+            (appointment['DateOfBooking'] as Timestamp).toDate();
+        return DateTime(appointmentDate.year, appointmentDate.month,
+                appointmentDate.day) ==
+            DateTime(
+                _selectedDate.year, _selectedDate.month, _selectedDate.day);
+      }).length;
+
+      if (appointmentsForSelectedDate >= 3) {
+        // The user has reached the limit of 3 appointments for the selected date
+        setState(() {
+          _bookingLimitReached[_selectedDate] = true;
+        });
+
+        // Show alert dialog
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text("Booking Limit Reached"),
+            content:
+                Text("You have reached the maximum bookings for this date."),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("OK"),
+              ),
+            ],
+          ),
+        );
+      } else {
+        // Reset the booking limit flag if the user has available slots
+        setState(() {
+          _bookingLimitReached[_selectedDate] = false;
+        });
+      }
+    }
   }
 
   //displaying message for errors
@@ -243,7 +319,7 @@ class _BookMassageState extends State<BookMassage> {
             calendarFormat: CalendarFormat.month,
             focusedDay: _selectedDate,
             firstDay: today,
-            lastDay: DateTime(2024),
+            lastDay: DateTime.now().add(Duration(days: 7)),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (day) {
               return _selectedDate.isAtSameMomentAs(day);

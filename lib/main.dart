@@ -15,9 +15,9 @@ void main() async {
   );
   //INITALIZE HIVE
   await Hive.initFlutter();
-  // open the box
+  // open the box for saving users name
   var box = await Hive.openBox('UserInfo');
-
+  
   runApp(const MyApp());
 }
 

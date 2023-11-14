@@ -53,6 +53,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   nfc_manager: ^3.3.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
