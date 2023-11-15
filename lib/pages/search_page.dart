@@ -27,7 +27,7 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           children: [
             Expanded(
-              child: StreamBuilder(
+                child: StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection("UsersBookedMassage")
                   .doc(user!.uid)
@@ -61,9 +61,7 @@ class _SearchPageState extends State<SearchPage> {
                 }
                 return const Center(child: CircularProgressIndicator());
               },
-            )
-
-            )
+            ))
           ],
         ),
       ),
