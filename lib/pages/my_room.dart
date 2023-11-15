@@ -3,12 +3,13 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:razvoj_sofvera/Utilities/devices_container.dart';
+import 'package:razvoj_sofvera/Utilities/key_card.dart';
+import 'package:razvoj_sofvera/Utilities/key_card_dialog.dart';
 import 'package:razvoj_sofvera/Utilities/rooms_container.dart';
 import 'package:nfc_manager/nfc_manager.dart';
 
@@ -33,7 +34,7 @@ class _MyRoomState extends State<MyRoom> {
       }
 
       NdefMessage message = NdefMessage([
-        NdefRecord.createText('Hello World!'),
+        NdefRecord.createText('Radi!'),
       ]);
 
       try {
@@ -89,6 +90,23 @@ class _MyRoomState extends State<MyRoom> {
     }
   }
 
+  bool usingKey = false;
+
+  Future<void> toggleUsingKey() async {
+    setState(() {
+      usingKey = true;
+    });
+
+    openKeyCardDialog(
+      context,
+      onComplete: () {
+        setState(() {
+          usingKey = false;
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,62 +118,44 @@ class _MyRoomState extends State<MyRoom> {
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //welcome to your room text
-              Text(
-                "Welcome to your room ${myBox.get('username')}!",
-                style: GoogleFonts.inter(
-                    fontSize: 26, fontWeight: FontWeight.w700),
-              ),
-
-              //sized box
-              SizedBox(height: 20),
-
-              //room key text
-              Text(
-                "Room Key",
-                style: GoogleFonts.inter(
-                    fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-
-              //sized box
-              SizedBox(height: 20),
-
               //room key container
-              GestureDetector(
+              InkWell(
                 onTap: () {
-                  void functions() {
+                  funckije() {
+                    toggleUsingKey();
                     ndefWrite();
                   }
 
-                  functions();
+                  funckije();
                 },
-                child: Container(
-                    height: 190,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: Color.fromARGB(255, 118, 144, 175),
-                        gradient: LinearGradient(
-                          begin: Alignment.topRight,
-                          end: Alignment.bottomLeft,
-                          colors: [
-                            Color.fromARGB(255, 232, 93, 66),
-                            Color.fromARGB(255, 197, 197, 196),
-                          ],
-                        )),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.nfcSymbol,
-                            size: 50,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
+                child: Opacity(
+                  opacity: usingKey ? 0 : 1,
+                  child: KeyCard(
+                    height: 380,
+                    topView: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //welcome to your room text
+                        Text(
+                          "Welcome to your room ${myBox.get('username')}!",
+                          style: GoogleFonts.inter(
+                              fontSize: 26, fontWeight: FontWeight.w700),
+                        ),
 
+                        //sized box
+                        SizedBox(height: 20),
+
+                        //room key text
+                        Text(
+                          "Room Key",
+                          style: GoogleFonts.inter(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               //sized box
               SizedBox(height: 10),
 
