@@ -57,9 +57,9 @@ class _HelpPageState extends State<HelpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        foregroundColor: Colors.black,
+        foregroundColor: Theme.of(context).colorScheme.primary,
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -71,7 +71,10 @@ class _HelpPageState extends State<HelpPage> {
             children: <Widget>[
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: InputDecoration(
+                    labelText: 'Name',
+                    hintStyle: GoogleFonts.inder(
+                        color: Theme.of(context).colorScheme.secondary)),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your name';
@@ -81,7 +84,10 @@ class _HelpPageState extends State<HelpPage> {
               ),
               TextFormField(
                 controller: _issueController,
-                decoration: InputDecoration(labelText: 'Issue Description'),
+                decoration: InputDecoration(
+                    labelText: 'Issue Description',
+                    hintStyle: GoogleFonts.inder(
+                        color: Theme.of(context).colorScheme.secondary)),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please describe your issue';
@@ -92,7 +98,11 @@ class _HelpPageState extends State<HelpPage> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: Text('Submit'),
+                child: Text(
+                  'Submit',
+                  style: GoogleFonts.inder(
+                      color: Theme.of(context).colorScheme.background),
+                ),
               ),
             ],
           ),

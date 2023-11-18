@@ -83,7 +83,7 @@ class _OptionsPageState extends State<OptionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -97,7 +97,9 @@ class _OptionsPageState extends State<OptionsPage> {
                 Text(
                   "Settings",
                   style: GoogleFonts.inter(
-                      fontSize: 40, fontWeight: FontWeight.bold),
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary),
                 ),
 
                 const SizedBox(
@@ -109,7 +111,9 @@ class _OptionsPageState extends State<OptionsPage> {
                 Text(
                   "Account",
                   style: GoogleFonts.inter(
-                      fontSize: 30, fontWeight: FontWeight.w300),
+                      fontSize: 30,
+                      fontWeight: FontWeight.w300,
+                      color: Theme.of(context).colorScheme.primary),
                 ),
 
                 const SizedBox(

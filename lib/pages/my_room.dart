@@ -110,7 +110,7 @@ class _MyRoomState extends State<MyRoom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(left: 25.0, right: 25, top: 25),
@@ -228,7 +228,9 @@ class _MyRoomState extends State<MyRoom> {
               Text(
                 "Control your room",
                 style: GoogleFonts.inter(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.primary),
               ),
 
               //sized box

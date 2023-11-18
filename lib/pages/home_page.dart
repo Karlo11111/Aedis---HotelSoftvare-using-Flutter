@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -31,7 +31,9 @@ class HomePage extends StatelessWidget {
                 Text(
                   "Our services",
                   style: GoogleFonts.inter(
-                      fontSize: 36, fontWeight: FontWeight.bold),
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary),
                 ),
                 const SizedBox(
                   height: 40,
@@ -43,7 +45,9 @@ class HomePage extends StatelessWidget {
                     Text(
                       "Services",
                       style: GoogleFonts.inter(
-                          fontSize: 26, fontWeight: FontWeight.w400),
+                          fontSize: 26,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                     TextButton(
                         onPressed: () {
@@ -54,15 +58,15 @@ class HomePage extends StatelessWidget {
                         },
                         child: Text(
                           "See all",
-                          style: GoogleFonts.inter(fontSize: 15),
+                          style: GoogleFonts.inter(
+                              fontSize: 15,
+                              color: Theme.of(context).colorScheme.secondary),
                         ))
                   ],
                 ),
 
                 Divider(
-                  thickness: 1,
-                  color: Colors.black,
-                ),
+                    thickness: 1, color: Theme.of(context).colorScheme.primary),
 
                 const SizedBox(
                   height: 20,
@@ -127,7 +131,9 @@ class HomePage extends StatelessWidget {
                     Text(
                       "Activities",
                       style: GoogleFonts.inter(
-                          fontSize: 26, fontWeight: FontWeight.w400),
+                          fontSize: 26,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).colorScheme.primary),
                     ),
                     TextButton(
                         onPressed: () {
@@ -138,15 +144,15 @@ class HomePage extends StatelessWidget {
                         },
                         child: Text(
                           "See all",
-                          style: GoogleFonts.inter(fontSize: 15),
+                          style: GoogleFonts.inter(
+                              fontSize: 15,
+                              color: Theme.of(context).colorScheme.secondary),
                         ))
                   ],
                 ),
 
                 Divider(
-                  thickness: 1,
-                  color: Colors.black,
-                ),
+                    thickness: 1, color: Theme.of(context).colorScheme.primary),
 
                 const SizedBox(
                   height: 20,

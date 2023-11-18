@@ -49,7 +49,7 @@ class _PagesPageState extends State<PagesPage> {
               blurRadius: 6,
             ),
           ],
-          color: Color.fromARGB(255, 0, 68, 136),
+          color: Theme.of(context).colorScheme.background,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(24), topRight: Radius.circular(24)),
         ),
@@ -59,8 +59,8 @@ class _PagesPageState extends State<PagesPage> {
             onTabChange: (index) {
               goToPage(index);
             },
-            color: Colors.white,
-            activeColor: Colors.white,
+            color: Theme.of(context).colorScheme.primary,
+            activeColor: Theme.of(context).colorScheme.secondary,
             tabBackgroundColor: Color.fromARGB(255, 216, 191, 47),
             gap: 5,
             iconSize: 24,
@@ -72,7 +72,7 @@ class _PagesPageState extends State<PagesPage> {
                 textStyle: GoogleFonts.inter(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white),
+                    color: Theme.of(context).colorScheme.primary),
               ),
               GButton(
                 icon: Icons.room_service,
@@ -80,7 +80,7 @@ class _PagesPageState extends State<PagesPage> {
                 textStyle: GoogleFonts.inter(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white),
+                    color: Theme.of(context).colorScheme.primary),
               ),
               GButton(
                 icon: Icons.door_front_door,
@@ -88,7 +88,7 @@ class _PagesPageState extends State<PagesPage> {
                 textStyle: GoogleFonts.inter(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white),
+                    color: Theme.of(context).colorScheme.primary),
               ),
               GButton(
                 icon: Icons.settings,
@@ -96,7 +96,7 @@ class _PagesPageState extends State<PagesPage> {
                 textStyle: GoogleFonts.inter(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white),
+                    color: Theme.of(context).colorScheme.primary),
               ),
             ],
           ),

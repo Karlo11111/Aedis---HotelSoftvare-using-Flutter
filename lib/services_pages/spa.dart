@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
+import 'package:razvoj_sofvera/services_pages/BookNow/book_now_spa.dart';
 
 class Spa extends StatelessWidget {
   const Spa({super.key});
@@ -80,7 +81,10 @@ class Spa extends StatelessWidget {
                 MyButton(
                   buttonText: "Book Now",
                   height: 60,
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BookSpa()));
+                  },
                 )
               ],
             ),

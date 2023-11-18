@@ -22,7 +22,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
         child: Column(
           children: [
@@ -30,6 +30,42 @@ class _SearchPageState extends State<SearchPage> {
                 child: StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection("UsersBookedMassage")
+                  .doc(user!.uid)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  var userData = snapshot.data!.data();
+
+                  if (userData == null ||
+                      !userData.containsKey('Appointments')) {
+                    return Text('No appointments found');
+                  }
+
+                  var appointments = userData['Appointments'];
+
+                  return ListView.builder(
+                    itemCount: appointments.length,
+                    itemBuilder: (context, index) {
+                      var appointmentData = appointments[index];
+
+                      return SavedBookings(
+                        timeSlot: appointmentData['Time'],
+                        user: appointmentData['Name'],
+                        DateOfBooking: appointmentData['DateOfBooking'],
+                        serviceType: appointmentData['TypeOfService'],
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(child: Text("ERROR: ${snapshot.error}"));
+                }
+                return const Center(child: CircularProgressIndicator());
+              },
+            )),
+            Expanded(
+                child: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection("UsersBookedSpa")
                   .doc(user!.uid)
                   .snapshots(),
               builder: (context, snapshot) {
