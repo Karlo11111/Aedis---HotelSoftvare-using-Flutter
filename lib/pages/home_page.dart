@@ -1,18 +1,23 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names
+
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:razvoj_sofvera/Utilities/GlassBox.dart';
+
 import 'package:razvoj_sofvera/Utilities/my_card.dart';
-import 'package:razvoj_sofvera/activities_pages/breakfast.dart';
-import 'package:razvoj_sofvera/activities_pages/dinner.dart';
-import 'package:razvoj_sofvera/activities_pages/lunch.dart';
 import 'package:razvoj_sofvera/activities_pages/see_all_activities.dart';
 import 'package:razvoj_sofvera/services_pages/massage.dart';
 import 'package:razvoj_sofvera/services_pages/see_all_services.dart';
 import 'package:razvoj_sofvera/services_pages/spa.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final _services_controler = PageController();
+
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,43 +30,17 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Our services",
-                  style: GoogleFonts.inter(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
                 //services text and see all button
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Services",
+                      "Welcome",
                       style: GoogleFonts.inter(
-                          fontSize: 26,
+                          fontSize: 30,
                           fontWeight: FontWeight.w400,
                           color: Theme.of(context).colorScheme.primary),
                     ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AllServices()));
-                        },
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.inter(
-                              fontSize: 15,
-                              color: Theme.of(context).colorScheme.secondary),
-                        ))
                   ],
                 ),
 
@@ -71,13 +50,15 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                //services cards
+                //services indicator cards
 
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
+                SizedBox(
+                  height: 220,
+                  width: double.infinity,
+                  child: PageView(
+                    controller: _services_controler,
                     children: [
-                      //masaza
+                      //massage card
                       MyCard(
                         onTap: () {
                           Navigator.push(
@@ -92,7 +73,7 @@ class HomePage extends StatelessWidget {
                         width: 260,
                       ),
 
-                      //spa
+                      //spa card
                       MyCard(
                         onTap: () {
                           Navigator.push(context,
@@ -105,8 +86,7 @@ class HomePage extends StatelessWidget {
                         width: 260,
                       ),
 
-                      //room services
-
+                      //room services card
                       MyCard(
                         onTap: () {},
                         picture: "lib/assets/room_services.jpg",
@@ -119,96 +99,163 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(
-                  height: 30,
-                ),
-
-                //activities text and see all button
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Activities",
-                      style: GoogleFonts.inter(
-                          fontSize: 26,
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context).colorScheme.primary),
-                    ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AllActivities()));
-                        },
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.inter(
-                              fontSize: 15,
-                              color: Theme.of(context).colorScheme.secondary),
-                        ))
-                  ],
-                ),
-
-                Divider(
-                    thickness: 1, color: Theme.of(context).colorScheme.primary),
-
-                const SizedBox(
+                //distance form cards to an indicator
+                SizedBox(
                   height: 20,
                 ),
 
-                //activities cards
+                //dot indicators
+                Center(
+                    child: SmoothPageIndicator(
+                  controller: _services_controler,
+                  count: 3,
+                  effect: ExpandingDotsEffect(
+                      activeDotColor: Theme.of(context).colorScheme.secondary,
+                      dotColor: Theme.of(context).colorScheme.primary,
+                      spacing: 12),
+                )),
 
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      //Breakfast
-                      MyCard(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Breakfast()));
-                        },
-                        picture: "lib/assets/Breakfast.jpg",
-                        service_name: "Breakfast",
-                        service_price: "7:00 AM - 10:00 AM",
-                        height: 200,
-                        width: 260,
-                      ),
-
-                      //Lunch
-                      MyCard(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Lunch()));
-                        },
-                        picture: "lib/assets/Lunch.jpg",
-                        service_name: "Lunch",
-                        service_price: "12:00 PM - 2:00 PM",
-                        height: 200,
-                        width: 260,
-                      ),
-
-                      //Dinner
-                      MyCard(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Dinner()));
-                        },
-                        picture: "lib/assets/Dinner.jpg",
-                        service_name: "Dinner",
-                        service_price: "6:30 PM - 8:30 PM",
-                        height: 200,
-                        width: 260,
-                      )
-                    ],
-                  ),
+                const SizedBox(
+                  height: 15,
                 ),
+
+                //activities text and see all button
+                GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                    //spa glass box
+                    GlassBox(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Spa(),
+                            ),
+                          );
+                        },
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.spa,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 75,
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Spa',
+                                style: GoogleFonts.inter(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    //room services glass box
+                    GlassBox(
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.door_front_door_sharp,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 75,
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Room Services',
+                                style: GoogleFonts.inter(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    //activities glass box
+                    GlassBox(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllActivities(),
+                            ),
+                          );
+                        },
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.run_circle_outlined,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 75,
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Activities',
+                                style: GoogleFonts.inter(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    //services glass box
+                    GlassBox(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllActivities(),
+                            ),
+                          );
+                        },
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.room_service_sharp,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 75,
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Services',
+                                style: GoogleFonts.inter(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

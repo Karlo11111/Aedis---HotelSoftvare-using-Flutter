@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,56 +25,55 @@ class MyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      //velicina card-a
       child: Container(
-        width: width,
         height: height,
-        child: Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
-          elevation: 5,
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        width: width,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(picture),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                //slika
-                Row(
-                  children: [
-                    Expanded(
-                      child: Image.asset(
-                        picture,
-                        height: 120,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ],
+                Text(
+                  service_name,
+                  style: GoogleFonts.inter(
+                      fontSize: 22,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
                 ),
-
-                Divider(
-                  thickness: 2,
-                  color: Colors.black,
-                ),
-                //naziv usluge i cijena
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      service_name,
-                      style: GoogleFonts.inter(
-                          fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      service_price,
-                      style: GoogleFonts.inter(fontSize: 12),
-                    )
-                  ],
+                const SizedBox(
+                  width: 12,
                 )
               ],
             ),
-          ),
+            const SizedBox(
+              height: 12,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  service_price,
+                  style: GoogleFonts.inter(
+                      fontSize: 12,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400),
+                ),
+                const SizedBox(
+                  width: 12,
+                )
+              ],
+            )
+          ],
         ),
       ),
     );

@@ -21,39 +21,49 @@ class AllServices extends StatelessWidget {
           child: Column(
             children: [
               //masaza
-              MyCard(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Massage()));
-                },
-                picture: "lib/assets/masaza.jpg",
-                service_name: "Massage",
-                service_price: "\$20/Per hour",
-                height: 200,
-                width: double.infinity,
+              Container(
+                margin: EdgeInsets.all(15),
+                child: MyCard(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Massage()));
+                  },
+                  picture: "lib/assets/masaza.jpg",
+                  service_name: "Massage",
+                  service_price: "\$20/Per hour",
+                  height: 200,
+                  width: double.infinity,
+                ),
               ),
 
               //spa
-              MyCard(
-                onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Spa()));
-                },
-                picture: "lib/assets/spa.jpg",
-                service_name: "Spa",
-                service_price: "\$50/Per session",
-                height: 200,
-                width: double.infinity,
+              Container(
+                margin: EdgeInsets.all(15),
+                child: MyCard(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Spa()));
+                  },
+                  picture: "lib/assets/spa.jpg",
+                  service_name: "Spa",
+                  service_price: "\$50/Per session",
+                  height: 200,
+                  width: double.infinity,
+                ),
               ),
 
               //room services
-              MyCard(
-                onTap: () {},
-                picture: "lib/assets/room_services.jpg",
-                service_name: "Room Services",
-                service_price: "",
-                height: 200,
-                width: double.infinity,
+
+              Container(
+                margin: EdgeInsets.all(15),
+                child: MyCard(
+                  onTap: () {},
+                  picture: "lib/assets/room_services.jpg",
+                  service_name: "Room Services",
+                  service_price: "",
+                  height: 200,
+                  width: double.infinity,
+                ),
               )
             ],
           ),
