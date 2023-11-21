@@ -1,16 +1,15 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ionicons/ionicons.dart';
+
 import 'package:razvoj_sofvera/Utilities/GlassBox.dart';
 
 import 'package:razvoj_sofvera/Utilities/my_card.dart';
 import 'package:razvoj_sofvera/activities_pages/see_all_activities.dart';
 import 'package:razvoj_sofvera/services_pages/massage.dart';
 import 'package:razvoj_sofvera/services_pages/see_all_services.dart';
+
 import 'package:razvoj_sofvera/services_pages/spa.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -228,7 +227,7 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllActivities(),
+                              builder: (context) => AllServices(),
                             ),
                           );
                         },
