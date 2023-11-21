@@ -278,6 +278,9 @@ class _BookMassageState extends State<BookMassage> {
     }
   }
 
+
+  
+
   //displaying message for errors
   void displayAreYouSureBooking(
       String timeSlot, Function()? onTap, Function()? onTapCancel) {

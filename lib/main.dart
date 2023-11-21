@@ -33,6 +33,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: FirstAuthPage(),

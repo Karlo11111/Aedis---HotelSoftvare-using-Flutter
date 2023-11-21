@@ -27,7 +27,7 @@ class _KeyCardState extends State<KeyCard> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height,
+      height: widget.height / 1.2,
       child: Stack(
         children: [
           BackdropFilter(

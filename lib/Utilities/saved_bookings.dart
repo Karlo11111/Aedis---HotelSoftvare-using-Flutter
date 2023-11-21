@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable, prefer_interpolation_to_compose_strings
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class SavedBookings extends StatelessWidget {
@@ -26,8 +27,16 @@ class SavedBookings extends StatelessWidget {
     return Container(
       height: 100,
       decoration: BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            colors: [
+              Colors.grey.shade400,
+              Colors.grey.shade500,
+              Colors.grey.shade600,
+              Colors.grey.shade700,
+            ]),
         borderRadius: BorderRadius.circular(12),
-        color: Colors.grey.shade300,
       ),
       margin: EdgeInsets.only(
         left: 25,
@@ -52,16 +61,17 @@ class SavedBookings extends StatelessWidget {
                     //service type text
                     Text(
                       serviceType,
-                      style: TextStyle(fontSize: 18),
+                      style:
+                          GoogleFonts.inter(fontSize: 18, color: Colors.black),
                     ),
                     //time of booking text
                     Text(
                       "at " + timeSlot,
-                      style: TextStyle(fontSize: 18),
+                      style:
+                          GoogleFonts.inter(fontSize: 18, color: Colors.black),
                     ),
                   ],
                 ),
-
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,16 +79,17 @@ class SavedBookings extends StatelessWidget {
                     //username text
                     Text(
                       user,
-                      style: TextStyle(fontSize: 18),
+                      style:
+                          GoogleFonts.inter(fontSize: 18, color: Colors.black),
                     ),
                     //date text
                     Text(
                       formattedDate.toString(),
-                      style: TextStyle(fontSize: 18),
+                      style:
+                          GoogleFonts.inter(fontSize: 18, color: Colors.black),
                     ),
                   ],
                 ),
-                
               ],
             ),
           )

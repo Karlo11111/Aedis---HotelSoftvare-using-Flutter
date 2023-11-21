@@ -18,13 +18,12 @@ class GlassBox extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 200,
-        color: Colors.grey.shade300,
         child: Stack(
           children: [
             BackdropFilter(
               filter: ImageFilter.blur(
-                sigmaX: 8,
-                sigmaY: 8,
+                sigmaX: 12,
+                sigmaY: 12,
               ),
               child: Container(),
             ),

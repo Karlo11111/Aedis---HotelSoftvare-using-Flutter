@@ -51,7 +51,7 @@ class _PagesPageState extends State<PagesPage> {
           ],
           color: Theme.of(context).colorScheme.background,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+              topLeft: Radius.circular(12), topRight: Radius.circular(12)),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),

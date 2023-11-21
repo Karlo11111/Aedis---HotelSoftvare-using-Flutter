@@ -82,168 +82,177 @@ class _OptionsPageState extends State<OptionsPage> {
 
   @override
   Widget build(BuildContext context) {
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Settings",
-                  style: GoogleFonts.inter(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary),
-                ),
-
-                const SizedBox(
-                  height: 15,
-                ),
-
-                //Acc part
-
-                Text(
-                  "Account",
-                  style: GoogleFonts.inter(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w300,
-                      color: Theme.of(context).colorScheme.primary),
-                ),
-
-                const SizedBox(
-                  height: 25,
-                ),
-
-                SizedBox(
-                  width: double.infinity,
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "lib/assets/avatar.png",
-                        width: 70,
-                        height: 70,
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-
-                      //username&bio
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            myBox.get('username'),
-                            style: GoogleFonts.inter(
-                                fontSize: 18, fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          SingleChildScrollView(
-                            child: Text(
-                              myBox.get('email'),
-                              style: GoogleFonts.inter(
-                                  fontSize: 14, color: Colors.grey),
-                            ),
-                          )
-                        ],
-                      ),
-
-                      //Acc button
-                      const Spacer(),
-                      ForwardButton(
-                        onTap: NavigateToAccPage,
-                      )
-                    ],
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(isDarkMode
+                    ? 'lib/assets/darkBackground.jpg'
+                    : 'lib/assets/lightBackground.jpg'),
+                fit: BoxFit.cover)),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 10,
                   ),
-                ),
-                //settings
-
-                const SizedBox(
-                  height: 40,
-                ),
-
-                Text("Settings",
+                  Text(
+                    "Settings",
                     style: GoogleFonts.inter(
-                        fontSize: 30, fontWeight: FontWeight.w300)),
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.primary),
+                  ),
 
-                const SizedBox(
-                  height: 20,
-                ),
+                  const SizedBox(
+                    height: 15,
+                  ),
 
-                //language
+                  //Acc part
 
-                SettingItem(
-                  title: "Language",
-                  icon: Ionicons.earth,
-                  bgColor: Colors.orange.shade100,
-                  iconColor: Colors.orange,
-                  value: "English",
-                  onTap: () {},
-                ),
+                  Text(
+                    "Account",
+                    style: GoogleFonts.inter(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w300,
+                        color: Theme.of(context).colorScheme.primary),
+                  ),
 
-                const SizedBox(
-                  height: 20,
-                ),
+                  const SizedBox(
+                    height: 25,
+                  ),
 
-                //notifications
+                  SizedBox(
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "lib/assets/avatar.png",
+                          width: 70,
+                          height: 70,
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
 
-                SettingItem(
-                  title: "Notifications",
-                  icon: Ionicons.notifications,
-                  bgColor: Colors.blue.shade100,
-                  iconColor: Colors.blue,
-                  onTap: () {},
-                ),
+                        //username&bio
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              myBox.get('username'),
+                              style: GoogleFonts.inter(
+                                  fontSize: 18, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            SingleChildScrollView(
+                              child: Text(
+                                myBox.get('email'),
+                                style: GoogleFonts.inter(
+                                    fontSize: 14, color: Colors.grey),
+                              ),
+                            )
+                          ],
+                        ),
 
-                const SizedBox(
-                  height: 20,
-                ),
+                        //Acc button
+                        const Spacer(),
+                        ForwardButton(
+                          onTap: NavigateToAccPage,
+                        )
+                      ],
+                    ),
+                  ),
+                  //settings
 
-                //dark theme
+                  const SizedBox(
+                    height: 40,
+                  ),
 
-                SettingSwitch(
-                  title: "Dark Mode",
-                  icon: Ionicons.moon_sharp,
-                  bgColor: Colors.purple.shade100,
-                  iconColor: Colors.purple,
-                  value: isDarkMode,
-                  onTap: (value) {
-                    setState(() {
-                      isDarkMode = value;
-                    });
-                  },
-                ),
+                  Text("Settings",
+                      style: GoogleFonts.inter(
+                          fontSize: 30, fontWeight: FontWeight.w300)),
 
-                const SizedBox(
-                  height: 20,
-                ),
+                  const SizedBox(
+                    height: 20,
+                  ),
 
-                //help
+                  //language
 
-                SettingItem(
-                  title: "Help",
-                  icon: Ionicons.help,
-                  bgColor: Colors.red.shade100,
-                  iconColor: Colors.red,
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HelpPage()));
-                  },
-                ),
+                  SettingItem(
+                    title: "Language",
+                    icon: Ionicons.earth,
+                    bgColor: Colors.orange.shade100,
+                    iconColor: Colors.orange,
+                    value: "English",
+                    onTap: () {},
+                  ),
 
-                const SizedBox(
-                  height: 20,
-                ),
+                  const SizedBox(
+                    height: 20,
+                  ),
 
-                MyButton(buttonText: "Sign Out", ontap: signOut, height: 55)
-              ],
+                  //notifications
+
+                  SettingItem(
+                    title: "Notifications",
+                    icon: Ionicons.notifications,
+                    bgColor: Colors.blue.shade100,
+                    iconColor: Colors.blue,
+                    onTap: () {},
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  //dark theme
+
+                  SettingSwitch(
+                    title: "Dark Mode",
+                    icon: Ionicons.moon_sharp,
+                    bgColor: Colors.purple.shade100,
+                    iconColor: Colors.purple,
+                    value: isDarkMode,
+                    onTap: (value) {
+                      setState(() {
+                        isDarkMode = value;
+                      });
+                    },
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  //help
+
+                  SettingItem(
+                    title: "Help",
+                    icon: Ionicons.help,
+                    bgColor: Colors.red.shade100,
+                    iconColor: Colors.red,
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HelpPage()));
+                    },
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  MyButton(buttonText: "Sign Out", ontap: signOut, height: 55),
+                ],
+              ),
             ),
           ),
         ),
