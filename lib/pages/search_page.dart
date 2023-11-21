@@ -27,77 +27,72 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           children: [
             Expanded(
-                child: StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection("UsersBookedMassage")
-                  .doc(user!.uid)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  var userData = snapshot.data!.data();
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection("AllUsersBooked")
+                    .doc(user!.uid)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    var userData = snapshot.data!.data();
 
-                  if (userData == null ||
-                      !userData.containsKey('Appointments')) {
-                    return Text('No appointments found');
+                    if (userData == null ||
+                        (!userData.containsKey('MassageAppointments') &&
+                            !userData.containsKey('SpaAppointments'))) {
+                      return Text('No appointments found');
+                    }
+
+                    List<dynamic> allAppointments = [];
+
+                    if (userData.containsKey('MassageAppointments')) {
+                      allAppointments.addAll(userData['MassageAppointments']);
+                    }
+
+                    if (userData.containsKey('SpaAppointments')) {
+                      allAppointments.addAll(userData['SpaAppointments']);
+                    }
+
+                    // Sort the appointments by date
+                    allAppointments.sort((a, b) {
+                      Timestamp dateA = a['DateOfBooking'];
+                      Timestamp dateB = b['DateOfBooking'];
+                      return dateA.compareTo(dateB);
+                    });
+
+                   return ListView.builder(
+                      itemCount: allAppointments.length,
+                      itemBuilder: (context, index) {
+                        var appointmentData = allAppointments[index];
+
+                        // Check if DateOfBooking is a string
+                        
+                        Timestamp bookingDate;
+                        if (appointmentData['DateOfBooking'] is Timestamp) {
+                          // Parse the string to DateTime if it's in a known format
+                          bookingDate =
+                              (appointmentData['DateOfBooking']);
+                        } else {
+                          // Assume it's a Timestamp
+                          bookingDate =
+                              appointmentData['DateOfBooking']
+                                  .toDate();
+                        }
+
+                        return SavedBookings(
+                          timeSlot: appointmentData['Time'],
+                          user: appointmentData['Name'],
+                          DateOfBooking: bookingDate,
+                          serviceType: appointmentData['TypeOfService'],
+                        );
+                      },
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text("ERROR: ${snapshot.error}"));
                   }
-
-                  var appointments = userData['Appointments'];
-
-                  return ListView.builder(
-                    itemCount: appointments.length,
-                    itemBuilder: (context, index) {
-                      var appointmentData = appointments[index];
-
-                      return SavedBookings(
-                        timeSlot: appointmentData['Time'],
-                        user: appointmentData['Name'],
-                        DateOfBooking: appointmentData['DateOfBooking'],
-                        serviceType: appointmentData['TypeOfService'],
-                      );
-                    },
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(child: Text("ERROR: ${snapshot.error}"));
-                }
-                return const Center(child: CircularProgressIndicator());
-              },
-            )),
-            Expanded(
-                child: StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection("UsersBookedSpa")
-                  .doc(user!.uid)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  var userData = snapshot.data!.data();
-
-                  if (userData == null ||
-                      !userData.containsKey('Appointments')) {
-                    return Text('No appointments found');
-                  }
-
-                  var appointments = userData['Appointments'];
-
-                  return ListView.builder(
-                    itemCount: appointments.length,
-                    itemBuilder: (context, index) {
-                      var appointmentData = appointments[index];
-
-                      return SavedBookings(
-                        timeSlot: appointmentData['Time'],
-                        user: appointmentData['Name'],
-                        DateOfBooking: appointmentData['DateOfBooking'],
-                        serviceType: appointmentData['TypeOfService'],
-                      );
-                    },
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(child: Text("ERROR: ${snapshot.error}"));
-                }
-                return const Center(child: CircularProgressIndicator());
-              },
-            ))
+                  return const Center(child: CircularProgressIndicator());
+                },
+              ),
+            ),
           ],
         ),
       ),

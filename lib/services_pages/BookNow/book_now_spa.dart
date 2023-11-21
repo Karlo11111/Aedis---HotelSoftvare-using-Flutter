@@ -31,6 +31,10 @@ class _BookSpaState extends State<BookSpa> {
   Map<DateTime, List<String>>? _availableTimeSlots;
   CollectionReference _timeSlotsCollection =
       FirebaseFirestore.instance.collection('SpaBookedTimeSlots');
+  //all users booked collection
+  CollectionReference _AllUsersBookedCollection =
+      FirebaseFirestore.instance.collection('AllUsersBooked');
+
   late Map<DateTime, List<String>>? _cachedTimeSlots = {};
 
   //variable for today
@@ -84,6 +88,11 @@ class _BookSpaState extends State<BookSpa> {
             .update({
           'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
         });
+        //all users booked collection
+        await _AllUsersBookedCollection.doc(_selectedDate.toLocal().toString())
+            .update({
+          'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
+        });
       } catch (e) {
         print('Firestore update error: $e');
       }
@@ -91,15 +100,20 @@ class _BookSpaState extends State<BookSpa> {
       final userDocumentRef = FirebaseFirestore.instance
           .collection("UsersBookedSpa")
           .doc(user!.uid);
+      final AllUserDocumentRef = FirebaseFirestore.instance
+          .collection("AllUsersBooked")
+          .doc(user!.uid);
 
       // Fetch the existing data for the user
       final userDocumentSnapshot = await userDocumentRef.get();
 
+      final AllUserDocumentSnapshot = await AllUserDocumentRef.get();
+
       //check if the user document already exists
-      if (userDocumentSnapshot.exists) {
+      if (userDocumentSnapshot.exists && AllUserDocumentSnapshot.exists) {
         // Get the existing appointments for the user
         List<dynamic> existingAppointments =
-            userDocumentSnapshot.get('Appointments') ?? [];
+            userDocumentSnapshot.get('SpaAppointments') ?? [];
 
         // Filter the existing appointments for the selected date
         int appointmentsForSelectedDate =
@@ -130,7 +144,9 @@ class _BookSpaState extends State<BookSpa> {
           }
 
           // Update the user's document with the updated appointments
-          await userDocumentRef.update({'Appointments': existingAppointments});
+          await userDocumentRef.update({'SpaAppointments': existingAppointments});
+          await AllUserDocumentRef.update(
+              {'SpaAppointments': existingAppointments});
         } else {
           // The user has reached the limit of 3 appointments for the selected date
           setState(() {
@@ -142,7 +158,17 @@ class _BookSpaState extends State<BookSpa> {
       } else {
         // Create a new user document with the appointment
         await userDocumentRef.set({
-          'Appointments': [
+          'SpaAppointments': [
+            {
+              'Name': myBox.get("username"),
+              'Time': selectedTimeSlot,
+              'DateOfBooking': _selectedDate,
+              'TypeOfService': massageText,
+            }
+          ],
+        });
+        await AllUserDocumentRef.set({
+          'SpaAppointments': [
             {
               'Name': myBox.get("username"),
               'Time': selectedTimeSlot,
@@ -198,8 +224,9 @@ class _BookSpaState extends State<BookSpa> {
     await _fetchAvailableTimeSlots(_selectedDate);
 
     // Check if the user has reached the booking limit for the selected date
-    final userDocumentRef =
-        FirebaseFirestore.instance.collection("UsersBookedSpa").doc(user!.uid);
+    final userDocumentRef = FirebaseFirestore.instance
+        .collection("UsersBookedSpa")
+        .doc(user!.uid);
 
     // Fetch the existing data for the user
     final userDocumentSnapshot = await userDocumentRef.get();
@@ -207,7 +234,7 @@ class _BookSpaState extends State<BookSpa> {
     if (userDocumentSnapshot.exists) {
       // Get the existing appointments for the user
       List<dynamic> existingAppointments =
-          userDocumentSnapshot.get('Appointments') ?? [];
+          userDocumentSnapshot.get('SpaAppointments') ?? [];
 
       // Filter the existing appointments for the selected date
       int appointmentsForSelectedDate =
@@ -263,7 +290,7 @@ class _BookSpaState extends State<BookSpa> {
                 child: Column(
                   children: [
                     Text(
-                        "Are you sure you want to book a Massage at $timeSlot"),
+                        "Are you sure you want to book a Spa at $timeSlot"),
                     SizedBox(height: 40),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -317,7 +344,7 @@ class _BookSpaState extends State<BookSpa> {
       appBar: AppBar(
         backgroundColor: Colors.grey.shade300,
         foregroundColor: Colors.black,
-        title: Text("Book Your Massage"),
+        title: Text("Book Your Spa"),
         centerTitle: true,
         elevation: 0,
       ),

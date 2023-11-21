@@ -31,6 +31,10 @@ class _BookMassageState extends State<BookMassage> {
   Map<DateTime, List<String>>? _availableTimeSlots;
   CollectionReference _timeSlotsCollection =
       FirebaseFirestore.instance.collection('MassageBookedTimeSlots');
+  //all users booked collection
+  CollectionReference _AllUsersBookedCollection =
+      FirebaseFirestore.instance.collection('AllUsersBooked');
+
   late Map<DateTime, List<String>>? _cachedTimeSlots = {};
 
   //variable for today
@@ -71,8 +75,6 @@ class _BookMassageState extends State<BookMassage> {
     return timeSlots;
   }
 
-
-
   Future<void> bookTimeSlot(String selectedTimeSlot) async {
     // Book a selected time slot if it's available
     if (_availableTimeSlots![_selectedDate]!.contains(selectedTimeSlot)) {
@@ -86,6 +88,11 @@ class _BookMassageState extends State<BookMassage> {
             .update({
           'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
         });
+        //all users booked collection
+        await _AllUsersBookedCollection.doc(_selectedDate.toLocal().toString())
+            .update({
+          'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
+        });
       } catch (e) {
         print('Firestore update error: $e');
       }
@@ -93,15 +100,20 @@ class _BookMassageState extends State<BookMassage> {
       final userDocumentRef = FirebaseFirestore.instance
           .collection("UsersBookedMassage")
           .doc(user!.uid);
+      final AllUserDocumentRef = FirebaseFirestore.instance
+          .collection("AllUsersBooked")
+          .doc(user!.uid);
 
       // Fetch the existing data for the user
       final userDocumentSnapshot = await userDocumentRef.get();
 
+      final AllUserDocumentSnapshot = await AllUserDocumentRef.get();
+
       //check if the user document already exists
-      if (userDocumentSnapshot.exists) {
+      if (userDocumentSnapshot.exists && AllUserDocumentSnapshot.exists) {
         // Get the existing appointments for the user
         List<dynamic> existingAppointments =
-            userDocumentSnapshot.get('Appointments') ?? [];
+            userDocumentSnapshot.get('MassageAppointments') ?? [];
 
         // Filter the existing appointments for the selected date
         int appointmentsForSelectedDate =
@@ -132,7 +144,8 @@ class _BookMassageState extends State<BookMassage> {
           }
 
           // Update the user's document with the updated appointments
-          await userDocumentRef.update({'Appointments': existingAppointments});
+          await userDocumentRef.update({'MassageAppointments': existingAppointments});
+          await AllUserDocumentRef.update({'MassageAppointments': existingAppointments});
         } else {
           // The user has reached the limit of 3 appointments for the selected date
           setState(() {
@@ -144,7 +157,17 @@ class _BookMassageState extends State<BookMassage> {
       } else {
         // Create a new user document with the appointment
         await userDocumentRef.set({
-          'Appointments': [
+          'MassageAppointments': [
+            {
+              'Name': myBox.get("username"),
+              'Time': selectedTimeSlot,
+              'DateOfBooking': _selectedDate,
+              'TypeOfService': massageText,
+            }
+          ],
+        });
+        await AllUserDocumentRef.set({
+          'MassageAppointments': [
             {
               'Name': myBox.get("username"),
               'Time': selectedTimeSlot,
@@ -189,7 +212,6 @@ class _BookMassageState extends State<BookMassage> {
     });
   }
 
-
   // This method is called when a day is selected in the table calendar.
   // It updates the selected date and fetches available time slots for the selected date.
   void _onDaySelected(DateTime selectedDate, DateTime focusedDay) async {
@@ -211,7 +233,7 @@ class _BookMassageState extends State<BookMassage> {
     if (userDocumentSnapshot.exists) {
       // Get the existing appointments for the user
       List<dynamic> existingAppointments =
-          userDocumentSnapshot.get('Appointments') ?? [];
+          userDocumentSnapshot.get('MassageAppointments') ?? [];
 
       // Filter the existing appointments for the selected date
       int appointmentsForSelectedDate =
