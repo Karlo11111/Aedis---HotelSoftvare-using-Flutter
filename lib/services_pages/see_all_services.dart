@@ -10,62 +10,73 @@ class AllServices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: Colors.black,
+        foregroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
-              //masaza
-              Container(
-                margin: EdgeInsets.all(15),
-                child: MyCard(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Massage()));
-                  },
-                  picture: "lib/assets/masaza.jpg",
-                  service_name: "Massage",
-                  service_price: "\$20/Per hour",
-                  height: 200,
-                  width: double.infinity,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(isDarkMode
+                    ? 'lib/assets/darkBackground.jpg'
+                    : 'lib/assets/lightBackground.jpg'),
+                fit: BoxFit.cover)),
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              children: [
+                //masaza
+                Container(
+                  margin: EdgeInsets.all(15),
+                  child: MyCard(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Massage()));
+                    },
+                    picture: "lib/assets/masaza.jpg",
+                    service_name: "Massage",
+                    service_price: "\$20/Per hour",
+                    height: 200,
+                    width: double.infinity,
+                  ),
                 ),
-              ),
 
-              //spa
-              Container(
-                margin: EdgeInsets.all(15),
-                child: MyCard(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Spa()));
-                  },
-                  picture: "lib/assets/spa.jpg",
-                  service_name: "Spa",
-                  service_price: "\$50/Per session",
-                  height: 200,
-                  width: double.infinity,
+                //spa
+                Container(
+                  margin: EdgeInsets.all(15),
+                  child: MyCard(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Spa()));
+                    },
+                    picture: "lib/assets/spa.jpg",
+                    service_name: "Spa",
+                    service_price: "\$50/Per session",
+                    height: 200,
+                    width: double.infinity,
+                  ),
                 ),
-              ),
 
-              //room services
+                //room services
 
-              Container(
-                margin: EdgeInsets.all(15),
-                child: MyCard(
-                  onTap: () {},
-                  picture: "lib/assets/room_services.jpg",
-                  service_name: "Room Services",
-                  service_price: "",
-                  height: 200,
-                  width: double.infinity,
-                ),
-              )
-            ],
+                Container(
+                  margin: EdgeInsets.all(15),
+                  child: MyCard(
+                    onTap: () {},
+                    picture: "lib/assets/room_services.jpg",
+                    service_name: "Room Services",
+                    service_price: "",
+                    height: 200,
+                    width: double.infinity,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

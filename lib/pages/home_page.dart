@@ -154,7 +154,7 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.spa,
-                                  color: Colors.black,
+                                  color: Theme.of(context).colorScheme.primary,
                                   size: 75,
                                 ),
                                 SizedBox(height: 8),
@@ -163,7 +163,9 @@ class HomePage extends StatelessWidget {
                                   style: GoogleFonts.inter(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                 ),
                               ],
                             ),
@@ -180,7 +182,7 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.door_front_door_sharp,
-                                  color: Colors.black,
+                                  color: Theme.of(context).colorScheme.primary,
                                   size: 75,
                                 ),
                                 SizedBox(height: 8),
@@ -189,7 +191,9 @@ class HomePage extends StatelessWidget {
                                   style: GoogleFonts.inter(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                 ),
                               ],
                             ),
@@ -214,7 +218,7 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.run_circle_outlined,
-                                  color: Colors.black,
+                                  color: Theme.of(context).colorScheme.primary,
                                   size: 75,
                                 ),
                                 SizedBox(height: 8),
@@ -223,7 +227,9 @@ class HomePage extends StatelessWidget {
                                   style: GoogleFonts.inter(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                 ),
                               ],
                             ),
@@ -248,7 +254,7 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.room_service_sharp,
-                                  color: Colors.black,
+                                  color: Theme.of(context).colorScheme.primary,
                                   size: 75,
                                 ),
                                 SizedBox(height: 8),
@@ -257,7 +263,9 @@ class HomePage extends StatelessWidget {
                                   style: GoogleFonts.inter(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                 ),
                               ],
                             ),

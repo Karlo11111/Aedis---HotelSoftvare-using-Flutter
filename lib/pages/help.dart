@@ -63,23 +63,6 @@ class _HelpPageState extends State<HelpPage> {
   final myBox = Hive.box('UserInfo');
 
   //background email sender
-  Future<void> sendEmail() async {
-    final smtpServer = gmail('kocijanivansukosan@gmail.com', 'Anai123.');
-
-    // Create the message
-    final message = Message()
-      ..from = Address(myBox.get('email'), myBox.get('username'))
-      ..recipients.add('kocijanivansukosan@gmail.com')
-      ..subject = 'Test Dart Mailer library :: 😀 :: ${DateTime.now()}'
-      ..text = 'This is the plain text.\nThis is line 2 of the text part.';
-
-    try {
-      final sendReport = await send(message, smtpServer);
-      print('Message sent: ' + sendReport.toString());
-    } on MailerException catch (e) {
-      print('Message not sent. ${e.message}');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +110,6 @@ class _HelpPageState extends State<HelpPage> {
                 onPressed: () {
                   functions() {
                     _submitForm();
-                    sendEmail();
                   }
 
                   functions();

@@ -8,59 +8,70 @@ class Dinner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white10,
+        foregroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  child: Image.asset(
-                    "lib/assets/Dinner.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(height: 36),
-                Row(
-                  children: [
-                    Text(
-                      'Hotel Dinner',
-                      style: GoogleFonts.inter(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(isDarkMode
+                    ? 'lib/assets/darkBackground.jpg'
+                    : 'lib/assets/lightBackground.jpg'),
+                fit: BoxFit.cover)),
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: Image.asset(
+                      "lib/assets/Dinner.jpg",
+                      fit: BoxFit.cover,
                     ),
-                  ],
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'Hotel dinners are a blend of luxury and culinary excellence. Whether you seek fine dining or a casual meal, hotels have you covered.',
-                  style: GoogleFonts.inter(fontSize: 16),
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'Enjoy the convenience of room service after a long day of travel, and experience impeccable service from welcoming staff and attentive servers.',
-                  style: GoogleFonts.inter(fontSize: 16),
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'Hotel chefs create diverse menus, blending local and international flavors. Your dining experience is enhanced with carefully curated wine lists.',
-                  style: GoogleFonts.inter(fontSize: 16),
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'In summary, hotel dinners offer convenience, top-notch service, and culinary excellence, ensuring a memorable dining experience for all guests.',
-                  style: GoogleFonts.inter(fontSize: 16),
-                ),
-              ],
+                  ),
+                  const SizedBox(height: 36),
+                  Row(
+                    children: [
+                      Text(
+                        'Hotel Dinner',
+                        style: GoogleFonts.inter(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Hotel dinners are a blend of luxury and culinary excellence. Whether you seek fine dining or a casual meal, hotels have you covered.',
+                    style: GoogleFonts.inter(fontSize: 16),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Enjoy the convenience of room service after a long day of travel, and experience impeccable service from welcoming staff and attentive servers.',
+                    style: GoogleFonts.inter(fontSize: 16),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Hotel chefs create diverse menus, blending local and international flavors. Your dining experience is enhanced with carefully curated wine lists.',
+                    style: GoogleFonts.inter(fontSize: 16),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'In summary, hotel dinners offer convenience, top-notch service, and culinary excellence, ensuring a memorable dining experience for all guests.',
+                    style: GoogleFonts.inter(fontSize: 16),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

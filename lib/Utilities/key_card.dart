@@ -50,13 +50,9 @@ class _KeyCardState extends State<KeyCard> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Color.fromARGB(255, 118, 144, 175),
-                            gradient: LinearGradient(
-                                begin: Alignment.topRight,
-                                end: Alignment.bottomLeft,
-                                colors: [
-                                  Color.fromARGB(255, 232, 93, 66),
-                                  Color.fromARGB(255, 197, 197, 196),
-                                ])),
+                            image: DecorationImage(
+                                image: AssetImage('lib/assets/keyCard.jpg'),
+                                fit: BoxFit.cover)),
                       ),
                     ),
                     Center(

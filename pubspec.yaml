@@ -95,6 +95,7 @@ flutter:
     - lib/assets/409349-middle.png
     - lib/assets/lightBackground.jpg
     - lib/assets/darkBackground.jpg
+    - lib/assets/keyCard.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

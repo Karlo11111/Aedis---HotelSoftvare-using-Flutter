@@ -5,7 +5,7 @@ ThemeData lightMode = ThemeData(
     colorScheme: ColorScheme.light(
       background: Colors.white,
       primary: Colors.black,
-      secondary: Colors.red.shade700,
+      secondary: Colors.blueAccent.shade400,
     ));
 
 ThemeData darkMode = ThemeData(
@@ -13,4 +13,4 @@ ThemeData darkMode = ThemeData(
     colorScheme: ColorScheme.dark(
         background: Colors.grey.shade800,
         primary: Colors.white,
-        secondary: Colors.red.shade700));
+        secondary: Colors.lightGreenAccent.shade400));
