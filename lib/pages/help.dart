@@ -1,9 +1,12 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, avoid_print, prefer_interpolation_to_compose_strings
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 
 class HelpPage extends StatefulWidget {
   @override
@@ -47,10 +50,34 @@ class _HelpPageState extends State<HelpPage> {
         _nameController.clear();
         _issueController.clear();
         Navigator.pop(context);
-      }).catchError((error) {
-        print('Error submitting data: $error');
-        // Handle errors here.
-      });
+      }).catchError(
+        (error) {
+          print('Error submitting data: $error');
+          // Handle errors here.
+        },
+      );
+    }
+  }
+
+  //adding hive
+  final myBox = Hive.box('UserInfo');
+
+  //background email sender
+  Future<void> sendEmail() async {
+    final smtpServer = gmail('kocijanivansukosan@gmail.com', 'Anai123.');
+
+    // Create the message
+    final message = Message()
+      ..from = Address(myBox.get('email'), myBox.get('username'))
+      ..recipients.add('kocijanivansukosan@gmail.com')
+      ..subject = 'Test Dart Mailer library :: 😀 :: ${DateTime.now()}'
+      ..text = 'This is the plain text.\nThis is line 2 of the text part.';
+
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message sent: ' + sendReport.toString());
+    } on MailerException catch (e) {
+      print('Message not sent. ${e.message}');
     }
   }
 
@@ -97,7 +124,14 @@ class _HelpPageState extends State<HelpPage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _submitForm,
+                onPressed: () {
+                  functions() {
+                    _submitForm();
+                    sendEmail();
+                  }
+
+                  functions();
+                },
                 child: Text(
                   'Submit',
                   style: GoogleFonts.inder(
