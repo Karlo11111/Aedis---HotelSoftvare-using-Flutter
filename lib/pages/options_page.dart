@@ -101,29 +101,19 @@ class _OptionsPageState extends State<OptionsPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Settings",
-                    style: GoogleFonts.inter(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary),
-                  ),
-
-                  const SizedBox(
-                    height: 15,
-                  ),
-
                   //Acc part
 
                   Text(
                     "Account",
                     style: GoogleFonts.inter(
                         fontSize: 30,
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w500,
                         color: Theme.of(context).colorScheme.primary),
+                  ),
+
+                  Divider(
+                    thickness: 1,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
 
                   const SizedBox(
@@ -179,10 +169,14 @@ class _OptionsPageState extends State<OptionsPage> {
                     height: 40,
                   ),
 
-                  Text("Settings",
+                  Text("App Settings",
                       style: GoogleFonts.inter(
-                          fontSize: 30, fontWeight: FontWeight.w300)),
+                          fontSize: 30, fontWeight: FontWeight.w500)),
 
+                  Divider(
+                    thickness: 1,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -235,6 +229,19 @@ class _OptionsPageState extends State<OptionsPage> {
                     height: 20,
                   ),
 
+                  Text(
+                    "Support",
+                    style: GoogleFonts.inter(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w500,
+                        color: Theme.of(context).colorScheme.primary),
+                  ),
+
+                  Divider(
+                    thickness: 1,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+
                   //help
 
                   SettingItem(
@@ -246,6 +253,18 @@ class _OptionsPageState extends State<OptionsPage> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => HelpPage()));
                     },
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  SettingItem(
+                    title: "About",
+                    icon: Ionicons.information_circle,
+                    bgColor: Colors.green.shade100,
+                    iconColor: Colors.green,
+                    onTap: () {},
                   ),
 
                   const SizedBox(
