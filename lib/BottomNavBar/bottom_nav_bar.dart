@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -76,7 +76,7 @@ class _PagesPageState extends State<PagesPage> {
               ),
               GButton(
                 icon: Icons.room_service,
-                text: "My Services",
+                text: AppLocalizations.of(context)!.my_services,
                 textStyle: GoogleFonts.inter(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
@@ -84,7 +84,7 @@ class _PagesPageState extends State<PagesPage> {
               ),
               GButton(
                 icon: Icons.door_front_door,
-                text: "My Room",
+                text: AppLocalizations.of(context)!.my_room,
                 textStyle: GoogleFonts.inter(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
@@ -92,7 +92,7 @@ class _PagesPageState extends State<PagesPage> {
               ),
               GButton(
                 icon: Icons.settings,
-                text: "Settings",
+                text: AppLocalizations.of(context)!.settings,
                 textStyle: GoogleFonts.inter(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,

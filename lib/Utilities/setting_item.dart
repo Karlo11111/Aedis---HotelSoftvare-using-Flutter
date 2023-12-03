@@ -42,7 +42,7 @@ class SettingItem extends StatelessWidget {
           ),
           Text(
             title,
-            style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w500),
+            style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w500),
           ),
           const Spacer(),
           value != null

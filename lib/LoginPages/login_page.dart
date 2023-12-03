@@ -8,6 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:razvoj_sofvera/LoginPages/forgot_passwd.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -39,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
       final UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
       final User? user = userCredential.user;
-      
+
       // Use the user object for further operations or navigate to a new screen.
     } catch (e) {
       print(e.toString());
@@ -89,188 +90,212 @@ class _LoginPageState extends State<LoginPage> {
   //the main frontend code
   @override
   Widget build(BuildContext context) {
+    Brightness brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //SIZED BOX
-                  SizedBox(height: 50),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(isDarkMode
+                    ? 'lib/assets/darkBackground.jpg'
+                    : 'lib/assets/lightBackground.jpg'),
+                fit: BoxFit.cover)),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //SIZED BOX
+                    SizedBox(height: 50),
 
-                  //TEXT
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text("Sign in",
+                    //TEXT
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(AppLocalizations.of(context)!.sign_in,
+                            style: GoogleFonts.inter(
+                                fontSize: 35,
+                                fontWeight: FontWeight.w600,
+                                color: Theme.of(context).colorScheme.primary)),
+                      ],
+                    ),
+
+                    const SizedBox(
+                      height: 15,
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.sign_in_text,
                           style: GoogleFonts.inter(
-                              fontSize: 35, fontWeight: FontWeight.w600)),
-                    ],
-                  ),
-
-                  const SizedBox(
-                    height: 15,
-                  ),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Please sing in to use our platform",
-                        style: GoogleFonts.inter(
-                            fontSize: 18, fontWeight: FontWeight.w300),
-                      ),
-                    ],
-                  ),
-
-                  //SIZED BOX
-                  SizedBox(height: 30),
-
-                  //TEXTFIELDS FOR EMAIL AND PASSWD
-                  //email
-                  MyTextField(
-                    controller: emailTextController,
-                    hintText: "Email",
-                    obscureText: false,
-                  ),
-
-                  //sized box
-                  const SizedBox(height: 20),
-
-                  //passwd
-                  MyTextField(
-                    controller: passwordTextController,
-                    hintText: "Password",
-                    obscureText: true,
-                  ),
-
-                  //sized box
-                  const SizedBox(height: 20),
-
-                  //Rem me&forgot passwd - jos treba funkcionalnost
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Wrap(
-                          direction: Axis.horizontal,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: -15,
-                          children: [
-                            Checkbox(
-                              value: _isChecked,
-                              onChanged: (bool? value1) {
-                                setState(() {
-                                  _isChecked = value1!;
-                                });
-                              },
-                            ),
-                            Text(
-                              "  Remember me",
-                              style: GoogleFonts.inter(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w300),
-                            )
-                          ]),
-                      GestureDetector(
-                        child: Text(
-                          "Forgot your password?",
-                          style: GoogleFonts.inter(
-                              color: Colors.blue, fontWeight: FontWeight.bold),
+                              fontSize: 17.4,
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).colorScheme.primary),
                         ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ForgotPasswd(),
-                            ),
-                          );
-                        },
-                      )
-                    ],
-                  ),
+                      ],
+                    ),
 
-                  const SizedBox(
-                    height: 20,
-                  ),
+                    //SIZED BOX
+                    SizedBox(height: 30),
 
-                  //login button
-                  MyButton(
-                    buttonText: "Sign in",
-                    ontap: SignIn,
-                    height: 50,
-                  ),
+                    //TEXTFIELDS FOR EMAIL AND PASSWD
+                    //email
+                    MyTextField(
+                      controller: emailTextController,
+                      hintText: "Email",
+                      obscureText: false,
+                    ),
 
-                  //sized box
-                  const SizedBox(height: 10),
+                    //sized box
+                    const SizedBox(height: 20),
 
-                  Row(
-                    children: [
-                      Expanded(
-                          child: Divider(
-                        color: Colors.black,
-                        thickness: 0.5,
-                      )),
-                      Text(
-                        'Or continue with',
-                        style: GoogleFonts.inter(
-                            fontSize: 14, fontWeight: FontWeight.w600),
-                      ),
-                      Expanded(
-                        child: Divider(
+                    //passwd
+                    MyTextField(
+                      controller: passwordTextController,
+                      hintText: AppLocalizations.of(context)!.password,
+                      obscureText: true,
+                    ),
+
+                    //sized box
+                    const SizedBox(height: 20),
+
+                    //Rem me&forgot passwd - jos treba funkcionalnost
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Wrap(
+                            direction: Axis.horizontal,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            spacing: -5,
+                            children: [
+                              Checkbox(
+                                value: _isChecked,
+                                onChanged: (bool? value1) {
+                                  setState(() {
+                                    _isChecked = value1!;
+                                  });
+                                },
+                              ),
+                              Text(
+                                AppLocalizations.of(context)!.remember_me,
+                                style: GoogleFonts.inter(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.w300),
+                              )
+                            ]),
+                        GestureDetector(
+                          child: Text(
+                            AppLocalizations.of(context)!.forgot_your_password,
+                            style: GoogleFonts.inter(
+                                color: Theme.of(context).colorScheme.secondary,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ForgotPasswd(),
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                    ),
+
+                    const SizedBox(
+                      height: 20,
+                    ),
+
+                    //login button
+                    MyButton(
+                      buttonText: AppLocalizations.of(context)!.sign_in,
+                      ontap: SignIn,
+                      height: 50,
+                    ),
+
+                    //sized box
+                    const SizedBox(height: 10),
+
+                    Row(
+                      children: [
+                        Expanded(
+                            child: Divider(
                           color: Colors.black,
                           thickness: 0.5,
+                        )),
+                        SizedBox(
+                          width: 10,
                         ),
-                      )
-                    ],
-                  ),
+                        Text(
+                          AppLocalizations.of(context)!.or_continiue_with,
+                          style: GoogleFonts.inter(
+                              fontSize: 16, fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Divider(
+                            color: Colors.black,
+                            thickness: 0.5,
+                          ),
+                        )
+                      ],
+                    ),
 
-                  //TEXT WITH REGISTER PAGE TEXT
+                    //TEXT WITH REGISTER PAGE TEXT
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                          iconSize: 40,
-                          onPressed: () => signInWithGoogle(),
-                          icon: FaIcon(FontAwesomeIcons.google)),
-                      SizedBox(width: 10),
-                      IconButton(
-                          iconSize: 40,
-                          onPressed: () {},
-                          icon: FaIcon(FontAwesomeIcons.facebook)),
-                      SizedBox(width: 10),
-                      IconButton(
-                          iconSize: 47,
-                          onPressed: () {},
-                          icon: FaIcon(FontAwesomeIcons.apple)),
-                    ],
-                  ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            iconSize: 40,
+                            onPressed: () => signInWithGoogle(),
+                            icon: FaIcon(FontAwesomeIcons.google)),
+                        SizedBox(width: 10),
+                        IconButton(
+                            iconSize: 40,
+                            onPressed: () {},
+                            icon: FaIcon(FontAwesomeIcons.facebook)),
+                        SizedBox(width: 10),
+                        IconButton(
+                            iconSize: 47,
+                            onPressed: () {},
+                            icon: FaIcon(FontAwesomeIcons.apple)),
+                      ],
+                    ),
 
-                  SizedBox(
-                    height: 20,
-                  ),
+                    SizedBox(
+                      height: 20,
+                    ),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                          onTap: widget.ontap,
-                          child: Text(
-                            "Register Now!",
-                            style: GoogleFonts.inter(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold),
-                          )),
-                    ],
-                  )
-                ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        GestureDetector(
+                            onTap: widget.ontap,
+                            child: Text(
+                              AppLocalizations.of(context)!.register_now,
+                              style: GoogleFonts.inter(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

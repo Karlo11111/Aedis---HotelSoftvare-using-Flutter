@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
 import 'dart:async';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -147,7 +147,8 @@ class _MyRoomState extends State<MyRoom> {
                         children: [
                           //welcome to your room text
                           Text(
-                            "Welcome to your room ${myBox.get('username')}!",
+                            AppLocalizations.of(context)!
+                                .room_welcome(myBox.get('username')),
                             style: GoogleFonts.inter(
                                 fontSize: 26, fontWeight: FontWeight.w700),
                           ),
@@ -157,7 +158,7 @@ class _MyRoomState extends State<MyRoom> {
 
                           //room key text
                           Text(
-                            "Room Key",
+                            AppLocalizations.of(context)!.room_key,
                             style: GoogleFonts.inter(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -171,7 +172,7 @@ class _MyRoomState extends State<MyRoom> {
 
                 //room key text
                 Text(
-                  "Rooms",
+                  AppLocalizations.of(context)!.rooms,
                   style: GoogleFonts.inter(
                       fontSize: 20, fontWeight: FontWeight.bold),
                 ),
@@ -185,7 +186,7 @@ class _MyRoomState extends State<MyRoom> {
                   child: Row(
                     children: [
                       MyRoomContainer(
-                        name: "Living Room",
+                        name: AppLocalizations.of(context)!.living_room,
                         icon: FaIcon(
                           FontAwesomeIcons.couch,
                           size: 45,
@@ -196,7 +197,7 @@ class _MyRoomState extends State<MyRoom> {
                       SizedBox(width: 10),
 
                       MyRoomContainer(
-                        name: "Bedroom",
+                        name: AppLocalizations.of(context)!.bedroom,
                         icon: FaIcon(
                           FontAwesomeIcons.bed,
                           size: 45,
@@ -207,7 +208,7 @@ class _MyRoomState extends State<MyRoom> {
                       SizedBox(width: 10),
 
                       MyRoomContainer(
-                        name: "Kitchen",
+                        name: AppLocalizations.of(context)!.kitchen,
                         icon: FaIcon(
                           FontAwesomeIcons.kitchenSet,
                           size: 45,
@@ -218,7 +219,7 @@ class _MyRoomState extends State<MyRoom> {
                       SizedBox(width: 10),
 
                       MyRoomContainer(
-                        name: "Bathroom",
+                        name: AppLocalizations.of(context)!.bathroom,
                         icon: FaIcon(
                           FontAwesomeIcons.bath,
                           size: 45,
@@ -236,7 +237,7 @@ class _MyRoomState extends State<MyRoom> {
 
                 //room key text
                 Text(
-                  "Control your room",
+                  AppLocalizations.of(context)!.control_your_room,
                   style: GoogleFonts.inter(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

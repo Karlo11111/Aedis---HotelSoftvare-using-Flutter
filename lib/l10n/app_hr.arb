@@ -1,0 +1,143 @@
+{
+    "welcome": "Dobrodošli",
+
+    "book_now":"Rezerviraj",
+
+    "breakfast" : "Doručak",
+
+    "lunch" : "Ručak",
+
+    "dinner" : "Večera",
+
+    "tennis_courts" : "Teniski tereni",
+
+    "massage": "Masaža",
+
+    "spa": "Spa tretman",
+
+    "room_services" : "Posluga u sobu",
+
+    "activities" : "Aktivnosti",
+
+    "services" : "Usluge",
+
+    "massage_1" : "Pobjegnite u mir hotelske masaže:",
+
+    "massage_2" : "Odaberite između raznih vrsta masaža prilagođenih vašim željama za personalizirano iskustvo.",
+
+    "massage_3" : "Profesionalni terapeuti osiguravaju vrhunsku uslugu u udobnosti našeg hotela.",
+
+    "massage_4" : "Unaprijedite svoj boravak u nezaboravni bijeg ispunjen luksuzom i opuštanjem. Svaki trenutak u našem prostoru osmišljen je za potpuni doživljaj raskoši i ugode. Dopustite nam pružiti izvanredno iskustvo koje će nadmašiti sva očekivanja.",
+    
+    "massage_5" : "Doživite savršeni spoj luksuza i opuštanja.",
+    "spa_1" : "Pobjegnite u mir hotelskog spa tretmana:",
+
+    "spa_2": "Opustite se i pomladite u našim saunama i parnim sobama, gdje umirujuća toplina otapa stres i ostavlja osjećaj revitalizacije. Naši stručni terapeuti nude osnažujuće pilinge tijela i obloge koristeći prirodne sastojke za čišćenje i osvježenje vaše kože, osiguravajući blistav sjaj.",
+    
+    "spa_3" : "Za one koji traže unutarnji mir, naša soba za meditaciju i opuštanje pruža mirno utočište. Naše mogućnosti hidroterapije, uključujući termalne kupke koje nude savršen način opuštanja i umirivanja vašeg tijela.",
+    
+    "spa_4" : "Prepustite se našim tretmanima ljepote i njege kože, prilagođenim vašim potrebama. Uživajte u personaliziranim tretmanima lica, manikuri i pedikuri u kojima ćete izgledati i osjećati se najbolje. Naše spa iskustvo nadilazi masaže, fokusirajući se na vašu dobrobit.",
+    
+    "spa_5" : "Pobjegnite od svakodnevice i doživite vrhunsku brigu o sebi i opuštanje u našem ekskluzivnom hotelskom spa centru.",
+    
+    "breakfast_1" : "Uživajte u raznovrsnom izboru doručka od 7:00 do 10:00.",
+    
+    "breakfast_2" : "Birajte između peciva, jaja, slanine, svježeg voća i još mnogo toga u ugodnoj atmosferi.",
+
+    "breakfast_3" : "Naše pažljivo osoblje jamči izvrsno iskustvo objedovanja.",
+
+    "breakfast_4" : "Fleksibilno radno vrijeme doručka za vašu udobnost.",
+
+    "breakfast_5" : "Započnite dan obilnim obrokom koji zadovoljava sve ukuse i daje savršen ton vašem boravku.",
+
+    "lunch_1" : "Uživajte u produženom ručku od 12:00 do 14:00 sati, stvarajući dvosatnu oazu kulinarskog užitka u svom danu.",
+
+    "lunch_2" : "Naš raznolik jelovnik za ručak uključuje jela međunarodne i lokalne kuhinje, osiguravajući ugodno putovanje. Birajte između osvježavajućih salata, sočnog mesa ili zdravih vegetarijanskih opcija.",
+    
+    "lunch_3" : "Poboljšajte svoje iskustvo objedovanja uz umirujuće melodije žive glazbe, upotpunjene besprijekornom uslugom našeg pažljivog osoblja, bilo da ste ovdje poslovno ili u slobodno vrijeme.",
+   
+    "lunch_4" : "Kako se sat približava 14:00, naš izbor deserata blista s nizom slatkih poslastica, od bogatih kolača do delikatnih kolača i svježeg voća. Označite posebnu prigodu ili se odmorite od dnevne rutine; naš produženi ručak obećava stvaranje trajnih uspomena.",
+    
+    "dinner_1" : "Večere u hotelu spoj su luksuza i kulinarske izvrsnosti. Bilo da tražite finu kuhinju ili ležeran obrok, hoteli će vas pokriti.",
+    
+    "dinner_2" : "Uživajte u pogodnosti posluge u sobu nakon dugog dana putovanja i iskusite besprijekornu uslugu ljubaznog osoblja i pažljivih poslužitelja.",
+    
+    "dinner_3" : "Hotelski kuhari stvaraju raznolike jelovnike, spajajući lokalne i međunarodne okuse. Vaše iskustvo objedovanja unaprijeđeno je pažljivo odabranim vinskim kartama.",
+    
+    "dinner_4" : "Ukratko, hotelske večere nude udobnost, vrhunsku uslugu i kulinarsku izvrsnost, osiguravajući nezaboravno iskustvo objedovanja za sve goste.",
+    
+    "tennis_courts_1" : "Ljubitelji tenisa pronaći će pregršt razloga za osmijeh u našem hotelu. Nudimo fantastičan teniski objekt na licu mjesta koji služi igračima svih razina vještina. Bilo da ste iskusni profesionalac ili početnik koji želi poboljšati svoju igru, naši dobro održavani tereni i profesionalno trenersko osoblje su tu da osiguraju nezaboravno tenisko iskustvo.",
+    
+    "tennis_courts_2" : "Teniski objekt našeg hotela ima više terena s tvrdom i zemljanom podlogom, koji nude mogućnosti za različite stilove igre. Tereni su dobro osvijetljeni, što omogućuje večernje mečeve, a nudimo i najam opreme za one koji nemaju svoju opremu sa sobom. Uživajte u igri s prijateljima ili sudjelujte u prijateljskom turniru s kolegama gostima, stvarajući trajna sjećanja tijekom vašeg boravka.",
+    
+    "tennis_courts_3" : "Za one koji traže profesionalnu poduku, nudimo satove tenisa koje vode certificirani treneri. Bilo da želite usavršiti svoju tehniku, naučiti osnove ili jednostavno uživati ​​u zabavnom, aktivnom odmoru, naš teniski program ima za svakoga ponešto. To je savršena prilika da se opustite i uživate u natjecateljskoj akciji dok boravite u našem hotelu.",
+    
+    "tennis_courts_4" : "Nakon izazovne igre ili stimulativne lekcije, iskoristite pogodnosti našeg hotela, kao što su opuštajući spa, fini restorani i udoban smještaj. Uz tenis koji je dostupan na licu mjesta, možete maksimalno iskoristiti svoj boravak kombinirajući luksuz i sport, osiguravajući zaokruženo i nezaboravno iskustvo za sve goste.",
+    
+    "appointments" : "Nema rezerviranih usluga",
+    
+    "room_welcome" : "Dobrodošao u svoju sobu {username}!",
+    
+    "room_key" : "Ključ od sobe",
+    
+    "rooms" : "Vaše sobe",
+    
+    "living_room" : "Dnevni Boravak",
+    
+    "bedroom" : "Spavaća Soba",
+    
+    "kitchen" : "Kuhinja",
+    
+    "bathroom" : "Kupaonica",
+    
+    "control_your_room" : "Upraljanje vašom sobom",
+    
+    "settings" : "Postavke",
+    
+    "my_room" : "Moja Soba",
+
+    "my_services" : "Moje Usluge",
+
+    "account" : "Vaš Račun",
+
+    "app_settings" : "Postavke Aplikacije",
+
+    "language" : "Jezik",
+
+    "notifications" : "Obavjesti",
+
+    "dark_mode" : "Tamna tema",
+
+    "support" : "Podrška",
+
+    "help" : "Pomoć",
+
+    "about" : "O nama",
+
+    "sign_out" : "Odjavite se",
+
+    "photo" : "Slika",
+
+    "name" : "Ime",
+
+    "gender" : "Rod",
+
+    "age" : "Godine",
+
+    "sign_in" : "Prijavite se",
+
+    "sign_in_text" : "Molimo prijavite se za korištenje aplikacije",
+    
+    "password" : "Lozinka",
+
+    "remember_me" : "Zapamti me",
+
+    "forgot_your_password" : "Zaboravio lozinku?",
+
+    "or_continiue_with" : "Nastavi sa",
+
+    "register_now" : "Napravi račun!"
+
+
+
+}

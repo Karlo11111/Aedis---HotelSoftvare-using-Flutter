@@ -1,16 +1,19 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable
+// ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intl/date_time_patterns.dart';
+
 import 'package:provider/provider.dart';
 // ignore: unused_import
 import 'package:razvoj_sofvera/authentification/auth.dart';
 import 'package:razvoj_sofvera/authentification/firebase_options.dart';
 import 'package:razvoj_sofvera/authentification/onBoarding_screen_auth.dart';
+import 'package:razvoj_sofvera/l10n/l10n.dart';
 import 'package:razvoj_sofvera/theme/theme.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +43,13 @@ class MyApp extends StatelessWidget {
       home: FirstAuthPage(),
       theme: lightMode,
       darkTheme: darkMode,
+      supportedLocales: L10n.all,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
     );
   }
 }

@@ -29,7 +29,7 @@ class MyTextField extends StatelessWidget {
         ),
         labelText: hintText,
         labelStyle: GoogleFonts.inter(
-          color: Colors.grey.shade800,
+          color: Theme.of(context).colorScheme.primary,
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),

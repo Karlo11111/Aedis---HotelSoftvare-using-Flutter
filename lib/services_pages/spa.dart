@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_const, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
@@ -49,7 +51,7 @@ class Spa extends StatelessWidget {
                   //naziv usluge
                   Row(
                     children: [
-                      Text("Spa",
+                      Text(AppLocalizations.of(context)!.spa,
                           style: GoogleFonts.inter(
                               fontSize: 25, fontWeight: FontWeight.bold)),
                     ],
@@ -59,28 +61,28 @@ class Spa extends StatelessWidget {
                   ),
                   //opis usluge
                   Text(
-                    'Escape to the tranquility of a hotel Spa:',
+                    AppLocalizations.of(context)!.spa_1,
                     style: GoogleFonts.inter(
                         fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Relax and rejuvenate in our saunas and steam rooms, where the soothing warmth melts away stress and leaves you feeling revitalized. Our expert therapists offer invigorating body scrubs and wraps using natural ingredients to cleanse and refresh your skin, ensuring a radiant glow.',
+                    AppLocalizations.of(context)!.spa_2,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'For those in search of inner peace, our meditation and relaxation room provides a serene retreat. Our hydrotherapy options, including whirlpools and thermal baths, offer the perfect way to unwind and soothe your body.',
+                    AppLocalizations.of(context)!.spa_3,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Indulge in our beauty and skincare treatments, customized to suit your needs. Enjoy personalized facials, and manicures and pedicures that will leave you looking and feeling your best. Our spa experience goes beyond massages, focusing on your holistic well-being.',
+                    AppLocalizations.of(context)!.spa_4,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Escape the everyday and experience the ultimate in self-care and relaxation at our exclusive hotel spa.',
+                    AppLocalizations.of(context)!.spa_5,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(
@@ -88,7 +90,7 @@ class Spa extends StatelessWidget {
                   ),
 
                   MyButton(
-                    buttonText: "Book Now",
+                    buttonText: AppLocalizations.of(context)!.book_now,
                     height: 60,
                     ontap: () {
                       Navigator.push(context,

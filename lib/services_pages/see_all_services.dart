@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/Utilities/my_card.dart';
 import 'package:razvoj_sofvera/services_pages/massage.dart';
@@ -39,7 +39,7 @@ class AllServices extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => Massage()));
                     },
                     picture: "lib/assets/masaza.jpg",
-                    service_name: "Massage",
+                    service_name: AppLocalizations.of(context)!.massage,
                     service_price: "\$20/Per hour",
                     height: 200,
                     width: double.infinity,
@@ -55,7 +55,7 @@ class AllServices extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => Spa()));
                     },
                     picture: "lib/assets/spa.jpg",
-                    service_name: "Spa",
+                    service_name: AppLocalizations.of(context)!.spa,
                     service_price: "\$50/Per session",
                     height: 200,
                     width: double.infinity,
@@ -69,7 +69,7 @@ class AllServices extends StatelessWidget {
                   child: MyCard(
                     onTap: () {},
                     picture: "lib/assets/room_services.jpg",
-                    service_name: "Room Services",
+                    service_name: AppLocalizations.of(context)!.room_services,
                     service_price: "",
                     height: 200,
                     width: double.infinity,

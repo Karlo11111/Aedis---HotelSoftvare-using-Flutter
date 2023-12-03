@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:razvoj_sofvera/Utilities/edit_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditAccountScreen extends StatefulWidget {
   const EditAccountScreen({super.key, required this.refreshSettingsPage});
@@ -90,7 +91,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   height: 10,
                 ),
                 Text(
-                  "Account",
+                  AppLocalizations.of(context)!.account,
                   style: GoogleFonts.inter(
                       fontSize: 40, fontWeight: FontWeight.bold),
                 ),
@@ -101,7 +102,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                 //photo
 
                 EditItem(
-                    title: "Photo",
+                    title: AppLocalizations.of(context)!.photo,
                     widget: Column(
                       children: [
                         Image.asset(
@@ -120,7 +121,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
 
                 //name
                 EditItem(
-                  title: "Name",
+                  title: AppLocalizations.of(context)!.name,
                   widget: TextField(
                     controller: changedNameTextController,
                     decoration: InputDecoration(
@@ -136,7 +137,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                 ),
 
                 EditItem(
-                  title: "Gender",
+                  title: AppLocalizations.of(context)!.gender,
                   widget: Row(
                     children: [
                       //male icon
@@ -191,7 +192,9 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
 
                 //age
 
-                EditItem(widget: TextField(), title: "Age"),
+                EditItem(
+                    widget: TextField(),
+                    title: AppLocalizations.of(context)!.age),
 
                 const SizedBox(
                   height: 20,

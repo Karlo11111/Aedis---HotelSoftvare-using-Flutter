@@ -11,6 +11,7 @@ import 'package:razvoj_sofvera/Utilities/setting_item.dart';
 import 'package:razvoj_sofvera/Utilities/setting_switch.dart';
 import 'package:razvoj_sofvera/pages/Edit_account_screen.dart';
 import 'package:razvoj_sofvera/pages/help.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OptionsPage extends StatefulWidget {
   const OptionsPage({super.key});
@@ -104,7 +105,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   //Acc part
 
                   Text(
-                    "Account",
+                    AppLocalizations.of(context)!.account,
                     style: GoogleFonts.inter(
                         fontSize: 30,
                         fontWeight: FontWeight.w500,
@@ -169,7 +170,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     height: 40,
                   ),
 
-                  Text("App Settings",
+                  Text(AppLocalizations.of(context)!.app_settings,
                       style: GoogleFonts.inter(
                           fontSize: 30, fontWeight: FontWeight.w500)),
 
@@ -184,7 +185,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   //language
 
                   SettingItem(
-                    title: "Language",
+                    title: AppLocalizations.of(context)!.language,
                     icon: Ionicons.earth,
                     bgColor: Colors.orange.shade100,
                     iconColor: Colors.orange,
@@ -199,7 +200,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   //notifications
 
                   SettingItem(
-                    title: "Notifications",
+                    title: AppLocalizations.of(context)!.notifications,
                     icon: Ionicons.notifications,
                     bgColor: Colors.blue.shade100,
                     iconColor: Colors.blue,
@@ -213,7 +214,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   //dark theme
 
                   SettingSwitch(
-                    title: "Dark Mode",
+                    title: AppLocalizations.of(context)!.dark_mode,
                     icon: Ionicons.moon_sharp,
                     bgColor: Colors.purple.shade100,
                     iconColor: Colors.purple,
@@ -230,7 +231,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   ),
 
                   Text(
-                    "Support",
+                    AppLocalizations.of(context)!.support,
                     style: GoogleFonts.inter(
                         fontSize: 30,
                         fontWeight: FontWeight.w500,
@@ -245,7 +246,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   //help
 
                   SettingItem(
-                    title: "Help",
+                    title: AppLocalizations.of(context)!.help,
                     icon: Ionicons.help,
                     bgColor: Colors.red.shade100,
                     iconColor: Colors.red,
@@ -260,7 +261,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   ),
 
                   SettingItem(
-                    title: "About",
+                    title: AppLocalizations.of(context)!.about,
                     icon: Ionicons.information_circle,
                     bgColor: Colors.green.shade100,
                     iconColor: Colors.green,
@@ -271,7 +272,10 @@ class _OptionsPageState extends State<OptionsPage> {
                     height: 20,
                   ),
 
-                  MyButton(buttonText: "Sign Out", ontap: signOut, height: 55),
+                  MyButton(
+                      buttonText: AppLocalizations.of(context)!.sign_out,
+                      ontap: signOut,
+                      height: 55),
                 ],
               ),
             ),

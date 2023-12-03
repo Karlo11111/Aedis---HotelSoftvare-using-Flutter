@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -43,7 +43,7 @@ class Lunch extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Hotel Lunch',
+                        AppLocalizations.of(context)!.lunch,
                         style: GoogleFonts.inter(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -53,22 +53,22 @@ class Lunch extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "Experience an extended hotel lunch from 12:00 PM to 2:00 PM, creating a two-hour oasis of culinary delight in your day.",
+                    AppLocalizations.of(context)!.lunch_1,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "Our diverse lunch menu includes international and local cuisines, ensuring a delectable journey. Choose from refreshing salads, succulent meats, or wholesome vegetarian options.",
+                    AppLocalizations.of(context)!.lunch_2,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "Enhance your dining experience with the soothing melodies of live music, complemented by our attentive staff's impeccable service, whether you're here for business or leisure.",
+                    AppLocalizations.of(context)!.lunch_3,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "As the clock nears 2:00 PM, our dessert selection shines with an array of sweet treats, from rich cakes to delicate pastries and fresh fruits. Mark a special occasion or take a break from your daily routine; our extended hotel lunch promises to make lasting memories.",
+                    AppLocalizations.of(context)!.lunch_4,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),

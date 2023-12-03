@@ -1,0 +1,358 @@
+{
+    "welcome": "Welcome",
+    "@welcome": {
+        "description": "Greeting"
+    },
+
+    "book_now": "Book Now",
+    "@book_now": {
+        "description": "Button to book a massage"
+    },
+
+    "breakfast" : "Breakfast",
+    "@breakfast" : {
+        "description" : "Breakfast"
+    },
+
+    "lunch" : "Lunch",
+    "@lunch" : {
+        "description" : "Lunch"
+    },
+
+    "dinner" : "Dinner",
+    "@dinner" : {
+        "description" : "Dinner"
+    },
+
+    "tennis_courts": "Tennis Courts",
+    "@tennis_courts" : {
+        "description" : "Tennis Courts"
+    },
+
+    "massage": "Massage",
+    "@massage": {
+        "description": "Massage description"
+        },
+    
+    "spa": "Spa",
+    "@spa": {
+        "description": "Spa description"
+    },
+
+    "room_services": "Room Services",
+    "@room_services": {
+        "description": "Room services description"
+    },
+
+    "activities": "Activities",
+    "@activities": {
+        "description": "Activities description"
+        },
+
+    "services": "Services",
+    "@services" : {
+        "description": "Services description"
+    },
+
+    "massage_1" : "Escape to the tranquility of a hotel massage:",
+    "@massage_1" : {
+        "description" : "Escape to the tranquility of a hotel massage:"
+    },
+
+    "massage_2" : "Choose from various massage types and enhancements tailored to your preferences for a personalized experience.",
+    "@massage_2":{
+        "description" : "Choose from various massage types and enhancements tailored to your preferences for a personalized experience."
+    },
+
+    "massage_3" : "Professional therapists ensure top-notch service in the convenience of your hotel.",
+    "@massage_3" : {
+        "description" : "Professional therapists ensure top-notch service in the convenience of your hotel."
+        },
+
+    "massage_4" : "Elevate your stay and transform it into an unforgettable escape.",
+    "@massage_4" : {
+        "description" : "Elevate your stay and transform it into an unforgettable escape."
+    },
+
+    "massage_5" : "Experience the perfect blend of luxury and relaxation.",
+    "@massage_5" : {
+        "description" :" Experience the perfect blend of luxury and relaxation."
+    },
+
+    "spa_1": "Escape to the tranquility of a hotel Spa:",
+    "@spa_1": {
+        "description":"Escape to the tranquility of a hotel Spa:"
+    },
+
+    "spa_2": "Relax and rejuvenate in our saunas and steam rooms, where the soothing warmth melts away stress and leaves you feeling revitalized. Our expert therapists offer invigorating body scrubs and wraps using natural ingredients to cleanse and refresh your skin, ensuring a radiant glow.",
+    "@spa_2" : {
+        "description": "Relax and rejuvenate in our saunas and steam rooms, where the soothing warmth melts away stress and leaves you feeling revitalized. Our expert therapists offer invigorating body scrubs and wraps using natural ingredients to cleanse and refresh your skin, ensuring a radiant glow."
+    },
+
+    "spa_3":"For those in search of inner peace, our meditation and relaxation room provides a serene retreat. Our hydrotherapy options, including whirlpools and thermal baths, offer the perfect way to unwind and soothe your body.",
+    "@spa_3":{
+        "description": "For those in search of inner peace, our meditation and relaxation room provides a serene retreat. Our hydrotherapy options, including whirlpools and thermal baths, offer the perfect way to unwind and soothe your body."
+    },
+
+    "spa_4" : "Indulge in our beauty and skincare treatments, customized to suit your needs. Enjoy personalized facials, and manicures and pedicures that will leave you looking and feeling your best. Our spa experience goes beyond massages, focusing on your holistic well-being.",
+    "@spa_4" : {
+        "description" :"Indulge in our beauty and skincare treatments, customized to suit your needs. Enjoy personalized facials, and manicures and pedicures that will leave you looking and feeling your best. Our spa experience goes beyond massages, focusing on your holistic well-being."
+    },
+
+    "spa_5": "Escape the everyday and experience the ultimate in self-care and relaxation at our exclusive hotel spa.",
+    "@spa_5" : {
+        "description" : "Escape the everyday and experience the ultimate in self-care and relaxation at our exclusive hotel spa."
+    },
+
+    "breakfast_1": "Enjoy a diverse breakfast selection from 7:00 AM to 10:00 AM.",
+    "@breakfast_1" :{
+        "description" : "Enjoy a diverse breakfast selection from 7:00 AM to 10:00 AM."
+    },
+
+    "breakfast_2" : "Choose from pastries, eggs, bacon, fresh fruits, and more in a welcoming atmosphere.",
+    "@breakfast_2" : {
+        "description" :"Choose from pastries, eggs, bacon, fresh fruits, and more in a welcoming atmosphere."
+    },
+
+    "breakfast_3" : "Our attentive staff ensures a great dining experience.",
+    "@breakfast_3" : {
+        "description" : "Our attentive staff ensures a great dining experience."
+    },
+
+    "breakfast_4" : "Flexible breakfast hours for your convenience.",
+    "@breakfast_4": {
+        "description" : "Flexible breakfast hours for your convenience."
+    },
+
+    "breakfast_5" : "Start your day with a hearty meal that caters to all tastes, setting the perfect tone for your stay.",
+    "@breakfast_5" : {
+        "description" : "Start your day with a hearty meal that caters to all tastes, setting the perfect tone for your stay."
+    },
+
+    "lunch_1" : "Experience an extended hotel lunch from 12:00 PM to 2:00 PM, creating a two-hour oasis of culinary delight in your day.",
+    "@lunch_1" : {
+        "description" : "Experience an extended hotel lunch from 12:00 PM to 2:00 PM, creating a two-hour oasis of culinary delight in your day."
+    },
+
+    "lunch_2" : "Our diverse lunch menu includes international and local cuisines, ensuring a delectable journey. Choose from refreshing salads, succulent meats, or wholesome vegetarian options.",
+    "@lunch_2" : {
+        "description" : "Our diverse lunch menu includes international and local cuisines, ensuring a delectable journey. Choose from refreshing salads, succulent meats, or wholesome vegetarian options."
+    },
+
+    "lunch_3" : "Enhance your dining experience with the soothing melodies of live music, complemented by our attentive staff's impeccable service, whether you're here for business or leisure.",
+    "@lunch_3" : {
+        "description" : "Enhance your dining experience with the soothing melodies of live music, complemented by our attentive staff's impeccable service, whether you're here for business or leisure."
+    },
+
+    "lunch_4" : "As the clock nears 2:00 PM, our dessert selection shines with an array of sweet treats, from rich cakes to delicate pastries and fresh fruits. Mark a special occasion or take a break from your daily routine; our extended hotel lunch promises to make lasting memories.",
+    "@lunch_4" : {
+        "description" : "As the clock nears 2:00 PM, our dessert selection shines with an array of sweet treats, from rich cakes to delicate pastries and fresh fruits. Mark a special occasion or take a break from your daily routine; our extended hotel lunch promises to make lasting memories."
+    },
+
+    "dinner_1" : "Hotel dinners are a blend of luxury and culinary excellence. Whether you seek fine dining or a casual meal, hotels have you covered.",
+    "@dinner_1" : {
+        "description" :"Hotel dinners are a blend of luxury and culinary excellence. Whether you seek fine dining or a casual meal, hotels have you covered."
+    },
+
+    "dinner_2" : "Enjoy the convenience of room service after a long day of travel, and experience impeccable service from welcoming staff and attentive servers.",
+    "@dinner_2" : {
+        "description" : "Enjoy the convenience of room service after a long day of travel, and experience impeccable service from welcoming staff and attentive servers."
+    },
+
+    "dinner_3" : "Hotel chefs create diverse menus, blending local and international flavors. Your dining experience is enhanced with carefully curated wine lists.",
+    "@dinner_3" : {
+        "description" : "Hotel chefs create diverse menus, blending local and international flavors. Your dining experience is enhanced with carefully curated wine lists."
+    },
+
+    "dinner_4" : "In summary, hotel dinners offer convenience, top-notch service, and culinary excellence, ensuring a memorable dining experience for all guests.",
+    "@dinner_4" : {
+        "description" : "In summary, hotel dinners offer convenience, top-notch service, and culinary excellence, ensuring a memorable dining experience for all guests."
+    },
+
+    "tennis_courts_1" : "Tennis enthusiasts will find plenty of reasons to smile when staying at our hotel. We offer a fantastic on-site tennis facility that caters to players of all skill levels. Whether you're a seasoned pro or a novice looking to improve your game, our well-maintained courts and professional coaching staff are here to ensure a memorable tennis experience.",
+    "@tennis_courts_1" : {
+        "description" : "Tennis enthusiasts will find plenty of reasons to smile when staying at our hotel. We offer a fantastic on-site tennis facility that caters to players of all skill levels. Whether you're a seasoned pro or a novice looking to improve your game, our well-maintained courts and professional coaching staff are here to ensure a memorable tennis experience."
+    },
+
+    "tennis_courts_2" : "Our hotel's tennis facility features multiple hard and clay courts, providing options for different playing styles. The courts are well-lit, allowing for evening matches, and we offer equipment rentals for those who don't have their gear with them. Enjoy a game with friends or engage in a friendly tournament with fellow guests, creating lasting memories during your stay.",
+    "@tennis_courts_2" : {
+        "description" : "Our hotel's tennis facility features multiple hard and clay courts, providing options for different playing styles. The courts are well-lit, allowing for evening matches, and we offer equipment rentals for those who don't have their gear with them. Enjoy a game with friends or engage in a friendly tournament with fellow guests, creating lasting memories during your stay."
+    },
+
+    "tennis_courts_3" : "For those seeking professional instruction, we offer tennis lessons led by certified coaches. Whether you're looking to refine your technique, learn the basics, or simply enjoy a fun, active vacation, our tennis program has something for everyone. It's the perfect opportunity to unwind and enjoy some competitive action while staying at our hotel.",
+    "@tennis_courts_3" : {
+        "description" : "For those seeking professional instruction, we offer tennis lessons led by certified coaches. Whether you're looking to refine your technique, learn the basics, or simply enjoy a fun, active vacation, our tennis program has something for everyone. It's the perfect opportunity to unwind and enjoy some competitive action while staying at our hotel."
+    },
+
+    "tennis_courts_4" : "After a challenging game or a stimulating lesson, take advantage of our hotel's amenities, such as a relaxing spa, fine dining, and comfortable accommodations. With tennis available on-site, you can make the most of your stay by combining luxury and sport, ensuring a well-rounded and memorable experience for all guests.",
+    "@tennis_courts_4" : {
+        "description" : "After a challenging game or a stimulating lesson, take advantage of our hotel's amenities, such as a relaxing spa, fine dining, and comfortable accommodations. With tennis available on-site, you can make the most of your stay by combining luxury and sport, ensuring a well-rounded and memorable experience for all guests."
+    },
+
+    "appointments" : "No appointments found",
+    "@appointments" : {
+        "description" : "No appointments found"
+    },
+
+    "room_welcome" : "Welcome to your room {username}!",
+    "@room_welcome" : {
+        "description" : "Welcome to your room",
+        "placeholders" : {
+            "username" : {
+                "type" : "String"
+            }
+        }
+    },
+
+    "room_key" : "Room Key",
+    "@room_key" : {
+        "description" : "Room Key"
+    },
+
+    "rooms" : "Your rooms",
+    "@rooms" : {
+        "description" : "Rooms"
+    },
+
+    "living_room" : "Living Room",
+    "@living_room" : {
+        "description" : "Living Room"
+    },
+
+    "bedroom" : "Bedroom",
+    "@bedroom" : {
+        "description" : "Bedroom"
+    },
+
+    "kitchen" : "Kitchen",
+    "@kitchen" : {
+        "description" : "Kitchen"
+    },
+
+    "bathroom" : "Bathroom",
+    "@bathroom": {
+        "description" : "Bathroom"
+    },
+
+    "control_your_room" : "Control your room",
+    "@control_your_room" : {
+        "description" : "Control your room"
+    },
+
+    "settings" : "Settings",
+    "@settings" : {
+        "description" : "Settings"
+    },
+
+    "my_room" : "My Room",
+    "@my_room" : {
+        "description" : "My Room"
+    },
+
+    "my_services" : "My Services",
+    "@my_services" : {
+        "description" : "My Services"
+    },
+
+    "account" : "Account",
+    "@account" : {
+        "description" : "Account"
+    },
+
+    "app_settings" : "App Settings",
+    "@app_settings": {
+        "description" : "App Settings"
+    },
+
+    "language" : "Language",
+    "@language" : {
+        "description" : "Language"
+    },
+
+    "notifications" : "Notifications",
+    "@notifications" : {
+        "description" : "Notifications"
+    },
+
+    "dark_mode" : "Dark Mode",
+    "@dark_mode" : {
+        "description" : "Dark Mode"
+    },
+
+    "support" : "Support",
+    "@support" : {
+        "description" : "Support"
+    },
+
+    "help" : "Help",
+    "@help" : {
+        "description" : "Help"
+    },
+
+    "about" : "About",
+    "@about" : {
+        "description" : "About"
+    },
+
+    "sign_out" :  "Sing Out",
+    "@sign_out" : {
+        "description" : "Sing Out"
+    },
+
+    "photo" : "Slika",
+    "@photo" : {
+        "description" : "Photo"
+    },
+
+    "name" : "Name",
+    "@name": {
+        "description" : "Username"
+    },
+
+    "gender" : "Gender",
+    "@gender" : {
+        "description" : "Gender"
+    },
+
+    "age" : "Age",
+    "@age" : {
+        "description" : "Age"
+    },
+
+    "sign_in": "Sign In",
+    "@sign_in" : {
+        "description" : "Sign in"
+    },
+
+    "sign_in_text" : "Please sing in to use our platform",
+    "@sign_in_text" : {
+        "description" :"Please sing in to use our platform"
+    },
+
+    "password" : "Password",
+    "@password" : {
+        "description" : "Password"
+    },
+
+    "remember_me" : "Remember me",
+    "@remember_me" : {
+        "description" : "Remember me"
+    },
+
+    "forgot_your_password" : "Forgot your password?",
+    "@forgot_your_password" : {
+        "description" : "Forgot your password?"
+    },
+
+    "or_continiue_with" : "Or continue with",
+    "@or_continiue_with" : {
+        "description" : "Or continue with"
+    },
+
+    "register_now" : "Register Now!",
+    "@register_now" : {
+        "description" : "Register Now!"
+    }
+
+
+}

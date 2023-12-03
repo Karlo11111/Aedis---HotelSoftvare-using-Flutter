@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -42,7 +42,7 @@ class Tennis extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Hotel Tennis',
+                        AppLocalizations.of(context)!.tennis_courts,
                         style: GoogleFonts.inter(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -52,22 +52,22 @@ class Tennis extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Tennis enthusiasts will find plenty of reasons to smile when staying at our hotel. We offer a fantastic on-site tennis facility that caters to players of all skill levels. Whether you\'re a seasoned pro or a novice looking to improve your game, our well-maintained courts and professional coaching staff are here to ensure a memorable tennis experience.',
+                    AppLocalizations.of(context)!.tennis_courts_1,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Our hotel\'s tennis facility features multiple hard and clay courts, providing options for different playing styles. The courts are well-lit, allowing for evening matches, and we offer equipment rentals for those who don\'t have their gear with them. Enjoy a game with friends or engage in a friendly tournament with fellow guests, creating lasting memories during your stay.',
+                    AppLocalizations.of(context)!.tennis_courts_2,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'For those seeking professional instruction, we offer tennis lessons led by certified coaches. Whether you\'re looking to refine your technique, learn the basics, or simply enjoy a fun, active vacation, our tennis program has something for everyone. It\'s the perfect opportunity to unwind and enjoy some competitive action while staying at our hotel.',
+                    AppLocalizations.of(context)!.tennis_courts_3,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'After a challenging game or a stimulating lesson, take advantage of our hotel\'s amenities, such as a relaxing spa, fine dining, and comfortable accommodations. With tennis available on-site, you can make the most of your stay by combining luxury and sport, ensuring a well-rounded and memorable experience for all guests.',
+                    AppLocalizations.of(context)!.tennis_courts_4,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),

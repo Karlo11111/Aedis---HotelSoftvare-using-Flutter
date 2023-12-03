@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,7 +43,7 @@ class Dinner extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Hotel Dinner',
+                        AppLocalizations.of(context)!.dinner,
                         style: GoogleFonts.inter(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -52,22 +53,22 @@ class Dinner extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Hotel dinners are a blend of luxury and culinary excellence. Whether you seek fine dining or a casual meal, hotels have you covered.',
+                    AppLocalizations.of(context)!.dinner_1,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Enjoy the convenience of room service after a long day of travel, and experience impeccable service from welcoming staff and attentive servers.',
+                    AppLocalizations.of(context)!.dinner_2,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Hotel chefs create diverse menus, blending local and international flavors. Your dining experience is enhanced with carefully curated wine lists.',
+                    AppLocalizations.of(context)!.dinner_3,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'In summary, hotel dinners offer convenience, top-notch service, and culinary excellence, ensuring a memorable dining experience for all guests.',
+                    AppLocalizations.of(context)!.dinner_4,
                     style: GoogleFonts.inter(fontSize: 16),
                   ),
                 ],

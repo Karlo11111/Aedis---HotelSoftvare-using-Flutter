@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +57,7 @@ class _SearchPageState extends State<SearchPage> {
                               size: 70,
                             ),
                             Text(
-                              'No appointments found',
+                              AppLocalizations.of(context)!.appointments,
                               style: GoogleFonts.inter(
                                   fontSize: 25,
                                   color: Theme.of(context).colorScheme.primary),

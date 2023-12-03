@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/services_pages/BookNow/book_now_massage.dart';
 
@@ -51,7 +51,7 @@ class Massage extends StatelessWidget {
                   //naziv usluge
                   Row(
                     children: [
-                      Text("Massage",
+                      Text(AppLocalizations.of(context)!.massage,
                           style: GoogleFonts.inter(
                               fontSize: 25, fontWeight: FontWeight.bold)),
                     ],
@@ -61,28 +61,28 @@ class Massage extends StatelessWidget {
                   ),
                   //opis usluge
                   Text(
-                    'Escape to the tranquility of a hotel massage:',
+                    AppLocalizations.of(context)!.massage_1,
                     style: GoogleFonts.inter(
                         fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Choose from various massage types and enhancements tailored to your preferences for a personalized experience.',
+                    AppLocalizations.of(context)!.massage_2,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Professional therapists ensure top-notch service in the convenience of your hotel.',
+                    AppLocalizations.of(context)!.massage_3,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Elevate your stay and transform it into an unforgettable escape.',
+                    AppLocalizations.of(context)!.massage_4,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Experience the perfect blend of luxury and relaxation.',
+                    AppLocalizations.of(context)!.massage_5,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(
@@ -90,7 +90,7 @@ class Massage extends StatelessWidget {
                   ),
 
                   MyButton(
-                    buttonText: "Book Now",
+                    buttonText: AppLocalizations.of(context)!.book_now,
                     height: 60,
                     ontap: () {
                       Navigator.push(

@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -42,7 +42,7 @@ class Breakfast extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Hotel Breakfast',
+                        AppLocalizations.of(context)!.breakfast,
                         style: GoogleFonts.inter(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -52,27 +52,27 @@ class Breakfast extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Enjoy a diverse breakfast selection from 7:00 AM to 10:00 AM.',
+                    AppLocalizations.of(context)!.breakfast_1,
                     style: GoogleFonts.inter(fontSize: 18.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Choose from pastries, eggs, bacon, fresh fruits, and more in a welcoming atmosphere.',
+                    AppLocalizations.of(context)!.breakfast_2,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Our attentive staff ensures a great dining experience.',
+                    AppLocalizations.of(context)!.breakfast_3,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Flexible breakfast hours for your convenience.',
+                    AppLocalizations.of(context)!.breakfast_4,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    'Start your day with a hearty meal that caters to all tastes, setting the perfect tone for your stay.',
+                    AppLocalizations.of(context)!.breakfast_5,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(
