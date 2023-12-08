@@ -17,6 +17,9 @@ class _BookMassageState extends State<BookMassage> {
   //string for massage
   String massageText = "Massage";
 
+  //double for massage price
+  double massagePrice = 20;
+
   //map for checking if the booking limit is reached, takes a datetime and a bool
   Map<DateTime, bool> _bookingLimitReached = {};
 
@@ -135,6 +138,7 @@ class _BookMassageState extends State<BookMassage> {
             'Time': selectedTimeSlot,
             'DateOfBooking': _selectedDate,
             'TypeOfService': massageText,
+            'ServicePrice': massagePrice,
           });
           //check if the appointmentsForSelectedDate are 2 (it goes from 0) and if it is it sets the booking limit to true
           if (appointmentsForSelectedDate == 2) {
@@ -163,6 +167,7 @@ class _BookMassageState extends State<BookMassage> {
               'Time': selectedTimeSlot,
               'DateOfBooking': _selectedDate,
               'TypeOfService': massageText,
+              'ServicePrice': massagePrice,
             }
           ],
         });
@@ -173,6 +178,7 @@ class _BookMassageState extends State<BookMassage> {
               'Time': selectedTimeSlot,
               'DateOfBooking': _selectedDate,
               'TypeOfService': massageText,
+              'ServicePrice': massagePrice,
             }
           ],
         });
