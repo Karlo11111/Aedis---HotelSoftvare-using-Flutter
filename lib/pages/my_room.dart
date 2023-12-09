@@ -7,11 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/devices_container.dart';
 import 'package:razvoj_sofvera/Utilities/key_card.dart';
 import 'package:razvoj_sofvera/Utilities/key_card_dialog.dart';
 import 'package:razvoj_sofvera/Utilities/rooms_container.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class MyRoom extends StatefulWidget {
   const MyRoom({super.key});
@@ -109,8 +111,8 @@ class _MyRoomState extends State<MyRoom> {
 
   @override
   Widget build(BuildContext context) {
-    Brightness brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/theme/theme.dart';
 
 class ThemeProvider with ChangeNotifier {
+  bool isDarkMode = false;
   ThemeData _themeData = lightMode;
 
   ThemeData get themeData => _themeData;
@@ -17,5 +18,8 @@ class ThemeProvider with ChangeNotifier {
     } else {
       themeData = lightMode;
     }
+
+    isDarkMode = !isDarkMode;
+    notifyListeners();
   }
 }

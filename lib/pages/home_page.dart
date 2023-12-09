@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import 'package:razvoj_sofvera/Utilities/GlassBox.dart';
 
@@ -13,10 +14,10 @@ import 'package:razvoj_sofvera/services_pages/massage.dart';
 import 'package:razvoj_sofvera/services_pages/see_all_services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:razvoj_sofvera/services_pages/spa.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
-
   HomePage({super.key});
 
   @override
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       }
       _services_controler.animateToPage(
         _currentPage,
-        duration: Duration(milliseconds: 350),
+        duration: Duration(milliseconds: 500),
         curve: Curves.easeIn,
       );
     });
@@ -52,8 +53,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Brightness brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,

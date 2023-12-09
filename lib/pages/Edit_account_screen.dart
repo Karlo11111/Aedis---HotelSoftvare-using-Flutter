@@ -6,8 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/edit_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../theme/theme_provider.dart';
 
 class EditAccountScreen extends StatefulWidget {
   const EditAccountScreen({super.key, required this.refreshSettingsPage});
@@ -45,8 +48,8 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Brightness brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
       //appbar for saving and exiting
       appBar: AppBar(

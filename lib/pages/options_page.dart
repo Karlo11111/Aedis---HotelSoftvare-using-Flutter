@@ -1,10 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, unnecessary_string_escapes, unused_element, dead_code, avoid_print, non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/forward_button.dart';
 import 'package:razvoj_sofvera/Utilities/setting_item.dart';
@@ -12,16 +14,16 @@ import 'package:razvoj_sofvera/Utilities/setting_switch.dart';
 import 'package:razvoj_sofvera/pages/Edit_account_screen.dart';
 import 'package:razvoj_sofvera/pages/help.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class OptionsPage extends StatefulWidget {
-  const OptionsPage({super.key});
+  const OptionsPage({Key? key}) : super(key: key);
 
   @override
   State<OptionsPage> createState() => _OptionsPageState();
 }
 
 class _OptionsPageState extends State<OptionsPage> {
-  //include hive
   final myBox = Hive.box('UserInfo');
 
   void NavigateToAccPage() {
@@ -35,13 +37,11 @@ class _OptionsPageState extends State<OptionsPage> {
     );
   }
 
-  bool isDarkMode = false;
   void signOut() {
     FirebaseAuth.instance.signOut();
   }
 
-  //variables for fetching data
-  String userName = ''; // Set an initial value until the data is fetched
+  String userName = '';
   String userEmail = '';
 
   @override
@@ -50,19 +50,17 @@ class _OptionsPageState extends State<OptionsPage> {
     _fetchUserName();
   }
 
-  //trying to fetch user data (in this case their name)
   Future<void> _fetchUserName() async {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      //trying to get the user uid from User Email collection and returns it as a string called userName
       try {
         DocumentSnapshot<Map<String, dynamic>> userDoc = await FirebaseFirestore
             .instance
             .collection('User Email')
             .doc(user.uid)
             .get();
-        //if userDoc (document specific to each user) exists it sets the Name field as a string called name
+
         if (userDoc.exists) {
           String name = userDoc['Name'] as String;
           String email = userDoc['UserEmail'] as String;
@@ -83,18 +81,22 @@ class _OptionsPageState extends State<OptionsPage> {
 
   @override
   Widget build(BuildContext context) {
-    Brightness brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(isDarkMode
-                    ? 'lib/assets/darkBackground.jpg'
-                    : 'lib/assets/lightBackground.jpg'),
-                fit: BoxFit.cover)),
+          image: DecorationImage(
+            image: AssetImage(
+              isDarkMode
+                  ? 'lib/assets/darkBackground.jpg'
+                  : 'lib/assets/lightBackground.jpg',
+            ),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -102,25 +104,21 @@ class _OptionsPageState extends State<OptionsPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //Acc part
-
                   Text(
                     AppLocalizations.of(context)!.account,
                     style: GoogleFonts.inter(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.primary),
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
-
                   Divider(
                     thickness: 1,
                     color: Theme.of(context).colorScheme.primary,
                   ),
-
                   const SizedBox(
                     height: 25,
                   ),
-
                   SizedBox(
                     width: double.infinity,
                     child: Row(
@@ -133,8 +131,6 @@ class _OptionsPageState extends State<OptionsPage> {
                         const SizedBox(
                           width: 20,
                         ),
-
-                        //username&bio
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -155,8 +151,6 @@ class _OptionsPageState extends State<OptionsPage> {
                             )
                           ],
                         ),
-
-                        //Acc button
                         const Spacer(),
                         ForwardButton(
                           onTap: NavigateToAccPage,
@@ -164,16 +158,12 @@ class _OptionsPageState extends State<OptionsPage> {
                       ],
                     ),
                   ),
-                  //settings
-
                   const SizedBox(
                     height: 40,
                   ),
-
                   Text(AppLocalizations.of(context)!.app_settings,
                       style: GoogleFonts.inter(
                           fontSize: 30, fontWeight: FontWeight.w500)),
-
                   Divider(
                     thickness: 1,
                     color: Theme.of(context).colorScheme.primary,
@@ -181,9 +171,6 @@ class _OptionsPageState extends State<OptionsPage> {
                   const SizedBox(
                     height: 20,
                   ),
-
-                  //language
-
                   SettingItem(
                     title: AppLocalizations.of(context)!.language,
                     icon: Ionicons.earth,
@@ -192,13 +179,9 @@ class _OptionsPageState extends State<OptionsPage> {
                     value: "English",
                     onTap: () {},
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),
-
-                  //notifications
-
                   SettingItem(
                     title: AppLocalizations.of(context)!.notifications,
                     icon: Ionicons.notifications,
@@ -206,13 +189,9 @@ class _OptionsPageState extends State<OptionsPage> {
                     iconColor: Colors.blue,
                     onTap: () {},
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),
-
-                  //dark theme
-
                   SettingSwitch(
                     title: AppLocalizations.of(context)!.dark_mode,
                     icon: Ionicons.moon_sharp,
@@ -223,13 +202,14 @@ class _OptionsPageState extends State<OptionsPage> {
                       setState(() {
                         isDarkMode = value;
                       });
+
+                      Provider.of<ThemeProvider>(context, listen: false)
+                          .toggleTheme();
                     },
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),
-
                   Text(
                     AppLocalizations.of(context)!.support,
                     style: GoogleFonts.inter(
@@ -237,14 +217,10 @@ class _OptionsPageState extends State<OptionsPage> {
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context).colorScheme.primary),
                   ),
-
                   Divider(
                     thickness: 1,
                     color: Theme.of(context).colorScheme.primary,
                   ),
-
-                  //help
-
                   SettingItem(
                     title: AppLocalizations.of(context)!.help,
                     icon: Ionicons.help,
@@ -255,11 +231,9 @@ class _OptionsPageState extends State<OptionsPage> {
                           MaterialPageRoute(builder: (context) => HelpPage()));
                     },
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),
-
                   SettingItem(
                     title: AppLocalizations.of(context)!.about,
                     icon: Ionicons.information_circle,
@@ -267,15 +241,14 @@ class _OptionsPageState extends State<OptionsPage> {
                     iconColor: Colors.green,
                     onTap: () {},
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),
-
                   MyButton(
-                      buttonText: AppLocalizations.of(context)!.sign_out,
-                      ontap: signOut,
-                      height: 55),
+                    buttonText: AppLocalizations.of(context)!.sign_out,
+                    ontap: signOut,
+                    height: 55,
+                  ),
                 ],
               ),
             ),

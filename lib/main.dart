@@ -41,8 +41,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: FirstAuthPage(),
-      theme: lightMode,
-      darkTheme: darkMode,
+      theme: Provider.of<ThemeProvider>(context).themeData,
       supportedLocales: L10n.all,
       localizationsDelegates: [
         AppLocalizations.delegate,
