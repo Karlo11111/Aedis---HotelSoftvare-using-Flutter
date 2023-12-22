@@ -34,6 +34,7 @@ class _BookMassageState extends State<BookMassage> {
   Map<DateTime, List<String>>? _availableTimeSlots;
   CollectionReference _timeSlotsCollection =
       FirebaseFirestore.instance.collection('MassageBookedTimeSlots');
+
   //all users booked collection
   CollectionReference _AllUsersBookedCollection =
       FirebaseFirestore.instance.collection('AllUsersBooked');
