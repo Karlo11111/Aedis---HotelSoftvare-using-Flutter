@@ -148,8 +148,10 @@ class _BookMassageState extends State<BookMassage> {
           }
 
           // Update the user's document with the updated appointments
-          await userDocumentRef.update({'MassageAppointments': existingAppointments});
-          await AllUserDocumentRef.update({'MassageAppointments': existingAppointments});
+          await userDocumentRef
+              .update({'MassageAppointments': existingAppointments});
+          await AllUserDocumentRef.update(
+              {'MassageAppointments': existingAppointments});
         } else {
           // The user has reached the limit of 3 appointments for the selected date
           setState(() {
@@ -283,9 +285,6 @@ class _BookMassageState extends State<BookMassage> {
       }
     }
   }
-
-
-  
 
   //displaying message for errors
   void displayAreYouSureBooking(
