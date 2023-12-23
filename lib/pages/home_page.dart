@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, prefer_interpolation_to_compose_strings, avoid_print
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'package:razvoj_sofvera/Utilities/GlassBox.dart';
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   //services text and see all button
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         AppLocalizations.of(context)!.welcome,
@@ -83,6 +84,28 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.w400,
                             color: Theme.of(context).colorScheme.primary),
                       ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.chat,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        onPressed: () async {
+                          dynamic conversationObject = {
+                            'appId':
+                                'f117d6d09517976fd6b20d40acab19ed', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+                            'withPreChat': true
+                          };
+                          KommunicateFlutterPlugin.buildConversation(
+                                  conversationObject)
+                              .then((clientConversationId) {
+                            print("Conversation builder success : " +
+                                clientConversationId.toString());
+                          }).catchError((error) {
+                            print("Conversation builder error : " +
+                                error.toString());
+                          });
+                        },
+                      )
                     ],
                   ),
 

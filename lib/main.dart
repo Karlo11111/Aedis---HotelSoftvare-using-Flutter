@@ -10,7 +10,6 @@ import 'package:razvoj_sofvera/authentification/auth.dart';
 import 'package:razvoj_sofvera/authentification/firebase_options.dart';
 import 'package:razvoj_sofvera/authentification/onBoarding_screen_auth.dart';
 import 'package:razvoj_sofvera/l10n/l10n.dart';
-import 'package:razvoj_sofvera/theme/theme.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

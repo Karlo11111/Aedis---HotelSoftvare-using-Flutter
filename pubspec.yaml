@@ -57,6 +57,8 @@ dependencies:
   intl: ^0.18.1
   flutter_animate: ^4.2.0+1
   blur: ^3.1.0
+  kommunicate_flutter: ^1.8.0
+  
   flutter_localizations:
     sdk: flutter
 

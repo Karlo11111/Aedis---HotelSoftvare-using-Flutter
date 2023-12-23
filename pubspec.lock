@@ -541,6 +541,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.8.1"
+  kommunicate_flutter:
+    dependency: "direct main"
+    description:
+      name: kommunicate_flutter
+      sha256: b7d35b87d0f10fbec665979f2b7a88d9a2cd88c66a3c6ef12259566b731458d5
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.8.0"
   lints:
     dependency: transitive
     description:
