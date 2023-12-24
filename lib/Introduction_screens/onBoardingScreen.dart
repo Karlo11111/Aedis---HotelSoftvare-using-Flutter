@@ -72,15 +72,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   );
                 },
                 child: Container(
-                  width: 150,
-                  decoration: BoxDecoration(color: Colors.blue.shade300, borderRadius: BorderRadius.circular(19)),
+                  width: 300,
+                  decoration: BoxDecoration(color: Colors.blue.shade900, borderRadius: BorderRadius.circular(30)),
                   padding: const EdgeInsets.all(16),
-                  child: const Center(child: Text("NEXT", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),))
+                  child: const Center(child: Text("CONTINUE", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),))
                     )
                   
                   ),
-                  const SizedBox(height: 50,),
-                  SmoothPageIndicator(controller: _controller, count: 3, effect: SlideEffect(activeDotColor: Colors.blue, dotWidth: 30, type: SlideType.normal )),
+                  const SizedBox(height: 20,),
+                  SmoothPageIndicator(controller: _controller, count: 3, effect: SlideEffect(activeDotColor: Colors.blue.shade900, dotWidth: 30, type: SlideType.normal )),
                   const SizedBox(height: 50,)
                 ],
               ),

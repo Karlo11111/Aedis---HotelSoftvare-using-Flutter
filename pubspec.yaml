@@ -58,7 +58,7 @@ dependencies:
   flutter_animate: ^4.2.0+1
   blur: ^3.1.0
   kommunicate_flutter: ^1.8.0
-  
+
   flutter_localizations:
     sdk: flutter
 
@@ -100,6 +100,8 @@ flutter:
     - lib/assets/lightBackground.jpg
     - lib/assets/darkBackground.jpg
     - lib/assets/keyCard.jpg
+    - lib/assets/WelcomeToAedisPic.jpg
+    - lib/assets/WelcomeToAedisPic1.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
