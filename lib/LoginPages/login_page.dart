@@ -2,9 +2,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:razvoj_sofvera/BottomNavBar/bottom_nav_bar.dart';
+import 'package:razvoj_sofvera/LoginPages/register_page.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -39,6 +40,11 @@ class _LoginPageState extends State<LoginPage> {
       final UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
       final User? user = userCredential.user;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PagesPage(),
+          ));
 
       // Use the user object for further operations or navigate to a new screen.
     } catch (e) {
@@ -153,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
 
                         //SIZED BOX
-                        SizedBox(height: 30),
+                        SizedBox(height: 40),
 
                         //TEXTFIELDS FOR EMAIL AND PASSWD
                         //email
@@ -164,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
 
                         //sized box
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 30),
 
                         //passwd
                         MyTextField(

@@ -5,7 +5,7 @@ import 'package:razvoj_sofvera/Introduction_screens/screens/intro_page1.dart';
 import 'package:razvoj_sofvera/LoginPages/login_page.dart';
 
 import 'package:razvoj_sofvera/authentification/auth.dart';
-
+import 'package:razvoj_sofvera/authentification/login_or_register.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -32,7 +32,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         },
         children: const [
           IntroPage1(),
-         
         ],
       ),
 
@@ -71,9 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => LoginPage(ontap: () {
-                            
-                          },)),
+                          builder: (context) => LoginOrRegister()),
                     );
                   },
                   child: Padding(
@@ -97,7 +94,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               height: 40,
             ),
             //SmoothPageIndicator(controller: _controller, count: 3, effect: SlideEffect(activeDotColor: Colors.blue.shade900, dotWidth: 30, type: SlideType.normal, )),
-            
           ],
         ),
       ),

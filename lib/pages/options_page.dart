@@ -11,6 +11,8 @@ import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/forward_button.dart';
 import 'package:razvoj_sofvera/Utilities/setting_item.dart';
 import 'package:razvoj_sofvera/Utilities/setting_switch.dart';
+import 'package:razvoj_sofvera/authentification/login_or_register.dart';
+import 'package:razvoj_sofvera/authentification/onBoarding_screen_auth.dart';
 import 'package:razvoj_sofvera/pages/Edit_account_screen.dart';
 import 'package:razvoj_sofvera/pages/help.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -37,8 +39,10 @@ class _OptionsPageState extends State<OptionsPage> {
     );
   }
 
-  void signOut() {
+  void signOut() async{
     FirebaseAuth.instance.signOut();
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => LoginOrRegister()));
   }
 
   String userName = '';
@@ -248,7 +252,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     buttonText: AppLocalizations.of(context)!.sign_out,
                     ontap: signOut,
                     height: 55,
-                    width: 50,
+                    width: 500,
                     decorationColor: Colors.blue.shade900,
                     borderColor: Colors.transparent,
                     textColor: Colors.white,
