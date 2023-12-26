@@ -9,6 +9,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
+import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/my_card.dart';
 
 import 'package:razvoj_sofvera/Utilities/my_container.dart';
@@ -248,12 +249,63 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
+                        //zadar container
                         InfoContainer(
                           imagePath: 'lib/assets/zadar.jpg',
                           title: 'About Zadar',
                           content:
                               'Zadar, a city rich in history and culture, is nestled along the Dalmatian coast of Croatia. With its origins dating back to the prehistoric times, it has been a significant hub through various eras including Roman...',
-                        )
+                        ),
+
+                        //diving container
+                        InfoContainer(
+                            imagePath: "lib/assets/diving.jpg",
+                            title: "Diving for beginners",
+                            rating: Row(
+                              children: [
+                                Text(
+                                  "4.5",
+                                  style: GoogleFonts.inter(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                )
+                              ],
+                            ),
+                            content:
+                                "Diving appeals to adventure-seekers and marine enthusiasts, offering an immersive experience that showcases underwater wonders.",
+                            row: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                MyButton(
+                                  buttonText: "Book now!",
+                                  height: 30,
+                                  width: 100,
+                                  ontap: () {},
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  borderColor: Colors.transparent,
+                                  textColor: Colors.white,
+                                  icon: null,
+                                  decorationColor: Colors.blue.shade900,
+                                ),
+                                Text(
+                                  "Price €100",
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                )
+                              ],
+                            ))
                       ],
                     ),
                   )

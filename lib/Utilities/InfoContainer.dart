@@ -7,18 +7,22 @@ class InfoContainer extends StatelessWidget {
   final String imagePath;
   final String title;
   final String content;
+  final Widget? row;
+  final Widget? rating;
 
   const InfoContainer({
     Key? key,
     required this.imagePath,
     required this.title,
     required this.content,
+    this.row,
+    this.rating,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 375,
+      height: 340,
       width: MediaQuery.of(context).size.width - 60.0,
       margin: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
@@ -44,27 +48,35 @@ class InfoContainer extends StatelessWidget {
             child: Image.asset(
               imagePath,
               width: MediaQuery.of(context).size.width - 60.0,
-              height: 175,
+              height: 150,
               fit: BoxFit.cover,
             ),
           ),
           Padding(
             padding: EdgeInsets.all(16.0),
-            child: Text(
-              title,
-              style: GoogleFonts.inter(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: GoogleFonts.inter(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(width: 8.0),
+                rating ?? Container(),
+              ],
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
               content,
-              style: GoogleFonts.inter(fontSize: 13.0),
+              style: GoogleFonts.inter(fontSize: 12.0),
             ),
           ),
+          Padding(padding: EdgeInsets.all(16), child: row ?? Container()),
         ],
       ),
     );

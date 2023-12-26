@@ -103,6 +103,7 @@ flutter:
     - lib/assets/WelcomeToAedisPic.jpg
     - lib/assets/WelcomeToAedisPic1.jpg
     - lib/assets/zadar.jpg
+    - lib/assets/diving.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
