@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables, avoid_print, unused_local_variable
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables, avoid_print, unused_local_variable, prefer_interpolation_to_compose_strings
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:razvoj_sofvera/LoginPages/forgot_passwd.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -46,9 +45,6 @@ class _LoginPageState extends State<LoginPage> {
       print(e.toString());
     }
   }
-
-  //bool for checkbox
-  bool _isChecked = false;
 
   //controllers for text
   final emailTextController = TextEditingController();
@@ -104,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Container(
                   width: double.infinity,
-                  height: 500,
+                  height: 550,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(30),
@@ -126,9 +122,6 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        //SIZED BOX
-                        SizedBox(height: 30),
-
                         //SIGN IN TEXT
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -192,24 +185,45 @@ class _LoginPageState extends State<LoginPage> {
                           buttonText: AppLocalizations.of(context)!.sign_in,
                           ontap: SignIn,
                           height: 50,
-                          width: 150,
+                          width: 200,
+                          decorationColor: Colors.blue.shade900,
+                          borderColor: Colors.transparent,
+                          textColor: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
                         ),
 
                         //sized box
                         const SizedBox(height: 10),
-                        //sign in with google
-                        TextButton(
-                          child: Container(
-                            height: 50,
-                            width: 150,
-                            child: FaIcon(FontAwesomeIcons.google),
-                          ),
-                          onPressed: signInWithGoogle,
-                        ),
 
+                        //sign in with google
+                        MyButton(
+                            buttonText: "Sign in with Google",
+                            ontap: signInWithGoogle,
+                            height: 50,
+                            width: 200,
+                            decorationColor: Colors.white,
+                            borderColor: Colors.black,
+                            textColor: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            icon: Image.network(
+                                'http://pngimg.com/uploads/google/google_PNG19635.png',
+                                fit: BoxFit.cover)),
+
+                        SizedBox(
+                          height: 30,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Text(
+                              "Dont have an account?",
+                              style: GoogleFonts.inter(
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.normal),
+                            ),
                             const SizedBox(
                               width: 5,
                             ),
@@ -218,11 +232,12 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Text(
                                   AppLocalizations.of(context)!.register_now,
                                   style: GoogleFonts.inter(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                      fontWeight: FontWeight.bold),
-                                )),
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ))
                           ],
                         )
                       ],

@@ -160,6 +160,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       ontap: signUp,
                       height: 65,
                       width: 30,
+                      decorationColor: Colors.blue.shade900,
+                      borderColor: Colors.transparent,
+                      textColor: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                     //SIZED BOX
                     const SizedBox(height: 15),

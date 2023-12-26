@@ -95,6 +95,11 @@ class Spa extends StatelessWidget {
                     buttonText: AppLocalizations.of(context)!.book_now,
                     height: 60,
                     width: 50,
+                    decorationColor: Colors.blue.shade900,
+                    borderColor: Colors.transparent,
+                    textColor: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                     ontap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => BookSpa()));
