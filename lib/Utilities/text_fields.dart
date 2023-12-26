@@ -21,7 +21,7 @@ class MyTextField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(30.0),
           borderSide: BorderSide(
             color: Colors.blue,
             width: 2.0,
@@ -34,6 +34,7 @@ class MyTextField extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
+        contentPadding: EdgeInsets.only(left: 30, top: 20, bottom: 20)
       ),
     );
   }

@@ -8,11 +8,14 @@ class MyButton extends StatelessWidget {
       {super.key,
       required this.buttonText,
       required this.ontap,
-      required this.height});
+      required this.height,
+      required this.width
+      });
 
   final Function()? ontap;
   final String buttonText;
   final double height;
+  final double width;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,10 +23,11 @@ class MyButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
-          color: Theme.of(context).colorScheme.primary,
+          color: Colors.blue.shade900,
         ),
         alignment: Alignment.center,
         height: height,
+        width: width,
         child: Text(
           buttonText,
           style: GoogleFonts.inter(

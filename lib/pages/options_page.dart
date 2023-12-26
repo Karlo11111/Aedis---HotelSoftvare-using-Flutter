@@ -248,6 +248,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     buttonText: AppLocalizations.of(context)!.sign_out,
                     ontap: signOut,
                     height: 55,
+                    width: 50,
                   ),
                 ],
               ),

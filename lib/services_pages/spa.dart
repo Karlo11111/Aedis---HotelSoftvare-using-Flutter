@@ -94,6 +94,7 @@ class Spa extends StatelessWidget {
                   MyButton(
                     buttonText: AppLocalizations.of(context)!.book_now,
                     height: 60,
+                    width: 50,
                     ontap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => BookSpa()));

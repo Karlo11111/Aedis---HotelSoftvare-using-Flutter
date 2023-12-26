@@ -90,211 +90,144 @@ class _LoginPageState extends State<LoginPage> {
   //the main frontend code
   @override
   Widget build(BuildContext context) {
-    Brightness brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(isDarkMode
-                    ? 'lib/assets/darkBackground.jpg'
-                    : 'lib/assets/lightBackground.jpg'),
-                fit: BoxFit.cover)),
+            image: DecorationImage(image: AssetImage(""), fit: BoxFit.cover)),
         child: Center(
           child: SingleChildScrollView(
             child: Center(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //SIZED BOX
-                    SizedBox(height: 50),
-
-                    //TEXT
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(AppLocalizations.of(context)!.sign_in,
-                            style: GoogleFonts.inter(
-                                fontSize: 35,
-                                fontWeight: FontWeight.w600,
-                                color: Theme.of(context).colorScheme.primary)),
-                      ],
-                    ),
-
-                    const SizedBox(
-                      height: 15,
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.sign_in_text,
-                          style: GoogleFonts.inter(
-                              fontSize: 17.4,
-                              fontWeight: FontWeight.w300,
-                              color: Theme.of(context).colorScheme.primary),
+                child: Container(
+                  width: double.infinity,
+                  height: 500,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                    //box shadow
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromARGB(255, 196, 195, 195),
+                        offset: const Offset(
+                          2.0,
+                          2.0,
                         ),
-                      ],
-                    ),
-
-                    //SIZED BOX
-                    SizedBox(height: 30),
-
-                    //TEXTFIELDS FOR EMAIL AND PASSWD
-                    //email
-                    MyTextField(
-                      controller: emailTextController,
-                      hintText: "Email",
-                      obscureText: false,
-                    ),
-
-                    //sized box
-                    const SizedBox(height: 20),
-
-                    //passwd
-                    MyTextField(
-                      controller: passwordTextController,
-                      hintText: AppLocalizations.of(context)!.password,
-                      obscureText: true,
-                    ),
-
-                    //sized box
-                    const SizedBox(height: 20),
-
-                    //Rem me&forgot passwd - jos treba funkcionalnost
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        blurRadius: 5.0,
+                        spreadRadius: 1.0,
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Wrap(
-                            direction: Axis.horizontal,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            spacing: -5,
-                            children: [
-                              Checkbox(
-                                value: _isChecked,
-                                onChanged: (bool? value1) {
-                                  setState(() {
-                                    _isChecked = value1!;
-                                  });
-                                },
-                              ),
-                              Text(
-                                AppLocalizations.of(context)!.remember_me,
+                        //SIZED BOX
+                        SizedBox(height: 30),
+
+                        //SIGN IN TEXT
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(AppLocalizations.of(context)!.sign_in,
                                 style: GoogleFonts.inter(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w600,
                                     color:
-                                        Theme.of(context).colorScheme.primary,
-                                    fontWeight: FontWeight.w300),
-                              )
-                            ]),
-                        GestureDetector(
-                          child: Text(
-                            AppLocalizations.of(context)!.forgot_your_password,
-                            style: GoogleFonts.inter(
-                                color: Theme.of(context).colorScheme.secondary,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ForgotPasswd(),
-                              ),
-                            );
-                          },
-                        )
-                      ],
-                    ),
-
-                    const SizedBox(
-                      height: 20,
-                    ),
-
-                    //login button
-                    MyButton(
-                      buttonText: AppLocalizations.of(context)!.sign_in,
-                      ontap: SignIn,
-                      height: 50,
-                    ),
-
-                    //sized box
-                    const SizedBox(height: 10),
-
-                    Row(
-                      children: [
-                        Expanded(
-                            child: Divider(
-                          color: Colors.black,
-                          thickness: 0.5,
-                        )),
-                        SizedBox(
-                          width: 10,
+                                        Theme.of(context).colorScheme.primary)),
+                          ],
                         ),
-                        Text(
-                          AppLocalizations.of(context)!.or_continiue_with,
-                          style: GoogleFonts.inter(
-                              fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          child: Divider(
-                            color: Colors.black,
-                            thickness: 0.5,
-                          ),
-                        )
-                      ],
-                    ),
 
-                    //TEXT WITH REGISTER PAGE TEXT
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                            iconSize: 40,
-                            onPressed: () => signInWithGoogle(),
-                            icon: FaIcon(FontAwesomeIcons.google)),
-                        SizedBox(width: 10),
-                        IconButton(
-                            iconSize: 40,
-                            onPressed: () {},
-                            icon: FaIcon(FontAwesomeIcons.facebook)),
-                        SizedBox(width: 10),
-                        IconButton(
-                            iconSize: 47,
-                            onPressed: () {},
-                            icon: FaIcon(FontAwesomeIcons.apple)),
-                      ],
-                    ),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
                         const SizedBox(
-                          width: 5,
+                          height: 15,
                         ),
-                        GestureDetector(
-                            onTap: widget.ontap,
-                            child: Text(
-                              AppLocalizations.of(context)!.register_now,
+                        //SIGN IN OR UP TO USE OUR APPLICATION TEXT
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.sign_in_text,
                               style: GoogleFonts.inter(
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                  fontWeight: FontWeight.bold),
-                            )),
+                                  fontSize: 13.4,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                          ],
+                        ),
+
+                        //SIZED BOX
+                        SizedBox(height: 30),
+
+                        //TEXTFIELDS FOR EMAIL AND PASSWD
+                        //email
+                        MyTextField(
+                          controller: emailTextController,
+                          hintText: "Email",
+                          obscureText: false,
+                        ),
+
+                        //sized box
+                        const SizedBox(height: 20),
+
+                        //passwd
+                        MyTextField(
+                          controller: passwordTextController,
+                          hintText: AppLocalizations.of(context)!.password,
+                          obscureText: true,
+                        ),
+
+                        //sized box
+                        const SizedBox(height: 20),
+
+                        const SizedBox(
+                          height: 20,
+                        ),
+
+                        //login button
+                        MyButton(
+                          buttonText: AppLocalizations.of(context)!.sign_in,
+                          ontap: SignIn,
+                          height: 50,
+                          width: 150,
+                        ),
+
+                        //sized box
+                        const SizedBox(height: 10),
+                        //sign in with google
+                        TextButton(
+                          child: Container(
+                            height: 50,
+                            width: 150,
+                            child: FaIcon(FontAwesomeIcons.google),
+                          ),
+                          onPressed: signInWithGoogle,
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            GestureDetector(
+                                onTap: widget.ontap,
+                                child: Text(
+                                  AppLocalizations.of(context)!.register_now,
+                                  style: GoogleFonts.inter(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                          ],
+                        )
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
               ),
             ),
