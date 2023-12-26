@@ -4,19 +4,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 import 'package:provider/provider.dart';
-
-import 'package:razvoj_sofvera/Utilities/GlassBox.dart';
-
+import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:razvoj_sofvera/Utilities/my_card.dart';
-import 'package:razvoj_sofvera/activities_pages/see_all_activities.dart';
-import 'package:razvoj_sofvera/services_pages/massage.dart';
-import 'package:razvoj_sofvera/services_pages/see_all_services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:razvoj_sofvera/services_pages/spa.dart';
+
+import 'package:razvoj_sofvera/Utilities/my_container.dart';
+
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -52,6 +49,8 @@ class _HomePageState extends State<HomePage> {
     _services_controler.dispose();
   }
 
+  final myBox = Hive.box('UserInfo');
+
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
@@ -62,10 +61,7 @@ class _HomePageState extends State<HomePage> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(isDarkMode
-                    ? 'lib/assets/darkBackground.jpg'
-                    : 'lib/assets/lightBackground.jpg'),
-                fit: BoxFit.cover)),
+                image: AssetImage(isDarkMode ? '' : ''), fit: BoxFit.cover)),
         child: SingleChildScrollView(
           child: SafeArea(
             child: Padding(
@@ -77,12 +73,24 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        AppLocalizations.of(context)!.welcome,
-                        style: GoogleFonts.inter(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w400,
-                            color: Theme.of(context).colorScheme.primary),
+                      Row(
+                        children: [
+                          Text(
+                            "Croatia",
+                            style: GoogleFonts.inter(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Icon(
+                            Icons.location_pin,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ],
                       ),
                       IconButton(
                         icon: Icon(
@@ -109,228 +117,146 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
 
-                  Divider(
-                      thickness: 1,
-                      color: Theme.of(context).colorScheme.primary),
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  //welcome text
+                  Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          style: GoogleFonts.inter(
+                            fontSize: 30,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          children: [
+                            TextSpan(
+                              text:
+                                  "Hi ${myBox.get('username')}, Welcome to \n",
+                              style: GoogleFonts.inter(
+                                fontSize: 26.5,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                            TextSpan(
+                              text: "our hotel!",
+                              style: GoogleFonts.inter(
+                                  fontSize: 26.5,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
 
                   const SizedBox(
                     height: 20,
                   ),
-                  //services indicator cards
 
-                  SizedBox(
-                    height: 220,
-                    width: double.infinity,
-                    child: PageView(
-                      controller: _services_controler,
-                      children: [
-                        //massage card
-                        MyCard(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Massage()));
-                          },
-                          picture: "lib/assets/masaza.jpg",
-                          service_name: AppLocalizations.of(context)!.massage,
-                          service_price: "\$20/Per hour",
-                          height: 200,
-                          width: 260,
-                        ),
+                  //your bookings awaits you contaner
 
-                        //spa card
-                        MyCard(
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => Spa()));
-                          },
-                          picture: "lib/assets/spa.jpg",
-                          service_name: AppLocalizations.of(context)!.spa,
-                          service_price: "\$50/Per session",
-                          height: 200,
-                          width: 260,
-                        ),
-
-                        //room services card
-                        MyCard(
-                          onTap: () {},
-                          picture: "lib/assets/room_services.jpg",
-                          service_name:
-                              AppLocalizations.of(context)!.room_services,
-                          service_price: "",
-                          height: 200,
-                          width: 260,
-                        )
-                      ],
+                  MyContainer(
+                    width: MediaQuery.of(context).size.width,
+                    height: 100,
+                    decorationColor: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Your bookings awaits you!",
+                                style: GoogleFonts.inter(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                              ),
+                              Text(
+                                "Click here to see your bookings.",
+                                style: GoogleFonts.inter(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Icon(
+                            Ionicons.home_outline,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 36,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          )
+                        ],
+                      ),
                     ),
                   ),
 
-                  //distance form cards to an indicator
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
 
-                  //dot indicators
-                  Center(
-                      child: SmoothPageIndicator(
-                    controller: _services_controler,
-                    count: 3,
-                    effect: ExpandingDotsEffect(
-                        activeDotColor: Theme.of(context).colorScheme.secondary,
-                        dotColor: Theme.of(context).colorScheme.primary,
-                        spacing: 12),
-                  )),
-
-                  const SizedBox(
-                    height: 15,
-                  ),
-
-                  //activities text and see all button
-                  GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                  //explore and see all text
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      //spa glass box
-                      GlassBox(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Spa(),
-                              ),
-                            );
-                          },
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.spa,
-                                  color: Theme.of(context).colorScheme.primary,
-                                  size: 75,
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  AppLocalizations.of(context)!.spa,
-                                  style: GoogleFonts.inter(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
-                                ),
-                              ],
-                            ),
-                          ),
+                      Text(
+                        "Explore!",
+                        style: GoogleFonts.inter(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      //room services glass box
-                      GlassBox(
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.door_front_door_sharp,
-                                  color: Theme.of(context).colorScheme.primary,
-                                  size: 75,
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  AppLocalizations.of(context)!.room_services,
-                                  style: GoogleFonts.inter(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      //activities glass box
-                      GlassBox(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AllActivities(),
-                              ),
-                            );
-                          },
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.run_circle_outlined,
-                                  color: Theme.of(context).colorScheme.primary,
-                                  size: 75,
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  AppLocalizations.of(context)!.activities,
-                                  style: GoogleFonts.inter(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      //services glass box
-                      GlassBox(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AllServices(),
-                              ),
-                            );
-                          },
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.room_service_sharp,
-                                  color: Theme.of(context).colorScheme.primary,
-                                  size: 75,
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  AppLocalizations.of(context)!.services,
-                                  style: GoogleFonts.inter(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
-                                ),
-                              ],
+                      MyContainer(
+                        width: 100,
+                        height: 30,
+                        decorationColor: Color.fromARGB(255, 205, 155, 101),
+                        child: Center(
+                          child: Text(
+                            "See all",
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+
+                  //cards
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        InfoContainer(
+                          imagePath: 'lib/assets/zadar.jpg',
+                          title: 'About Zadar',
+                          content:
+                              'Zadar, a city rich in history and culture, is nestled along the Dalmatian coast of Croatia. With its origins dating back to the prehistoric times, it has been a significant hub through various eras including Roman...',
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),

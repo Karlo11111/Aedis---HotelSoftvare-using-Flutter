@@ -1,7 +1,12 @@
 {
-    "welcome": "Welcome",
-    "@welcome": {
-        "description": "Greeting"
+    "welcome" : "Hi {username}, Welcome, to our hotel!",
+    "@welcome" : {
+        "description" : "Welcome to your room",
+        "placeholders" : {
+            "username" : {
+                "type" : "String"
+            }
+        }
     },
 
     "book_now": "Book Now",

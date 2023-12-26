@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class MyContainer extends StatelessWidget {
@@ -5,7 +7,8 @@ class MyContainer extends StatelessWidget {
       {super.key,
       required this.width,
       required this.height,
-      required this.child, required this.decorationColor});
+      required this.child,
+      required this.decorationColor});
 
   final double width;
   final double height;
@@ -33,6 +36,7 @@ class MyContainer extends StatelessWidget {
           ),
         ],
       ),
+      child: child,
     );
   }
 }
