@@ -10,10 +10,7 @@ import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
-import 'package:razvoj_sofvera/Utilities/my_card.dart';
-
 import 'package:razvoj_sofvera/Utilities/my_container.dart';
-
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class HomePage extends StatefulWidget {

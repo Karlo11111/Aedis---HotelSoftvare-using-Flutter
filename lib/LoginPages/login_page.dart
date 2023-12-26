@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:razvoj_sofvera/BottomNavBar/bottom_nav_bar.dart';
-import 'package:razvoj_sofvera/LoginPages/register_page.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

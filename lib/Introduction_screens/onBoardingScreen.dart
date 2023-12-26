@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/Introduction_screens/screens/intro_page1.dart';
-import 'package:razvoj_sofvera/LoginPages/login_page.dart';
-
 import 'package:razvoj_sofvera/authentification/auth.dart';
 import 'package:razvoj_sofvera/authentification/login_or_register.dart';
 
