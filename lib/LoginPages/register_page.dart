@@ -24,6 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   final confirmPasswordTextController = TextEditingController();
+  final phoneNumberController = TextEditingController();
 
   //sign users up
   void signUp() async {
@@ -35,10 +36,10 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
     //make sure the passwords match
-    if (passwordTextController.text != confirmPasswordTextController.text) {
+    if (passwordTextController.text != confirmPasswordTextController.text || phoneNumberController.text.isEmpty || nameTextController.text.isEmpty) {
       Navigator.pop(context);
       //display an error message
-      displayMessage("Passwords don't match");
+      displayMessage("Passwords don't match or some fields are empty");
       return;
     }
     //try creating the user
@@ -47,7 +48,8 @@ class _RegisterPageState extends State<RegisterPage> {
           email: emailTextController.text,
           password: passwordTextController.text);
       //add to database
-      addUserDetails(emailTextController.text, nameTextController.text);
+      addUserDetails(emailTextController.text, nameTextController.text,
+          phoneNumberController.text);
       //pop loading circle
       if (context.mounted) Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -86,6 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Future addUserDetails(
     String UserEmail,
     String Name,
+    String PhoneNumber,
   ) async {
     User? user = FirebaseAuth.instance.currentUser;
     await FirebaseFirestore.instance
@@ -94,6 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
         .set({
       'UserEmail': UserEmail,
       'Name': Name,
+      'PhoneNumber': PhoneNumber,
     });
   }
 
@@ -117,7 +121,9 @@ class _RegisterPageState extends State<RegisterPage> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(""), fit: BoxFit.cover)),
+            image: DecorationImage(
+                image: AssetImage("lib/assets/signInBackground.png"),
+                fit: BoxFit.cover)),
         child: Center(
           child: SingleChildScrollView(
             child: Center(
@@ -132,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     //box shadow
                     boxShadow: [
                       BoxShadow(
-                        color: Color.fromARGB(255, 196, 195, 195),
+                        color: Color.fromARGB(255, 153, 151, 151),
                         offset: const Offset(
                           2.0,
                           2.0,
@@ -157,13 +163,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             Text(
                               "Register now",
                               style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.bold, fontSize: 25),
+                                  fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                           ],
                         ),
 
                         //SIZED BOX
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 10),
 
                         //TEXT
                         Row(
@@ -183,9 +189,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         //TEXTFIELDS FOR EMAIL AND PASSWORD
 
                         //name text field
-                        MyTextField(
+                        MyTextField(                        
                           controller: nameTextController,
-                          hintText: "Name",
+                          hintText: "First and Last name",
                           obscureText: false,
                         ),
                         const SizedBox(height: 18),
@@ -197,7 +203,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         const SizedBox(height: 18),
                         MyTextField(
-                          controller: emailTextController,
+                          controller: phoneNumberController,
                           hintText: "Phone number",
                           obscureText: false,
                         ),
@@ -218,7 +224,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 18),
                         //LOG IN BUTTON
                         MyButton(
-                          buttonText: "SIGN UP",
+                          buttonText: "Sign up",
                           ontap: signUp,
                           height: 50,
                           width: 200,
@@ -230,7 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
 
                         //SIZED BOX
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 10),
 
                         //sign in with google
                         MyButton(
@@ -259,6 +265,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             Text(
                               "Already a member?",
                               style: GoogleFonts.inter(
+                                  fontSize: 12,
                                   color: Theme.of(context).colorScheme.primary),
                             ),
                             const SizedBox(
@@ -269,6 +276,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 child: Text(
                                   "Sign In Now!",
                                   style: GoogleFonts.inter(
+                                      fontSize: 13,
                                       color: Colors.blue,
                                       fontWeight: FontWeight.bold),
                                 )),

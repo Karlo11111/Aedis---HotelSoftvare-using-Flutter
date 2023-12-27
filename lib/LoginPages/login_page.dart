@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
       final UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
       final User? user = userCredential.user;
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => PagesPage(),
@@ -97,7 +97,9 @@ class _LoginPageState extends State<LoginPage> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(""), fit: BoxFit.cover)),
+            image: DecorationImage(
+                image: AssetImage("lib/assets/signInBackground.png"),
+                fit: BoxFit.cover)),
         child: Center(
           child: SingleChildScrollView(
             child: Center(
@@ -112,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                     //box shadow
                     boxShadow: [
                       BoxShadow(
-                        color: Color.fromARGB(255, 196, 195, 195),
+                        color: Color.fromARGB(255, 153, 151, 151),
                         offset: const Offset(
                           2.0,
                           2.0,

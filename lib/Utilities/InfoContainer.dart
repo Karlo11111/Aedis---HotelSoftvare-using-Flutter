@@ -22,8 +22,8 @@ class InfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 340,
-      width: MediaQuery.of(context).size.width - 60.0,
+      height: 300,
+      width: MediaQuery.of(context).size.width - 80.0,
       margin: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -73,10 +73,10 @@ class InfoContainer extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
               content,
-              style: GoogleFonts.inter(fontSize: 12.0),
+              style: GoogleFonts.inter(fontSize: 9.0),
             ),
           ),
-          Padding(padding: EdgeInsets.all(16), child: row ?? Container()),
+          Padding(padding: EdgeInsets.only(left: 16, top: 8, right: 12), child: row ?? Container()),
         ],
       ),
     );

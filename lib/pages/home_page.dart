@@ -190,10 +190,12 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             width: 6,
                           ),
-                          Icon(
-                            Ionicons.home_outline,
-                            color: Theme.of(context).colorScheme.primary,
-                            size: 36,
+                          FittedBox(
+                            child: Icon(
+                              Ionicons.home_outline,
+                              color: Theme.of(context).colorScheme.primary,
+                              size: 30,
+                            ),
                           ),
                           SizedBox(
                             width: 5,
