@@ -11,6 +11,8 @@ import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/my_container.dart';
+import 'package:razvoj_sofvera/explore_pages/diving.dart';
+import 'package:razvoj_sofvera/explore_pages/see_all_explore_pages.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -221,17 +223,25 @@ class _HomePageState extends State<HomePage> {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      MyContainer(
-                        width: 100,
-                        height: 30,
-                        decorationColor: Color.fromARGB(255, 205, 155, 101),
-                        child: Center(
-                          child: Text(
-                            "See all",
-                            style: GoogleFonts.inter(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SeeAllExplore()));
+                        },
+                        child: MyContainer(
+                          width: 100,
+                          height: 30,
+                          decorationColor: Color.fromARGB(255, 205, 155, 101),
+                          child: Center(
+                            child: Text(
+                              "See all",
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
@@ -286,6 +296,62 @@ class _HomePageState extends State<HomePage> {
                                   buttonText: "Book now!",
                                   height: 30,
                                   width: 100,
+                                  ontap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DivingScreen()));
+                                  },
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  borderColor: Colors.transparent,
+                                  textColor: Colors.white,
+                                  icon: null,
+                                  decorationColor: Colors.blue.shade900,
+                                ),
+                                Text(
+                                  "Price €100",
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                )
+                              ],
+                            )),
+
+                        //kornati container
+                        InfoContainer(
+                            imagePath: "lib/assets/kornati.jpg",
+                            title: "Traveling to Kornati",
+                            rating: Row(
+                              children: [
+                                Text(
+                                  "4.5",
+                                  style: GoogleFonts.inter(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                )
+                              ],
+                            ),
+                            content:
+                                "Traveling to Kornati, a stunning archipelago in Croatia, is a journey into serene, unspoiled natural paradise.",
+                            row: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                MyButton(
+                                  buttonText: "Book now!",
+                                  height: 30,
+                                  width: 100,
                                   ontap: () {},
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
@@ -304,7 +370,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 )
                               ],
-                            ))
+                            )),
                       ],
                     ),
                   )
