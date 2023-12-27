@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:razvoj_sofvera/BottomNavBar/bottom_nav_bar.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
       addUserDetails(emailTextController.text, nameTextController.text,
           phoneNumberController.text);
       //pop loading circle
-      if (context.mounted) Navigator.pop(context);
+      if (context.mounted) Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PagesPage(),));
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       //display error to user
