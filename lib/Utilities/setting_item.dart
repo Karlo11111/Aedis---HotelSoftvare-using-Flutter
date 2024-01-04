@@ -1,64 +1,66 @@
-// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:razvoj_sofvera/Utilities/forward_button.dart';
 
 class SettingItem extends StatelessWidget {
   final String title;
-  final Color bgColor;
-  final Color iconColor;
-  final IconData icon;
+  final IconData LeadingIcon;
+  final IconData TrailingIcon;
   final Function() onTap;
-  final String? value;
 
   const SettingItem({
     super.key,
     required this.title,
-    required this.bgColor,
-    required this.iconColor,
-    required this.icon,
+    required this.LeadingIcon,
+    required this.TrailingIcon,
     required this.onTap,
-    this.value,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Row(
-        children: [
-          Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(shape: BoxShape.circle, color: bgColor),
-            child: Icon(
-              icon,
-              color: iconColor,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  LeadingIcon,
+                  color: Theme.of(context).primaryColor,
+                  size: 25,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  title,
+                  style: GoogleFonts.inter(fontSize: 16),
+                ),
+              ],
+            )
+          ],
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.25, //20%),
             ),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          Text(
-            title,
-            style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w500),
-          ),
-          const Spacer(),
-          value != null
-              ? Text(
-                  value!,
-                  style: GoogleFonts.inter(fontSize: 16, color: Colors.grey),
-                )
-              : const SizedBox(),
-          const SizedBox(
-            width: 15,
-          ),
-          ForwardButton(
-            onTap: onTap,
-          )
-        ],
-      ),
+            IconButton(
+              onPressed: onTap,
+              icon: Icon(
+                TrailingIcon,
+                color: Theme.of(context).primaryColor,
+                size: 20,
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

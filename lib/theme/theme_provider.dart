@@ -22,4 +22,6 @@ class ThemeProvider with ChangeNotifier {
     isDarkMode = !isDarkMode;
     notifyListeners();
   }
+
+  void changeTheme() {}
 }

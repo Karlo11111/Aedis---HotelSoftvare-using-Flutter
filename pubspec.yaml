@@ -61,6 +61,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
+  persistent_bottom_nav_bar: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -106,6 +107,7 @@ flutter:
     - lib/assets/diving.jpg
     - lib/assets/signInBackground.png
     - lib/assets/kornati.jpg
+    - lib/assets/map.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

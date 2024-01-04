@@ -1,86 +1,198 @@
-// ignore_for_file: prefer_const_constructors
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:razvoj_sofvera/Utilities/my_card.dart';
-import 'package:razvoj_sofvera/services_pages/massage.dart';
-import 'package:razvoj_sofvera/services_pages/spa.dart';
+import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
-class AllServices extends StatelessWidget {
-  const AllServices({super.key});
+class AllServices extends StatefulWidget {
+  const AllServices({Key? key}) : super(key: key);
 
+  @override
+  State<AllServices> createState() => _AllServicesState();
+}
+
+class _AllServicesState extends State<AllServices> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        foregroundColor: Theme.of(context).colorScheme.primary,
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(isDarkMode
-                    ? 'lib/assets/darkBackground.jpg'
-                    : 'lib/assets/lightBackground.jpg'),
-                fit: BoxFit.cover)),
-        child: SingleChildScrollView(
-          child: SafeArea(
+      backgroundColor:
+          isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+      body: Stack(
+        children: <Widget>[
+          // Content and AppBar
+          SafeArea(
             child: Column(
               children: [
-                //masaza
-                Container(
-                  margin: EdgeInsets.all(15),
-                  child: MyCard(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Massage()));
+                // Custom AppBar
+                AppBar(
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back, color: Colors.black),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Handles back button press
                     },
-                    picture: "lib/assets/masaza.jpg",
-                    service_name: AppLocalizations.of(context)!.massage,
-                    service_price: "\$20/Per hour",
-                    height: 200,
-                    width: double.infinity,
+                  ),
+                  title: Text(
+                    'Services',
+                    style: GoogleFonts.inter(
+                      color: Colors.black, // Text color
+                      fontSize: 20, // Text size
+                    ),
+                  ),
+                  backgroundColor:
+                      Colors.transparent, // AppBar background color
+                  elevation: 0, // Removes shadow below the AppBar
+                ),
+                // Rest of your page content
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Center(
+                      child: Column(
+                        children: [
+                          //massage
+                          InfoContainer(
+                              imagePath: 'lib/assets/masaza.jpg',
+                              title: AppLocalizations.of(context)!.massage,
+                              content:
+                                  'Escape to the tranquility of a hotel massage, choose from various massage types and enhancements tailored to your preferences for a personalized experience.',
+                              rating: Row(
+                                children: [
+                                  Text(
+                                    "4.5",
+                                    style: GoogleFonts.inter(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.yellow,
+                                  )
+                                ],
+                              ),
+                              row: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  MyButton(
+                                    buttonText: "Book now!",
+                                    height: 30,
+                                    width: 100,
+                                    ontap: () {},
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    borderColor: Colors.transparent,
+                                    textColor: Colors.white,
+                                    icon: null,
+                                    decorationColor: Colors.blue.shade900,
+                                  ),
+                                  Text(
+                                    "Price €100",
+                                    style: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w300,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  )
+                                ],
+                              )),
+
+                          //spa
+                          InfoContainer(
+                              imagePath: "lib/assets/spa.jpg",
+                              title: AppLocalizations.of(context)!.spa,
+                              rating: Row(
+                                children: [
+                                  Text(
+                                    "4.9",
+                                    style: GoogleFonts.inter(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.yellow,
+                                  )
+                                ],
+                              ),
+                              //text need to be changed
+                              content:
+                                  "Escape to the tranquility of a hotel spa, choose from various massage types and enhancements tailored to your preferences for a personalized experience.",
+                              row: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  MyButton(
+                                    buttonText: "Book now!",
+                                    height: 30,
+                                    width: 100,
+                                    ontap: () {},
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    borderColor: Colors.transparent,
+                                    textColor: Colors.white,
+                                    icon: null,
+                                    decorationColor: Colors.blue.shade900,
+                                  ),
+                                  Text(
+                                    "Price €100",
+                                    style: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w300,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  )
+                                ],
+                              )),
+                          //room services
+                          InfoContainer(
+                              imagePath: "lib/assets/room_services.jpg",
+                              title:
+                                  AppLocalizations.of(context)!.room_services,
+
+                              //text need to be changed
+                              content:
+                                  "Order any variety of things from drinks and cocktails to whole foods and snacks, and we will deliver it to your room.",
+                              row: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  MyButton(
+                                    buttonText: "Order now!",
+                                    height: 30,
+                                    width: 100,
+                                    ontap: () {},
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    borderColor: Colors.transparent,
+                                    textColor: Colors.white,
+                                    icon: null,
+                                    decorationColor: Colors.blue.shade900,
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-
-                //spa
-                Container(
-                  margin: EdgeInsets.all(15),
-                  child: MyCard(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Spa()));
-                    },
-                    picture: "lib/assets/spa.jpg",
-                    service_name: AppLocalizations.of(context)!.spa,
-                    service_price: "\$50/Per session",
-                    height: 200,
-                    width: double.infinity,
-                  ),
-                ),
-
-                //room services
-
-                Container(
-                  margin: EdgeInsets.all(15),
-                  child: MyCard(
-                    onTap: () {},
-                    picture: "lib/assets/room_services.jpg",
-                    service_name: AppLocalizations.of(context)!.room_services,
-                    service_price: "",
-                    height: 200,
-                    width: double.infinity,
-                  ),
-                )
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }

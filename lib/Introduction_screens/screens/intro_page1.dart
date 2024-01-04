@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
@@ -36,48 +36,36 @@ class IntroPage1 extends StatelessWidget {
                   topRight: Radius.circular(30),
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //text: welcome to
-                      Padding(
-                        padding: const EdgeInsets.only(left: 36.0, top: 35),
-                        child: Text(
-                          "Welcome to",
-                          style: TextStyle(
-                            color: Colors.blue.shade900,
-                            fontSize: 45,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 36.0, top: 35),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Welcome to",
+                      style: TextStyle(
+                        color: Colors.blue.shade900,
+                        fontSize: 45,
+                        fontWeight: FontWeight.w900,
+                        height: 1.4,
                       ),
-                      //text: Aedis
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 36.0, bottom: 20, top: 0),
-                        child: Text(
-                          "Aedis",
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 211, 155, 65),
-                            fontSize: 45,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  //other text
-                  Padding(
-                    padding: const EdgeInsets.only(left: 36.0, bottom: 16),
-                    child: Text(
-                      "Escape the Ordinary, Embrace the \nExtraordinary - Your Gateway to \nUnmatched Comfort and Unique \nExperiences.",
-                      style: TextStyle(color: Colors.black, fontSize: 13),
                     ),
-                  ),
-                ],
+                    Text(
+                      "Aedis",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 211, 155, 65),
+                        fontSize: 45,
+                        fontWeight: FontWeight.w900,
+                        height: 0.9,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Escape the Ordinary, Embrace the \nExtraordinary - Your Gateway to \nUnmatched Comfort and Unique \nExperiences.",
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

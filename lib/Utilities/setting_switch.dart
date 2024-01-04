@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,22 +25,19 @@ class SettingSwitch extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(shape: BoxShape.circle, color: bgColor),
-            child: Icon(
-              icon,
-              color: iconColor,
-            ),
+          Icon(
+            icon,
+            color: iconColor,
+            size: 25,
           ),
-          const SizedBox(
+          SizedBox(
             width: 20,
           ),
           Text(
             title,
-            style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w500),
+            style: GoogleFonts.inter(fontSize: 16),
           ),
           const Spacer(),
           Text(

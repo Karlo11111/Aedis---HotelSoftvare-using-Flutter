@@ -1,139 +1,173 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-void main() {
-  runApp(MaterialApp(home: DivingScreen()));
-}
 
 class DivingScreen extends StatelessWidget {
+  const DivingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
+    double imageHeightFactor = 0.4;
+    double containerOverlap = 60.0;
+
     return Scaffold(
-      // Use a Stack to overlay the AppBar over the background image
-      body: Stack(
-        children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            height: MediaQuery.of(context).size.height *
-                0.3, // Adjust the height accordingly
-            child: Image.asset(
-              'assets/diving_background.jpg', // Replace with your diving background image asset
-              fit: BoxFit.cover,
-            ),
-          ),
-          CustomScrollView(
-            slivers: <Widget>[
-              SliverAppBar(
-                expandedHeight: 200.0,
-                floating: false,
-                pinned: true,
-                leading: IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.white),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Image.asset(
-                    'lib/assets/diving.jpg',
-                    fit: BoxFit.cover,
-                  ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            // Image container with reduced height
+            Container(
+              height: MediaQuery.of(context).size.height * imageHeightFactor,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('lib/assets/diving.jpg'),
+                  fit: BoxFit.cover,
                 ),
               ),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'Diving for beginner',
-                          style: GoogleFonts.inter(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
+            ),
+            // Adjusted white container
+            Padding(
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * imageHeightFactor -
+                      containerOverlap),
+              child: Container(
+                height: MediaQuery.of(context).size.height *
+                        (1 - imageHeightFactor) +
+                    containerOverlap,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(45),
+                    topRight: Radius.circular(45),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 36.0,
+                        top: 35,
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Diving",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 38,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        SizedBox(height: 8),
-                        Row(
-                          children: [
-                            Text(
-                              '4.7',
-                              style: GoogleFonts.inter(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+
+                          SizedBox(height: 10),
+
+                          //rating
+                          Row(
+                            children: [
+                              Text(
+                                "4.7",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Icon(Icons.star, color: Colors.yellow),
+                            ],
+                          ),
+
+                          SizedBox(height: 10),
+
+                          Divider(
+                            color: Colors.grey[400],
+                            thickness: 1,
+                            endIndent: 36,
+                          ),
+
+                          SizedBox(height: 10),
+
+                          Row(
+                            children: [
+                              Text("Diving for beginners",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w800,
+                                  )),
+                            ],
+                          ),
+
+                          SizedBox(height: 10),
+
+                          Row(
+                            children: [
+                              Text(
+                                  "Diving appeals to adventure-seekers and marine \nenthusiasts, offering an immersive experience that \nshowcases underwater wonders.",
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  )),
+                            ],
+                          ),
+
+                          SizedBox(height: 10),
+
+                          Divider(
+                            color: Colors.grey[400],
+                            thickness: 1,
+                            endIndent: 36,
+                          ),
+
+                          SizedBox(height: 10),
+
+                          Row(
+                            children: [
+                              Text("Map",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w800,
+                                  )),
+                            ],
+                          ),
+
+                          SizedBox(height: 10),
+
+                          //  Map
+
+                          Padding(
+                            padding: EdgeInsets.only(right: 36),
+                            child: Container(
+                              height: 200,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                image: DecorationImage(
+                                  image: AssetImage('lib/assets/map.jpg'),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                            Icon(Icons.star, color: Colors.amber),
-                          ],
-                        ),
-
-                        Divider(
-                          color: Colors.grey.shade400,
-                          height: 20,
-                          thickness: 1,
-                          indent: 0,
-                          endIndent: 0,
-                        ),
-
-                        SizedBox(height: 16),
-                        Text(
-                          'Diving appeals to adventure-seekers and marine enthusiasts, offering an immersive experience that showcases underwater wonders.',
-                          style: GoogleFonts.inter(
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
                           ),
-                        ),
-                        SizedBox(height: 16),
-
-                        Divider(
-                          color: Colors.grey.shade400,
-                          height: 20,
-                          thickness: 1,
-                          indent: 0,
-                          endIndent: 0,
-                        ),
-                        // Insert your Map widget here
-
-                        Text(
-                          "Map ",
-                          style: GoogleFonts.inter(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                        Container(
-                          height: 200,
-                          color: Colors.blue.shade100,
-                          child: Center(child: Text('Map placeholder')),
-                        ),
-                        SizedBox(height: 16),
-
-                        Center(
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Book now!',
-                              style: GoogleFonts.inter(
-                                  fontSize: 30, fontWeight: FontWeight.bold),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  Colors.blue.shade900, // Button color
-                              foregroundColor: Colors.white, // Text color
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ]),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

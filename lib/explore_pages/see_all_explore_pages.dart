@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
+import 'package:razvoj_sofvera/explore_pages/diving.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class SeeAllExplore extends StatefulWidget {
   const SeeAllExplore({Key? key}) : super(key: key);
@@ -15,7 +18,11 @@ class SeeAllExplore extends StatefulWidget {
 class _SeeAllExploreState extends State<SeeAllExplore> {
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
+      backgroundColor:
+          isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
       body: Stack(
         children: <Widget>[
           // Content and AppBar
@@ -86,7 +93,13 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                                     buttonText: "Book now!",
                                     height: 30,
                                     width: 100,
-                                    ontap: () {},
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DivingScreen()));
+                                    },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                     borderColor: Colors.transparent,
