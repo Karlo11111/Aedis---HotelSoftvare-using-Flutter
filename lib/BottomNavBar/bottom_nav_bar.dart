@@ -31,8 +31,8 @@ class _PagesPageState extends State<PagesPage> {
   List<Widget> _buildScreens() {
     return [
       HomePage(),
-      SearchPage(),
       MyRoom(),
+      SearchPage(),
       OptionsPage(),
     ];
   }
@@ -44,12 +44,12 @@ class _PagesPageState extends State<PagesPage> {
         title: 'Home',
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Ionicons.bed),
-        title: AppLocalizations.of(context)!.my_services,
-      ),
-      PersistentBottomNavBarItem(
         icon: Icon(Icons.person),
         title: AppLocalizations.of(context)!.my_room,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Ionicons.bed),
+        title: AppLocalizations.of(context)!.my_services,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Ionicons.settings),
@@ -71,7 +71,7 @@ class _PagesPageState extends State<PagesPage> {
       navBarHeight: 60,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
-      hideNavigationBarWhenKeyboardShows: true,
+      hideNavigationBarWhenKeyboardShows: false,
       decoration: NavBarDecoration(
         colorBehindNavBar: Colors.white,
       ),

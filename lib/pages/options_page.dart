@@ -12,8 +12,10 @@ import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/my_container.dart';
 import 'package:razvoj_sofvera/Utilities/setting_item.dart';
 import 'package:razvoj_sofvera/Utilities/setting_switch.dart';
+
 import 'package:razvoj_sofvera/authentification/login_or_register.dart';
 import 'package:razvoj_sofvera/pages/Edit_account_screen.dart';
+import 'package:razvoj_sofvera/pages/help.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class OptionsPage extends StatefulWidget {
@@ -174,7 +176,13 @@ class _OptionsPageState extends State<OptionsPage> {
                         width: MediaQuery.of(context).size.width * 0.25, //20%),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EditAccountScreen(
+                                      refreshSettingsPage: NavigateToAccPage)));
+                        },
                         icon: Icon(Icons.arrow_forward_ios),
                       ),
                     ],
@@ -338,6 +346,26 @@ class _OptionsPageState extends State<OptionsPage> {
                     title: "Accesability",
                     TrailingIcon: Icons.arrow_forward_ios,
                     onTap: () {},
+                  ),
+
+                  SizedBox(
+                    height: 5,
+                  ),
+
+                  Divider(
+                    color: Colors.grey,
+                    thickness: 1,
+                  ),
+
+                  //help
+                  SettingItem(
+                    LeadingIcon: Ionicons.help_outline,
+                    title: "Help",
+                    TrailingIcon: Icons.arrow_forward_ios,
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HelpPage()));
+                    },
                   ),
 
                   SizedBox(

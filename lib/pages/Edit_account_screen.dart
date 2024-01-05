@@ -9,6 +9,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/edit_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 
 import '../theme/theme_provider.dart';
 
@@ -51,172 +52,104 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
-      //appbar for saving and exiting
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          color: Theme.of(context).colorScheme.primary,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Ionicons.chevron_back_outline),
-        ),
-        leadingWidth: 80,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-              onPressed: addUserDetails,
-              icon: Icon(
-                Ionicons.checkmark,
-                color: Theme.of(context).colorScheme.primary,
+        //appbar for saving and exiting
+        appBar: AppBar(
+          backgroundColor:
+              isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+          leading: IconButton(
+            color: Theme.of(context).colorScheme.primary,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Ionicons.chevron_back_outline),
+          ),
+          leadingWidth: 80,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: IconButton(
+                onPressed: addUserDetails,
+                icon: Icon(
+                  Ionicons.checkmark,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
-            ),
-          )
-        ],
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(isDarkMode
-                    ? 'lib/assets/darkBackground.jpg'
-                    : 'lib/assets/lightBackground.jpg'),
-                fit: BoxFit.cover)),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  AppLocalizations.of(context)!.account,
-                  style: GoogleFonts.inter(
-                      fontSize: 40, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
+            )
+          ],
+        ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+          child: SafeArea(
+              child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  //header
 
-                //photo
-
-                EditItem(
-                    title: AppLocalizations.of(context)!.photo,
-                    widget: Column(
-                      children: [
-                        Image.asset(
-                          "lib/assets/avatar.png",
-                          height: 100,
-                          width: 100,
-                        ),
-                        TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                              foregroundColor: Colors.lightBlueAccent,
-                            ),
-                            child: const Text("Upload Image"))
-                      ],
-                    )),
-
-                //name
-                EditItem(
-                  title: AppLocalizations.of(context)!.name,
-                  widget: TextField(
-                    controller: changedNameTextController,
-                    decoration: InputDecoration(
-                      hintText: myBox.get('username'),
+                  Text(
+                    "Edit personal info",
+                    style: GoogleFonts.inter(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ),
 
-                //user gender
-
-                const SizedBox(
-                  height: 20,
-                ),
-
-                EditItem(
-                  title: AppLocalizations.of(context)!.gender,
-                  widget: Row(
-                    children: [
-                      //male icon
-                      CircleAvatar(
-                        radius: 25,
-                        backgroundColor: gender == "man"
-                            ? Colors.blue
-                            : Colors.grey.shade200,
-                        child: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                gender = "man";
-                              });
-                            },
-                            icon: Icon(
-                              color:
-                                  gender == "man" ? Colors.white : Colors.black,
-                              Ionicons.male,
-                              size: 18,
-                            )),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-
-                      //woman icon
-                      CircleAvatar(
-                        radius: 25,
-                        backgroundColor: gender == "woman"
-                            ? Colors.purpleAccent
-                            : Colors.grey.shade200,
-                        child: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                gender = "woman";
-                              });
-                            },
-                            icon: Icon(
-                              color: gender == "woman"
-                                  ? Colors.white
-                                  : Colors.black,
-                              Ionicons.female,
-                              size: 18,
-                            )),
-                      )
-                    ],
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
 
-                //age
-
-                EditItem(
-                    widget: TextField(),
-                    title: AppLocalizations.of(context)!.age),
-
-                const SizedBox(
-                  height: 20,
-                ),
-
-                //Email
-                EditItem(
-                    title: "Email",
-                    widget: TextField(
-                      controller: changedEmailTextController,
-                      decoration: InputDecoration(
-                        hintText: myBox.get('email'),
+                  //username
+                  TextField(
+                    controller: changedNameTextController,
+                    decoration: InputDecoration(
+                      labelText: "Username",
+                      labelStyle: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
                       ),
-                    )),
-              ],
+                      hintText: myBox.get('username'),
+                      hintStyle: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+
+                  //email
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  TextField(
+                    controller: changedEmailTextController,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      labelStyle: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      hintText: myBox.get('email'),
+                      hintStyle: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          )),
+        ));
   }
 }
