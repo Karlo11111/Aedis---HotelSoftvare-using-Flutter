@@ -218,7 +218,7 @@ class _OptionsPageState extends State<OptionsPage> {
                               Text(
                                 "You have some questions?",
                                 style: GoogleFonts.inter(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color:
                                       Theme.of(context).colorScheme.secondary,

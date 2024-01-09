@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             "Croatia",
                             style: GoogleFonts.inter(
-                              fontSize: 14,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.secondary,
                             ),
@@ -281,7 +281,7 @@ class _HomePageState extends State<HomePage> {
                                             builder: (context) =>
                                                 DivingScreen()));
                                   },
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
@@ -291,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   "Price €100",
                                   style: GoogleFonts.inter(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w300,
                                     color:
                                         Theme.of(context).colorScheme.primary,
@@ -331,7 +331,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 30,
                                   width: 100,
                                   ontap: () {},
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
@@ -341,7 +341,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   "Price €100",
                                   style: GoogleFonts.inter(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w300,
                                     color:
                                         Theme.of(context).colorScheme.primary,
@@ -436,7 +436,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 30,
                                   width: 100,
                                   ontap: () {},
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
@@ -446,7 +446,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   "Price €100",
                                   style: GoogleFonts.inter(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w300,
                                     color:
                                         Theme.of(context).colorScheme.primary,
@@ -487,7 +487,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 30,
                                   width: 100,
                                   ontap: () {},
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
@@ -497,7 +497,7 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   "Price €100",
                                   style: GoogleFonts.inter(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w300,
                                     color:
                                         Theme.of(context).colorScheme.primary,
@@ -513,7 +513,7 @@ class _HomePageState extends State<HomePage> {
 
                             //text need to be changed
                             content:
-                                "Order any variety of things from drinks and cocktails to whole foods and snacks, and we will deliver it to your room.",
+                                "Order any variety of things from drinks and cocktails to whole foods and snacks, and we will deliver it to your room. \n",
                             row: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -522,7 +522,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 30,
                                   width: 100,
                                   ontap: () {},
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
@@ -601,7 +601,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 35,
                                   width: 150,
                                   ontap: () {},
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
@@ -627,7 +627,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 35,
                                   width: 150,
                                   ontap: () {},
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
@@ -653,7 +653,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 35,
                                   width: 150,
                                   ontap: () {},
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
