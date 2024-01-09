@@ -7,10 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:razvoj_sofvera/Utilities/edit_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:razvoj_sofvera/Utilities/text_fields.dart';
-
 import '../theme/theme_provider.dart';
 
 class EditAccountScreen extends StatefulWidget {
@@ -46,6 +42,25 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
 
   //hive
   final myBox = Hive.box('UserInfo');
+
+  //email hider function
+  String hideEmail(String email) {
+    var parts = email.split('@');
+    if (parts.length != 2) return 'Invalid email';
+
+    var username = parts[0];
+    var domain = parts[1];
+
+    if (username.length <= 2) return 'Username too short';
+
+    var hiddenUsername = username[0] +
+        '*' * (username.length - 2) +
+        username[username.length - 1];
+
+    return hiddenUsername + '@' + domain;
+  }
+
+  bool _isEditing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +122,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   TextField(
                     controller: changedNameTextController,
                     decoration: InputDecoration(
-                      labelText: "Username",
+                      labelText: "First name",
                       labelStyle: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -131,7 +146,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   TextField(
                     controller: changedEmailTextController,
                     decoration: InputDecoration(
-                      labelText: "Email",
+                      labelText: "Last name",
                       labelStyle: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
@@ -146,6 +161,87 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                       ),
                     ),
                   ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  Divider(
+                    color: Colors.grey,
+                    thickness: 1,
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Email',
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                              )),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _isEditing = !_isEditing;
+                              });
+                            },
+                            child: Text('Edit'),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _isEditing
+                                ? TextField(
+                                    controller: changedEmailTextController,
+                                  )
+                                : Text(hideEmail(myBox.get('email')!)),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Email',
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                              )),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _isEditing = !_isEditing;
+                              });
+                            },
+                            child: Text('Edit'),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _isEditing
+                                ? TextField(
+                                    controller: changedEmailTextController,
+                                  )
+                                : Text(hideEmail(myBox.get('email')!)),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
