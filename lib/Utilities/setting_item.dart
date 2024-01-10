@@ -30,7 +30,7 @@ class SettingItem extends StatelessWidget {
               children: [
                 Icon(
                   LeadingIcon,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.secondary,
                   size: 25,
                 ),
                 SizedBox(
@@ -54,7 +54,7 @@ class SettingItem extends StatelessWidget {
               onPressed: onTap,
               icon: Icon(
                 TrailingIcon,
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).colorScheme.secondary,
                 size: 20,
               ),
             ),

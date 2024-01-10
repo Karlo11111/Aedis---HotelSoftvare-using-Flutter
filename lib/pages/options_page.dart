@@ -108,7 +108,7 @@ class _OptionsPageState extends State<OptionsPage> {
                         style: GoogleFonts.inter(
                           fontSize: 35,
                           fontWeight: FontWeight.w500,
-                          color: Theme.of(context).primaryColor,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
                       FloatingActionButton(
@@ -117,7 +117,7 @@ class _OptionsPageState extends State<OptionsPage> {
                         elevation: 0,
                         child: Icon(
                           Ionicons.notifications_outline,
-                          color: Theme.of(context).primaryColor,
+                          color: Theme.of(context).colorScheme.secondary,
                           size: 30,
                         ),
                       )
@@ -154,7 +154,7 @@ class _OptionsPageState extends State<OptionsPage> {
                             style: GoogleFonts.inter(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                           ),
                           SizedBox(
@@ -165,7 +165,7 @@ class _OptionsPageState extends State<OptionsPage> {
                             style: GoogleFonts.inter(
                               fontSize: 15,
                               fontWeight: FontWeight.w200,
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).colorScheme.secondary,
                             ),
                           ),
                         ],
@@ -281,7 +281,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     style: GoogleFonts.inter(
                       fontSize: 25,
                       fontWeight: FontWeight.w500,
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
 
@@ -294,7 +294,13 @@ class _OptionsPageState extends State<OptionsPage> {
                     LeadingIcon: Ionicons.person_outline,
                     title: "Personal information",
                     TrailingIcon: Icons.arrow_forward_ios,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EditAccountScreen(
+                                      refreshSettingsPage: NavigateToAccPage)));
+                    },
                   ),
 
                   SizedBox(

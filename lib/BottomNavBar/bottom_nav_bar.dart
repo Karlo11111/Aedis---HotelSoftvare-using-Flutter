@@ -40,19 +40,19 @@ class _PagesPageState extends State<PagesPage> {
   List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
     return [
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.home),
+        icon: Icon(Icons.home, color: Theme.of(context).colorScheme.secondary),
         title: 'Home',
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.person),
+        icon: Icon(Icons.person, color: Theme.of(context).colorScheme.secondary),
         title: AppLocalizations.of(context)!.my_room,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Ionicons.bed),
+        icon: Icon(Ionicons.bed, color: Theme.of(context).colorScheme.secondary),
         title: AppLocalizations.of(context)!.my_services,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Ionicons.settings),
+        icon: Icon(Ionicons.settings, color: Theme.of(context).colorScheme.secondary,),
         title: AppLocalizations.of(context)!.settings,
       ),
     ];
