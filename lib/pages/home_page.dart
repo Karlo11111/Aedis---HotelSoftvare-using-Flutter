@@ -11,12 +11,12 @@ import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/my_container.dart';
-import 'package:razvoj_sofvera/activities_pages/see_all_activities.dart';
-import 'package:razvoj_sofvera/explore_pages/diving.dart';
-import 'package:razvoj_sofvera/explore_pages/kornati.dart';
-import 'package:razvoj_sofvera/explore_pages/see_all_explore_pages.dart';
+import 'package:razvoj_sofvera/pages/activities_pages/see_all_activities.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/diving.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/kornati.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/see_all_explore_pages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:razvoj_sofvera/services_pages/see_all_services.dart';
+import 'package:razvoj_sofvera/pages/services_pages/see_all_services.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class HomePage extends StatefulWidget {

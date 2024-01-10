@@ -1,13 +1,16 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: unnecessary_const, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:razvoj_sofvera/Utilities/buttons.dart';
+import 'package:razvoj_sofvera/pages/services_pages/BookNow/book_now_spa.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
-import '../theme/theme_provider.dart';
-
-class Breakfast extends StatelessWidget {
-  const Breakfast({Key? key}) : super(key: key);
+class Spa extends StatelessWidget {
+  const Spa({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +19,9 @@ class Breakfast extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Theme.of(context).colorScheme.primary,
-        elevation: 0,
       ),
+      //Body
+
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -34,53 +38,73 @@ class Breakfast extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  //slika usluge
                   SizedBox(
                     width: double.infinity,
                     child: Image.asset(
-                      "lib/assets/Breakfast.jpg",
+                      "lib/assets/spa.jpg",
                       fit: BoxFit.cover,
                     ),
                   ),
+
+                  //razmak između slike i usluge
                   const SizedBox(height: 36),
+
+                  //naziv usluge
                   Row(
                     children: [
-                      Text(
-                        AppLocalizations.of(context)!.breakfast,
-                        style: GoogleFonts.inter(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      Text(AppLocalizations.of(context)!.spa,
+                          style: GoogleFonts.inter(
+                              fontSize: 25, fontWeight: FontWeight.bold)),
                     ],
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  //opis usluge
                   Text(
-                    AppLocalizations.of(context)!.breakfast_1,
-                    style: GoogleFonts.inter(fontSize: 18.0),
+                    AppLocalizations.of(context)!.spa_1,
+                    style: GoogleFonts.inter(
+                        fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    AppLocalizations.of(context)!.breakfast_2,
+                    AppLocalizations.of(context)!.spa_2,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    AppLocalizations.of(context)!.breakfast_3,
+                    AppLocalizations.of(context)!.spa_3,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    AppLocalizations.of(context)!.breakfast_4,
+                    AppLocalizations.of(context)!.spa_4,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(height: 16.0),
                   Text(
-                    AppLocalizations.of(context)!.breakfast_5,
+                    AppLocalizations.of(context)!.spa_5,
                     style: GoogleFonts.inter(fontSize: 16.0),
                   ),
                   SizedBox(
                     height: 20,
                   ),
+
+                  MyButton(
+                    buttonText: AppLocalizations.of(context)!.book_now,
+                    height: 60,
+                    width: 50,
+                    decorationColor: Colors.blue.shade900,
+                    borderColor: Colors.transparent,
+                    textColor: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    ontap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BookSpa()));
+                    },
+                  )
                 ],
               ),
             ),

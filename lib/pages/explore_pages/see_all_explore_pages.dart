@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
-import 'package:razvoj_sofvera/explore_pages/diving.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/diving.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class SeeAllExplore extends StatefulWidget {
