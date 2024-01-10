@@ -21,6 +21,7 @@ class EditAccountScreen extends StatefulWidget {
 class _EditAccountScreenState extends State<EditAccountScreen> {
   final changedNameTextController = TextEditingController();
   final changedEmailTextController = TextEditingController();
+  final changePhoneNumberTextController = TextEditingController();
 
   //adding user details when logging in and setting it to a specific user uid
   Future addUserDetails() async {
@@ -60,8 +61,8 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
     return hiddenUsername + '@' + domain;
   }
 
-  bool _isEditing = false;
-
+  bool _isEmailEditing = false;
+  bool _isPhoneNumberEditing = false;
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
@@ -69,6 +70,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
     return Scaffold(
         //appbar for saving and exiting
         appBar: AppBar(
+          elevation: 0,
           backgroundColor:
               isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
           leading: IconButton(
@@ -163,7 +165,65 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   ),
 
                   SizedBox(
-                    height: 20,
+                    height: 10,
+                  ),
+
+                  Divider(
+                    color: Colors.grey,
+                    thickness: 1,
+                  ),
+
+                 
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Email',
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                              )),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _isEmailEditing = !_isEmailEditing;
+                              });
+                            },
+                            child: Text('Edit',
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.bold
+                              
+                            ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _isEmailEditing
+                                ? TextField(
+                                    controller: changedEmailTextController,
+                                  )
+                                : Text(
+                                  hideEmail(myBox.get('email')!),
+                                  style: GoogleFonts.inter(),
+                                  ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+
+                  
+
+
+                   SizedBox(
+                    height: 10,
                   ),
 
                   Divider(
@@ -172,76 +232,65 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   ),
 
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
+
+                  //phone number
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
+                      //phone number text and edit button
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Email',
+                          Text('Phone number',
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                               )),
+
                           TextButton(
-                            onPressed: () {
+                           onPressed: () {
                               setState(() {
-                                _isEditing = !_isEditing;
+                                _isPhoneNumberEditing = !_isPhoneNumberEditing;
                               });
                             },
-                            child: Text('Edit'),
-                          ),
+                            child: Text('Edit',
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.bold
+                              
+                            ),
+                            ),)
                         ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _isEditing
-                                ? TextField(
-                                    controller: changedEmailTextController,
-                                  )
-                                : Text(hideEmail(myBox.get('email')!)),
-                          ),
-                        ],
-                      ),
+
+                      )
                     ],
                   ),
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Email',
-                              style: GoogleFonts.inter(
-                                fontSize: 16,
-                              )),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                _isEditing = !_isEditing;
-                              });
-                            },
-                            child: Text('Edit'),
-                          ),
-                        ],
-                      ),
-                      Row(
+                  Text("For notifications, reminders, and help logging in.", 
+                  style: GoogleFonts.inter(fontWeight: FontWeight.w400, fontSize: 10),),
+
+                  SizedBox(height: 10,),
+
+
+                   Row(
                         children: [
                           Expanded(
-                            child: _isEditing
+                            child: _isPhoneNumberEditing
                                 ? TextField(
-                                    controller: changedEmailTextController,
+                                    controller: changePhoneNumberTextController,
                                   )
-                                : Text(hideEmail(myBox.get('email')!)),
+                                : Text(
+                                  "095 819 3030",
+                                  style: GoogleFonts.inter(),
+                                  ),
                           ),
                         ],
                       ),
-                    ],
-                  )
+                 
                 ],
               ),
             ),

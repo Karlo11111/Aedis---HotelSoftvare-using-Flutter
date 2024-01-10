@@ -37,7 +37,7 @@ class SettingSwitch extends StatelessWidget {
           ),
           Text(
             title,
-            style: GoogleFonts.inter(fontSize: 16),
+            style: GoogleFonts.inter(fontSize: 16, color: Theme.of(context).colorScheme.secondary),
           ),
           const Spacer(),
           Text(

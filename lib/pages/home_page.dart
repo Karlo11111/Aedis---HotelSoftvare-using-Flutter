@@ -13,6 +13,7 @@ import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/my_container.dart';
 import 'package:razvoj_sofvera/activities_pages/see_all_activities.dart';
 import 'package:razvoj_sofvera/explore_pages/diving.dart';
+import 'package:razvoj_sofvera/explore_pages/kornati.dart';
 import 'package:razvoj_sofvera/explore_pages/see_all_explore_pages.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:razvoj_sofvera/services_pages/see_all_services.dart';
@@ -330,7 +331,13 @@ class _HomePageState extends State<HomePage> {
                                   buttonText: "Book now!",
                                   height: 30,
                                   width: 100,
-                                  ontap: () {},
+                                  ontap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                KornatiScreen()));
+                                  },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,

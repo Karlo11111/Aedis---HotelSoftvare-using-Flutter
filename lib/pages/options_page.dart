@@ -399,8 +399,8 @@ class _OptionsPageState extends State<OptionsPage> {
                     value: isDarkMode,
                     title: "Dark theme",
                     icon: Ionicons.moon_outline,
-                    bgColor: Colors.transparent,
-                    iconColor: Colors.black,
+                    bgColor: Theme.of(context).colorScheme.secondary,
+                    iconColor: Theme.of(context).colorScheme.secondary,
                     onTap: (value) {
                       setState(() {
                         isDarkMode = value;
