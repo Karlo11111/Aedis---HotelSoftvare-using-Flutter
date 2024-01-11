@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:razvoj_sofvera/pages/home_page.dart';
-import 'package:razvoj_sofvera/pages/my_room.dart';
-import 'package:razvoj_sofvera/pages/options_page.dart';
-import 'package:razvoj_sofvera/pages/search_page.dart';
+import 'package:razvoj_sofvera/pages/main_pages/home_page.dart';
+import 'package:razvoj_sofvera/pages/main_pages/my_room.dart';
+import 'package:razvoj_sofvera/pages/main_pages/options_page.dart';
+import 'package:razvoj_sofvera/pages/main_pages/search_page.dart';
 
 class PagesPage extends StatefulWidget {
   const PagesPage({super.key});
@@ -44,15 +44,20 @@ class _PagesPageState extends State<PagesPage> {
         title: 'Home',
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.person, color: Theme.of(context).colorScheme.secondary),
+        icon:
+            Icon(Icons.person, color: Theme.of(context).colorScheme.secondary),
         title: AppLocalizations.of(context)!.my_room,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Ionicons.bed, color: Theme.of(context).colorScheme.secondary),
+        icon:
+            Icon(Ionicons.bed, color: Theme.of(context).colorScheme.secondary),
         title: AppLocalizations.of(context)!.my_services,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Ionicons.settings, color: Theme.of(context).colorScheme.secondary,),
+        icon: Icon(
+          Ionicons.settings,
+          color: Theme.of(context).colorScheme.secondary,
+        ),
         title: AppLocalizations.of(context)!.settings,
       ),
     ];

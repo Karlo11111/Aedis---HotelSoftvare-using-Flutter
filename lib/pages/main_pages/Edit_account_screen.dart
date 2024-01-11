@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import '../theme/theme_provider.dart';
+import '../../theme/theme_provider.dart';
 
 class EditAccountScreen extends StatefulWidget {
   const EditAccountScreen({super.key, required this.refreshSettingsPage});
@@ -173,8 +173,6 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                     thickness: 1,
                   ),
 
-                 
-
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -191,12 +189,11 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                                 _isEmailEditing = !_isEmailEditing;
                               });
                             },
-                            child: Text('Edit',
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold
-                              
-                            ),
+                            child: Text(
+                              'Edit',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -209,8 +206,8 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                                     controller: changedEmailTextController,
                                   )
                                 : Text(
-                                  hideEmail(myBox.get('email')!),
-                                  style: GoogleFonts.inter(),
+                                    hideEmail(myBox.get('email')!),
+                                    style: GoogleFonts.inter(),
                                   ),
                           ),
                         ],
@@ -218,11 +215,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                     ],
                   ),
 
-
-                  
-
-
-                   SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
 
@@ -240,7 +233,6 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       //phone number text and edit button
 
                       Row(
@@ -250,47 +242,48 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                               )),
-
                           TextButton(
-                           onPressed: () {
+                            onPressed: () {
                               setState(() {
                                 _isPhoneNumberEditing = !_isPhoneNumberEditing;
                               });
                             },
-                            child: Text('Edit',
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold
-                              
+                            child: Text(
+                              'Edit',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            ),)
+                          )
                         ],
-
                       )
                     ],
                   ),
 
-                  Text("For notifications, reminders, and help logging in.", 
-                  style: GoogleFonts.inter(fontWeight: FontWeight.w400, fontSize: 10),),
+                  Text(
+                    "For notifications, reminders, and help logging in.",
+                    style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w400, fontSize: 10),
+                  ),
 
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
 
-
-                   Row(
-                        children: [
-                          Expanded(
-                            child: _isPhoneNumberEditing
-                                ? TextField(
-                                    controller: changePhoneNumberTextController,
-                                  )
-                                : Text(
-                                  "095 819 3030",
-                                  style: GoogleFonts.inter(),
-                                  ),
-                          ),
-                        ],
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _isPhoneNumberEditing
+                            ? TextField(
+                                controller: changePhoneNumberTextController,
+                              )
+                            : Text(
+                                "095 819 3030",
+                                style: GoogleFonts.inter(),
+                              ),
                       ),
-                 
+                    ],
+                  ),
                 ],
               ),
             ),

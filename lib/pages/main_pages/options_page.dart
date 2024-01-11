@@ -14,8 +14,8 @@ import 'package:razvoj_sofvera/Utilities/setting_item.dart';
 import 'package:razvoj_sofvera/Utilities/setting_switch.dart';
 
 import 'package:razvoj_sofvera/authentification/login_or_register.dart';
-import 'package:razvoj_sofvera/pages/Edit_account_screen.dart';
-import 'package:razvoj_sofvera/pages/help.dart';
+import 'package:razvoj_sofvera/pages/main_pages/Edit_account_screen.dart';
+import 'package:razvoj_sofvera/pages/main_pages/help.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class OptionsPage extends StatefulWidget {
@@ -296,10 +296,10 @@ class _OptionsPageState extends State<OptionsPage> {
                     TrailingIcon: Icons.arrow_forward_ios,
                     onTap: () {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => EditAccountScreen(
-                                      refreshSettingsPage: NavigateToAccPage)));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditAccountScreen(
+                                  refreshSettingsPage: NavigateToAccPage)));
                     },
                   ),
 

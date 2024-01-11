@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/pay_now/pay_now_diving.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class BookDivingSession extends StatefulWidget {
@@ -14,10 +15,10 @@ class BookDivingSession extends StatefulWidget {
 }
 
 class _BookDivingSessionState extends State<BookDivingSession> {
-  //string for massage
+  //string for diving
   String DivingText = "Diving Session";
 
-  //double for massage price
+  //double for diving price
   double DivingSessionPrice = 100;
 
   //map for checking if the booking limit is reached, takes a datetime and a bool
@@ -100,7 +101,7 @@ class _BookDivingSessionState extends State<BookDivingSession> {
       } catch (e) {
         print('Firestore update error: $e');
       }
-      //fetching the UserBookedMassage collection
+      //fetching the UserBookedDiving collection
       final userDocumentRef = FirebaseFirestore.instance
           .collection("UsersBookedDivingSession")
           .doc(user!.uid);
@@ -150,9 +151,9 @@ class _BookDivingSessionState extends State<BookDivingSession> {
 
           // Update the user's document with the updated appointments
           await userDocumentRef
-              .update({'MassageAppointments': existingAppointments});
+              .update({'DivingSessionAppointments': existingAppointments});
           await AllUserDocumentRef.update(
-              {'MassageAppointments': existingAppointments});
+              {'DivingSessionAppointments': existingAppointments});
         } else {
           // The user has reached the limit of 3 appointments for the selected date
           setState(() {
@@ -164,7 +165,7 @@ class _BookDivingSessionState extends State<BookDivingSession> {
       } else {
         // Create a new user document with the appointment
         await userDocumentRef.set({
-          'MassageAppointments': [
+          'DivingSessionAppointments': [
             {
               'Name': myBox.get("username"),
               'Time': selectedTimeSlot,
@@ -175,7 +176,7 @@ class _BookDivingSessionState extends State<BookDivingSession> {
           ],
         });
         await AllUserDocumentRef.set({
-          'MassageAppointments': [
+          'DivingSessionAppointments': [
             {
               'Name': myBox.get("username"),
               'Time': selectedTimeSlot,
@@ -317,7 +318,10 @@ class _BookDivingSessionState extends State<BookDivingSession> {
                                         MaterialStatePropertyAll(Colors.black),
                                     textStyle: MaterialStatePropertyAll(
                                         TextStyle(fontSize: 15))),
-                                onPressed: onTapCancel,
+                                onPressed: () {
+                                  if (onTapCancel != null) onTapCancel();
+                                  Navigator.pop(context); // Close the dialog
+                                },
                                 child: Text("No, cancel"))),
                         SizedBox(width: 5),
 
@@ -335,7 +339,10 @@ class _BookDivingSessionState extends State<BookDivingSession> {
                                         MaterialStatePropertyAll(Colors.black),
                                     textStyle: MaterialStatePropertyAll(
                                         TextStyle(fontSize: 15))),
-                                onPressed: onTap,
+                                onPressed: () {
+                                  if (onTap != null) onTap();
+                                  Navigator.pop(context); // Close the dialog
+                                },
                                 child: Text("Yes I'm sure"))),
                       ],
                     )
@@ -398,10 +405,12 @@ class _BookDivingSessionState extends State<BookDivingSession> {
                                 : () {
                                     displayAreYouSureBooking(timeSlot, () {
                                       bookTimeSlot(timeSlot);
-                                      Navigator.pop(context);
-                                    }, () {
-                                      Navigator.pop(context);
-                                    });
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DivingPayNow()));
+                                    }, () {});
                                   },
                         child: Text(timeSlot),
                       ),
