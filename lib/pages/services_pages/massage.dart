@@ -1,117 +1,183 @@
-// ignore_for_file: unnecessary_const, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/rendering.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
-import 'package:razvoj_sofvera/pages/services_pages/BookNow/book_now_massage.dart';
-import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
-class Massage extends StatelessWidget {
-  const Massage({super.key});
+class MassageScreen extends StatelessWidget {
+  const MassageScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    bool isDarkMode = themeProvider.isDarkMode;
+    double imageHeightFactor = 0.35;
+    double containerOverlap = 60.0;
+
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Theme.of(context).colorScheme.primary,
-        elevation: 0,
-      ),
-      //Body
-
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(isDarkMode
-                    ? 'lib/assets/darkBackground.jpg'
-                    : 'lib/assets/lightBackground.jpg'),
-                fit: BoxFit.cover)),
-        child: SingleChildScrollView(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  //slika usluge
-                  SizedBox(
-                    width: double.infinity,
-                    child: Image.asset(
-                      "lib/assets/masaza.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-
-                  //razmak između slike i usluge
-                  const SizedBox(height: 36),
-
-                  //naziv usluge
-                  Row(
-                    children: [
-                      Text(AppLocalizations.of(context)!.massage,
-                          style: GoogleFonts.inter(
-                              fontSize: 25, fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  //opis usluge
-                  Text(
-                    AppLocalizations.of(context)!.massage_1,
-                    style: GoogleFonts.inter(
-                        fontSize: 18.0, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 16.0),
-                  Text(
-                    AppLocalizations.of(context)!.massage_2,
-                    style: GoogleFonts.inter(fontSize: 16.0),
-                  ),
-                  SizedBox(height: 16.0),
-                  Text(
-                    AppLocalizations.of(context)!.massage_3,
-                    style: GoogleFonts.inter(fontSize: 16.0),
-                  ),
-                  SizedBox(height: 16.0),
-                  Text(
-                    AppLocalizations.of(context)!.massage_4,
-                    style: GoogleFonts.inter(fontSize: 16.0),
-                  ),
-                  SizedBox(height: 16.0),
-                  Text(
-                    AppLocalizations.of(context)!.massage_5,
-                    style: GoogleFonts.inter(fontSize: 16.0),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  MyButton(
-                    buttonText: AppLocalizations.of(context)!.book_now,
-                    height: 60,
-                    width: 50,
-                    decorationColor: Colors.blue.shade900,
-                    borderColor: Colors.transparent,
-                    textColor: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    ontap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BookMassage()));
-                    },
-                  )
-                ],
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          // Image container with reduced height
+          Container(
+            height: MediaQuery.of(context).size.height * imageHeightFactor,
+            width: MediaQuery.of(context).size.width,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('lib/assets/masaza.jpg'),
+                fit: BoxFit.cover,
               ),
             ),
           ),
-        ),
+          // Adjusted white container
+          Padding(
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * imageHeightFactor -
+                  containerOverlap,
+            ),
+            child: Container(
+              height:
+                  MediaQuery.of(context).size.height * (1 - imageHeightFactor) +
+                      containerOverlap,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(45),
+                  topRight: Radius.circular(45),
+                ),
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 36.0,
+                        top: 35,
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Massage",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 38,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          // Rating
+                          Row(
+                            children: [
+                              Text(
+                                "4.5",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Icon(Icons.star, color: Colors.yellow),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Divider(
+                            color: Colors.grey[400],
+                            thickness: 1,
+                            endIndent: 36,
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Text("Hotel Massage",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w800,
+                                  )),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Text(
+                                "Massage therapy offers rejuvenation for both body and \nmind. Skilled hands relieve tension and stress in a calming \nenvironment, using tailored techniques like Swedish or \ndeep tissue massage to enhance overall well-being.",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Divider(
+                            color: Colors.grey[400],
+                            thickness: 1,
+                            endIndent: 36,
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Text("Map",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w800,
+                                  )),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          // Map
+                          Padding(
+                            padding: EdgeInsets.only(right: 36),
+                            child: Container(
+                              height: 200,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                image: DecorationImage(
+                                  image: AssetImage('lib/assets/map.jpg'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 10,
+                          ),
+                          // Book now button
+                          Padding(
+                            padding: EdgeInsets.only(right: 36),
+                            child: MyButton(
+                              buttonText: "Book now!",
+                              height: 40,
+                              width: 300,
+                              decorationColor:
+                                  Theme.of(context).colorScheme.secondary,
+                              borderColor: Colors.transparent,
+                              textColor: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              icon: null,
+                              ontap: () {},
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
