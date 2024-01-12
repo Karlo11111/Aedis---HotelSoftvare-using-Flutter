@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
+import 'package:razvoj_sofvera/pages/services_pages/BookNow/book_now_spa.dart';
 
 class SpaScreen extends StatelessWidget {
   const SpaScreen({Key? key});
@@ -166,7 +167,13 @@ class SpaScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                               icon: null,
-                              ontap: () {},
+                              ontap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => BookSpa(),
+                                    ));
+                              },
                             ),
                           ),
                         ],

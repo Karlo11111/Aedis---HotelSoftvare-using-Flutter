@@ -34,11 +34,7 @@ class _BookMassageState extends State<BookMassage> {
   Map<DateTime, List<String>>? _availableTimeSlots;
   CollectionReference _timeSlotsCollection =
       FirebaseFirestore.instance.collection('MassageBookedTimeSlots');
-
-  //all users booked collection
-  CollectionReference _AllUsersBookedCollection =
-      FirebaseFirestore.instance.collection('AllUsersBooked');
-
+  //hashmap for cashing the time slots
   late Map<DateTime, List<String>>? _cachedTimeSlots = {};
 
   //variable for today
@@ -82,25 +78,21 @@ class _BookMassageState extends State<BookMassage> {
   Future<void> bookTimeSlot(String selectedTimeSlot) async {
     // Book a selected time slot if it's available
     if (_availableTimeSlots![_selectedDate]!.contains(selectedTimeSlot)) {
-      setState(() {
-        _availableTimeSlots![_selectedDate]!.remove(selectedTimeSlot);
-      });
+      if (mounted) {
+        setState(() {
+          _availableTimeSlots![_selectedDate]!.remove(selectedTimeSlot);
+        });
+      }
       // Update Firestore with the booking information and remove the booked time slot
       try {
         await _timeSlotsCollection
             .doc(_selectedDate.toLocal().toString())
-            .update({
+            .set({
           'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
-        });
-        //all users booked collection
-        await _AllUsersBookedCollection.doc(_selectedDate.toLocal().toString())
-            .update({
-          'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
-        });
+        }, SetOptions(merge: true));
       } catch (e) {
         print('Firestore update error: $e');
       }
-      //fetching the UserBookedMassage collection
       final userDocumentRef = FirebaseFirestore.instance
           .collection("UsersBookedMassage")
           .doc(user!.uid);
@@ -108,18 +100,12 @@ class _BookMassageState extends State<BookMassage> {
           .collection("AllUsersBooked")
           .doc(user!.uid);
 
-      // Fetch the existing data for the user
       final userDocumentSnapshot = await userDocumentRef.get();
-
       final AllUserDocumentSnapshot = await AllUserDocumentRef.get();
 
-      //check if the user document already exists
       if (userDocumentSnapshot.exists && AllUserDocumentSnapshot.exists) {
-        // Get the existing appointments for the user
         List<dynamic> existingAppointments =
             userDocumentSnapshot.get('MassageAppointments') ?? [];
-
-        // Filter the existing appointments for the selected date
         int appointmentsForSelectedDate =
             existingAppointments.where((appointment) {
           DateTime appointmentDate =
@@ -130,10 +116,7 @@ class _BookMassageState extends State<BookMassage> {
                   _selectedDate.year, _selectedDate.month, _selectedDate.day);
         }).length;
 
-        print(appointmentsForSelectedDate);
-
         if (appointmentsForSelectedDate < 3) {
-          // The user's document already exists, and there are fewer than 3 appointments for the selected date
           existingAppointments.add({
             'Name': myBox.get("username"),
             'Time': selectedTimeSlot,
@@ -141,28 +124,27 @@ class _BookMassageState extends State<BookMassage> {
             'TypeOfService': massageText,
             'ServicePrice': massagePrice,
           });
-          //check if the appointmentsForSelectedDate are 2 (it goes from 0) and if it is it sets the booking limit to true
           if (appointmentsForSelectedDate == 2) {
+            if (mounted) {
+              setState(() {
+                _bookingLimitReached[_selectedDate] = true;
+              });
+            }
+          }
+          await userDocumentRef
+              .set({'MassageAppointments': existingAppointments}, SetOptions(merge: true));
+          await AllUserDocumentRef.set(
+              {'MassageAppointments': existingAppointments}, SetOptions(merge: true));
+        } else {
+          if (mounted) {
             setState(() {
               _bookingLimitReached[_selectedDate] = true;
             });
           }
-
-          // Update the user's document with the updated appointments
-          await userDocumentRef
-              .update({'MassageAppointments': existingAppointments});
-          await AllUserDocumentRef.update(
-              {'MassageAppointments': existingAppointments});
-        } else {
-          // The user has reached the limit of 3 appointments for the selected date
-          setState(() {
-            _bookingLimitReached[_selectedDate] = true;
-          });
           print(
               'User has reached the limit of 2 appointments for the selected date.');
         }
       } else {
-        // Create a new user document with the appointment
         await userDocumentRef.set({
           'MassageAppointments': [
             {
@@ -372,41 +354,64 @@ class _BookMassageState extends State<BookMassage> {
                 HeaderStyle(titleCentered: true, formatButtonVisible: false),
           ),
           Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-              ),
-              itemCount: _availableTimeSlots![_selectedDate]?.length ?? 0,
-              itemBuilder: (context, index) {
-                //selected timeslot
-                final timeSlot = _availableTimeSlots![_selectedDate]![index];
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 80,
-                      width: 90,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(12)),
-                      //text button representing each timeslot
-                      child: TextButton(
-                        onPressed:
-                            (_bookingLimitReached[_selectedDate] ?? false)
-                                ? null
-                                : () {
-                                    displayAreYouSureBooking(timeSlot, () {
-                                      bookTimeSlot(timeSlot);
-                                      Navigator.pop(context);
-                                    }, () {
-                                      Navigator.pop(context);
-                                    });
-                                  },
-                        child: Text(timeSlot),
-                      ),
-                    ),
-                  ],
+            child: StreamBuilder<DocumentSnapshot>(
+              stream: _timeSlotsCollection
+                  .doc(_selectedDate.toLocal().toString())
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                }
+
+                if (!snapshot.hasData || !snapshot.data!.exists) {
+                  return Text('No time slots available');
+                }
+
+                // Correctly cast the data
+                Map<String, dynamic> data =
+                    snapshot.data!.data() as Map<String, dynamic>;
+
+                // Handle potential null or non-list values
+                var timeSlotsData = data['timeSlots'];
+                List<String> timeSlots = [];
+                if (timeSlotsData is List) {
+                  timeSlots = List<String>.from(timeSlotsData);
+                }
+
+                return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                  ),
+                  itemCount: timeSlots.length,
+                  itemBuilder: (context, index) {
+                    //selected timeslot
+                    final timeSlot = timeSlots[index];
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 80,
+                          width: 90,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black),
+                              borderRadius: BorderRadius.circular(12)),
+                          //text button representing each timeslot
+                          child: TextButton(
+                            onPressed:
+                                (_bookingLimitReached[_selectedDate] ?? false)
+                                    ? null
+                                    : () {
+                                        displayAreYouSureBooking(timeSlot, () {
+                                          bookTimeSlot(timeSlot);
+                                        }, () {});
+                                      },
+                            child: Text(timeSlot),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 );
               },
             ),

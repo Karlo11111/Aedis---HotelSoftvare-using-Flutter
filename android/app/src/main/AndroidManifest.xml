@@ -5,6 +5,7 @@
         android:label="razvoj_sofvera"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
+        android:enableOnBackInvokedCallback="true"
         tools:replace="android:label">        
         <activity
             android:name=".MainActivity"

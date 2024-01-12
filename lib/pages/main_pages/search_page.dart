@@ -44,12 +44,14 @@ class _SearchPageState extends State<SearchPage> {
                       .doc(user!.uid)
                       .snapshots(),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData) {
+                    if (snapshot.hasData && snapshot.data!.data() != null) {
                       var userData = snapshot.data!.data();
+
+                      List<dynamic> allAppointments = [];
 
                       if (userData == null ||
                           (!userData.containsKey('MassageAppointments') &&
-                              !userData.containsKey('SpaAppointments'))) {
+                              !userData.containsKey('SpaAppointments') && !userData.containsKey("DivingSessionAppointments"))) {
                         return (Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -68,14 +70,38 @@ class _SearchPageState extends State<SearchPage> {
                         ));
                       }
 
-                      List<dynamic> allAppointments = [];
-
-                      if (userData.containsKey('MassageAppointments')) {
+                      if (userData.containsKey('MassageAppointments') &&
+                          userData['MassageAppointments'] is List) {
                         allAppointments.addAll(userData['MassageAppointments']);
                       }
 
-                      if (userData.containsKey('SpaAppointments')) {
+                      if (userData.containsKey('DivingSessionAppointments') &&
+                          userData['DivingSessionAppointments'] is List) {
+                        allAppointments.addAll(userData['DivingSessionAppointments']);
+                      }
+
+                      if (userData.containsKey('SpaAppointments') &&
+                          userData['SpaAppointments'] is List) {
                         allAppointments.addAll(userData['SpaAppointments']);
+                      }
+                      // Check if there are no appointments at all
+                      if (allAppointments.isEmpty) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.cancel_presentation_outlined,
+                              color: Theme.of(context).colorScheme.primary,
+                              size: 70,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.appointments,
+                              style: GoogleFonts.inter(
+                                  fontSize: 25,
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                          ],
+                        );
                       }
 
                       // Sort the appointments by date

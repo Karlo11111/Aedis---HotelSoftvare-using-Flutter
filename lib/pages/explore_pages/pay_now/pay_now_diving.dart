@@ -1,14 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 
 class DivingPayNow extends StatefulWidget {
-  const DivingPayNow({super.key});
+  final DateTime checkInDate;
+  const DivingPayNow({super.key, required this.checkInDate});
 
   @override
   State<DivingPayNow> createState() => _DivingPayNowState();
@@ -16,12 +15,11 @@ class DivingPayNow extends StatefulWidget {
 
 class _DivingPayNowState extends State<DivingPayNow> {
   int _counter = 0;
-  @override
+ @override
   void initState() {
     super.initState();
-    fetchUserDateOfBooking();
+    _dateController.text = DateFormat('yyyy-MM-dd').format(widget.checkInDate);
   }
-
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -39,33 +37,6 @@ class _DivingPayNowState extends State<DivingPayNow> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _healthIssuesController = TextEditingController();
-
-  Future<void> fetchUserDateOfBooking() async {
-    User? user = FirebaseAuth.instance.currentUser;
-    try {
-      var userDocumentSnapshot = await FirebaseFirestore.instance
-          .collection("UsersBookedDivingSession")
-          .doc(user!.uid)
-          .get();
-      if (userDocumentSnapshot.exists) {
-        //hashmap holding data
-        Map<String, dynamic> data =
-            userDocumentSnapshot.data() as Map<String, dynamic>;
-        List<dynamic> divingSessionAppointments =
-            data['DivingSessionAppointments'] ?? [];
-
-        if (divingSessionAppointments.isNotEmpty) {
-          DateTime dateOfBooking =
-              (divingSessionAppointments.last['DateOfBooking'] as Timestamp)
-                  .toDate();
-          
-          _dateController.text = DateFormat('yyyy-MM-dd').format(dateOfBooking);
-        }
-      }
-    } catch (e) {
-      print("Error fetching data $e");
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
