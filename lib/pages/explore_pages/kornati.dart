@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/book_now/book_now_kornati.dart';
 
 class KornatiScreen extends StatelessWidget {
   const KornatiScreen({Key? key});
@@ -165,7 +166,13 @@ class KornatiScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                               icon: null,
-                              ontap: () {},
+                              ontap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            BookNowKornati()));
+                              },
                             ),
                           ),
                         ],

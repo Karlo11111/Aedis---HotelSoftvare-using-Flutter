@@ -5,15 +5,15 @@ import 'package:intl/intl.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 
-class DivingPayNow extends StatefulWidget {
+class KornatiPayNow extends StatefulWidget {
   final DateTime checkInDate;
-  const DivingPayNow({super.key, required this.checkInDate});
+  const KornatiPayNow({super.key, required this.checkInDate});
 
   @override
-  State<DivingPayNow> createState() => _DivingPayNowState();
+  State<KornatiPayNow> createState() => _KornatiPayNowState();
 }
 
-class _DivingPayNowState extends State<DivingPayNow> {
+class _KornatiPayNowState extends State<KornatiPayNow> {
   int _counter = 1;
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _DivingPayNowState extends State<DivingPayNow> {
             width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/assets/diving.jpg'),
+                image: AssetImage('lib/assets/kornati.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -83,7 +83,7 @@ class _DivingPayNowState extends State<DivingPayNow> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Diving",
+                        "Trip to Kornati",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 30,
@@ -94,7 +94,7 @@ class _DivingPayNowState extends State<DivingPayNow> {
                       Row(
                         children: [
                           Text(
-                            "Rating: 4.7",
+                            "Rating: 4.5",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
@@ -107,7 +107,7 @@ class _DivingPayNowState extends State<DivingPayNow> {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "Guide: Antonio Kocijan",
+                        "Guide: Božidar Klarić",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 20,

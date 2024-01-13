@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:razvoj_sofvera/pages/services_pages/pay_now/pay_now_massage.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class BookMassage extends StatefulWidget {
@@ -85,9 +86,7 @@ class _BookMassageState extends State<BookMassage> {
       }
       // Update Firestore with the booking information and remove the booked time slot
       try {
-        await _timeSlotsCollection
-            .doc(_selectedDate.toLocal().toString())
-            .set({
+        await _timeSlotsCollection.doc(_selectedDate.toLocal().toString()).set({
           'timeSlots': FieldValue.arrayRemove([selectedTimeSlot]),
         }, SetOptions(merge: true));
       } catch (e) {
@@ -131,10 +130,12 @@ class _BookMassageState extends State<BookMassage> {
               });
             }
           }
-          await userDocumentRef
-              .set({'MassageAppointments': existingAppointments}, SetOptions(merge: true));
+          await userDocumentRef.set(
+              {'MassageAppointments': existingAppointments},
+              SetOptions(merge: true));
           await AllUserDocumentRef.set(
-              {'MassageAppointments': existingAppointments}, SetOptions(merge: true));
+              {'MassageAppointments': existingAppointments},
+              SetOptions(merge: true));
         } else {
           if (mounted) {
             setState(() {
@@ -299,7 +300,10 @@ class _BookMassageState extends State<BookMassage> {
                                         MaterialStatePropertyAll(Colors.black),
                                     textStyle: MaterialStatePropertyAll(
                                         TextStyle(fontSize: 15))),
-                                onPressed: onTapCancel,
+                                onPressed: () {
+                                  if (onTapCancel != null) onTapCancel();
+                                  Navigator.pop(context);
+                                },
                                 child: Text("No, cancel"))),
                         SizedBox(width: 5),
 
@@ -317,7 +321,10 @@ class _BookMassageState extends State<BookMassage> {
                                         MaterialStatePropertyAll(Colors.black),
                                     textStyle: MaterialStatePropertyAll(
                                         TextStyle(fontSize: 15))),
-                                onPressed: onTap,
+                                onPressed: () {
+                                  if (onTap != null) onTap();
+                                  Navigator.pop(context);
+                                },
                                 child: Text("Yes I'm sure"))),
                       ],
                     )
@@ -398,14 +405,21 @@ class _BookMassageState extends State<BookMassage> {
                               borderRadius: BorderRadius.circular(12)),
                           //text button representing each timeslot
                           child: TextButton(
-                            onPressed:
-                                (_bookingLimitReached[_selectedDate] ?? false)
-                                    ? null
-                                    : () {
-                                        displayAreYouSureBooking(timeSlot, () {
-                                          bookTimeSlot(timeSlot);
-                                        }, () {});
-                                      },
+                            onPressed: (_bookingLimitReached[_selectedDate] ??
+                                    false)
+                                ? null
+                                : () {
+                                    displayAreYouSureBooking(timeSlot, () {
+                                      bookTimeSlot(timeSlot);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MassagePayNow(
+                                                    checkInDate: _selectedDate,
+                                                  )));
+                                    }, () {});
+                                  },
                             child: Text(timeSlot),
                           ),
                         ),

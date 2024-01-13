@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
-import 'package:razvoj_sofvera/pages/services_pages/BookNow/book_now_spa.dart';
+import 'package:razvoj_sofvera/pages/services_pages/book_now/book_now_spa.dart';
 
 class SpaScreen extends StatelessWidget {
   const SpaScreen({Key? key});

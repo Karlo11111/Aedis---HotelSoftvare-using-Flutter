@@ -51,7 +51,10 @@ class _SearchPageState extends State<SearchPage> {
 
                       if (userData == null ||
                           (!userData.containsKey('MassageAppointments') &&
-                              !userData.containsKey('SpaAppointments') && !userData.containsKey("DivingSessionAppointments"))) {
+                              !userData.containsKey('SpaAppointments') &&
+                              !userData
+                                  .containsKey("DivingSessionAppointments") &&
+                              !userData.containsKey('KornatiAppointments'))) {
                         return (Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -77,7 +80,13 @@ class _SearchPageState extends State<SearchPage> {
 
                       if (userData.containsKey('DivingSessionAppointments') &&
                           userData['DivingSessionAppointments'] is List) {
-                        allAppointments.addAll(userData['DivingSessionAppointments']);
+                        allAppointments
+                            .addAll(userData['DivingSessionAppointments']);
+                      }
+
+                      if (userData.containsKey('KornatiAppointments') &&
+                          userData['KornatiAppointments'] is List) {
+                        allAppointments.addAll(userData['KornatiAppointments']);
                       }
 
                       if (userData.containsKey('SpaAppointments') &&

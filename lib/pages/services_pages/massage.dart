@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
-import 'package:razvoj_sofvera/pages/services_pages/BookNow/book_now_massage.dart';
+import 'package:razvoj_sofvera/pages/services_pages/book_now/book_now_massage.dart';
 
 class MassageScreen extends StatelessWidget {
   const MassageScreen({Key? key});
@@ -157,20 +157,23 @@ class MassageScreen extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(right: 36),
                             child: MyButton(
-                              buttonText: "Book now!",
-                              height: 40,
-                              width: 300,
-                              decorationColor:
-                                  Theme.of(context).colorScheme.secondary,
-                              borderColor: Colors.transparent,
-                              textColor: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              icon: null,
-                              ontap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => BookMassage(),));
-                              }
-                            ),
+                                buttonText: "Book now!",
+                                height: 40,
+                                width: 300,
+                                decorationColor:
+                                    Theme.of(context).colorScheme.secondary,
+                                borderColor: Colors.transparent,
+                                textColor: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                icon: null,
+                                ontap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BookMassage(),
+                                      ));
+                                }),
                           ),
                         ],
                       ),

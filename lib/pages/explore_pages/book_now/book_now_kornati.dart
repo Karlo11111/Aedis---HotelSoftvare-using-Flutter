@@ -4,21 +4,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/pay_now/pay_now_diving.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/pay_now/pay_now_kornati.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class BookSpa extends StatefulWidget {
-  const BookSpa({super.key});
+class BookNowKornati extends StatefulWidget {
+  const BookNowKornati({super.key});
 
   @override
-  State<BookSpa> createState() => _BookSpaState();
+  State<BookNowKornati> createState() => _BookNowKornatiState();
 }
 
-class _BookSpaState extends State<BookSpa> {
-  //string for massage
-  String massageText = "Spa";
+class _BookNowKornatiState extends State<BookNowKornati> {
+  //string for kornati
+  String Kornati = "Traveling to Kornati";
 
-  //double for massage price
-  double spaPrice = 50;
+  //double for kornati price
+  double KornatiPrice = 100;
 
   //map for checking if the booking limit is reached, takes a datetime and a bool
   Map<DateTime, bool> _bookingLimitReached = {};
@@ -33,8 +35,8 @@ class _BookSpaState extends State<BookSpa> {
   late DateTime _selectedDate;
   Map<DateTime, List<String>>? _availableTimeSlots;
   CollectionReference _timeSlotsCollection =
-      FirebaseFirestore.instance.collection('SpaBookedTimeSlots');
-      
+      FirebaseFirestore.instance.collection('KornatiBookedTimeSlots');
+
   //hashmap for cashing the time slots
   late Map<DateTime, List<String>>? _cachedTimeSlots = {};
 
@@ -48,6 +50,7 @@ class _BookSpaState extends State<BookSpa> {
     // Set the selected date to now and fetch the available time slots
     _selectedDate = DateTime.now();
     _availableTimeSlots = {};
+    //_availableTimeSlots![_selectedDate] = generateAvailableTimeSlotsx();
   }
 
   List<String> generateAvailableTimeSlots(DateTime selectedDate) {
@@ -92,7 +95,7 @@ class _BookSpaState extends State<BookSpa> {
         print('Firestore update error: $e');
       }
       final userDocumentRef = FirebaseFirestore.instance
-          .collection("UsersBookedSpa")
+          .collection("UsersBookedKornati")
           .doc(user!.uid);
       final AllUserDocumentRef = FirebaseFirestore.instance
           .collection("AllUsersBooked")
@@ -103,7 +106,7 @@ class _BookSpaState extends State<BookSpa> {
 
       if (userDocumentSnapshot.exists && AllUserDocumentSnapshot.exists) {
         List<dynamic> existingAppointments =
-            userDocumentSnapshot.get('SpaAppointments') ?? [];
+            userDocumentSnapshot.get('KornatiAppointments') ?? [];
         int appointmentsForSelectedDate =
             existingAppointments.where((appointment) {
           DateTime appointmentDate =
@@ -119,8 +122,8 @@ class _BookSpaState extends State<BookSpa> {
             'Name': myBox.get("username"),
             'Time': selectedTimeSlot,
             'DateOfBooking': _selectedDate,
-            'TypeOfService': massageText,
-            'ServicePrice': spaPrice,
+            'TypeOfService': Kornati,
+            'ServicePrice': KornatiPrice,
           });
           if (appointmentsForSelectedDate == 2) {
             if (mounted) {
@@ -129,10 +132,11 @@ class _BookSpaState extends State<BookSpa> {
               });
             }
           }
-          await userDocumentRef.set({'SpaAppointments': existingAppointments},
+          await userDocumentRef.set(
+              {'KornatiAppointments': existingAppointments},
               SetOptions(merge: true));
           await AllUserDocumentRef.set(
-              {'SpaAppointments': existingAppointments},
+              {'KornatiAppointments': existingAppointments},
               SetOptions(merge: true));
         } else {
           if (mounted) {
@@ -145,24 +149,24 @@ class _BookSpaState extends State<BookSpa> {
         }
       } else {
         await userDocumentRef.set({
-          'SpaAppointments': [
+          'KornatiAppointments': [
             {
               'Name': myBox.get("username"),
               'Time': selectedTimeSlot,
               'DateOfBooking': _selectedDate,
-              'TypeOfService': massageText,
-              'ServicePrice': spaPrice,
+              'TypeOfService': Kornati,
+              'ServicePrice': KornatiPrice,
             }
           ],
         });
         await AllUserDocumentRef.set({
-          'SpaAppointments': [
+          'KornatiAppointments': [
             {
               'Name': myBox.get("username"),
               'Time': selectedTimeSlot,
               'DateOfBooking': _selectedDate,
-              'TypeOfService': massageText,
-              'ServicePrice': spaPrice,
+              'TypeOfService': Kornati,
+              'ServicePrice': KornatiPrice,
             }
           ],
         });
@@ -214,7 +218,7 @@ class _BookSpaState extends State<BookSpa> {
 
     // Check if the user has reached the booking limit for the selected date
     final userDocumentRef =
-        FirebaseFirestore.instance.collection("UsersBookedSpa").doc(user!.uid);
+        FirebaseFirestore.instance.collection("UsersKornati").doc(user!.uid);
 
     // Fetch the existing data for the user
     final userDocumentSnapshot = await userDocumentRef.get();
@@ -222,7 +226,7 @@ class _BookSpaState extends State<BookSpa> {
     if (userDocumentSnapshot.exists) {
       // Get the existing appointments for the user
       List<dynamic> existingAppointments =
-          userDocumentSnapshot.get('SpaAppointments') ?? [];
+          userDocumentSnapshot.get('Kornati') ?? [];
 
       // Filter the existing appointments for the selected date
       int appointmentsForSelectedDate =
@@ -234,13 +238,11 @@ class _BookSpaState extends State<BookSpa> {
             DateTime(
                 _selectedDate.year, _selectedDate.month, _selectedDate.day);
       }).length;
-
       if (appointmentsForSelectedDate >= 3) {
         // The user has reached the limit of 3 appointments for the selected date
         setState(() {
           _bookingLimitReached[_selectedDate] = true;
         });
-
         // Show alert dialog
         showDialog(
           context: context,
@@ -277,7 +279,8 @@ class _BookSpaState extends State<BookSpa> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Text("Are you sure you want to book a Spa at $timeSlot"),
+                    Text(
+                        "Are you sure you want to book a Trip to Kornati Session at $timeSlot"),
                     SizedBox(height: 40),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -296,7 +299,10 @@ class _BookSpaState extends State<BookSpa> {
                                         MaterialStatePropertyAll(Colors.black),
                                     textStyle: MaterialStatePropertyAll(
                                         TextStyle(fontSize: 15))),
-                                onPressed: onTapCancel,
+                                onPressed: () {
+                                  if (onTapCancel != null) onTapCancel();
+                                  Navigator.pop(context); // Close the dialog
+                                },
                                 child: Text("No, cancel"))),
                         SizedBox(width: 5),
 
@@ -314,7 +320,10 @@ class _BookSpaState extends State<BookSpa> {
                                         MaterialStatePropertyAll(Colors.black),
                                     textStyle: MaterialStatePropertyAll(
                                         TextStyle(fontSize: 15))),
-                                onPressed: onTap,
+                                onPressed: () {
+                                  if (onTap != null) onTap();
+                                  Navigator.pop(context); // Close the dialog
+                                },
                                 child: Text("Yes I'm sure"))),
                       ],
                     )
@@ -331,7 +340,7 @@ class _BookSpaState extends State<BookSpa> {
       appBar: AppBar(
         backgroundColor: Colors.grey.shade300,
         foregroundColor: Colors.black,
-        title: Text("Book Your Spa"),
+        title: Text("Book Your Trip to Kornati "),
         centerTitle: true,
         elevation: 0,
       ),
@@ -401,6 +410,13 @@ class _BookSpaState extends State<BookSpa> {
                                     : () {
                                         displayAreYouSureBooking(timeSlot, () {
                                           bookTimeSlot(timeSlot);
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      KornatiPayNow(
+                                                          checkInDate:
+                                                              _selectedDate)));
                                         }, () {});
                                       },
                             child: Text(timeSlot),
