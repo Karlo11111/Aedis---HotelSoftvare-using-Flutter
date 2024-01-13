@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/pages/explore_pages/diving.dart';
+import 'package:razvoj_sofvera/pages/explore_pages/kornati.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class SeeAllExplore extends StatefulWidget {
@@ -150,7 +151,13 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                                     buttonText: "Book now!",
                                     height: 30,
                                     width: 100,
-                                    ontap: () {},
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  KornatiScreen()));
+                                    },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                     borderColor: Colors.transparent,

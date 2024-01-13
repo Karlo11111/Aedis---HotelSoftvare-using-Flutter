@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class KeyCard extends StatefulWidget {
   final double height;
@@ -12,8 +12,8 @@ class KeyCard extends StatefulWidget {
   const KeyCard({
     required this.height,
     required this.topView,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<KeyCard> createState() => _KeyCardState();
@@ -48,18 +48,39 @@ class _KeyCardState extends State<KeyCard> {
                     Center(
                       child: Container(
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Color.fromARGB(255, 118, 144, 175),
-                            image: DecorationImage(
-                                image: AssetImage('lib/assets/keyCard.jpg'),
-                                fit: BoxFit.cover)),
+                            borderRadius: BorderRadius.circular(24),
+                            gradient: LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color.fromRGBO(48, 88, 150, 1),
+                                  Color(0xCC1BFFFF),
+                                ])),
+                      ),
+                    ),
+                    Positioned(
+                      top: 20,
+                      left: 20,
+                      child: Row(
+                        children: [
+                          Icon(Icons.vpn_key_rounded, color: Colors.white),
+                          SizedBox(width: 10),
+                          Text(
+                            "Door number: 512",
+                            style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     Center(
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: FaIcon(
-                          FontAwesomeIcons.nfcSymbol,
+                          FontAwesomeIcons.house,
                           size: 50,
                           color: Colors.white,
                         ),

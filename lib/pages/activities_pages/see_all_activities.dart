@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
+import 'package:razvoj_sofvera/pages/activities_pages/breakfast.dart';
+import 'package:razvoj_sofvera/pages/activities_pages/dinner.dart';
+import 'package:razvoj_sofvera/pages/activities_pages/lunch.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class AllActivities extends StatefulWidget {
@@ -71,7 +74,13 @@ class _AllActivitiesState extends State<AllActivities> {
                                     buttonText: "Click to see more!",
                                     height: 35,
                                     width: 150,
-                                    ontap: () {},
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Breakfast()));
+                                    },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                     borderColor: Colors.transparent,
@@ -98,7 +107,12 @@ class _AllActivitiesState extends State<AllActivities> {
                                     buttonText: "Click to see more!",
                                     height: 35,
                                     width: 150,
-                                    ontap: () {},
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Lunch()));
+                                    },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                     borderColor: Colors.transparent,
@@ -125,7 +139,12 @@ class _AllActivitiesState extends State<AllActivities> {
                                     buttonText: "Click to see more!",
                                     height: 35,
                                     width: 150,
-                                    ontap: () {},
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Dinner()));
+                                    },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                     borderColor: Colors.transparent,

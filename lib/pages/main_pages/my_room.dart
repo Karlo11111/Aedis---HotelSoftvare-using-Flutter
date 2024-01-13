@@ -117,12 +117,7 @@ class _MyRoomState extends State<MyRoom> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(isDarkMode
-                    ? 'lib/assets/darkBackground.jpg'
-                    : 'lib/assets/lightBackground.jpg'),
-                fit: BoxFit.cover)),
+        color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(left: 25.0, right: 25, top: 25),
@@ -149,10 +144,11 @@ class _MyRoomState extends State<MyRoom> {
                         children: [
                           //welcome to your room text
                           Text(
-                            AppLocalizations.of(context)!
-                                .room_welcome(myBox.get('username')),
+                            "Your Room",
                             style: GoogleFonts.inter(
-                                fontSize: 26, fontWeight: FontWeight.w700),
+                                fontSize: 26,
+                                fontWeight: FontWeight.w700,
+                                color: Theme.of(context).colorScheme.secondary),
                           ),
 
                           //sized box
@@ -160,10 +156,21 @@ class _MyRoomState extends State<MyRoom> {
 
                           //room key text
                           Text(
-                            AppLocalizations.of(context)!.room_key,
+                            "Room Key",
                             style: GoogleFonts.inter(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.secondary),
                           ),
+
+                          SizedBox(height: 10),
+
+                          Text("Tap the key and lean on the door",
+                              style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary)),
                         ],
                       ),
                     ),

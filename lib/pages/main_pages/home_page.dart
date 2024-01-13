@@ -9,6 +9,9 @@ import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/my_container.dart';
+import 'package:razvoj_sofvera/pages/activities_pages/breakfast.dart';
+import 'package:razvoj_sofvera/pages/activities_pages/dinner.dart';
+import 'package:razvoj_sofvera/pages/activities_pages/lunch.dart';
 import 'package:razvoj_sofvera/pages/activities_pages/see_all_activities.dart';
 import 'package:razvoj_sofvera/pages/explore_pages/diving.dart';
 import 'package:razvoj_sofvera/pages/explore_pages/kornati.dart';
@@ -406,7 +409,7 @@ class _HomePageState extends State<HomePage> {
                     height: 20,
                   ),
 
-                  //services cards
+                  //avices cards
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -618,7 +621,12 @@ class _HomePageState extends State<HomePage> {
                                   buttonText: "Click to see more!",
                                   height: 35,
                                   width: 150,
-                                  ontap: () {},
+                                  ontap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Breakfast()));
+                                  },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
@@ -644,7 +652,12 @@ class _HomePageState extends State<HomePage> {
                                   buttonText: "Click to see more!",
                                   height: 35,
                                   width: 150,
-                                  ontap: () {},
+                                  ontap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Lunch()));
+                                  },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,
@@ -670,7 +683,12 @@ class _HomePageState extends State<HomePage> {
                                   buttonText: "Click to see more!",
                                   height: 35,
                                   width: 150,
-                                  ontap: () {},
+                                  ontap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Dinner()));
+                                  },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                   borderColor: Colors.transparent,

@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/InfoContainer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
+import 'package:razvoj_sofvera/pages/services_pages/massage.dart';
+import 'package:razvoj_sofvera/pages/services_pages/spa.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class AllServices extends StatefulWidget {
@@ -86,7 +88,13 @@ class _AllServicesState extends State<AllServices> {
                                     buttonText: "Book now!",
                                     height: 30,
                                     width: 100,
-                                    ontap: () {},
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MassageScreen()));
+                                    },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                     borderColor: Colors.transparent,
@@ -138,7 +146,13 @@ class _AllServicesState extends State<AllServices> {
                                     buttonText: "Book now!",
                                     height: 30,
                                     width: 100,
-                                    ontap: () {},
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SpaScreen()));
+                                    },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                     borderColor: Colors.transparent,

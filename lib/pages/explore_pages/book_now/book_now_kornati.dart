@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:razvoj_sofvera/pages/explore_pages/pay_now/pay_now_diving.dart';
+
 import 'package:razvoj_sofvera/pages/explore_pages/pay_now/pay_now_kornati.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -117,7 +117,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
                   _selectedDate.year, _selectedDate.month, _selectedDate.day);
         }).length;
 
-        if (appointmentsForSelectedDate < 3) {
+        if (appointmentsForSelectedDate < 1) {
           existingAppointments.add({
             'Name': myBox.get("username"),
             'Time': selectedTimeSlot,
@@ -125,7 +125,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
             'TypeOfService': Kornati,
             'ServicePrice': KornatiPrice,
           });
-          if (appointmentsForSelectedDate == 2) {
+          if (appointmentsForSelectedDate == 0) {
             if (mounted) {
               setState(() {
                 _bookingLimitReached[_selectedDate] = true;
@@ -145,7 +145,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
             });
           }
           print(
-              'User has reached the limit of 2 appointments for the selected date.');
+              'User has reached the limit of 1 appointments for the selected date.');
         }
       } else {
         await userDocumentRef.set({
@@ -238,8 +238,8 @@ class _BookNowKornatiState extends State<BookNowKornati> {
             DateTime(
                 _selectedDate.year, _selectedDate.month, _selectedDate.day);
       }).length;
-      if (appointmentsForSelectedDate >= 3) {
-        // The user has reached the limit of 3 appointments for the selected date
+      if (appointmentsForSelectedDate >= 1) {
+        // The user has reached the limit of 1 appointments for the selected date
         setState(() {
           _bookingLimitReached[_selectedDate] = true;
         });
