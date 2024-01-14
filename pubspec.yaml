@@ -96,11 +96,6 @@ flutter:
     - lib/assets/Lunch.jpg
     - lib/assets/Dinner.jpg
     - lib/assets/Tennis.jpg
-    - lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png
-    - lib/assets/409349-middle.png
-    - lib/assets/lightBackground.jpg
-    - lib/assets/darkBackground.jpg
-    - lib/assets/keyCard.jpg
     - lib/assets/WelcomeToAedisPic.jpg
     - lib/assets/WelcomeToAedisPic1.jpg
     - lib/assets/zadar.jpg
@@ -108,6 +103,10 @@ flutter:
     - lib/assets/signInBackground.png
     - lib/assets/kornati.jpg
     - lib/assets/map.jpg
+    - lib/assets/bedroom.jpg
+    - lib/assets/bathroom.jpg
+    - lib/assets/living_room.jpg
+    - lib/assets/kitchen.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

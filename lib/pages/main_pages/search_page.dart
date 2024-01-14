@@ -28,12 +28,7 @@ class _SearchPageState extends State<SearchPage> {
     bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(isDarkMode
-                    ? 'lib/assets/darkBackground.jpg'
-                    : 'lib/assets/lightBackground.jpg'),
-                fit: BoxFit.cover)),
+        color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
         child: Center(
           child: Column(
             children: [

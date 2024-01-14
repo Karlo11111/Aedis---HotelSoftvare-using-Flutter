@@ -31,11 +31,11 @@ class _KeyCardState extends State<KeyCard> {
       child: Stack(
         children: [
           BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
             child: widget.topView,
           ),
           AnimatedAlign(
-            duration: const Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 1500),
             curve: Curves.fastLinearToSlowEaseIn,
             alignment:
                 isExpanded ? Alignment.topCenter : Alignment.bottomCenter,
@@ -48,14 +48,15 @@ class _KeyCardState extends State<KeyCard> {
                     Center(
                       child: Container(
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
-                            gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Color.fromRGBO(48, 88, 150, 1),
-                                  Color(0xCC1BFFFF),
-                                ])),
+                          borderRadius: BorderRadius.circular(24),
+                          gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                Color.fromRGBO(48, 88, 150, 1),
+                                Color.fromARGB(80, 27, 255, 255)
+                              ]),
+                        ),
                       ),
                     ),
                     Positioned(
@@ -80,7 +81,7 @@ class _KeyCardState extends State<KeyCard> {
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: FaIcon(
-                          FontAwesomeIcons.house,
+                          FontAwesomeIcons.nfcSymbol,
                           size: 50,
                           color: Colors.white,
                         ),

@@ -15,16 +15,16 @@ class KeyCardDialog extends StatefulWidget {
 }
 
 class _KeyCardDialogState extends State<KeyCardDialog> {
+  final animationDuration = Duration(seconds: 1);
+
   bool hasSlid = false;
 
-  void slider() {
-    setState(() {
-      hasSlid = !hasSlid;
-    });
-  }
+  void slider() => setState(() => hasSlid = !hasSlid);
 
-  void exit() {
-    Navigator.of(context).pop();
+  void exit() async {
+    setState(() => hasSlid = !hasSlid);
+    await Future.delayed(animationDuration);
+    if (mounted) Navigator.of(context).pop();
     widget.onComplete();
   }
 
@@ -58,13 +58,13 @@ class _KeyCardDialogState extends State<KeyCardDialog> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 50, left: 25, right: 25),
-                    child: Container(
-                      height: 380,
+                    child: SizedBox(
+                      height: 340,
                       child: AnimatedAlign(
                         alignment: hasSlid
                             ? Alignment.topCenter
                             : Alignment.bottomCenter,
-                        duration: Duration(milliseconds: 1000),
+                        duration: animationDuration,
                         curve: Curves.easeOutCubic,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
@@ -76,16 +76,15 @@ class _KeyCardDialogState extends State<KeyCardDialog> {
                                 Center(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius: BorderRadius.circular(24),
                                         color:
                                             Color.fromARGB(255, 118, 144, 175),
                                         gradient: LinearGradient(
-                                            begin: Alignment.topRight,
-                                            end: Alignment.bottomLeft,
+                                            begin: Alignment.centerLeft,
+                                            end: Alignment.centerRight,
                                             colors: [
-                                              Color.fromARGB(255, 232, 93, 66),
-                                              Color.fromARGB(
-                                                  255, 197, 197, 196),
+                                              Color.fromRGBO(48, 88, 150, 1),
+                                              Color(0xCC1BFFFF),
                                             ])),
                                   ),
                                 ),

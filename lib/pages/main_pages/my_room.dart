@@ -1,18 +1,20 @@
-// ignore_for_file: avoid_print, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
+// ignore_for_file: avoid_print, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 import 'dart:async';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
-import 'package:razvoj_sofvera/Utilities/devices_container.dart';
+
 import 'package:razvoj_sofvera/Utilities/key_card.dart';
 import 'package:razvoj_sofvera/Utilities/key_card_dialog.dart';
-import 'package:razvoj_sofvera/Utilities/rooms_container.dart';
+
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:razvoj_sofvera/Utilities/room_card.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class MyRoom extends StatefulWidget {
@@ -119,12 +121,13 @@ class _MyRoomState extends State<MyRoom> {
         width: MediaQuery.of(context).size.width,
         color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
         child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(left: 25.0, right: 25, top: 25),
-            child: SafeArea(
-                child: Column(
+          child: SafeArea(
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 10),
                 //room key container
                 InkWell(
                   onTap: () {
@@ -137,155 +140,152 @@ class _MyRoomState extends State<MyRoom> {
                   },
                   child: Opacity(
                     opacity: usingKey ? 0 : 1,
-                    child: KeyCard(
-                      height: 380,
-                      topView: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //welcome to your room text
-                          Text(
-                            "Your Room",
-                            style: GoogleFonts.inter(
-                                fontSize: 26,
-                                fontWeight: FontWeight.w700,
-                                color: Theme.of(context).colorScheme.secondary),
-                          ),
-
-                          //sized box
-                          SizedBox(height: 20),
-
-                          //room key text
-                          Text(
-                            "Room Key",
-                            style: GoogleFonts.inter(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).colorScheme.secondary),
-                          ),
-
-                          SizedBox(height: 10),
-
-                          Text("Tap the key and lean on the door",
+                    child: Container(
+                      child: KeyCard(
+                        height: 420,
+                        topView: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // your room text
+                            Text(
+                              "Your Room",
                               style: GoogleFonts.inter(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.w700,
                                   color:
-                                      Theme.of(context).colorScheme.secondary)),
-                        ],
+                                      Theme.of(context).colorScheme.secondary),
+                            ),
+
+                            //sized box
+                            SizedBox(height: 20),
+
+                            //room key text
+                            Container(
+                              height: 75,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(24),
+                                  color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 15.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Room Key",
+                                      style: GoogleFonts.inter(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary),
+                                    ),
+                                    Text(
+                                        "Touch the NFC sign with your mobile phone",
+                                        style: GoogleFonts.inter(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary)),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-                //sized box
-                SizedBox(height: 10),
 
-                //room key text
-                Text(
-                  AppLocalizations.of(context)!.rooms,
-                  style: GoogleFonts.inter(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                //sized box
+
+                SizedBox(height: 20),
+
+                //your rooms container
+                Container(
+                  height: 75,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(24),
+                      color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Your Rooms",
+                          style: GoogleFonts.inter(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.secondary),
+                        ),
+                        Text("Select room to control smart devices",
+                            style: GoogleFonts.inter(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color:
+                                    Theme.of(context).colorScheme.secondary)),
+                      ],
+                    ),
+                  ),
                 ),
 
-                //sized box
-                SizedBox(height: 10),
+                SizedBox(height: 20),
 
-                //scrollable list of rooms (living room, bathroom, kitchen)
+                //your rooms container
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      MyRoomContainer(
-                        name: AppLocalizations.of(context)!.living_room,
-                        icon: FaIcon(
-                          FontAwesomeIcons.couch,
-                          size: 45,
-                          color: Color.fromARGB(255, 118, 144, 175),
-                        ),
+                      //bedroom
+                      RoomCard(
+                        title: "Bedroom",
+                        picture: "lib/assets/bedroom.jpg",
+                        icon: Ionicons.bed,
+                        onTap: () {},
                       ),
-                      //sized box
-                      SizedBox(width: 10),
 
-                      MyRoomContainer(
-                        name: AppLocalizations.of(context)!.bedroom,
-                        icon: FaIcon(
-                          FontAwesomeIcons.bed,
-                          size: 45,
-                          color: Color.fromARGB(255, 118, 144, 175),
-                        ),
+                      SizedBox(width: 20),
+
+                      //bathroom
+                      RoomCard(
+                        title: "Bathroom",
+                        picture: "lib/assets/bathroom.jpg",
+                        icon: Icons.shower,
+                        onTap: () {},
                       ),
-                      //sized box
-                      SizedBox(width: 10),
 
-                      MyRoomContainer(
-                        name: AppLocalizations.of(context)!.kitchen,
-                        icon: FaIcon(
-                          FontAwesomeIcons.kitchenSet,
-                          size: 45,
-                          color: Color.fromARGB(255, 118, 144, 175),
-                        ),
+                      SizedBox(width: 20),
+
+                      //living room
+
+                      RoomCard(
+                        title: "Living Room",
+                        picture: "lib/assets/living_room.jpg",
+                        icon: Ionicons.tv,
+                        onTap: () {},
                       ),
-                      //sized box
-                      SizedBox(width: 10),
 
-                      MyRoomContainer(
-                        name: AppLocalizations.of(context)!.bathroom,
-                        icon: FaIcon(
-                          FontAwesomeIcons.bath,
-                          size: 45,
-                          color: Color.fromARGB(255, 118, 144, 175),
-                        ),
-                      ),
-                      //sized box
-                      SizedBox(width: 10),
-                    ],
-                  ),
-                ),
+                      SizedBox(width: 20),
 
-                //sized box
-                SizedBox(height: 10),
-
-                //room key text
-                Text(
-                  AppLocalizations.of(context)!.control_your_room,
-                  style: GoogleFonts.inter(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary),
-                ),
-
-                //sized box
-                SizedBox(height: 10),
-
-                //devices
-                //smart TV
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      MyDeviceContainer(
-                        borderColor: Color.fromARGB(255, 197, 197, 196),
-                        color: Color.fromARGB(255, 232, 93, 66),
-                        text: "Smart TV",
-                        image: Image.asset(
-                            "lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      MyDeviceContainer(
-                        borderColor: Color.fromARGB(255, 232, 93, 66),
-                        color: Color.fromARGB(255, 197, 197, 196),
-                        text: "Smart TV",
-                        image: Image.asset(
-                            "lib/assets/355-3556340_flat-panel-tv-transparent-background-42-inch-tv-png-removebg-preview.png"),
+                      //kitchen
+                      RoomCard(
+                        title: "Kitchen",
+                        picture: "lib/assets/kitchen.jpg",
+                        icon: Ionicons.restaurant,
+                        onTap: () {},
                       ),
                     ],
                   ),
                 ),
-                //Smart Light
               ],
-            )),
-          ),
+            ),
+          )),
         ),
       ),
     );
