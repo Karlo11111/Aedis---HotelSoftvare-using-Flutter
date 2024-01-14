@@ -25,74 +25,94 @@ class SavedBookings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 200,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            colors: [
-              Colors.grey.shade400,
-              Colors.grey.shade500,
-              Colors.grey.shade600,
-              Colors.grey.shade700,
-            ]),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
       ),
       margin: EdgeInsets.only(
         left: 25,
         right: 25,
         top: 25,
       ),
-      child: Wrap(
+      child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: 20,
-              top: 12,
-              bottom: 12,
-              right: 12,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    //service type text
-                    Text(
-                      serviceType,
-                      style:
-                          GoogleFonts.inter(fontSize: 18, color: Colors.black),
-                    ),
-                    //time of booking text
-                    Text(
-                      "at " + timeSlot,
-                      style:
-                          GoogleFonts.inter(fontSize: 18, color: Colors.black),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    //username text
-                    Text(
-                      user,
-                      style:
-                          GoogleFonts.inter(fontSize: 18, color: Colors.black),
-                    ),
-                    //date text
-                    Text(
-                      formattedDate.toString(),
-                      style:
-                          GoogleFonts.inter(fontSize: 18, color: Colors.black),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
+          SizedBox(
+            height: 25,
+          ),
+
+          //title
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 25,
+              ),
+              Text(serviceType,
+                  style: GoogleFonts.inter(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.secondary)),
+            ],
+          ),
+
+          SizedBox(
+            height: 25,
+          ),
+
+          //date
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  //icon
+                  SizedBox(
+                    width: 25,
+                  ),
+
+                  Icon(Icons.calendar_today,
+                      color: Theme.of(context).colorScheme.secondary, size: 30),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Text(formattedDate + " \n" + timeSlot,
+                      style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary)),
+                ],
+              ),
+
+              SizedBox(
+                height: 25,
+              ),
+
+              //number of people
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 25,
+                  ),
+                  Icon(Icons.person,
+                      color: Theme.of(context).colorScheme.secondary, size: 30),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(user,
+                      style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary)),
+                ],
+              ),
+            ],
+          ),
+
+          //divider
         ],
       ),
     );

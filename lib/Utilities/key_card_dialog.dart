@@ -59,7 +59,7 @@ class _KeyCardDialogState extends State<KeyCardDialog> {
                   Padding(
                     padding: EdgeInsets.only(top: 50, left: 25, right: 25),
                     child: SizedBox(
-                      height: 340,
+                      height: 350,
                       child: AnimatedAlign(
                         alignment: hasSlid
                             ? Alignment.topCenter
@@ -74,18 +74,25 @@ class _KeyCardDialogState extends State<KeyCardDialog> {
                             child: Stack(
                               children: [
                                 Center(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(24),
-                                        color:
-                                            Color.fromARGB(255, 118, 144, 175),
-                                        gradient: LinearGradient(
-                                            begin: Alignment.centerLeft,
-                                            end: Alignment.centerRight,
-                                            colors: [
-                                              Color.fromRGBO(48, 88, 150, 1),
-                                              Color(0xCC1BFFFF),
-                                            ])),
+                                  child: Card(
+                                    elevation: 5,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(24),
+                                          color: Color.fromARGB(
+                                              255, 118, 144, 175),
+                                          gradient: LinearGradient(
+                                              begin: Alignment.centerLeft,
+                                              end: Alignment.centerRight,
+                                              colors: [
+                                                Color.fromRGBO(48, 88, 150, 1),
+                                                Color(0xCC1BFFFF),
+                                              ])),
+                                    ),
                                   ),
                                 ),
                                 Center(

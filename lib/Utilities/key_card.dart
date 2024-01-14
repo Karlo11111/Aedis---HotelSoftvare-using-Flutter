@@ -46,16 +46,22 @@ class _KeyCardState extends State<KeyCard> {
                 child: Stack(
                   children: [
                     Center(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24),
-                          gradient: LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              colors: [
-                                Color.fromRGBO(48, 88, 150, 1),
-                                Color.fromARGB(80, 27, 255, 255)
-                              ]),
+                      child: Card(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            gradient: LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color.fromRGBO(48, 88, 150, 1),
+                                  Color.fromARGB(80, 27, 255, 255)
+                                ]),
+                          ),
                         ),
                       ),
                     ),

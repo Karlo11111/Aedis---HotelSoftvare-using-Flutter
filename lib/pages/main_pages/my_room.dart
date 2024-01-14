@@ -142,7 +142,7 @@ class _MyRoomState extends State<MyRoom> {
                     opacity: usingKey ? 0 : 1,
                     child: Container(
                       child: KeyCard(
-                        height: 420,
+                        height: 440,
                         topView: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -160,36 +160,43 @@ class _MyRoomState extends State<MyRoom> {
                             SizedBox(height: 20),
 
                             //room key text
-                            Container(
-                              height: 75,
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(24),
-                                  color: Colors.white),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Room Key",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .secondary),
-                                    ),
-                                    Text(
-                                        "Touch the NFC sign with your mobile phone",
+                            Card(
+                              elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Container(
+                                height: 75,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(24),
+                                    color: Colors.white),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Room Key",
                                         style: GoogleFonts.inter(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w400,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
                                             color: Theme.of(context)
                                                 .colorScheme
-                                                .secondary)),
-                                  ],
+                                                .secondary),
+                                      ),
+                                      Text(
+                                          "Touch the NFC sign with your mobile phone",
+                                          style: GoogleFonts.inter(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary)),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -205,32 +212,38 @@ class _MyRoomState extends State<MyRoom> {
                 SizedBox(height: 20),
 
                 //your rooms container
-                Container(
-                  height: 75,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      color: Colors.white),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Your Rooms",
-                          style: GoogleFonts.inter(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.secondary),
-                        ),
-                        Text("Select room to control smart devices",
+                Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Container(
+                    height: 75,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(24),
+                        color: Colors.white),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Your Rooms",
                             style: GoogleFonts.inter(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color:
-                                    Theme.of(context).colorScheme.secondary)),
-                      ],
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.secondary),
+                          ),
+                          Text("Select room to control smart devices",
+                              style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary)),
+                        ],
+                      ),
                     ),
                   ),
                 ),
