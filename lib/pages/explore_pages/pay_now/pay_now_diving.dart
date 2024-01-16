@@ -34,6 +34,9 @@ class _DivingPayNowState extends State<DivingPayNow> {
       }
     });
   }
+  void updatePriceAndName(){
+    
+  }
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();

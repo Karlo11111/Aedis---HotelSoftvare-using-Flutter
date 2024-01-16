@@ -107,6 +107,7 @@ flutter:
     - lib/assets/bathroom.jpg
     - lib/assets/living_room.jpg
     - lib/assets/kitchen.jpg
+    - lib/assets/health_issues.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
