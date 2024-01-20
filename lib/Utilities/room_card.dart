@@ -5,8 +5,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ionicons/ionicons.dart';
-
+  
 class RoomCard extends StatelessWidget {
   final String picture;
   final String title;

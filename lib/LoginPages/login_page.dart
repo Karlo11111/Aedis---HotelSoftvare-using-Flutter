@@ -8,6 +8,9 @@ import 'package:razvoj_sofvera/BottomNavBar/bottom_nav_bar.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:razvoj_sofvera/pages/employee_pages/employee_main_page.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -57,28 +60,51 @@ class _LoginPageState extends State<LoginPage> {
 
   //sing in function
   void SignIn() async {
-    //show loading circle
+    // Show loading circle
     showDialog(
       context: context,
       builder: (context) => Center(child: CircularProgressIndicator()),
     );
-    //try signing in
+    // Try signing in
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailTextController.text,
-          password: passwordTextController.text);
-      if (context.mounted) Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => PagesPage(),
-            ));
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailTextController.text,
+              password: passwordTextController.text);
+
+      // Check if the user is an employee
+      FirebaseFirestore.instance
+          .collection('Employees')
+          .doc(userCredential.user!.email)
+          .get()
+          .then((doc) {
+        if (doc.exists) {
+          // User is an employee, navigate to employee page
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    EmployeePage(), 
+              ),
+              (Route<dynamic> route) => false,
+          );
+        } else {
+          // User is a regular guest
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PagesPage(),
+              ));
+        }
+      });
     } on FirebaseAuthException catch (e) {
-      //pop loading circle
+      // Pop loading circle
       Navigator.pop(context);
-      //display if theres and error while logging in
+      // Display if there's an error while logging in
       displayMessage(e.code);
     }
   }
+
 
   //dispaly a message with the error
   void displayMessage(String message) {
