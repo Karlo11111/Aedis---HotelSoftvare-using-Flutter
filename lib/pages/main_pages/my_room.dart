@@ -15,6 +15,7 @@ import 'package:razvoj_sofvera/Utilities/key_card_dialog.dart';
 
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:razvoj_sofvera/Utilities/room_card.dart';
+import 'package:razvoj_sofvera/pages/controller_pages/bedroom_controler.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class MyRoom extends StatefulWidget {
@@ -260,7 +261,12 @@ class _MyRoomState extends State<MyRoom> {
                         title: "Bedroom",
                         picture: "lib/assets/bedroom.jpg",
                         icon: Ionicons.bed,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BedroomController()));
+                        },
                       ),
 
                       SizedBox(width: 20),

@@ -62,6 +62,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   persistent_bottom_nav_bar: ^5.0.2
+  flutter_svg_provider: ^1.0.7
 
 dev_dependencies:
   flutter_test:
@@ -108,6 +109,9 @@ flutter:
     - lib/assets/living_room.jpg
     - lib/assets/kitchen.jpg
     - lib/assets/health_issues.svg
+    - lib/assets/heat.svg
+    - lib/assets/auto.svg
+    - lib/assets/dry.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
