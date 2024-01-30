@@ -1,12 +1,15 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, avoid_unnecessary_containers, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, avoid_unnecessary_containers, non_constant_identifier_names, unused_element
+
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:razvoj_sofvera/Utilities/device_card.dart';
+
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class BedroomController extends StatefulWidget {
   BedroomController({super.key});
@@ -15,6 +18,9 @@ class BedroomController extends StatefulWidget {
   State<BedroomController> createState() => _BedroomControllerState();
 }
 
+//speed starter value
+int _selectedIndex = 0;
+
 //climate switch
 bool climateSwitch = false;
 bool CoolSwitch = false;
@@ -22,25 +28,37 @@ bool HeatSwitch = false;
 bool DrySwitch = false;
 bool AutoSwitch = false;
 
-//color fo the circular temp gauge
-void paint(Canvas canvas, Size size) {
-  final Rect rect = Rect.fromCircle(
-      center: Offset(size.width / 2, size.height / 2), radius: size.width / 2);
-  const Gradient gradient = LinearGradient(
-      colors: <Color>[Colors.blue, Colors.green, Colors.red],
-      stops: [0.0, 0.5, 1.0]);
-  final Paint paint = Paint()
-    ..shader = gradient.createShader(rect)
-    ..style = PaintingStyle.stroke
-    ..strokeWidth = 10;
-  canvas.drawArc(rect, 0, 2 * 3.14, false, paint);
-}
-
 class _BedroomControllerState extends State<BedroomController> {
+  //built button widget
+  Widget _buildButton(int index, String text) {
+    return GestureDetector(
+      onTap: () => setState(() => _selectedIndex = index),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+        decoration: BoxDecoration(
+          color: _selectedIndex == index ? Colors.white : Colors.transparent,
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+            color: _selectedIndex == index ? Colors.black : Colors.grey[600],
+          ),
+        ),
+      ),
+    );
+  }
+
+  //default temp
+  double _currentTemperature = 20;
+
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     bool isDarkMode = themeProvider.isDarkMode;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor:
@@ -305,50 +323,28 @@ class _BedroomControllerState extends State<BedroomController> {
                 ),
 
                 SizedBox(
-                  height: 20,
+                  height: 35,
                 ),
 
                 //temperature gauge
-                Container(
-                  height: 250,
-                  width: double.infinity,
-                  child: SfRadialGauge(
-                    axes: <RadialAxis>[
-                      RadialAxis(
-                        minimum: 16,
-                        maximum: 30,
-                        ranges: <GaugeRange>[
-                          GaugeRange(
-                            startValue: 16,
-                            endValue: 30,
-                            color: Colors.blue,
-                          )
-                        ],
-                        pointers: <GaugePointer>[
-                          NeedlePointer(
-                            value: 21,
-                          )
-                        ],
-                        annotations: <GaugeAnnotation>[
-                          GaugeAnnotation(
-                            widget: Container(
-                              child: Text(
-                                '21°C',
-                                style: GoogleFonts.inter(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .secondary),
-                              ),
-                            ),
-                            angle: 90,
-                            positionFactor: 0.5,
-                          )
-                        ],
-                      )
-                    ],
+                Center(
+                  child: GestureDetector(
+                    onPanUpdate: (details) {
+                      setState(() {
+                        _currentTemperature += details.delta.dy * 0.1;
+                        _currentTemperature =
+                            _currentTemperature.clamp(16.0, 30.0);
+                      });
+                    },
+                    child: CustomPaint(
+                      size: Size(200, 200),
+                      painter: TemperatureGaugePainter(_currentTemperature),
+                    ),
                   ),
+                ),
+
+                SizedBox(
+                  height: 20,
                 ),
 
                 //time off control
@@ -457,18 +453,145 @@ class _BedroomControllerState extends State<BedroomController> {
                       ),
 
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 6,
+                        width: MediaQuery.of(context).size.width / 20,
                       ),
 
-                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.grey)
+                      Container(
+                        height: 40,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        padding: EdgeInsets.all(4),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _buildButton(0, "1x"),
+                            _buildButton(1, "2x"),
+                            _buildButton(2, "3x"),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
+
+                //other devices
+                SizedBox(
+                  height: 20,
+                ),
+
+                Text("Other devices",
+                    style: GoogleFonts.inter(
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 22)),
+
+                SizedBox(
+                  height: 20,
+                ),
+
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      //android tv
+                      DeviceCard(
+                        icon: Icons.tv_rounded,
+                        deviceName: "Android TV",
+                        roomOfDevice: "Bedroom's device",
+                      ),
+
+                      SizedBox(
+                        width: 20,
+                      ),
+
+                      //main light
+                      DeviceCard(
+                        icon: Icons.wb_sunny_outlined,
+                        deviceName: "Main light",
+                        roomOfDevice: "Bedroom's device",
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           )),
         ),
       ),
     );
+  }
+}
+
+class TemperatureGaugePainter extends CustomPainter {
+  final double temperature;
+
+  TemperatureGaugePainter(this.temperature);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    double startAngle = pi * 0.7;
+    double sweepAngle = pi * 1.6;
+    double currentSweepAngle = (temperature - 16) / (30 - 16) * sweepAngle;
+
+    //drawing the arc
+    final paintBackground = Paint()
+      ..color = Colors.grey.withOpacity(0.3)
+      ..strokeWidth = 10
+      ..style = PaintingStyle.stroke;
+    canvas.drawArc(
+        Rect.fromCenter(
+            center: size.center(Offset.zero),
+            width: size.width,
+            height: size.height),
+        startAngle,
+        sweepAngle,
+        false,
+        paintBackground);
+
+    // Draw the foreground arc
+    final paintForeground = Paint()
+      ..shader = LinearGradient(
+        colors: [Colors.blue, Colors.red],
+        stops: [0.0, 1.0],
+      ).createShader(Rect.fromCenter(
+          center: size.center(Offset.zero),
+          width: size.width,
+          height: size.height))
+      ..strokeWidth = 10
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke;
+    canvas.drawArc(
+        Rect.fromCenter(
+            center: size.center(Offset.zero),
+            width: size.width,
+            height: size.height),
+        startAngle,
+        currentSweepAngle,
+        false,
+        paintForeground);
+
+    // Draw the temperature text
+    final textSpan = TextSpan(
+      text: '${temperature.toStringAsFixed(0)}°C',
+      style: TextStyle(
+          fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+    );
+
+    final textPainter = TextPainter(
+      text: textSpan,
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout(minWidth: 0, maxWidth: size.width);
+    textPainter.paint(canvas,
+        size.center(Offset(-textPainter.width / 2, -textPainter.height / 2)));
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }
