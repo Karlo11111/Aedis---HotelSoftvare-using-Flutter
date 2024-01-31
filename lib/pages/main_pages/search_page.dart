@@ -109,7 +109,10 @@ class _SearchPageState extends State<SearchPage> {
                       }
 
                       // Sort the appointments by date
-                      allAppointments.sort((a, b,) {
+                      allAppointments.sort((
+                        a,
+                        b,
+                      ) {
                         Timestamp dateA = a['DateOfBooking'];
                         Timestamp dateB = b['DateOfBooking'];
                         return dateA.compareTo(dateB);

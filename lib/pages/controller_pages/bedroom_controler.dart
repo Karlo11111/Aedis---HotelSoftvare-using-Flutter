@@ -327,46 +327,64 @@ class _BedroomControllerState extends State<BedroomController> {
                 ),
 
                 //temperature gauge
-                Center(
-                  child: GestureDetector(
-                    onPanUpdate: (details) {
-                      // Calculate touch position relative to the center of the widget
-                      final RenderBox renderBox =
-                          context.findRenderObject() as RenderBox;
-                      final Offset localPosition =
-                          renderBox.globalToLocal(details.globalPosition);
-                      final Offset center = Offset(
-                          renderBox.size.width / 2, renderBox.size.height / 2);
-                      final double dx = localPosition.dx - center.dx;
-                      final double dy = localPosition.dy - center.dy;
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    //temperature text
+                    Text("16°",
+                        style: GoogleFonts.inter(
+                            color: Theme.of(context).colorScheme.secondary,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24)),
 
-                      // Calculate angle from touch position
-                      final double angle = atan2(dy, dx);
+                    GestureDetector(
+                      onPanUpdate: (details) {
+                        // Calculate touch position relative to the center of the widget
+                        final RenderBox renderBox =
+                            context.findRenderObject() as RenderBox;
+                        final Offset localPosition =
+                            renderBox.globalToLocal(details.globalPosition);
+                        final Offset center = Offset(renderBox.size.width / 2,
+                            renderBox.size.height / 2);
+                        final double dx = localPosition.dx - center.dx;
+                        final double dy = localPosition.dy - center.dy;
 
-                      // Adjust the angle based on your gauge's start angle and direction
-                      final double startAngle = pi * 0.7;
-                      final double endAngle = startAngle + pi * 1.6;
-                      double normalizedAngle = angle - startAngle;
-                      if (normalizedAngle < 0) {
-                        normalizedAngle += 2 * pi;
-                      }
+                        // Calculate angle from touch position
+                        final double angle = atan2(dy, dx);
 
-                      // Map angle to temperature
-                      final double sweepAngle = endAngle - startAngle;
-                      if (normalizedAngle <= sweepAngle) {
-                        final double tempRange = 30 - 16;
-                        final double temp =
-                            16 + (normalizedAngle / sweepAngle) * tempRange;
-                        setState(() {
-                          _currentTemperature = temp.clamp(16.0, 30.0);
-                        });
-                      }
-                    },
-                    child: CustomPaint(
-                      size: Size(200, 200),
-                      painter: TemperatureGaugePainter(_currentTemperature),
+                        // Adjust the angle based on your gauge's start angle and direction
+                        final double startAngle = pi * 0.7;
+                        final double endAngle = startAngle + pi * 1.6;
+                        double normalizedAngle = angle - startAngle;
+                        if (normalizedAngle < 0) {
+                          normalizedAngle += 2 * pi;
+                        }
+
+                        // Map angle to temperature
+                        final double sweepAngle = endAngle - startAngle;
+                        if (normalizedAngle <= sweepAngle) {
+                          final double tempRange = 30 - 16;
+                          final double temp =
+                              16 + (normalizedAngle / sweepAngle) * tempRange;
+                          setState(() {
+                            _currentTemperature = temp.clamp(16.0, 30.0);
+                          });
+                        }
+                      },
+                      child: CustomPaint(
+                        size: Size(200, 200),
+                        painter: TemperatureGaugePainter(_currentTemperature),
+                      ),
                     ),
-                  ),
+
+                    //temperature text
+                    Text("30°",
+                        style: GoogleFonts.inter(
+                            color: Theme.of(context).colorScheme.secondary,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24)),
+                  ],
                 ),
 
                 SizedBox(
