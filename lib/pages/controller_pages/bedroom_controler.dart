@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, avoid_unnecessary_containers, non_constant_identifier_names, unused_element
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, avoid_unnecessary_containers, non_constant_identifier_names, unused_element, prefer_const_declarations
 
 import 'dart:math';
 
@@ -42,7 +42,7 @@ class _BedroomControllerState extends State<BedroomController> {
         child: Text(
           text,
           style: TextStyle(
-            fontSize: 16.0,
+            fontSize: 14.0,
             fontWeight: FontWeight.bold,
             color: _selectedIndex == index ? Colors.black : Colors.grey[600],
           ),
@@ -330,11 +330,37 @@ class _BedroomControllerState extends State<BedroomController> {
                 Center(
                   child: GestureDetector(
                     onPanUpdate: (details) {
-                      setState(() {
-                        _currentTemperature += details.delta.dy * 0.1;
-                        _currentTemperature =
-                            _currentTemperature.clamp(16.0, 30.0);
-                      });
+                      // Calculate touch position relative to the center of the widget
+                      final RenderBox renderBox =
+                          context.findRenderObject() as RenderBox;
+                      final Offset localPosition =
+                          renderBox.globalToLocal(details.globalPosition);
+                      final Offset center = Offset(
+                          renderBox.size.width / 2, renderBox.size.height / 2);
+                      final double dx = localPosition.dx - center.dx;
+                      final double dy = localPosition.dy - center.dy;
+
+                      // Calculate angle from touch position
+                      final double angle = atan2(dy, dx);
+
+                      // Adjust the angle based on your gauge's start angle and direction
+                      final double startAngle = pi * 0.7;
+                      final double endAngle = startAngle + pi * 1.6;
+                      double normalizedAngle = angle - startAngle;
+                      if (normalizedAngle < 0) {
+                        normalizedAngle += 2 * pi;
+                      }
+
+                      // Map angle to temperature
+                      final double sweepAngle = endAngle - startAngle;
+                      if (normalizedAngle <= sweepAngle) {
+                        final double tempRange = 30 - 16;
+                        final double temp =
+                            16 + (normalizedAngle / sweepAngle) * tempRange;
+                        setState(() {
+                          _currentTemperature = temp.clamp(16.0, 30.0);
+                        });
+                      }
                     },
                     child: CustomPaint(
                       size: Size(200, 200),
@@ -458,7 +484,7 @@ class _BedroomControllerState extends State<BedroomController> {
 
                       Container(
                         height: 40,
-                        width: 100,
+                        width: MediaQuery.of(context).size.width / 4.5,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(30),
@@ -537,10 +563,10 @@ class TemperatureGaugePainter extends CustomPainter {
     double sweepAngle = pi * 1.6;
     double currentSweepAngle = (temperature - 16) / (30 - 16) * sweepAngle;
 
-    //drawing the arc
+    // Drawing the arc background
     final paintBackground = Paint()
       ..color = Colors.grey.withOpacity(0.3)
-      ..strokeWidth = 10
+      ..strokeWidth = 20
       ..style = PaintingStyle.stroke;
     canvas.drawArc(
         Rect.fromCenter(
@@ -552,16 +578,26 @@ class TemperatureGaugePainter extends CustomPainter {
         false,
         paintBackground);
 
-    // Draw the foreground arc
+    // Drawing the foreground arc with gradient
     final paintForeground = Paint()
       ..shader = LinearGradient(
-        colors: [Colors.blue, Colors.red],
-        stops: [0.0, 1.0],
+        colors: [
+          Color.fromRGBO(0, 50, 96, 0.7),
+          Color.fromRGBO(48, 88, 150, 0.7),
+          Color.fromRGBO(255, 61, 0, 0.7),
+          Color.fromRGBO(86, 21, 1, 0.777),
+        ],
+        stops: [
+          0.0,
+          0.33,
+          0.66,
+          1.0,
+        ],
       ).createShader(Rect.fromCenter(
           center: size.center(Offset.zero),
           width: size.width,
           height: size.height))
-      ..strokeWidth = 10
+      ..strokeWidth = 20
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
     canvas.drawArc(
@@ -574,20 +610,52 @@ class TemperatureGaugePainter extends CustomPainter {
         false,
         paintForeground);
 
-    // Draw the temperature text
-    final textSpan = TextSpan(
-      text: '${temperature.toStringAsFixed(0)}°C',
-      style: TextStyle(
-          fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+    // Drawing the white circle
+    final paintCircle = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
+    double circleRadius = size.width / 2.2; // Adjust based on your gauge size
+    canvas.drawCircle(size.center(Offset.zero), circleRadius, paintCircle);
+
+    // Calculate the position of the dot
+    double dotRadius = circleRadius - 20;
+    double angleForDot = startAngle + currentSweepAngle;
+    Offset dotCenter = Offset(
+      size.center(Offset.zero).dx + dotRadius * cos(angleForDot),
+      size.center(Offset.zero).dy + dotRadius * sin(angleForDot),
     );
 
+    // Determine the color for the dot based on temperature
+    Color dotColor = Color.lerp(
+      Color.fromRGBO(0, 50, 96, 0.7),
+      Color.fromRGBO(86, 21, 1, 0.777),
+      (temperature - 16) / (30 - 16),
+    )!;
+
+    // Draw the dot
+    final paintDot = Paint()
+      ..color = dotColor
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(dotCenter, 10, paintDot);
+
+    // Draw the temperature text after the circle to ensure it's on top
+    final textSpan = TextSpan(
+      text: '${temperature.toStringAsFixed(0)}°C',
+      style: GoogleFonts.inter(
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 48, 88, 150),
+      ),
+    );
     final textPainter = TextPainter(
       text: textSpan,
       textDirection: TextDirection.ltr,
     );
     textPainter.layout(minWidth: 0, maxWidth: size.width);
-    textPainter.paint(canvas,
-        size.center(Offset(-textPainter.width / 2, -textPainter.height / 2)));
+    textPainter.paint(
+      canvas,
+      size.center(Offset(-textPainter.width / 2, -textPainter.height / 2)),
+    );
   }
 
   @override

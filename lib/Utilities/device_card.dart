@@ -30,7 +30,7 @@ class _DeviceCardState extends State<DeviceCard> {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30), color: Colors.white),
-        height: MediaQuery.of(context).size.height / 5.2,
+        height: MediaQuery.of(context).size.height / 5,
         width: MediaQuery.of(context).size.width / 2.2,
         padding: EdgeInsets.all(16),
         child: Column(
