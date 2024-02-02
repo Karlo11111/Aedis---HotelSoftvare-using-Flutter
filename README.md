@@ -1,7 +1,8 @@
-# razvoj_sofvera
+# Aedis project for a sofware development competition
 
-A new Flutter project.
+Fronted mainly written in Dart / Flutter
 
+Backend in javascript / node.js and dart / firebase
 ## Getting Started
 
 This project is a starting point for a Flutter application.
