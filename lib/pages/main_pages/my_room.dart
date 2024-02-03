@@ -15,7 +15,9 @@ import 'package:razvoj_sofvera/Utilities/key_card_dialog.dart';
 
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:razvoj_sofvera/Utilities/room_card.dart';
+import 'package:razvoj_sofvera/pages/controller_pages/bathroom_controler.dart';
 import 'package:razvoj_sofvera/pages/controller_pages/bedroom_controler.dart';
+import 'package:razvoj_sofvera/pages/controller_pages/living_room_controler.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class MyRoom extends StatefulWidget {
@@ -276,7 +278,13 @@ class _MyRoomState extends State<MyRoom> {
                         title: "Bathroom",
                         picture: "lib/assets/bathroom.jpg",
                         icon: Icons.shower,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BathroomController(),
+                              ));
+                        },
                       ),
 
                       SizedBox(width: 20),
@@ -287,17 +295,13 @@ class _MyRoomState extends State<MyRoom> {
                         title: "Living Room",
                         picture: "lib/assets/living_room.jpg",
                         icon: Ionicons.tv,
-                        onTap: () {},
-                      ),
-
-                      SizedBox(width: 20),
-
-                      //kitchen
-                      RoomCard(
-                        title: "Kitchen",
-                        picture: "lib/assets/kitchen.jpg",
-                        icon: Ionicons.restaurant,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      LivingRoomController()));
+                        },
                       ),
                     ],
                   ),

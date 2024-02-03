@@ -11,11 +11,11 @@ import 'package:razvoj_sofvera/Utilities/device_card.dart';
 
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
-class BedroomController extends StatefulWidget {
-  BedroomController({super.key});
+class BathroomController extends StatefulWidget {
+  BathroomController({super.key});
 
   @override
-  State<BedroomController> createState() => _BedroomControllerState();
+  State<BathroomController> createState() => _BathroomControllerState();
 }
 
 //speed starter value
@@ -28,7 +28,7 @@ bool HeatSwitch = false;
 bool DrySwitch = false;
 bool AutoSwitch = false;
 
-class _BedroomControllerState extends State<BedroomController> {
+class _BathroomControllerState extends State<BathroomController> {
   //built button widget
   Widget _buildButton(int index, String text) {
     return GestureDetector(
@@ -72,7 +72,7 @@ class _BedroomControllerState extends State<BedroomController> {
           color: isDarkMode ? Colors.white : Colors.black,
         ),
         title: Text(
-          "Bedroom",
+          "Bathroom",
           style: GoogleFonts.inter(
               color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.w700,

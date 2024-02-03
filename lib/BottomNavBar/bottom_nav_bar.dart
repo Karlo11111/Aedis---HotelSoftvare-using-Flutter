@@ -9,7 +9,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:razvoj_sofvera/pages/main_pages/home_page.dart';
 import 'package:razvoj_sofvera/pages/main_pages/my_room.dart';
 import 'package:razvoj_sofvera/pages/main_pages/options_page.dart';
-import 'package:razvoj_sofvera/pages/main_pages/search_page.dart';
+import 'package:razvoj_sofvera/pages/main_pages/services_page.dart';
 
 class PagesPage extends StatefulWidget {
   const PagesPage({super.key});
@@ -76,7 +76,7 @@ class _PagesPageState extends State<PagesPage> {
       navBarHeight: 60,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
-      hideNavigationBarWhenKeyboardShows: false,
+      hideNavigationBarWhenKeyboardShows: true,
       decoration: NavBarDecoration(
         colorBehindNavBar: Colors.white,
       ),
