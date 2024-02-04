@@ -2,12 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class Dinner extends StatelessWidget {
   const Dinner({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     double imageHeightFactor = 0.35;
     double containerOverlap = 60.0;
 
@@ -38,7 +42,7 @@ class Dinner extends StatelessWidget {
                       containerOverlap,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(45),
                   topRight: Radius.circular(45),
@@ -61,7 +65,8 @@ class Dinner extends StatelessWidget {
                               Text(
                                 "Dinner",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color:
+                                      isDarkMode ? Colors.white : Colors.black,
                                   fontSize: 38,
                                   fontWeight: FontWeight.w800,
                                 ),

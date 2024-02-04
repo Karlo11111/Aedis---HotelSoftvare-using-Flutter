@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/Utilities/text_fields.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class SpaPayNow extends StatefulWidget {
   final DateTime checkInDate;
@@ -41,6 +43,8 @@ class _SpaPayNowState extends State<SpaPayNow> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     double imageHeightFactor = 0.35;
     double containerOverlap = 60.0;
 
@@ -66,7 +70,7 @@ class _SpaPayNowState extends State<SpaPayNow> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(45),
                   topRight: Radius.circular(45),
@@ -85,7 +89,7 @@ class _SpaPayNowState extends State<SpaPayNow> {
                       Text(
                         "Spa",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: isDarkMode ? Colors.white : Colors.black,
                           fontSize: 30,
                           fontWeight: FontWeight.w800,
                         ),
@@ -96,7 +100,7 @@ class _SpaPayNowState extends State<SpaPayNow> {
                           Text(
                             "Rating: 4.5",
                             style: TextStyle(
-                              color: Colors.black,
+                              color: isDarkMode ? Colors.white : Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
                             ),
@@ -113,7 +117,7 @@ class _SpaPayNowState extends State<SpaPayNow> {
                         children: [
                           Text("Number of participants: ",
                               style: TextStyle(
-                                color: Colors.black,
+                                color: isDarkMode ? Colors.white : Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
                               )),
@@ -121,13 +125,13 @@ class _SpaPayNowState extends State<SpaPayNow> {
                           IconButton(
                             onPressed: _decrementCounter,
                             icon: Icon(Icons.remove),
-                            color: Colors.black,
+                            color: isDarkMode ? Colors.white : Colors.black,
                             iconSize: 26,
                           ),
                           Text(
                             "$_counter",
                             style: TextStyle(
-                              color: Colors.black,
+                              color: isDarkMode ? Colors.white : Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
                             ),
@@ -135,7 +139,7 @@ class _SpaPayNowState extends State<SpaPayNow> {
                           IconButton(
                             onPressed: _incrementCounter,
                             icon: Icon(Icons.add),
-                            color: Colors.black,
+                            color: isDarkMode ? Colors.white : Colors.black,
                             iconSize: 26,
                           ),
                         ],
@@ -172,8 +176,9 @@ class _SpaPayNowState extends State<SpaPayNow> {
                         buttonText: "Pay now",
                         height: 50,
                         width: double.infinity,
-                        decorationColor:
-                            Theme.of(context).colorScheme.secondary,
+                        decorationColor: isDarkMode
+                            ? Color.fromARGB(255, 38, 151, 255)
+                            : Theme.of(context).colorScheme.secondary,
                         borderColor: Colors.transparent,
                         textColor: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -190,8 +195,8 @@ class _SpaPayNowState extends State<SpaPayNow> {
                         height: 50,
                         width: double.infinity,
                         decorationColor: Colors.transparent,
-                        borderColor: Colors.black,
-                        textColor: Colors.black,
+                        borderColor: isDarkMode ? Colors.white : Colors.black,
+                        textColor: isDarkMode ? Colors.white : Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                         icon: Icon(Icons.apple),
@@ -205,7 +210,7 @@ class _SpaPayNowState extends State<SpaPayNow> {
                           Text(
                             "Press accidentaly?",
                             style: TextStyle(
-                              color: Colors.black,
+                              color: isDarkMode ? Colors.white : Colors.black,
                             ),
                           ),
                           TextButton(
@@ -215,7 +220,9 @@ class _SpaPayNowState extends State<SpaPayNow> {
                             child: Text(
                               "Go Back.",
                               style: TextStyle(
-                                color: Theme.of(context).colorScheme.secondary,
+                                color: isDarkMode
+                                    ? Color.fromARGB(255, 38, 151, 255)
+                                    : Theme.of(context).colorScheme.secondary,
                               ),
                             ),
                           )
