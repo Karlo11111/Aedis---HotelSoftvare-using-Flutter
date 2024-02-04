@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/pages/main_pages/home_page.dart';
 import 'package:razvoj_sofvera/pages/main_pages/my_room.dart';
 import 'package:razvoj_sofvera/pages/main_pages/options_page.dart';
 import 'package:razvoj_sofvera/pages/main_pages/services_page.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class PagesPage extends StatefulWidget {
   const PagesPage({super.key});
@@ -65,13 +67,16 @@ class _PagesPageState extends State<PagesPage> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return PersistentTabView(
       context,
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(context),
       confineInSafeArea: true,
-      backgroundColor: Colors.white,
+      backgroundColor:
+          isDarkMode ? Color.fromARGB(194, 46, 53, 94) : Colors.white,
       handleAndroidBackButtonPress: true,
       navBarHeight: 60,
       resizeToAvoidBottomInset: true,

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class MyContainer extends StatelessWidget {
   const MyContainer(
@@ -17,6 +19,8 @@ class MyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return Container(
       width: width,
       height: height,
@@ -26,7 +30,8 @@ class MyContainer extends StatelessWidget {
         //box shadow
         boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(255, 196, 195, 195),
+            color:
+                isDarkMode ? Color.fromARGB(200, 7, 7, 7) : Colors.grey[300]!,
             offset: const Offset(
               2.0,
               2.0,

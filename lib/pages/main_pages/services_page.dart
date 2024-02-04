@@ -24,11 +24,9 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
       body: Container(
-        color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+        color: Theme.of(context).colorScheme.background,
         child: Center(
           child: Column(
             children: [

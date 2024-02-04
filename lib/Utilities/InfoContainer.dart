@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class InfoContainer extends StatelessWidget {
   final String imagePath;
@@ -21,16 +23,20 @@ class InfoContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
+
     return Container(
       height: 325,
       width: MediaQuery.of(context).size.width - 80.0,
       margin: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDarkMode ? Color.fromARGB(255, 15, 59, 100) : Colors.white,
         borderRadius: BorderRadius.circular(30.0),
         boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(255, 196, 195, 195),
+            color:
+                isDarkMode ? Color.fromARGB(200, 7, 7, 7) : Colors.grey[300]!,
             offset: const Offset(
               2.0,
               2.0,

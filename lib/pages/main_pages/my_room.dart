@@ -116,13 +116,11 @@ class _MyRoomState extends State<MyRoom> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: SafeArea(
               child: Padding(

@@ -85,13 +85,12 @@ class _OptionsPageState extends State<OptionsPage> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    bool isDarkMode = themeProvider.isDarkMode;
+    bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+        color: Theme.of(context).colorScheme.background,
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(

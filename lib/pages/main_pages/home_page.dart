@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           child: SafeArea(
             child: Padding(
@@ -141,7 +141,9 @@ class _HomePageState extends State<HomePage> {
                   MyContainer(
                     width: MediaQuery.of(context).size.width,
                     height: 100,
-                    decorationColor: Colors.white,
+                    decorationColor: isDarkMode
+                        ? Color.fromARGB(255, 15, 59, 100)
+                        : Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Row(

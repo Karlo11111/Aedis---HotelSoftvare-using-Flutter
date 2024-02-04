@@ -1,8 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:razvoj_sofvera/LoginPages/login_page.dart';
-import 'package:razvoj_sofvera/LoginPages/register_page.dart';
+import 'package:razvoj_sofvera/pages/LoginPages/login_page.dart';
+import 'package:razvoj_sofvera/pages/LoginPages/register_page.dart';
 
 class LoginOrRegister extends StatefulWidget {
   const LoginOrRegister({super.key});
