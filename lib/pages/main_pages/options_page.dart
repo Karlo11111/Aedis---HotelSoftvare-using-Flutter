@@ -172,7 +172,7 @@ class _OptionsPageState extends State<OptionsPage> {
 
                       //edit profile button
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.25, //20%),
+                        width: MediaQuery.of(context).size.width * 0.25,
                       ),
                       IconButton(
                         onPressed: () {
@@ -204,7 +204,9 @@ class _OptionsPageState extends State<OptionsPage> {
                   MyContainer(
                     width: MediaQuery.of(context).size.width,
                     height: 100,
-                    decorationColor: Colors.white,
+                    decorationColor: isDarkMode
+                        ? Color.fromARGB(255, 15, 59, 100)
+                        : Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Row(
@@ -288,29 +290,6 @@ class _OptionsPageState extends State<OptionsPage> {
                     height: 5,
                   ),
 
-                  //personal information
-                  SettingItem(
-                    LeadingIcon: Ionicons.person_outline,
-                    title: "Personal information",
-                    TrailingIcon: Icons.arrow_forward_ios,
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EditAccountScreen(
-                                  refreshSettingsPage: NavigateToAccPage)));
-                    },
-                  ),
-
-                  SizedBox(
-                    height: 5,
-                  ),
-
-                  Divider(
-                    color: Colors.grey,
-                    thickness: 1,
-                  ),
-
                   //payment methods
                   SettingItem(
                     LeadingIcon: Ionicons.card_outline,
@@ -336,23 +315,6 @@ class _OptionsPageState extends State<OptionsPage> {
                     TrailingIcon: Icons.arrow_forward_ios,
                     onTap: () {},
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-
-                  Divider(
-                    color: Colors.grey,
-                    thickness: 1,
-                  ),
-
-                  //accesability
-                  SettingItem(
-                    LeadingIcon: Ionicons.accessibility_outline,
-                    title: "Accesability",
-                    TrailingIcon: Icons.arrow_forward_ios,
-                    onTap: () {},
-                  ),
-
                   SizedBox(
                     height: 5,
                   ),
@@ -425,7 +387,9 @@ class _OptionsPageState extends State<OptionsPage> {
                     ontap: signOut,
                     height: 60,
                     width: MediaQuery.of(context).size.width,
-                    decorationColor: Theme.of(context).colorScheme.secondary,
+                    decorationColor: isDarkMode
+                        ? Color.fromARGB(255, 38, 151, 255)
+                        : Theme.of(context).colorScheme.secondary,
                     borderColor: Colors.transparent,
                     textColor: Colors.white,
                     fontSize: 20,

@@ -63,7 +63,6 @@ dependencies:
     sdk: flutter
   persistent_bottom_nav_bar: ^5.0.2
   flutter_svg_provider: ^1.0.7
-  syncfusion_flutter_gauges: ^24.1.47
 
 dev_dependencies:
   flutter_test:

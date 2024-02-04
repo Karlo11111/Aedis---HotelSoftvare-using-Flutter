@@ -217,7 +217,9 @@ class _HomePageState extends State<HomePage> {
                         child: MyContainer(
                           width: 100,
                           height: 30,
-                          decorationColor: Color.fromARGB(255, 205, 155, 101),
+                          decorationColor: isDarkMode
+                              ? Color.fromARGB(255, 38, 151, 255)
+                              : Colors.blue.shade900,
                           child: Center(
                             child: Text(
                               "See all",
@@ -292,7 +294,9 @@ class _HomePageState extends State<HomePage> {
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
                                   icon: null,
-                                  decorationColor: Colors.blue.shade900,
+                                  decorationColor: isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Colors.blue.shade900,
                                 ),
                                 Text(
                                   "Price €100",
@@ -348,7 +352,9 @@ class _HomePageState extends State<HomePage> {
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
                                   icon: null,
-                                  decorationColor: Colors.blue.shade900,
+                                  decorationColor: isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Colors.blue.shade900,
                                 ),
                                 Text(
                                   "Price €100",
@@ -391,7 +397,9 @@ class _HomePageState extends State<HomePage> {
                         child: MyContainer(
                           width: 100,
                           height: 30,
-                          decorationColor: Color.fromARGB(255, 205, 155, 101),
+                          decorationColor: isDarkMode
+                              ? Color.fromARGB(255, 38, 151, 255)
+                              : Colors.blue.shade900,
                           child: Center(
                             child: Text(
                               "See all",
@@ -459,7 +467,9 @@ class _HomePageState extends State<HomePage> {
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
                                   icon: null,
-                                  decorationColor: Colors.blue.shade900,
+                                  decorationColor: isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Colors.blue.shade900,
                                 ),
                                 Text(
                                   "Price €100",
@@ -515,7 +525,9 @@ class _HomePageState extends State<HomePage> {
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
                                   icon: null,
-                                  decorationColor: Colors.blue.shade900,
+                                  decorationColor: isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Colors.blue.shade900,
                                 ),
                                 Text(
                                   "Price €100",
@@ -550,7 +562,9 @@ class _HomePageState extends State<HomePage> {
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
                                   icon: null,
-                                  decorationColor: Colors.blue.shade900,
+                                  decorationColor: isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Colors.blue.shade900,
                                 ),
                               ],
                             )),
@@ -584,7 +598,9 @@ class _HomePageState extends State<HomePage> {
                         child: MyContainer(
                           width: 100,
                           height: 30,
-                          decorationColor: Color.fromARGB(255, 205, 155, 101),
+                          decorationColor: isDarkMode
+                              ? Color.fromARGB(255, 38, 151, 255)
+                              : Colors.blue.shade900,
                           child: Center(
                             child: Text(
                               "See all",
@@ -634,7 +650,9 @@ class _HomePageState extends State<HomePage> {
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
                                   icon: null,
-                                  decorationColor: Colors.blue.shade900,
+                                  decorationColor: isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Colors.blue.shade900,
                                 ),
                               ],
                             )),
@@ -665,7 +683,9 @@ class _HomePageState extends State<HomePage> {
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
                                   icon: null,
-                                  decorationColor: Colors.blue.shade900,
+                                  decorationColor: isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Colors.blue.shade900,
                                 ),
                               ],
                             )),
@@ -696,7 +716,9 @@ class _HomePageState extends State<HomePage> {
                                   borderColor: Colors.transparent,
                                   textColor: Colors.white,
                                   icon: null,
-                                  decorationColor: Colors.blue.shade900,
+                                  decorationColor: isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Colors.blue.shade900,
                                 ),
                               ],
                             )),

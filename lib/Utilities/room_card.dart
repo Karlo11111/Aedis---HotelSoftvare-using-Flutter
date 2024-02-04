@@ -5,7 +5,9 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-  
+import 'package:provider/provider.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
+
 class RoomCard extends StatelessWidget {
   final String picture;
   final String title;
@@ -21,6 +23,8 @@ class RoomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return GestureDetector(
       onTap: () => onTap(),
       child: Card(
@@ -33,7 +37,7 @@ class RoomCard extends StatelessWidget {
           height: 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: Colors.white,
+            color: isDarkMode ? Color.fromARGB(255, 15, 59, 100) : Colors.white,
           ),
           child: Stack(
             children: <Widget>[

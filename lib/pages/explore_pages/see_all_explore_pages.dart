@@ -22,8 +22,7 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
-      backgroundColor:
-          isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Stack(
         children: <Widget>[
           // Content and AppBar
@@ -33,7 +32,8 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                 // Custom AppBar
                 AppBar(
                   leading: IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.black),
+                    icon: Icon(Icons.arrow_back,
+                        color: isDarkMode ? Colors.white : Colors.black),
                     onPressed: () {
                       Navigator.of(context).pop(); // Handles back button press
                     },
@@ -41,7 +41,9 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                   title: Text(
                     'Explore',
                     style: GoogleFonts.inter(
-                      color: Colors.black, // Text color
+                      color: isDarkMode
+                          ? Colors.white
+                          : Colors.black, // Text color
                       fontSize: 20, // Text size
                     ),
                   ),

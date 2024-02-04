@@ -116,6 +116,8 @@ class _MyRoomState extends State<MyRoom> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -171,7 +173,9 @@ class _MyRoomState extends State<MyRoom> {
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(24),
-                                    color: Colors.white),
+                                    color: isDarkMode
+                                        ? Color.fromARGB(255, 15, 59, 100)
+                                        : Colors.white),
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 15.0),
                                   child: Column(
@@ -223,7 +227,9 @@ class _MyRoomState extends State<MyRoom> {
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(24),
-                        color: Colors.white),
+                        color: isDarkMode
+                            ? Color.fromARGB(255, 15, 59, 100)
+                            : Colors.white),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0),
                       child: Column(

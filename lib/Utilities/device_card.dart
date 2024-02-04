@@ -3,6 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class DeviceCard extends StatefulWidget {
   final IconData icon;
@@ -22,6 +24,8 @@ class _DeviceCardState extends State<DeviceCard> {
   bool isOn = false;
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     return Card(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -29,7 +33,9 @@ class _DeviceCardState extends State<DeviceCard> {
       //container for the function
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30), color: Colors.white),
+            borderRadius: BorderRadius.circular(30),
+            color:
+                isDarkMode ? Color.fromARGB(255, 15, 59, 100) : Colors.white),
         height: MediaQuery.of(context).size.height / 5,
         width: MediaQuery.of(context).size.width / 2.2,
         padding: EdgeInsets.all(16),

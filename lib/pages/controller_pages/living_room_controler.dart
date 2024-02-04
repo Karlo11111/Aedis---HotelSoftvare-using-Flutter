@@ -61,8 +61,7 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:
-            isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -84,7 +83,7 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+        color: Theme.of(context).colorScheme.background,
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: SafeArea(
@@ -397,7 +396,9 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Colors.white),
+                      color: isDarkMode
+                          ? Color.fromARGB(255, 15, 59, 100)
+                          : Colors.white),
                   child: Row(
                     children: [
                       SizedBox(
@@ -456,7 +457,9 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Colors.white),
+                      color: isDarkMode
+                          ? Color.fromARGB(255, 15, 59, 100)
+                          : Colors.white),
                   child: Row(
                     children: [
                       SizedBox(
@@ -504,7 +507,9 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
                         height: 40,
                         width: MediaQuery.of(context).size.width / 4.5,
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
+                          color: isDarkMode
+                              ? Theme.of(context).colorScheme.background
+                              : Colors.grey[300],
                           borderRadius: BorderRadius.circular(30),
                         ),
                         padding: EdgeInsets.all(4),

@@ -24,8 +24,7 @@ class _AllActivitiesState extends State<AllActivities> {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
-      backgroundColor:
-          isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Stack(
         children: <Widget>[
           // Content and AppBar
@@ -35,15 +34,16 @@ class _AllActivitiesState extends State<AllActivities> {
                 // Custom AppBar
                 AppBar(
                   leading: IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.black),
+                    icon: Icon(Icons.arrow_back,
+                        color: isDarkMode ? Colors.white : Colors.black),
                     onPressed: () {
-                      Navigator.of(context).pop(); // Handles back button press
+                      Navigator.of(context).pop();
                     },
                   ),
                   title: Text(
                     'Activities',
                     style: GoogleFonts.inter(
-                      color: Colors.black, // Text color
+                      color: isDarkMode ? Colors.white : Colors.black,
                       fontSize: 20, // Text size
                     ),
                   ),

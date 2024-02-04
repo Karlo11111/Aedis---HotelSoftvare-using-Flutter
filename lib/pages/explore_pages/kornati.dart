@@ -1,14 +1,18 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
 import 'package:razvoj_sofvera/pages/explore_pages/book_now/book_now_kornati.dart';
+import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class KornatiScreen extends StatelessWidget {
   const KornatiScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    bool isDarkMode = themeProvider.isDarkMode;
     double imageHeightFactor = 0.35;
     double containerOverlap = 60.0;
 
@@ -39,7 +43,7 @@ class KornatiScreen extends StatelessWidget {
                       containerOverlap,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(45),
                   topRight: Radius.circular(45),
@@ -62,7 +66,8 @@ class KornatiScreen extends StatelessWidget {
                               Text(
                                 "Traveling to kornati",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color:
+                                      isDarkMode ? Colors.white : Colors.black,
                                   fontSize: 32,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -76,7 +81,8 @@ class KornatiScreen extends StatelessWidget {
                               Text(
                                 "5.0",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color:
+                                      isDarkMode ? Colors.white : Colors.black,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -96,7 +102,9 @@ class KornatiScreen extends StatelessWidget {
                             children: [
                               Text("Traveling to Kornati Island",
                                   style: TextStyle(
-                                    color: Colors.black,
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w800,
                                   )),
@@ -126,7 +134,9 @@ class KornatiScreen extends StatelessWidget {
                             children: [
                               Text("Map",
                                   style: TextStyle(
-                                    color: Colors.black,
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w800,
                                   )),
@@ -159,8 +169,9 @@ class KornatiScreen extends StatelessWidget {
                               buttonText: "Book now!",
                               height: 40,
                               width: 300,
-                              decorationColor:
-                                  Theme.of(context).colorScheme.secondary,
+                              decorationColor: isDarkMode
+                                  ? Color.fromARGB(255, 38, 151, 255)
+                                  : Theme.of(context).colorScheme.secondary,
                               borderColor: Colors.transparent,
                               textColor: Colors.white,
                               fontWeight: FontWeight.bold,
