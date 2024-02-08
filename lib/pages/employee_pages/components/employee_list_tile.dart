@@ -5,19 +5,23 @@ import 'package:flutter/material.dart';
 class EmployeeListTile extends StatelessWidget {
   const EmployeeListTile(
       {super.key,
+      required this.iconButtonYes,
       required this.taskName,
       required this.taskStatus,
+      required this.color,
       this.onTap});
 
   final String taskName;
   final String taskStatus;
   final Function()? onTap;
+  final bool iconButtonYes;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.green, borderRadius: BorderRadius.circular(16)),
+          color: color, borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
@@ -30,7 +34,9 @@ class EmployeeListTile extends StatelessWidget {
                 Text(taskStatus),
               ],
             ),
-            IconButton(onPressed: onTap, icon: Icon(Icons.add)),
+            iconButtonYes
+                ? IconButton(onPressed: onTap, icon: Icon(Icons.add))
+                : Container(),
           ],
         ),
       ),
