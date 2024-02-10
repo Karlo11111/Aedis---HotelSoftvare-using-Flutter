@@ -31,29 +31,44 @@ class _MyRoomState extends State<MyRoom> {
   ValueNotifier<String> result = ValueNotifier<String>(
       ''); // Declare and initialize a ValueNotifier to hold a string value
 
-  void ndefWrite() {
+  void customNfcWrite() {
     NfcManager.instance.startSession(onDiscovered: (NfcTag tag) async {
-      var ndef = Ndef.from(tag);
-      if (ndef == null || !ndef.isWritable) {
-        print('Tag is not ndef writable');
-        NfcManager.instance.stopSession(errorMessage: result.value);
+      if (!isTagWritable(tag)) {
+        print('Tag is not writable with custom method');
+        NfcManager.instance.stopSession(errorMessage: "Tag is not writable");
         return;
       }
-
-      NdefMessage message = NdefMessage([
-        NdefRecord.createText('Radi!'),
-      ]);
 
       try {
-        await ndef.write(message);
-        print('Success to "Ndef Write"');
+        await writeCustomDataToTag(tag);
+        print('Success with custom write');
         NfcManager.instance.stopSession();
       } catch (e) {
-        result.value == e;
-        NfcManager.instance.stopSession(errorMessage: result.value.toString());
-        return;
+        print('Error during custom write: $e');
+        NfcManager.instance.stopSession(errorMessage: e.toString());
       }
     });
+  }
+
+  bool isTagWritable(NfcTag tag) {
+    // Here you should implement the logic to verify if the tag is writable and supports NDEF
+    return true; // Placeholder return value
+  }
+
+  Future<void> writeCustomDataToTag(NfcTag tag) async {
+    // Check if the tag supports NDEF
+    var ndef = Ndef.from(tag);
+    if (ndef == null || !ndef.isWritable) {
+      throw Exception('NDEF not supported or not writable');
+    }
+
+    var record = NdefRecord.createText('radi ');
+
+    // Wrap the record in an NDEF message
+    var message = NdefMessage([record]);
+
+    // Write the message to the tag
+    await ndef.write(message);
   }
 
   //include hive
@@ -136,7 +151,7 @@ class _MyRoomState extends State<MyRoom> {
                   onTap: () {
                     funckije() {
                       toggleUsingKey();
-                      ndefWrite();
+                      customNfcWrite();
                     }
 
                     funckije();
