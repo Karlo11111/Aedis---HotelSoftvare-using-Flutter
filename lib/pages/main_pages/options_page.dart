@@ -19,7 +19,7 @@ import 'package:razvoj_sofvera/pages/main_pages/help.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class OptionsPage extends StatefulWidget {
-  const OptionsPage({Key? key}) : super(key: key);
+  const OptionsPage({super.key});
 
   @override
   State<OptionsPage> createState() => _OptionsPageState();
@@ -172,7 +172,7 @@ class _OptionsPageState extends State<OptionsPage> {
 
                       //edit profile button
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.25,
+                        width: MediaQuery.of(context).size.width * 0.35,
                       ),
                       IconButton(
                         onPressed: () {
