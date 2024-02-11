@@ -62,7 +62,8 @@ class _MyRoomState extends State<MyRoom> {
       throw Exception('NDEF not supported or not writable');
     }
 
-    var record = NdefRecord.createText('radi ');
+    // Create an NDEF record with the text "it works"
+    var record = NdefRecord.createText('it works');
 
     // Wrap the record in an NDEF message
     var message = NdefMessage([record]);

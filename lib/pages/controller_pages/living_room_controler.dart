@@ -141,8 +141,12 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
                           width: 72,
                           decoration: BoxDecoration(
                               color: CoolSwitch
-                                  ? Theme.of(context).colorScheme.secondary
-                                  : Colors.white,
+                                  ? isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Theme.of(context).colorScheme.secondary
+                                  : isDarkMode
+                                      ? Color.fromARGB(255, 15, 59, 100)
+                                      : Colors.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -189,8 +193,12 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
                           width: 72,
                           decoration: BoxDecoration(
                               color: HeatSwitch
-                                  ? Theme.of(context).colorScheme.secondary
-                                  : Colors.white,
+                                  ? isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Theme.of(context).colorScheme.secondary
+                                  : isDarkMode
+                                      ? Color.fromARGB(255, 15, 59, 100)
+                                      : Colors.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -238,8 +246,12 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
                           width: 72,
                           decoration: BoxDecoration(
                               color: AutoSwitch
-                                  ? Theme.of(context).colorScheme.secondary
-                                  : Colors.white,
+                                  ? isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Theme.of(context).colorScheme.secondary
+                                  : isDarkMode
+                                      ? Color.fromARGB(255, 15, 59, 100)
+                                      : Colors.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -287,8 +299,12 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
                           width: 72,
                           decoration: BoxDecoration(
                               color: DrySwitch
-                                  ? Theme.of(context).colorScheme.secondary
-                                  : Colors.white,
+                                  ? isDarkMode
+                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      : Theme.of(context).colorScheme.secondary
+                                  : isDarkMode
+                                      ? Color.fromARGB(255, 15, 59, 100)
+                                      : Colors.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -373,7 +389,14 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
                       },
                       child: CustomPaint(
                         size: Size(200, 200),
-                        painter: TemperatureGaugePainter(_currentTemperature),
+                        painter: TemperatureGaugePainter(
+                            _currentTemperature,
+                            isDarkMode
+                                ? Color.fromARGB(255, 15, 59, 100)
+                                : Colors.white,
+                            isDarkMode
+                                ? Colors.white
+                                : Color.fromARGB(255, 15, 59, 100)),
                       ),
                     ),
 
@@ -577,8 +600,14 @@ class _LivingRoomControllerState extends State<LivingRoomController> {
 
 class TemperatureGaugePainter extends CustomPainter {
   final double temperature;
+  final Color color;
+  final Color temperatureColor;
 
-  TemperatureGaugePainter(this.temperature);
+  TemperatureGaugePainter(
+    this.temperature,
+    this.color,
+    this.temperatureColor,
+  );
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -635,7 +664,7 @@ class TemperatureGaugePainter extends CustomPainter {
 
     // Drawing the white circle
     final paintCircle = Paint()
-      ..color = Colors.white
+      ..color = color
       ..style = PaintingStyle.fill;
     double circleRadius = size.width / 2.2; // Adjust based on your gauge size
     canvas.drawCircle(size.center(Offset.zero), circleRadius, paintCircle);
@@ -667,7 +696,7 @@ class TemperatureGaugePainter extends CustomPainter {
       style: GoogleFonts.inter(
         fontSize: 32,
         fontWeight: FontWeight.bold,
-        color: Color.fromARGB(255, 48, 88, 150),
+        color: temperatureColor,
       ),
     );
     final textPainter = TextPainter(
