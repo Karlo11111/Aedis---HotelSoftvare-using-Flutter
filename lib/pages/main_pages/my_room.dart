@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,12 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:nfc_emulator/nfc_emulator.dart';
 import 'package:provider/provider.dart';
 
 import 'package:razvoj_sofvera/Utilities/key_card.dart';
 import 'package:razvoj_sofvera/Utilities/key_card_dialog.dart';
-
-import 'package:nfc_manager/nfc_manager.dart';
+import 'package:razvoj_sofvera/Utilities/nfcData.dart';
 import 'package:razvoj_sofvera/Utilities/room_card.dart';
 import 'package:razvoj_sofvera/pages/controller_pages/bathroom_controler.dart';
 import 'package:razvoj_sofvera/pages/controller_pages/bedroom_controler.dart';
@@ -31,30 +32,7 @@ class _MyRoomState extends State<MyRoom> {
   ValueNotifier<String> result = ValueNotifier<String>(
       ''); // Declare and initialize a ValueNotifier to hold a string value
 
-  void ndefWrite() {
-    NfcManager.instance.startSession(onDiscovered: (NfcTag tag) async {
-      var ndef = Ndef.from(tag);
-      if (ndef == null || !ndef.isWritable) {
-        print('Tag is not ndef writable');
-        NfcManager.instance.stopSession(errorMessage: result.value);
-        return;
-      }
-
-      NdefMessage message = NdefMessage([
-        NdefRecord.createText('Radi!'),
-      ]);
-
-      try {
-        await ndef.write(message);
-        print('Success to "Ndef Write"');
-        NfcManager.instance.stopSession();
-      } catch (e) {
-        result.value == e;
-        NfcManager.instance.stopSession(errorMessage: result.value.toString());
-        return;
-      }
-    });
-  }
+  
 
   //include hive
   final myBox = Hive.box('UserInfo');
@@ -66,6 +44,28 @@ class _MyRoomState extends State<MyRoom> {
   void initState() {
     super.initState();
     _fetchUserName();
+  }
+
+  void startNfcEmulation() async {
+    final nfcData = NFCData(
+      userId: 'exampleUserId',
+      authToken: 'exampleAuthToken',
+      roomId: 'exampleRoomId',
+    );
+
+    final String jsonString = jsonEncode(nfcData.toJson());
+
+    // Convert the JSON string to a format suitable for NFC emulation
+    // Depending on how nfc_emulator expects the data, you might need to further process jsonString
+    // For example, if it needs a hexadecimal string, you will have to convert it accordingly
+
+    NfcStatus nfcStatus = await NfcEmulator.nfcStatus;
+    if (nfcStatus == NfcStatus.enabled) {
+      await NfcEmulator.startNfcEmulator(jsonString, userName);
+      // Handle the result
+    } else {
+      print("NFC is not enabled");
+    }
   }
 
   //trying to fetch user data (in this case their name)
@@ -134,12 +134,25 @@ class _MyRoomState extends State<MyRoom> {
                 //room key container
                 InkWell(
                   onTap: () {
-                    funckije() {
+                    funckije() async {
                       toggleUsingKey();
-                      ndefWrite();
+                      startNfcEmulation();
+
                     }
 
                     funckije();
+                  },
+                  onTapCancel: () async {
+                    // Stop NFC emulator:
+                    NfcStatus nfcStatus = await NfcEmulator.nfcStatus;
+                    print(nfcStatus);
+                    await NfcEmulator.stopNfcEmulator();
+                  },
+                  onFocusChange: (value) async {
+                    // Stop NFC emulator:
+                    NfcStatus nfcStatus = await NfcEmulator.nfcStatus;
+                    print(nfcStatus);
+                    await NfcEmulator.stopNfcEmulator();
                   },
                   child: Opacity(
                     opacity: usingKey ? 0 : 1,

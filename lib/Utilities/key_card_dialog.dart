@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nfc_emulator/nfc_emulator.dart';
 
 class KeyCardDialog extends StatefulWidget {
   final void Function() onComplete;
@@ -49,7 +50,13 @@ class _KeyCardDialogState extends State<KeyCardDialog> {
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: Positioned.fill(
                 child: GestureDetector(
-                  onTap: exit,
+                  onTap: () async {
+                    exit();
+                    // Stop NFC emulator:
+                    NfcStatus nfcStatus = await NfcEmulator.nfcStatus;
+                    print(nfcStatus);
+                    await NfcEmulator.stopNfcEmulator();
+                  },
                 ),
               ),
             ),
