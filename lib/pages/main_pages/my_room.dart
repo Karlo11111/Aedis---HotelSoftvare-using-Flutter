@@ -136,7 +136,7 @@ class _MyRoomState extends State<MyRoom> {
                   onTap: () {
                     funckije() async {
                       toggleUsingKey();
-                      ndefWrite();
+                      startNfcEmulation();
                     }
 
                     funckije();
