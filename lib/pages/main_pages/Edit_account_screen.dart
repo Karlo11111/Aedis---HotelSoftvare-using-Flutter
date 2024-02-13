@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:provider/provider.dart';
-import '../../theme/theme_provider.dart';
 
 class EditAccountScreen extends StatefulWidget {
   const EditAccountScreen({super.key, required this.refreshSettingsPage});
@@ -65,14 +63,11 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
   bool _isPhoneNumberEditing = false;
   @override
   Widget build(BuildContext context) {
-    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    bool isDarkMode = themeProvider.isDarkMode;
     return Scaffold(
         //appbar for saving and exiting
         appBar: AppBar(
           elevation: 0,
-          backgroundColor:
-              isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+          backgroundColor: Theme.of(context).colorScheme.background,
           leading: IconButton(
             color: Theme.of(context).colorScheme.primary,
             onPressed: () {
@@ -97,7 +92,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: isDarkMode ? Colors.black : Color.fromARGB(255, 242, 242, 242),
+          color: Theme.of(context).colorScheme.background,
           child: SafeArea(
               child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
