@@ -1,4 +1,5 @@
-// ignore_for_file: avoid_print, prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: avoid_print, avoid_unnecessary_containers
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -31,8 +32,6 @@ class MyRoom extends StatefulWidget {
 class _MyRoomState extends State<MyRoom> {
   ValueNotifier<String> result = ValueNotifier<String>(
       ''); // Declare and initialize a ValueNotifier to hold a string value
-
-  
 
   //include hive
   final myBox = Hive.box('UserInfo');
@@ -130,7 +129,7 @@ class _MyRoomState extends State<MyRoom> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 //room key container
                 InkWell(
                   onTap: () {
@@ -172,7 +171,7 @@ class _MyRoomState extends State<MyRoom> {
                             ),
 
                             //sized box
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
 
                             //room key text
                             Card(
@@ -186,7 +185,7 @@ class _MyRoomState extends State<MyRoom> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(24),
                                     color: isDarkMode
-                                        ? Color.fromARGB(255, 15, 59, 100)
+                                        ? const Color.fromARGB(255, 15, 59, 100)
                                         : Colors.white),
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 15.0),
@@ -226,7 +225,7 @@ class _MyRoomState extends State<MyRoom> {
 
                 //sized box
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 //your rooms container
                 Card(
@@ -240,7 +239,7 @@ class _MyRoomState extends State<MyRoom> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(24),
                         color: isDarkMode
-                            ? Color.fromARGB(255, 15, 59, 100)
+                            ? const Color.fromARGB(255, 15, 59, 100)
                             : Colors.white),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0),
@@ -267,7 +266,7 @@ class _MyRoomState extends State<MyRoom> {
                   ),
                 ),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 //your rooms container
                 SingleChildScrollView(
@@ -287,7 +286,7 @@ class _MyRoomState extends State<MyRoom> {
                         },
                       ),
 
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
 
                       //bathroom
                       RoomCard(
@@ -303,7 +302,7 @@ class _MyRoomState extends State<MyRoom> {
                         },
                       ),
 
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
 
                       //living room
 

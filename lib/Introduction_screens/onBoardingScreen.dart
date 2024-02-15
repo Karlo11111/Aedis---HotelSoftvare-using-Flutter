@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, file_names
-
 import 'package:flutter/material.dart';
 import 'package:razvoj_sofvera/Introduction_screens/screens/intro_page1.dart';
 import 'package:razvoj_sofvera/authentification/auth.dart';
@@ -44,7 +42,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return AuthPage();
+                      return const AuthPage();
                     }));
                   },
                   child: Container(
@@ -68,7 +66,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => LoginOrRegister()),
+                          builder: (context) => const LoginOrRegister()),
                     );
                   },
                   child: Padding(

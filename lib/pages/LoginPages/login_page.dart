@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, use_build_context_synchronously, prefer_const_literals_to_create_immutables, avoid_print, unused_local_variable, prefer_interpolation_to_compose_strings
+// ignore_for_file: unused_local_variable, use_build_context_synchronously, avoid_print, non_constant_identifier_names
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,6 @@ import 'package:razvoj_sofvera/Utilities/text_fields.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:razvoj_sofvera/pages/employee_pages/employee_main_page.dart';
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -45,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => PagesPage(),
+            builder: (context) => const PagesPage(),
           ));
 
       // Use the user object for further operations or navigate to a new screen.
@@ -63,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
     // Show loading circle
     showDialog(
       context: context,
-      builder: (context) => Center(child: CircularProgressIndicator()),
+      builder: (context) => const Center(child: CircularProgressIndicator()),
     );
     // Try signing in
     try {
@@ -81,19 +80,18 @@ class _LoginPageState extends State<LoginPage> {
         if (doc.exists) {
           // User is an employee, navigate to employee page
           Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    EmployeePage(), 
-              ),
-              (Route<dynamic> route) => false,
+            context,
+            MaterialPageRoute(
+              builder: (context) => const EmployeePage(),
+            ),
+            (Route<dynamic> route) => false,
           );
         } else {
           // User is a regular guest
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => PagesPage(),
+                builder: (context) => const PagesPage(),
               ));
         }
       });
@@ -104,7 +102,6 @@ class _LoginPageState extends State<LoginPage> {
       displayMessage(e.code);
     }
   }
-
 
   //dispaly a message with the error
   void displayMessage(String message) {
@@ -126,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("lib/assets/signInBackground.png"),
                 fit: BoxFit.cover)),
@@ -134,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             child: Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Container(
                   width: double.infinity,
                   height: 550,
@@ -142,10 +139,10 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(30),
                     //box shadow
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Color.fromARGB(255, 153, 151, 151),
-                        offset: const Offset(
+                        offset: Offset(
                           2.0,
                           2.0,
                         ),
@@ -155,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -190,7 +187,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
 
                         //SIZED BOX
-                        SizedBox(height: 40),
+                        const SizedBox(height: 40),
 
                         //TEXTFIELDS FOR EMAIL AND PASSWD
                         //email
@@ -248,35 +245,9 @@ class _LoginPageState extends State<LoginPage> {
                                 'http://pngimg.com/uploads/google/google_PNG19635.png',
                                 fit: BoxFit.cover)),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Dont have an account?",
-                              style: GoogleFonts.inter(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            GestureDetector(
-                                onTap: widget.ontap,
-                                child: Text(
-                                  AppLocalizations.of(context)!.register_now,
-                                  style: GoogleFonts.inter(
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
-                                ))
-                          ],
-                        )
                       ],
                     ),
                   ),
