@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/Utilities/buttons.dart';
@@ -44,7 +42,7 @@ class MassageScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(45),
                   topRight: Radius.circular(45),
                 ),
@@ -74,7 +72,7 @@ class MassageScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           // Rating
                           Row(
                             children: [
@@ -87,17 +85,17 @@ class MassageScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
-                              SizedBox(width: 10),
-                              Icon(Icons.star, color: Colors.yellow),
+                              const SizedBox(width: 10),
+                              const Icon(Icons.star, color: Colors.yellow),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Divider(
                             color: Colors.grey[400],
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
                               Text("Hotel Massage",
@@ -110,8 +108,8 @@ class MassageScreen extends StatelessWidget {
                                   )),
                             ],
                           ),
-                          SizedBox(height: 10),
-                          Row(
+                          const SizedBox(height: 10),
+                          const Row(
                             children: [
                               Text(
                                 "Massage therapy offers rejuvenation for both body and \nmind. Skilled hands relieve tension and stress in a calming \nenvironment, using tailored techniques like Swedish or \ndeep tissue massage to enhance overall well-being.",
@@ -123,13 +121,13 @@ class MassageScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Divider(
                             color: Colors.grey[400],
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
                               Text("Map",
@@ -142,16 +140,16 @@ class MassageScreen extends StatelessWidget {
                                   )),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           // Map
                           Padding(
-                            padding: EdgeInsets.only(right: 36),
+                            padding: const EdgeInsets.only(right: 36),
                             child: Container(
                               height: 200,
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage('lib/assets/map.jpg'),
                                   fit: BoxFit.cover,
                                 ),
@@ -159,18 +157,18 @@ class MassageScreen extends StatelessWidget {
                             ),
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           // Book now button
                           Padding(
-                            padding: EdgeInsets.only(right: 36),
+                            padding: const EdgeInsets.only(right: 36),
                             child: MyButton(
                                 buttonText: "Book now!",
                                 height: 40,
                                 width: 300,
                                 decorationColor: isDarkMode
-                                    ? Color.fromARGB(255, 38, 151, 255)
+                                    ? const Color.fromARGB(255, 38, 151, 255)
                                     : Theme.of(context).colorScheme.secondary,
                                 borderColor: Colors.transparent,
                                 textColor: Colors.white,
@@ -181,7 +179,8 @@ class MassageScreen extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => BookMassage(),
+                                        builder: (context) =>
+                                            const BookMassage(),
                                       ));
                                 }),
                           ),

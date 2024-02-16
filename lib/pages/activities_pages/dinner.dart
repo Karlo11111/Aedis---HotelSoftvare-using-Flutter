@@ -1,7 +1,5 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
@@ -43,7 +41,7 @@ class Dinner extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(45),
                   topRight: Radius.circular(45),
                 ),
@@ -78,8 +76,8 @@ class Dinner extends StatelessWidget {
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
-                          Row(
+                          const SizedBox(height: 10),
+                          const Row(
                             children: [
                               Text(
                                 "Hotel dinners are a blend of luxury and culinary excellence. \nWhether you seek fine dining or a casual meal, hotels \nhave you covered. Enjoy the convenience of a service \nafter a long day of travel, and experience impeccable \nservice from welcoming staff and attentive servers.",
@@ -91,14 +89,14 @@ class Dinner extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Divider(
                             color: Colors.grey[400],
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
-                          Row(
+                          const SizedBox(height: 10),
+                          const Row(
                             children: [
                               Text(
                                 "Hotel chefs create diverse menus, blending local and \ninternational flavors. Your dining experience is enhanced \nwith carefully curated wine lists.In summary, hotel dinners\n offer convenience, top-notch service, and culinary \nexcellence, ensuring a memorable dining experience \nfor all guests.",
