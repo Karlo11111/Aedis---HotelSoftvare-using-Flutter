@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, prefer_interpolation_to_compose_strings
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -80,7 +80,7 @@ class _HelpPageState extends State<HelpPage> {
               TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(
-                    labelText: 'Name',
+                    labelText: 'Username',
                     hintStyle: GoogleFonts.inder(
                         color: Theme.of(context).colorScheme.secondary)),
                 validator: (value) {
@@ -103,8 +103,11 @@ class _HelpPageState extends State<HelpPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                ),
                 onPressed: () {
                   functions() {
                     _submitForm();
@@ -115,7 +118,7 @@ class _HelpPageState extends State<HelpPage> {
                 child: Text(
                   'Submit',
                   style: GoogleFonts.inder(
-                      color: Theme.of(context).colorScheme.background),
+                      color: Theme.of(context).colorScheme.primary),
                 ),
               ),
             ],

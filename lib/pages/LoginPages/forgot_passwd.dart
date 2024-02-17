@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -59,7 +59,7 @@ class _ForgotPasswdState extends State<ForgotPasswd> {
       //Receive an email text
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Form(
             key: formKey,
             child: Column(
@@ -81,7 +81,7 @@ class _ForgotPasswdState extends State<ForgotPasswd> {
                   controller: emailControler,
                   cursorColor: Colors.white,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(labelText: 'Email'),
+                  decoration: const InputDecoration(labelText: 'Email'),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (email) =>
                       email != null && !EmailValidator.validate(email)
@@ -97,9 +97,9 @@ class _ForgotPasswdState extends State<ForgotPasswd> {
 
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size.fromHeight(50),
+                    minimumSize: const Size.fromHeight(50),
                   ),
-                  icon: Icon(Icons.email_outlined),
+                  icon: const Icon(Icons.email_outlined),
                   label: Text(
                     "Reset Password",
                     style: GoogleFonts.inter(fontSize: 24),

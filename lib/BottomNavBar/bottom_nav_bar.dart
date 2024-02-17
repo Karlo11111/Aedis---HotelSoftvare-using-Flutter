@@ -1,7 +1,5 @@
 // Add the persistent_bottom_nav_bar package import
 
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ionicons/ionicons.dart';
@@ -31,7 +29,7 @@ class _PagesPageState extends State<PagesPage> {
   }
 
   List<Widget> _buildScreens() {
-    return [
+    return const [
       HomePage(),
       MyRoom(),
       SearchPage(),
@@ -76,22 +74,22 @@ class _PagesPageState extends State<PagesPage> {
       items: _navBarsItems(context),
       confineInSafeArea: true,
       backgroundColor:
-          isDarkMode ? Color.fromARGB(194, 46, 53, 94) : Colors.white,
+          isDarkMode ? const Color.fromARGB(194, 46, 53, 94) : Colors.white,
       handleAndroidBackButtonPress: true,
       navBarHeight: 60,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
       hideNavigationBarWhenKeyboardShows: true,
-      decoration: NavBarDecoration(
+      decoration: const NavBarDecoration(
         colorBehindNavBar: Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: ItemAnimationProperties(
+      itemAnimationProperties: const ItemAnimationProperties(
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
       ),
-      screenTransitionAnimation: ScreenTransitionAnimation(
+      screenTransitionAnimation: const ScreenTransitionAnimation(
         animateTabTransition: true,
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),

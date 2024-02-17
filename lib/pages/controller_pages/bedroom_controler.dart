@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, avoid_unnecessary_containers, non_constant_identifier_names, unused_element, prefer_const_declarations
+// ignore_for_file: prefer_const_constructors_in_immutables, non_constant_identifier_names
 
 import 'dart:math';
 
@@ -34,7 +34,7 @@ class _BedroomControllerState extends State<BedroomController> {
     return GestureDetector(
       onTap: () => setState(() => _selectedIndex = index),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
         decoration: BoxDecoration(
           color: _selectedIndex == index ? Colors.white : Colors.transparent,
           borderRadius: BorderRadius.circular(30.0),
@@ -67,7 +67,7 @@ class _BedroomControllerState extends State<BedroomController> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
           color: isDarkMode ? Colors.white : Colors.black,
         ),
         title: Text(
@@ -116,7 +116,7 @@ class _BedroomControllerState extends State<BedroomController> {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -142,16 +142,16 @@ class _BedroomControllerState extends State<BedroomController> {
                           decoration: BoxDecoration(
                               color: CoolSwitch
                                   ? isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Theme.of(context).colorScheme.secondary
                                   : isDarkMode
-                                      ? Color.fromARGB(255, 15, 59, 100)
+                                      ? const Color.fromARGB(255, 15, 59, 100)
                                       : Colors.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Icon(
@@ -159,7 +159,7 @@ class _BedroomControllerState extends State<BedroomController> {
                                 color: CoolSwitch ? Colors.white : Colors.grey,
                                 size: 30,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -194,25 +194,25 @@ class _BedroomControllerState extends State<BedroomController> {
                           decoration: BoxDecoration(
                               color: HeatSwitch
                                   ? isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Theme.of(context).colorScheme.secondary
                                   : isDarkMode
-                                      ? Color.fromARGB(255, 15, 59, 100)
+                                      ? const Color.fromARGB(255, 15, 59, 100)
                                       : Colors.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Image(
-                                image: Svg("lib/assets/heat.svg"),
+                                image: const Svg("lib/assets/heat.svg"),
                                 height: 30,
                                 width: 30,
                                 color: HeatSwitch ? Colors.white : Colors.grey,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -247,25 +247,25 @@ class _BedroomControllerState extends State<BedroomController> {
                           decoration: BoxDecoration(
                               color: AutoSwitch
                                   ? isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Theme.of(context).colorScheme.secondary
                                   : isDarkMode
-                                      ? Color.fromARGB(255, 15, 59, 100)
+                                      ? const Color.fromARGB(255, 15, 59, 100)
                                       : Colors.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Image(
-                                image: Svg("lib/assets/auto.svg"),
+                                image: const Svg("lib/assets/auto.svg"),
                                 height: 30,
                                 width: 30,
                                 color: AutoSwitch ? Colors.white : Colors.grey,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -300,25 +300,25 @@ class _BedroomControllerState extends State<BedroomController> {
                           decoration: BoxDecoration(
                               color: DrySwitch
                                   ? isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Theme.of(context).colorScheme.secondary
                                   : isDarkMode
-                                      ? Color.fromARGB(255, 15, 59, 100)
+                                      ? const Color.fromARGB(255, 15, 59, 100)
                                       : Colors.white,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Image(
-                                image: Svg("lib/assets/dry.svg"),
+                                image: const Svg("lib/assets/dry.svg"),
                                 height: 30,
                                 width: 30,
                                 color: DrySwitch ? Colors.white : Colors.grey,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -337,7 +337,7 @@ class _BedroomControllerState extends State<BedroomController> {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 35,
                 ),
 
@@ -369,17 +369,17 @@ class _BedroomControllerState extends State<BedroomController> {
                         final double angle = atan2(dy, dx);
 
                         // Adjust the angle based on your gauge's start angle and direction
-                        final double startAngle = pi * 0.7;
-                        final double endAngle = startAngle + pi * 1.6;
+                        const double startAngle = pi * 0.7;
+                        const double endAngle = startAngle + pi * 1.6;
                         double normalizedAngle = angle - startAngle;
                         if (normalizedAngle < 0) {
                           normalizedAngle += 2 * pi;
                         }
 
                         // Map angle to temperature
-                        final double sweepAngle = endAngle - startAngle;
+                        const double sweepAngle = endAngle - startAngle;
                         if (normalizedAngle <= sweepAngle) {
-                          final double tempRange = 30 - 16;
+                          const double tempRange = 30 - 16;
                           final double temp =
                               16 + (normalizedAngle / sweepAngle) * tempRange;
                           setState(() {
@@ -388,15 +388,15 @@ class _BedroomControllerState extends State<BedroomController> {
                         }
                       },
                       child: CustomPaint(
-                        size: Size(200, 200),
+                        size: const Size(200, 200),
                         painter: TemperatureGaugePainter(
                             _currentTemperature,
                             isDarkMode
-                                ? Color.fromARGB(255, 15, 59, 100)
+                                ? const Color.fromARGB(255, 15, 59, 100)
                                 : Colors.white,
                             isDarkMode
                                 ? Colors.white
-                                : Color.fromARGB(255, 15, 59, 100)),
+                                : const Color.fromARGB(255, 15, 59, 100)),
                       ),
                     ),
 
@@ -409,7 +409,7 @@ class _BedroomControllerState extends State<BedroomController> {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -420,11 +420,11 @@ class _BedroomControllerState extends State<BedroomController> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: isDarkMode
-                          ? Color.fromARGB(255, 15, 59, 100)
+                          ? const Color.fromARGB(255, 15, 59, 100)
                           : Colors.white),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       //icon
@@ -434,7 +434,7 @@ class _BedroomControllerState extends State<BedroomController> {
                         size: 50,
                       ),
 
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
 
@@ -465,12 +465,13 @@ class _BedroomControllerState extends State<BedroomController> {
                         width: MediaQuery.of(context).size.width / 5,
                       ),
 
-                      Icon(Icons.arrow_forward_ios_rounded, color: Colors.grey)
+                      const Icon(Icons.arrow_forward_ios_rounded,
+                          color: Colors.grey)
                     ],
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -481,11 +482,11 @@ class _BedroomControllerState extends State<BedroomController> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: isDarkMode
-                          ? Color.fromARGB(255, 15, 59, 100)
+                          ? const Color.fromARGB(255, 15, 59, 100)
                           : Colors.white),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       //icon
@@ -495,7 +496,7 @@ class _BedroomControllerState extends State<BedroomController> {
                         size: 50,
                       ),
 
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
 
@@ -535,7 +536,7 @@ class _BedroomControllerState extends State<BedroomController> {
                               : Colors.grey[300],
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        padding: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -551,7 +552,7 @@ class _BedroomControllerState extends State<BedroomController> {
                 ),
 
                 //other devices
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
@@ -561,11 +562,11 @@ class _BedroomControllerState extends State<BedroomController> {
                         fontWeight: FontWeight.w700,
                         fontSize: 22)),
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
@@ -639,7 +640,7 @@ class TemperatureGaugePainter extends CustomPainter {
           Colors.red.shade300,
           Colors.red,
         ],
-        stops: [
+        stops: const [
           0.0,
           0.33,
           0.66,
