@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
@@ -42,7 +40,7 @@ class Breakfast extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(45),
                   topRight: Radius.circular(45),
                 ),
@@ -77,8 +75,8 @@ class Breakfast extends StatelessWidget {
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
-                          Row(
+                          const SizedBox(height: 10),
+                          const Row(
                             children: [
                               Text(
                                 "Enjoy a diverse breakfast selection from 7:00 AM to 10:00 AM. \nChoose from pastries, eggs, bacon, fresh fruits, and more in \na welcoming atmosphere.",
@@ -90,14 +88,14 @@ class Breakfast extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Divider(
                             color: Colors.grey[400],
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
-                          Row(
+                          const SizedBox(height: 10),
+                          const Row(
                             children: [
                               Text(
                                 "Our attentive staff ensures a great dining experience. Flexible \nbreakfast hours for your convenience.Start your day with a \nhearty meal that caters to all tastes, setting the perfect \ntone for your stay.",

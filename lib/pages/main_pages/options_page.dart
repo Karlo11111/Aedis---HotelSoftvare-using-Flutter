@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, avoid_print, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings
+// ignore_for_file: non_constant_identifier_names, avoid_print, prefer_interpolation_to_compose_strings
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -42,7 +42,7 @@ class _OptionsPageState extends State<OptionsPage> {
   void signOut() async {
     FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginOrRegister()));
+        MaterialPageRoute(builder: (context) => const LoginOrRegister()));
   }
 
   String userName = '';
@@ -124,7 +124,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   ),
 
                   //profile picture and name
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
 
@@ -136,13 +136,13 @@ class _OptionsPageState extends State<OptionsPage> {
                         width: 70,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             image: AssetImage('lib/assets/avatar.png'),
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Column(
@@ -156,7 +156,7 @@ class _OptionsPageState extends State<OptionsPage> {
                               color: Theme.of(context).colorScheme.secondary,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
@@ -182,21 +182,21 @@ class _OptionsPageState extends State<OptionsPage> {
                                   builder: (context) => EditAccountScreen(
                                       refreshSettingsPage: NavigateToAccPage)));
                         },
-                        icon: Icon(Icons.arrow_forward_ios),
+                        icon: const Icon(Icons.arrow_forward_ios),
                       ),
                     ],
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
 
-                  Divider(
+                  const Divider(
                     color: Colors.grey,
                     thickness: 1,
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
 
@@ -205,7 +205,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     width: MediaQuery.of(context).size.width,
                     height: 100,
                     decorationColor: isDarkMode
-                        ? Color.fromARGB(255, 15, 59, 100)
+                        ? const Color.fromARGB(255, 15, 59, 100)
                         : Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
@@ -236,7 +236,7 @@ class _OptionsPageState extends State<OptionsPage> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 6,
                           ),
                           FittedBox(
@@ -263,7 +263,7 @@ class _OptionsPageState extends State<OptionsPage> {
                               });
                             },
                           )),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           )
                         ],
@@ -271,7 +271,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     ),
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
 
@@ -286,7 +286,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     ),
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
 
@@ -298,11 +298,11 @@ class _OptionsPageState extends State<OptionsPage> {
                     onTap: () {},
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
 
-                  Divider(
+                  const Divider(
                     color: Colors.grey,
                     thickness: 1,
                   ),
@@ -315,11 +315,11 @@ class _OptionsPageState extends State<OptionsPage> {
                     TrailingIcon: Icons.arrow_forward_ios,
                     onTap: () {},
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
 
-                  Divider(
+                  const Divider(
                     color: Colors.grey,
                     thickness: 1,
                   ),
@@ -335,11 +335,11 @@ class _OptionsPageState extends State<OptionsPage> {
                     },
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
 
-                  Divider(
+                  const Divider(
                     color: Colors.grey,
                     thickness: 1,
                   ),
@@ -352,11 +352,11 @@ class _OptionsPageState extends State<OptionsPage> {
                     onTap: () {},
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
 
-                  Divider(
+                  const Divider(
                     color: Colors.grey,
                     thickness: 1,
                   ),
@@ -378,7 +378,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     },
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 25,
                   ),
 
@@ -388,7 +388,7 @@ class _OptionsPageState extends State<OptionsPage> {
                     height: 60,
                     width: MediaQuery.of(context).size.width,
                     decorationColor: isDarkMode
-                        ? Color.fromARGB(255, 38, 151, 255)
+                        ? const Color.fromARGB(255, 38, 151, 255)
                         : Theme.of(context).colorScheme.secondary,
                     borderColor: Colors.transparent,
                     textColor: Colors.white,

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, non_constant_identifier_names, prefer_interpolation_to_compose_strings, avoid_print
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +23,7 @@ import 'package:razvoj_sofvera/pages/services_pages/spa.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: SafeArea(
             child: Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                     width: MediaQuery.of(context).size.width,
                     height: 100,
                     decorationColor: isDarkMode
-                        ? Color.fromARGB(255, 15, 59, 100)
+                        ? const Color.fromARGB(255, 15, 59, 100)
                         : Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 6,
                           ),
                           FittedBox(
@@ -183,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                               size: 30,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           )
                         ],
@@ -212,13 +212,13 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SeeAllExplore()));
+                                  builder: (context) => const SeeAllExplore()));
                         },
                         child: MyContainer(
                           width: 100,
                           height: 30,
                           decorationColor: isDarkMode
-                              ? Color.fromARGB(255, 38, 151, 255)
+                              ? const Color.fromARGB(255, 38, 151, 255)
                               : Colors.blue.shade900,
                           child: Center(
                             child: Text(
@@ -245,7 +245,7 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       children: [
                         //zadar container
-                        InfoContainer(
+                        const InfoContainer(
                           imagePath: 'lib/assets/zadar.jpg',
                           title: 'About Zadar',
                           content:
@@ -267,7 +267,7 @@ class _HomePageState extends State<HomePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.star,
                                   color: Colors.yellow,
                                 )
@@ -287,7 +287,7 @@ class _HomePageState extends State<HomePage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                DivingScreen()));
+                                                const DivingScreen()));
                                   },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
@@ -295,7 +295,7 @@ class _HomePageState extends State<HomePage> {
                                   textColor: Colors.white,
                                   icon: null,
                                   decorationColor: isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Colors.blue.shade900,
                                 ),
                                 Text(
@@ -325,7 +325,7 @@ class _HomePageState extends State<HomePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.star,
                                   color: Colors.yellow,
                                 )
@@ -345,7 +345,7 @@ class _HomePageState extends State<HomePage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                KornatiScreen()));
+                                                const KornatiScreen()));
                                   },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
@@ -353,7 +353,7 @@ class _HomePageState extends State<HomePage> {
                                   textColor: Colors.white,
                                   icon: null,
                                   decorationColor: isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Colors.blue.shade900,
                                 ),
                                 Text(
@@ -392,13 +392,13 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AllServices()));
+                                  builder: (context) => const AllServices()));
                         },
                         child: MyContainer(
                           width: 100,
                           height: 30,
                           decorationColor: isDarkMode
-                              ? Color.fromARGB(255, 38, 151, 255)
+                              ? const Color.fromARGB(255, 38, 151, 255)
                               : Colors.blue.shade900,
                           child: Center(
                             child: Text(
@@ -440,7 +440,7 @@ class _HomePageState extends State<HomePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.star,
                                   color: Colors.yellow,
                                 )
@@ -460,7 +460,7 @@ class _HomePageState extends State<HomePage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                MassageScreen()));
+                                                const MassageScreen()));
                                   },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
@@ -468,7 +468,7 @@ class _HomePageState extends State<HomePage> {
                                   textColor: Colors.white,
                                   icon: null,
                                   decorationColor: isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Colors.blue.shade900,
                                 ),
                                 Text(
@@ -498,7 +498,7 @@ class _HomePageState extends State<HomePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.star,
                                   color: Colors.yellow,
                                 )
@@ -518,7 +518,8 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => SpaScreen()));
+                                            builder: (context) =>
+                                                const SpaScreen()));
                                   },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
@@ -526,7 +527,7 @@ class _HomePageState extends State<HomePage> {
                                   textColor: Colors.white,
                                   icon: null,
                                   decorationColor: isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Colors.blue.shade900,
                                 ),
                                 Text(
@@ -563,7 +564,7 @@ class _HomePageState extends State<HomePage> {
                                   textColor: Colors.white,
                                   icon: null,
                                   decorationColor: isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Colors.blue.shade900,
                                 ),
                               ],
@@ -593,13 +594,13 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AllActivities()));
+                                  builder: (context) => const AllActivities()));
                         },
                         child: MyContainer(
                           width: 100,
                           height: 30,
                           decorationColor: isDarkMode
-                              ? Color.fromARGB(255, 38, 151, 255)
+                              ? const Color.fromARGB(255, 38, 151, 255)
                               : Colors.blue.shade900,
                           child: Center(
                             child: Text(
@@ -643,7 +644,8 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Breakfast()));
+                                            builder: (context) =>
+                                                const Breakfast()));
                                   },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
@@ -651,7 +653,7 @@ class _HomePageState extends State<HomePage> {
                                   textColor: Colors.white,
                                   icon: null,
                                   decorationColor: isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Colors.blue.shade900,
                                 ),
                               ],
@@ -676,7 +678,8 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Lunch()));
+                                            builder: (context) =>
+                                                const Lunch()));
                                   },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
@@ -684,7 +687,7 @@ class _HomePageState extends State<HomePage> {
                                   textColor: Colors.white,
                                   icon: null,
                                   decorationColor: isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Colors.blue.shade900,
                                 ),
                               ],
@@ -709,7 +712,8 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Dinner()));
+                                            builder: (context) =>
+                                                const Dinner()));
                                   },
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
@@ -717,7 +721,7 @@ class _HomePageState extends State<HomePage> {
                                   textColor: Colors.white,
                                   icon: null,
                                   decorationColor: isDarkMode
-                                      ? Color.fromARGB(255, 38, 151, 255)
+                                      ? const Color.fromARGB(255, 38, 151, 255)
                                       : Colors.blue.shade900,
                                 ),
                               ],

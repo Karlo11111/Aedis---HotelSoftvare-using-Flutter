@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, avoid_single_cascade_in_expression_statements, curly_braces_in_flow_control_structures, non_constant_identifier_names, avoid_print, sized_box_for_whitespace, prefer_final_fields, use_build_context_synchronously
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields, avoid_print, use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -247,15 +247,15 @@ class _BookNowKornatiState extends State<BookNowKornati> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text("Booking Limit Reached"),
-            content:
-                Text("You have reached the maximum bookings for this date."),
+            title: const Text("Booking Limit Reached"),
+            content: const Text(
+                "You have reached the maximum bookings for this date."),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("OK"),
+                child: const Text("OK"),
               ),
             ],
           ),
@@ -281,7 +281,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
                   children: [
                     Text(
                         "Are you sure you want to book a Trip to Kornati Session at $timeSlot"),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -294,7 +294,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
                             ),
                             height: 50,
                             child: TextButton(
-                                style: ButtonStyle(
+                                style: const ButtonStyle(
                                     foregroundColor:
                                         MaterialStatePropertyAll(Colors.black),
                                     textStyle: MaterialStatePropertyAll(
@@ -303,8 +303,8 @@ class _BookNowKornatiState extends State<BookNowKornati> {
                                   if (onTapCancel != null) onTapCancel();
                                   Navigator.pop(context); // Close the dialog
                                 },
-                                child: Text("No, cancel"))),
-                        SizedBox(width: 5),
+                                child: const Text("No, cancel"))),
+                        const SizedBox(width: 5),
 
                         //YES IM SURE BUTTON
                         Container(
@@ -315,7 +315,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
                             ),
                             height: 50,
                             child: TextButton(
-                                style: ButtonStyle(
+                                style: const ButtonStyle(
                                     foregroundColor:
                                         MaterialStatePropertyAll(Colors.black),
                                     textStyle: MaterialStatePropertyAll(
@@ -324,7 +324,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
                                   if (onTap != null) onTap();
                                   Navigator.pop(context); // Close the dialog
                                 },
-                                child: Text("Yes I'm sure"))),
+                                child: const Text("Yes I'm sure"))),
                       ],
                     )
                   ],
@@ -340,7 +340,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
       appBar: AppBar(
         backgroundColor: Colors.grey.shade300,
         foregroundColor: Colors.black,
-        title: Text("Book Your Trip to Kornati "),
+        title: const Text("Book Your Trip to Kornati "),
         centerTitle: true,
         elevation: 0,
       ),
@@ -351,13 +351,13 @@ class _BookNowKornatiState extends State<BookNowKornati> {
             calendarFormat: CalendarFormat.month,
             focusedDay: _selectedDate,
             firstDay: today,
-            lastDay: DateTime.now().add(Duration(days: 7)),
+            lastDay: DateTime.now().add(const Duration(days: 7)),
             onDaySelected: _onDaySelected,
             selectedDayPredicate: (day) {
               return _selectedDate.isAtSameMomentAs(day);
             },
-            headerStyle:
-                HeaderStyle(titleCentered: true, formatButtonVisible: false),
+            headerStyle: const HeaderStyle(
+                titleCentered: true, formatButtonVisible: false),
           ),
           Expanded(
             child: StreamBuilder<DocumentSnapshot>(
@@ -370,7 +370,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
                 }
 
                 if (!snapshot.hasData || !snapshot.data!.exists) {
-                  return Text('No time slots available');
+                  return const Text('No time slots available');
                 }
 
                 // Correctly cast the data
@@ -385,7 +385,7 @@ class _BookNowKornatiState extends State<BookNowKornati> {
                 }
 
                 return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
                   ),
                   itemCount: timeSlots.length,

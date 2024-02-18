@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -79,7 +77,7 @@ class _AllActivitiesState extends State<AllActivities> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  Breakfast()));
+                                                  const Breakfast()));
                                     },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -111,7 +109,8 @@ class _AllActivitiesState extends State<AllActivities> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => Lunch()));
+                                              builder: (context) =>
+                                                  const Lunch()));
                                     },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -143,7 +142,8 @@ class _AllActivitiesState extends State<AllActivities> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => Dinner()));
+                                              builder: (context) =>
+                                                  const Dinner()));
                                     },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,

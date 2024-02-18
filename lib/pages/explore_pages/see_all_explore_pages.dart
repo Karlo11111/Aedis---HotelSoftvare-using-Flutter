@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -58,7 +56,7 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                     child: Center(
                       child: Column(
                         children: [
-                          InfoContainer(
+                          const InfoContainer(
                             imagePath: 'lib/assets/zadar.jpg',
                             title: 'About Zadar',
                             content:
@@ -80,7 +78,7 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                                           Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
-                                  Icon(
+                                  const Icon(
                                     Icons.star,
                                     color: Colors.yellow,
                                   )
@@ -101,7 +99,7 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  DivingScreen()));
+                                                  const DivingScreen()));
                                     },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -137,7 +135,7 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                                           Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
-                                  Icon(
+                                  const Icon(
                                     Icons.star,
                                     color: Colors.yellow,
                                   )
@@ -158,7 +156,7 @@ class _SeeAllExploreState extends State<SeeAllExplore> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  KornatiScreen()));
+                                                  const KornatiScreen()));
                                     },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,

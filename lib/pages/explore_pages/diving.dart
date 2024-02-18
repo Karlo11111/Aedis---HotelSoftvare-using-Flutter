@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +44,7 @@ class DivingScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(45),
                   topRight: Radius.circular(45),
                 ),
@@ -74,7 +74,7 @@ class DivingScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           // Rating
                           Row(
                             children: [
@@ -87,17 +87,17 @@ class DivingScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
-                              SizedBox(width: 10),
-                              Icon(Icons.star, color: Colors.yellow),
+                              const SizedBox(width: 10),
+                              const Icon(Icons.star, color: Colors.yellow),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Divider(
                             color: Colors.grey[400],
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
                               Text("Diving for beginners",
@@ -110,8 +110,8 @@ class DivingScreen extends StatelessWidget {
                                   )),
                             ],
                           ),
-                          SizedBox(height: 10),
-                          Row(
+                          const SizedBox(height: 10),
+                          const Row(
                             children: [
                               Text(
                                 "Diving appeals to adventure-seekers and marine \nenthusiasts, offering an immersive experience that \nshowcases underwater wonders.",
@@ -123,13 +123,13 @@ class DivingScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Divider(
                             color: Colors.grey[400],
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             children: [
                               Text("Map",
@@ -142,7 +142,7 @@ class DivingScreen extends StatelessWidget {
                                   )),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           // Map
                           Padding(
                             padding: EdgeInsets.only(right: 36),
@@ -151,7 +151,7 @@ class DivingScreen extends StatelessWidget {
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage('lib/assets/map.jpg'),
                                   fit: BoxFit.cover,
                                 ),
@@ -159,18 +159,18 @@ class DivingScreen extends StatelessWidget {
                             ),
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           // Book now button
                           Padding(
-                            padding: EdgeInsets.only(right: 36),
+                            padding: const EdgeInsets.only(right: 36),
                             child: MyButton(
                               buttonText: "Book now!",
                               height: 40,
                               width: 300,
                               decorationColor: isDarkMode
-                                  ? Color.fromARGB(255, 38, 151, 255)
+                                  ? const Color.fromARGB(255, 38, 151, 255)
                                   : Theme.of(context).colorScheme.secondary,
                               borderColor: Colors.transparent,
                               textColor: Colors.white,
@@ -182,7 +182,7 @@ class DivingScreen extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            BookDivingSession()));
+                                            const BookDivingSession()));
                               },
                             ),
                           ),

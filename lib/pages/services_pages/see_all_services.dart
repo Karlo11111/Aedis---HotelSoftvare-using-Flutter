@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -76,7 +74,7 @@ class _AllServicesState extends State<AllServices> {
                                           Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
-                                  Icon(
+                                  const Icon(
                                     Icons.star,
                                     color: Colors.yellow,
                                   )
@@ -95,7 +93,7 @@ class _AllServicesState extends State<AllServices> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  MassageScreen()));
+                                                  const MassageScreen()));
                                     },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -131,7 +129,7 @@ class _AllServicesState extends State<AllServices> {
                                           Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
-                                  Icon(
+                                  const Icon(
                                     Icons.star,
                                     color: Colors.yellow,
                                   )
@@ -153,7 +151,7 @@ class _AllServicesState extends State<AllServices> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  SpaScreen()));
+                                                  const SpaScreen()));
                                     },
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +41,7 @@ class Lunch extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(45),
                   topRight: Radius.circular(45),
                 ),
@@ -78,8 +76,8 @@ class Lunch extends StatelessWidget {
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
-                          Row(
+                          const SizedBox(height: 10),
+                          const Row(
                             children: [
                               Text(
                                 "Experience an extended hotel lunch from 12:00 PM to \n2:00 PM, creating a two-hour oasis of culinary delight in \nyour day.Our diverse lunch menu includes international and \nlocal cuisines, ensuring a delectable journey. Choose from \nrefreshing salads, succulent meats, or wholesome \nvegetarian options.",
@@ -91,14 +89,14 @@ class Lunch extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Divider(
                             color: Colors.grey[400],
                             thickness: 1,
                             endIndent: 36,
                           ),
-                          SizedBox(height: 10),
-                          Row(
+                          const SizedBox(height: 10),
+                          const Row(
                             children: [
                               Text(
                                 "Enhance your dining experience with the soothing melodies of \nlive music, complemented by our attentive staff's impeccable \nservice, whether you're here for business or leisure. As the \nclock nears 2:00 PM, our dessert selection shines with an \narray of sweet treats, from rich cakes to delicate pastries \nand fresh fruits. Mark a special occasion or take a \nbreak from your daily routine, our extended hotel lunch \npromises to make lasting memories.",
