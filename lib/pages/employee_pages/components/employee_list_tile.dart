@@ -30,12 +30,22 @@ class EmployeeListTile extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(taskName),
-                Text(taskStatus),
+                Text(
+                  taskName,
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                Text(taskStatus,
+                    style: TextStyle(color: Colors.white, fontSize: 16)),
               ],
             ),
             iconButtonYes
-                ? IconButton(onPressed: onTap, icon: Icon(Icons.add))
+                ? IconButton(
+                    onPressed: onTap,
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 30,
+                    ))
                 : Container(),
           ],
         ),

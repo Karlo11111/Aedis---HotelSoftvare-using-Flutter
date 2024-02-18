@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:razvoj_sofvera/pages/employee_pages/components/employee_list_tile.dart';
-import 'package:razvoj_sofvera/pages/employee_pages/components/in_work_task.dart';
+import 'package:razvoj_sofvera/pages/employee_pages/in_work_task_page.dart';
 
 class EmployeePage extends StatefulWidget {
   const EmployeePage({
@@ -29,6 +29,21 @@ class _EmployeePageState extends State<EmployeePage> {
         tasksForRole.add(taskData);
       }
     });
+    if (tasksForRole.isEmpty) {
+      // Return a Widget displaying a message that there are no tasks
+      return const Expanded(
+        child: Column(
+          children: [
+            Center(
+              child: Text(
+                "No tasks available at the moment. Please contact the administrator for more information about what you can.",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
 
     return Expanded(
       child: ListView.builder(
@@ -38,7 +53,7 @@ class _EmployeePageState extends State<EmployeePage> {
             taskName: tasksForRole[index]['Name'],
             taskStatus: 'Status: ${tasksForRole[index]['Status']}',
             iconButtonYes: true,
-            color: Colors.green,
+            color: const Color.fromRGBO(68, 77, 132, 1),
             onTap: () async {
               // Assuming 'tasksForRole[index]' contains a unique identifier for the task.
               String taskName = tasksForRole[index]
@@ -104,19 +119,34 @@ class _EmployeePageState extends State<EmployeePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(39, 44, 80, 1),
+      appBar: AppBar(
+        toolbarHeight: 80,
+        centerTitle: true,
+        backgroundColor: const Color.fromRGBO(68, 77, 132, 1),
+        elevation: 0,
+        title: // Employee page text
+            Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+            child: Text(
+              "Employee page",
+              style: GoogleFonts.inter(
+                fontSize: 26.5,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Employee page text
-              Text(
-                "Employee page",
-                style: GoogleFonts.inter(
-                  fontSize: 26.5,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              ),
+              
               const SizedBox(height: 20), 
 
               // StreamBuilder to get the employee's role
