@@ -22,6 +22,8 @@ void main() async {
   // open the box for saving users name
   var box = await Hive.openBox('UserInfo');
 
+  await hideScreen();
+
   runApp(ChangeNotifierProvider(
     create: (context) => ThemeProvider(),
     child: const MyApp(),
@@ -29,7 +31,7 @@ void main() async {
 }
 
 Future<void> hideScreen() async {
-  Future.delayed(const Duration(milliseconds: 3600), () {
+  Future.delayed(const Duration(milliseconds: 1000), () {
     FlutterSplashScreen.hide();
   });
 }
@@ -39,6 +41,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    hideScreen();
     Brightness brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
     return MaterialApp(
