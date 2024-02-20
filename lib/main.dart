@@ -10,6 +10,7 @@ import 'package:razvoj_sofvera/l10n/l10n.dart';
 import 'package:razvoj_sofvera/theme/theme_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,12 @@ void main() async {
     create: (context) => ThemeProvider(),
     child: const MyApp(),
   ));
+}
+
+Future<void> hideScreen() async {
+  Future.delayed(const Duration(milliseconds: 3600), () {
+    FlutterSplashScreen.hide();
+  });
 }
 
 class MyApp extends StatelessWidget {
