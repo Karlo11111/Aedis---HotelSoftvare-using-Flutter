@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () async {
                           dynamic conversationObject = {
                             'appId':
-                                'f117d6d09517976fd6b20d40acab19ed', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+                                '3dd0a853c82594ab3d2ad118a96b048cf', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
                             'withPreChat': false
                           };
                           KommunicateFlutterPlugin.buildConversation(
