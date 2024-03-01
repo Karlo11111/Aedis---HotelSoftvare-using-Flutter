@@ -172,7 +172,7 @@ class _OptionsPageState extends State<OptionsPage> {
 
                       //edit profile button
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.35,
+                        width: MediaQuery.of(context).size.width * 0.32,
                       ),
                       IconButton(
                         onPressed: () {

@@ -76,14 +76,14 @@ class InfoContainer extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 16.0, left: 16.0, bottom: 14),
+            padding: EdgeInsets.only(right: 16.0, left: 16.0, bottom: 10),
             child: Text(
               content,
               style: GoogleFonts.inter(fontSize: 10.0),
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(left: 16, top: 8, right: 12),
+              padding: EdgeInsets.only(left: 16, right: 12),
               child: row ?? Container()),
         ],
       ),

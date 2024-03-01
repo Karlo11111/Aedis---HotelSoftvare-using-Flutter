@@ -118,7 +118,7 @@ class _HelpPageState extends State<HelpPage> {
                 child: Text(
                   'Submit',
                   style: GoogleFonts.inder(
-                      color: Theme.of(context).colorScheme.primary),
+                      color: Colors.white),
                 ),
               ),
             ],

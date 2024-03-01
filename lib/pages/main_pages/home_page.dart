@@ -448,39 +448,44 @@ class _HomePageState extends State<HomePage> {
                             ),
                             content:
                                 "Escape to the tranquility of a hotel massage, choose from various massage types and enhancements tailored to your preferences for a personalized experience.",
-                            row: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                MyButton(
-                                  buttonText: "Book now!",
-                                  height: 30,
-                                  width: 100,
-                                  ontap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const MassageScreen()));
-                                  },
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.normal,
-                                  borderColor: Colors.transparent,
-                                  textColor: Colors.white,
-                                  icon: null,
-                                  decorationColor: isDarkMode
-                                      ? const Color.fromARGB(255, 38, 151, 255)
-                                      : Colors.blue.shade900,
-                                ),
-                                Text(
-                                  "Price €100",
-                                  style: GoogleFonts.inter(
+                            row: Padding(
+                              padding: const EdgeInsets.only(bottom: 7.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  MyButton(
+                                    buttonText: "Book now!",
+                                    height: 30,
+                                    width: 100,
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const MassageScreen()));
+                                    },
                                     fontSize: 12,
-                                    fontWeight: FontWeight.w300,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.normal,
+                                    borderColor: Colors.transparent,
+                                    textColor: Colors.white,
+                                    icon: null,
+                                    decorationColor: isDarkMode
+                                        ? const Color.fromARGB(
+                                            255, 38, 151, 255)
+                                        : Colors.blue.shade900,
                                   ),
-                                )
-                              ],
+                                  Text(
+                                    "Price €100",
+                                    style: GoogleFonts.inter(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w300,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  )
+                                ],
+                              ),
                             )),
 
                         //spa container
@@ -507,39 +512,44 @@ class _HomePageState extends State<HomePage> {
                             //text need to be changed
                             content:
                                 "Escape to the tranquility of a hotel spa, choose from various massage types and enhancements tailored to your preferences for a personalized experience.",
-                            row: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                MyButton(
-                                  buttonText: "Book now!",
-                                  height: 30,
-                                  width: 100,
-                                  ontap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SpaScreen()));
-                                  },
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.normal,
-                                  borderColor: Colors.transparent,
-                                  textColor: Colors.white,
-                                  icon: null,
-                                  decorationColor: isDarkMode
-                                      ? const Color.fromARGB(255, 38, 151, 255)
-                                      : Colors.blue.shade900,
-                                ),
-                                Text(
-                                  "Price €100",
-                                  style: GoogleFonts.inter(
+                            row: Padding(
+                              padding: const EdgeInsets.only(top: 12.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  MyButton(
+                                    buttonText: "Book now!",
+                                    height: 30,
+                                    width: 100,
+                                    ontap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const SpaScreen()));
+                                    },
                                     fontSize: 12,
-                                    fontWeight: FontWeight.w300,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.normal,
+                                    borderColor: Colors.transparent,
+                                    textColor: Colors.white,
+                                    icon: null,
+                                    decorationColor: isDarkMode
+                                        ? const Color.fromARGB(
+                                            255, 38, 151, 255)
+                                        : Colors.blue.shade900,
                                   ),
-                                )
-                              ],
+                                  Text(
+                                    "Price €100",
+                                    style: GoogleFonts.inter(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w300,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  )
+                                ],
+                              ),
                             )),
 
                         //room services container
