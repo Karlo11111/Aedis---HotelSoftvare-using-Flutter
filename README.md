@@ -5,7 +5,7 @@ Fronted mainly written in Dart / Flutter
 Backend in javascript / node.js and dart / firebase
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This is a fullstack project for a hotel PMS solution.
 
 A few resources to get you started if this is your first Flutter project:
 
